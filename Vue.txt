@@ -1,0 +1,860 @@
+
+1) Vue installation globally
+
+ npm install -g @vue/cli
+
+================================
+2) create project 
+
+ vue create project_name
+
+=================================
+3) goto directory 
+
+  cd project_name
+
+=================================
+
+4) run project
+ 
+   npm run serve 
+=================================
+
+
+== main.js ====================
+import Vue from 'vue'
+import App from './App.vue'
+
+Vue.config.productionTip = false
+
+new Vue({
+  render: h => h(App),
+}).$mount('#app')
+
+========== index.html ==============
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
+
+=========== App.vue =================
+
+
+<template>
+  <div id="app">
+   <Home/>
+  </div>
+</template>
+
+<script>
+// import HelloWorld from './components/HelloWorld.vue'
+import Home from './components/home'
+export default {
+  name: 'App',
+  components: {
+    // HelloWorld,
+    Home
+  }
+}
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
+
+=========== createing component =================
+
+
+======= Home.vue/component =============
+
+
+<template>
+    <div class="container">       
+         <div class="header"><Header/></div>
+         <div class="section"><Section/></div>
+         <div class="footer"><Footer/></div>
+    </div>
+</template>
+
+<script>
+import Header from './header'
+import Section from './section'
+import Footer from './footer'
+export default {
+    name:"Home",
+    components:{
+         Header,
+         Section,
+         Footer
+    }
+}
+</script>
+
+<style scoped> // scoped => local scope withoout scoped then global scope
+   h1{
+       color:red;
+   }
+   *{
+       padding:0;
+       margin:0;
+       box-sizing: border-box;
+   }
+   .container{       
+       height:auto;
+   }
+   .header{width:100%;height:60px;background:#ff0000}
+   .section{
+       height:400px;
+   }   
+   .footer{
+       width:100%;
+       background:gray;
+       height:60px;
+   }
+   
+</style>
+
+======= header.vue/component ========
+<template>
+    <div class="row">
+          <h1>Header</h1>
+    </div>
+</template>
+
+<script>
+export default {
+     name:"Home",
+     props:{
+
+     },
+     methods:{
+
+     },
+     data(){
+        return{}
+     }
+}
+</script>
+
+<style scoped>
+.row h1{
+    line-height: 54px;
+   }
+</style>
+============section.vue/component ========
+<template>
+    <div class="row">
+            <div class="aside"><Aside/></div>
+            <div class="main"><Main/></div>
+    </div>
+</template>
+
+<script>
+import Aside from './aside'
+import Main from './main'
+export default {
+     name:"Section",
+     components:{
+        Aside,
+        Main
+     },
+     props:{
+
+     },
+     methods:{
+
+     },
+     data(){
+        return{}
+     }
+}
+</script>
+
+<style scoped>
+.aside{
+       float:left;
+       width: 20%;
+        background: #ff00ff;
+        height: 100%;
+   }
+   .main{
+       float:right;
+       width:80%;
+       height:100%;
+   }
+   .row{
+       height:100%;
+   }
+   
+</style>
+=========== footer.vue/component ==========
+
+<template>
+    <div class="row">
+          <h1>Footer</h1>
+    </div>
+</template>
+
+<script>
+export default {
+     name:"Footer",
+     props:{
+
+     },
+     methods:{
+
+     },
+     data(){
+             return{}
+     }
+}
+</script>
+=============== scoped mins local scope = without scoped then globel scope=======
+<style scoped>
+.row h1{
+    line-height: 54px;
+   }
+</style>
+=========== v-for attribute ============
+<ul v-for="(user,index) in users" :key="index"> or {{ v-bind:key }}
+                <li>{{index}} - {{user.name}} - {{user.email}}</li>
+            </ul>
+========script ==
+data(){
+        return{
+            users:[{name:'jhon',email:'jhon@gmail.com'},
+                 {name:'kivi',email:'kivi@gmail.com'},
+                 {name:'lara',email:'lara@gmail.com'
+            }]
+        }
+     }
+=========================================
+
+===========  v-bind:property_name alis to (:) ===========
+
+:key="index"> or {{ v-bind:key }}
+=====================================================
+
+
+=========== Passsing Data parent component to child component using prop attribute ===
+
+===parent cmp =====
+
+data(){
+        return{
+            users:[{name:'jhon',email:'jhon@gmail.com'},
+                 {name:'kivi',email:'kivi@gmail.com'},
+                 {name:'lara',email:'lara@gmail.com'
+            }]
+        }
+     }
+<template>
+    <div class="row">
+            <div class="aside"><Aside/></div>
+            <div class="main"><Main :passUsers = "users"/></div>  (:) -> v-bind          
+    </div>
+</template>
+
+
+=======child cmp ==
+
+<template>
+    <div class="row">
+          <h1>Main</h1>
+          <ul v-for="(user,index) in passUsers" :key="index">
+                <li>{{index}} - {{user.name}} - {{user.email}}</li>
+            </ul>
+    </div>
+</template>
+
+====================
+
+<script>
+export default {
+     name:"Main",
+     props:["passUsers"],
+     methods:{
+
+     },
+     data(){
+          return{}
+     }
+}
+</script>
+================= v-if v-else-if v-else ========
+
+<p v-if="isTrue">lorem ipsum</p>
+<p v-else-if="isTrue">lorem ipsum</p>
+<p v-else="isTrue">lorem ipsum</p>
+
+=================================================
+
+===========v-bind:class using ternary operator====================
+
+<p :class="[isTrue? 'x' : 'y']"> lorem ipsum </p>  (:class or v-bind:class) - both are same 
+
+==============================================
+
+======= passing data child cmp to parent cmp using event emits method ============
+
+
+=======child cmp === or event binding = //@click="showName" or keybind //:key="index"
+
+<template>
+    <div class="row">
+          <h1>Main</h1>
+          <ul v-for="(user,index) in passUsers" :key="index">
+                <li @click="showName">{{index}} - {{user.name}} - {{user.email}}</li> //@click or v-on:click - both are same
+            </ul>
+    </div>
+</template>
+
+<script>
+export default {
+     name:"Main",
+     props:["passUsers"],
+     data(){
+          return{}
+     },
+     methods:{
+          showName:function(e){
+                this.$emit('triggerName',{'name':e.target.innerHTML});  // trigger child event using ($emit)
+          }
+     }
+}
+</script>
+
+<style scoped>
+
+</style>
+============ parent cmp 
+<template>
+    <div class="row">
+            <div class="aside"><Aside/></div>
+            <div class="main">
+                <p>{{details}}</p>
+                <Main @triggerName="getName" :passUsers="users"/>  // @triggerName="getName"
+                </div>            
+    </div>
+</template>
+
+<script>
+import Aside from './aside'
+import Main from './main'
+export default {
+     name:"Section",
+     components:{
+        Aside,
+        Main
+     },
+     props:[],
+     methods:{
+        getName:function(payload){ //recive children obj
+             this.details = payload
+        }
+     },
+     data(){
+        return{
+            users:[{name:'jhon',email:'jhon@gmail.com'},
+                 {name:'kivi',email:'kivi@gmail.com'},
+                 {name:'lara',email:'lara@gmail.com'
+            }],
+            status:true,
+            details:''
+        }
+     }
+}
+</script>
+
+<style scoped>
+.aside{
+       float:left;
+       width: 20%;
+        background: #ff00ff;
+        height: 100%;
+   }
+   .main{
+       float:right;
+       width:80%;
+       height:100%;
+   }
+   .row{
+       height:100%;
+   }
+   
+</style>
+
+======================= v-model = two way binding data =======
+<input type="text" v-model="name"/>
+==========================================================
+
+=========v-if/v-else/v-else-if ===
+<template>
+  <div id="app">
+    <p>{{name}}</p>
+    <h2 v-if="num == 0">The Number is Zero</h2>
+    <h2 v-else-if="num < 0">Number is Negative</h2>
+     <h2 v-else-if="num > 0">Number is Positive</h2>
+    <h2 v-else>Not a Number</h2>
+   <Home/>
+  </div>
+</template>
+
+<script>
+// import HelloWorld from './components/HelloWorld.vue'
+import Home from './components/home'
+export default {
+  name: 'App',
+  components: {
+    // HelloWorld,
+    Home
+  },
+  data(){
+    return {
+        num:NaN
+    }
+  }
+}
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+.underline{
+  text-decoration: underline;
+}
+.promoted{
+  font-style:italic;
+}
+.new{
+  color:green;
+}
+.sold{
+  color:red;
+}
+</style>
+
+=============class and style binding ====
+<template>
+  <div id="app">
+    <p>{{name}}</p>
+    <button :disabled="isdisabled">button</button>
+    <h2 class="underline">underline text</h2>
+    <h2 :class="ispromoted && 'promoted'">is promoted using and</h2>
+    <h2 :class="ispromoted?'promoted':'new'">is promoted using and</h2>
+    <h2 :class="['promoted','sold']">is promoted using and</h2>
+    <h2 :class="[ispromoted && 'promoted',ispromoted?'promoted':'new']">is promoted using and</h2>
+    <h2 :class="{
+        promoted:ispromoted,
+        sold:isSoldout,
+        disabled:isdisabled
+    }">is promoted using and</h2>
+
+   <Home/>
+  </div>
+</template>
+
+<script>
+// import HelloWorld from './components/HelloWorld.vue'
+import Home from './components/home'
+export default {
+  name: 'App',
+  components: {
+    // HelloWorld,
+    Home
+  },
+  data(){
+    return {
+        name:'Boxer',
+        isdisabled:true,
+        ispromoted:true,
+        isSoldout:true
+    }
+  }
+}
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+.underline{
+  text-decoration: underline;
+}
+.promoted{
+  font-style:italic;
+}
+.new{
+  color:green;
+}
+.sold{
+  color:red;
+}
+</style>
+
+===========================List Rendering using v-for directive ===========
+
+<template>
+    <div class="container">
+        <h1>Main Component</h1>
+        <ul>
+            <li v-for="(name, index) in names" :key="name">{{index}}-{{name}}</li>
+        </ul>
+        <template v-for="(name,index) in names" v-bind:key="name">
+             <p v-if="name == 'Brouse'">{{index}}:{{name}}</p>            
+        </template>
+        <hr/>
+         <ul>
+            <li v-for="(name, index) in fullNames" :key="name.first">{{index}}-{{name.first}} {{name.last}}</li>
+        </ul>
+         <hr/>
+         <ul>
+            <li v-for="(actor, index) in actors" :key="actor.name">
+              {{index}}-{{actor.name}}
+                 <dl v-for="(movie,index) in actor.movies" :key="movie">{{index}} - {{movie}}</dl>
+            </li>
+        </ul>
+         <hr/>
+         <ul>
+            <li v-for="(value,key, index) in info" :key="value">{{index}}-{{key}}:{{value}}</li>
+        </ul>
+    </div>
+</template>
+
+<script>
+export default {
+     name:'App',
+     props:[],
+     methods:{},
+     components:{},
+     data(){
+         return{
+           names:["Brouse","Mark","Jamiyans"],
+           fullNames:[
+             {first:"Brouse",last:"Krume"},
+             {first:"Mark",last:"Hood"},
+             {first:"Jamiyans",last:"Doe"}
+           ],
+           actors:[
+               {name:"Jems Bond",movies:["Jems1","Jems2"]},
+               {name:"Brouse Kent",movies:["kenti1","Kenti2"]},
+               {name:"Sofiya Margodi", movies:["Margodin1","Margodin2"]}
+           ],
+           info:{
+               name:"sofiya",
+               age:23,
+               city:"Californiya"
+           }
+         }
+     }
+}
+</script>
+
+<style scoped>
+
+</style>
+========================= method object ====
+
+<template>
+    <div class="container">
+        <h1>Main Component</h1>
+        <h2>{{ 10 + 30 }} </h2>
+        <h2>{{ add(baseValue) }} </h2>
+        <h2>{{baseValue}}</h2>
+        <h2>{{multiply(baseValue)}}</h2>
+    </div>
+</template>
+
+<script>
+export default {
+     name:'App',
+     props:[],
+     methods:{
+         add(num){
+             return 20 + 30 * num;
+         },
+         multiply(num){
+           return this.multiplier * num;
+         }
+     },
+     components:{},
+     data(){
+         return{
+            baseValue:2,
+            multiplier:20
+         }
+     }
+}
+</script>
+
+<style scoped>
+
+</style>
+========================Event Handling with sharthand syntax ====
+<template>
+    <div class="container">
+        <h1>Event Handing</h1>
+        <h2>{{ counter }} </h2>
+        <button v-on:click="counter += 1">Increment 1</button>
+        <button v-on:click="counter -= 1">Decrement 1</button>
+         <button @click="increment(5,$event)">Increment 5</button>
+        <button @click="decrement(3)">Decrement 3</button>
+    </div>
+</template>
+
+<script>
+export default {
+     name:'App',
+     props:[],
+     methods:{
+        increment(num,event){
+            this.counter += num;
+            console.log(event);
+        },
+        decrement(num){
+           this.counter -= num;
+        }
+     },
+     components:{},
+     data(){
+         return{
+           counter:0
+         }
+     }
+}
+</script>
+
+<style scoped>
+
+</style>
+==================================Form Handling Data =============
+<template>
+    <div class="container">
+        <h1>Form Handing</h1>
+        <pre>{{JSON.stringify(formValue)}}</pre>
+        <form @submit="submitForm($event)">
+            <label for="name">Name</label>
+            <input type="text" id="name" v-model="formValue.name">
+            <br/><br/>
+            <label for="profile">Profile Summary</label>
+            <textarea id="profile" v-model="formValue.profileSummary"></textarea>
+            <br><br/>
+            <label for="country">Country</label>
+            <select id="country" v-model="formValue.country">
+                 <option value="Select">Select</option>
+                 <option value="India">India</option>
+                 <option value="America">America</option>
+                 <option value="Mongoliya">Mongoliya</option>
+            </select>
+            <br/><br/>
+             <label for="job-location">location</label>
+            <select multiple id="job-location" v-model="formValue.jobLocation">
+                 <option value="India">India</option>
+                 <option value="America">America</option>
+                 <option value="Mongoliya">Mongoliya</option>
+            </select>
+            <br/><br/>
+            <input type="checkbox" id="remotWork" v-model="formValue.remotWork" true-value="yes" false-value="no">
+            <label for="remotWork">Open with remotework</label>
+              <br/><br/>
+              <div>
+                <label for="skillset">Skillset</label><hr/>
+                <input type="checkbox" id="html" value="html" v-model="formValue.skillSet">
+                <label for="html">HTML</label> 
+                <input type="checkbox" id="css" value="css" v-model="formValue.skillSet">
+                <label for="css">CSS</label> 
+                <input type="checkbox" id="javascript" value="javascript" v-model="formValue.skillSet">
+                <label for="javascript">JAVASCRIPT</label> 
+              </div>    
+              <div>
+                  <label for="exprerience">Experience</label>
+                  <input type="radio" name="ex" value="0-2" for="0-2" v-model="formValue.yearsOfExperience">
+                  <label id="0-2">0-2</label>
+                   <input type="radio" name="ex" value="2-5" for="2-5" v-model="formValue.yearsOfExperience">
+                  <label id="2-5">2-5</label>
+                   <input type="radio" name="ex" value="5-above" for="5-above" v-model="formValue.yearsOfExperience">
+                  <label id="5-above">5-above</label>
+                </div> 
+                <div>
+                   <button>Submit</button>  
+                </div>       
+        </form> 
+    </div> 
+</template>
+
+<script>
+export default {
+     name:'App',
+     props:[],
+     methods:{
+        submitForm(event){
+          event.preventDefault();
+            console.log(this.formValue);
+        }
+     },
+     components:{},
+     data(){
+         return{
+           formValue:{
+              name:'',
+              profileSummary:'',
+              country:'',
+              jobLocation:[],
+              remotWork:"no",
+              skillSet:[],
+              yearsOfExperience:''
+           }
+         }
+     }
+}
+</script>
+
+<style scoped>
+
+</style>
+===============================modifiers like - number/trim/lazy/prevent also computed methods and properties / v-once /v-pre
+
+<template>
+    <div class="container">
+        <h1>Form Handing</h1>
+        <pre>{{JSON.stringify(formValue)}}</pre>
+        <form @submit.prevent="submitForm($event)">
+            <label for="name">Name</label>
+            <input type="text" id="name" v-model.trim.lazy="formValue.name">
+            <br/><br/>
+            <label for="profile">Profile Summary</label>
+            <textarea id="profile" v-model="formValue.profileSummary"></textarea>
+            <br><br/>
+            <label for="country">Country</label>
+            <select id="country" v-model="formValue.country">
+                 <option value="Select">Select</option>
+                 <option value="India">India</option>
+                 <option value="America">America</option>
+                 <option value="Mongoliya">Mongoliya</option>
+            </select>
+            <br/><br/>
+             <label for="job-location">location</label>
+            <select multiple id="job-location" v-model="formValue.jobLocation">
+                 <option value="India">India</option>
+                 <option value="America">America</option>
+                 <option value="Mongoliya">Mongoliya</option>
+            </select>
+            <br/><br/>
+            <input type="checkbox" id="remotWork" v-model="formValue.remotWork" true-value="yes" false-value="no">
+            <label for="remotWork">Open with remotework</label>
+              <br/><br/>
+              <div>
+                <label for="skillset">Skillset</label><hr/>
+                <input type="checkbox" id="html" value="html" v-model="formValue.skillSet">
+                <label for="html">HTML</label> 
+                <input type="checkbox" id="css" value="css" v-model="formValue.skillSet">
+                <label for="css">CSS</label> 
+                <input type="checkbox" id="javascript" value="javascript" v-model="formValue.skillSet">
+                <label for="javascript">JAVASCRIPT</label> 
+              </div>    
+              <div>
+                  <label for="exprerience">Experience</label>
+                  <input type="radio" name="ex" value="0-2" for="0-2" v-model="formValue.yearsOfExperience">
+                  <label id="0-2">0-2</label>
+                   <input type="radio" name="ex" value="2-5" for="2-5" v-model="formValue.yearsOfExperience">
+                  <label id="2-5">2-5</label>
+                   <input type="radio" name="ex" value="5-above" for="5-above" v-model="formValue.yearsOfExperience">
+                  <label id="5-above">5-above</label>
+                </div> 
+                <div>
+                     <label for="age">Experience</label>
+                  <input type="range" name="age" id="age" v-model.number="formValue.age">
+                </div>
+                <div>
+                  <h2>FullName: {{firstName}} {{lastName}}</h2>
+                  <h2>FullName: {{fullName}}</h2>
+		  <h2 v-once>FullName: {{fullName}}</h2>
+		 <h2 v-pre>FullName: {{fullName}}</h2>
+                  </div>
+                <div>
+                   <button>Submit</button>  
+                </div>       
+        </form> 
+    </div> 
+</template>
+
+<script>
+export default {
+     name:'App',
+     props:[],
+     methods:{
+        submitForm(event){
+          event.preventDefault();
+            console.log(this.formValue);
+        }
+     },
+     components:{},
+     data(){
+         return{
+           formValue:{
+              name:'',
+              profileSummary:'',
+              country:'',
+              jobLocation:[],
+              remotWork:"no",
+              skillSet:[],
+              yearsOfExperience:'',
+              age:0
+           },
+           firstName:"RK",
+           lastName:"GK"
+         }
+     },
+     computed:{
+        fullName(){
+             return `${this.firstName} ${this.lastName}`
+        },
+       total(){
+	   return items.reduce((acc,curr)=>(acc += curr),0)
+        }
+     }
+}
+</script>
+
+<style scoped>
+
+</style>
+================================= Computed properties vs methods  =====
+
+<h2 @click="item.push({'name':'rk','age':78,'city':'pune'})"></h2>
+
+<h2>{{ items.reduce((acc,curr)=>(acc += curr),0)}}</h2>
+
+=====================================
+

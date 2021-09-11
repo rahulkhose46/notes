@@ -1,0 +1,94 @@
+from django.shortcuts import render
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from qv1.models import Quiz, Question
+from qv1.serializer import QuizSerializer, QuestionSerializer
+# Create your views here.
+
+class QuizViews(APIView):
+    def get_object(self):
+        try:
+            return Quiz.objects.all()
+        except Quiz.DoseNotExist:
+            raise status.HTTP_404_NOT_FOUND
+
+    def get(self, request, format=None):
+        queryset = self.get_object()
+        serializer = QuizSerializer(queryset,many=True)
+        return Response(data=serializer.data,status=status.HTTP_200_OK)
+
+
+    def post(self, request, format=None):
+        #print(request.method)
+        #print(request.data)
+        serializer = QuizSerializer(data=request.data)
+        #print(serializer1)
+        try:
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except Exception as e:
+            print(e)
+            return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
+
+        #if serializer.is_valid():
+        #     serializer.save()
+        #     return Response(serializer.data, status=status.HTTP_200_OK)
+        # else:
+        #     print("Wrong")
+        #     return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
+        # if serializer.is_valid():
+        #     serializer.save()
+        #     return Response(serializer.data, status=status.HTTP_201_CREATED)
+        # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class QuestionViews(APIView):
+    def get_object(self):
+        try:
+            return Question.objects.all()
+        except Question.DoseNotExist:
+            raise status.HTTP_404_NOT_FOUND
+
+    def get(self, request, format=None):
+        queryset = self.get_object()
+        serializer = QuestionSerializer(queryset,many=True)
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
+
+    def post(self, request, format=None):
+        serializer = QuestionSerializer(data=request.data)
+        # if serializer.is_valid():
+        #     serializer.save()
+        #     return Response(serializer.data, status=status.HTTP_201_CREATED)
+        # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+        except Exception as e:
+            print(e)
+            return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
+
+
+    def delete(self, request, format=None):
+        _id = request.data["id"]
+        print(_id)
+        queryset = Question.objects.get(id=_id)
+        queryset.delete()
+        return Response(data="delete", status=status.HTTP_410_GONE)
+
+
+    def put(self, request, format=None):
+        _id = request.data["id"]
+        print(_id)
+        quiz = Question.objects.get(id=_id)
+        serializer = QuestionSerializer(quiz, data=request.data)
+        try:
+            if serializer.is_valid():
+                serializer.save()
+                return Response(data=serializer.data,status=status.HTTP_202_ACCEPTED)
+        except Exception as e:
+            print(e)
+            return Response(data=serializer.errors,status=status.HTTP_304_NOT_MODIFIED)

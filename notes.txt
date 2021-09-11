@@ -1,0 +1,198 @@
+
+
+================ URL REFERENCE ====================================
+
+1) https://app.diagrams.net/
+2) https://codesandbox.io/
+3) https://bulma.io/
+4) https://vercel.com/dashboard
+5) https://picsum.photos/
+6) https://www.pexels.com/
+7) https://codepen.io/
+
+================ END OF URL REFERENCE =============================
+
+=============== GitHub Deployment =================================
+email:rahulkhose46@gmail.com
+username:rahulkhose46
+password:rk@10041994
+===================
+== This is Token based password ========
+
+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
+
+
+1) Initialize App using Git
+
+$ git init
+
+$ git add .
+
+$ git status
+
+$ git commit -m 'commit text'
+
+$ git remote add origin https://github.com/rahulkhose46/react-task-tracker.git
+
+$ git remote -v
+
+$ git push -u origin task-tracker
+
+Username for 'https://github.com': rahulkhose46
+Password for 'https://rahulkhose46@github.com': 
+
+
+
+
+===============Vercel Deployment using now.sh OR vercel.com ======================
+
+1) go to the now.sh or https://vercel.com/  OR https://vercel.com/dashboard
+
+2) Install vercel on globaly
+$ sudo npm install -g vercel
+
+3) First Please sign up: https://vercel.com/signup
+
+4) Then Aceess it
+$ vercel login
+
+5) Setup and Deploy
+$ vercel
+
+6) Enter your email address: rahulkhose46@gmail.com
+
+7) set default all options and overwrite all settings
+
+? Set up and deploy “~/RK WORKSPACE/Angular/Bootcamp/pw”? [Y/n] y
+? Which scope do you want to deploy to? rahulkhose46-gmailcom
+? Link to existing project? [y/N] n
+? What’s your project’s name? pw
+? In which directory is your code located? ./
+Auto-detected Project Settings (Angular):
+- Build Command: `npm run build` or `ng build`
+- Output Directory: dist
+- Development Command: ng serve --port $PORT
+? Want to override the settings? [y/N] y
+
+8) Inspect: https://pw-qqwi79uy7-rahulkhose46-gmailcom.vercel.app/
+
+9) Production: https://pw-henna-theta.vercel.app
+
+https://build-chi-liard.vercel.app/
+
+=============== Install JSON Server ===============================
+
+https://github.com/typicode/json-server
+
+1) Install JSON Server
+
+$ npm install -g json-server
+
+2) Create a db.json file with some data
+
+{
+  "posts": [
+    { "id": 1, "title": "json-server", "author": "typicode" }
+  ]
+}
+
+3) Start JSON Server
+
+$ json-server --watch db.json --port 3000
+
+Now if you go to http://localhost:3000/posts/1, you'll get
+
+{ "id": 1, "title": "json-server", "author": "typicode" }
+
+
+
+============== END OF JSON Server ===================================
+
+
+============== Javascript Babel Compiler ============================
+https://babeljs.io/docs/en/
+
+1) Initialize Node Package
+$ npm init --y > create node package.json
+
+2) Install Babel Compiler Pkg
+$ npm install --save-dev @babel/core @babel/cli @babel/preset-env
+        OR 
+$ npm install --save-dev @babel/core@latest @babel/cli@latest @babel/preset-env@latest
+
+3) set commond/script inside package.json
+
+"scripts":{
+     "babel":"babel --presets env index.js -o build/index.js"
+  }
+
+4) create src folder move to index.js inside
+
+5) Run build commond
+
+$ npm run babel
+
+=============END OF Javascript Babel Compiler ===========================
+
+============= Javascript Webpack-cli ====================================
+
+https://www.npmjs.com/package/@webpack-cli/init
+
+1) Initialize Node Package
+
+$ npm init --y > create node package.json
+
+2) Install Webpack-cli
+$ npm install --save-dev webpack-cli
+
+3) Create src directory and move all js file inside 
+
+4) Init Webpack-cli 
+$ npm i webpack-cli @webpack-cli/init
+       OR
+$ npx webpack-cli init
+
+5) Overwrite all settings
+
+6) Run webpack build script
+$ npm run-script build
+
+
+
+=============END OF Javascript Webpack-cli ==============================
+
+============ Build React App ============================================
+$ npm start
+
+1) Build Command
+$ npm run build
+
+2) Install globally Local Server using serve(server)
+$ sudo npm install -g serve
+
+3) Run Production build server from local
+$ serve -s build -p 8000
+
+
+========= React Config json-server =====================================
+
+1) Install json-server for app
+
+$ npm install json-server
+
+2) set configration in package.json file
+
+ >   "server": "json-server --watch db.json --port 5000"
+
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "server": "json-server --watch db.json --port 5000"
+  },
+
+3) Generate db.json file Run Command
+$ npm run server
+============ EDN OF Build React App =====================================
+

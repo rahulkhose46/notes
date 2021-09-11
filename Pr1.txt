@@ -1,0 +1,440 @@
+%experiment no 1
+clc;
+clear all;
+close all;
+%conditional probability
+type=input('enter the type of channel');
+switch type
+case 'BSC'
+pYbyX=input('enter the conditional probability matrix: ');
+display(pYbyX);
+ 
+%source probability
+pX=input('enter the source probabilities: ');
+display(pX);
+m=length(pX);
+n=m;
+%joint probability
+for j=1:m
+    for k=1:n
+    pXY(j,k)=pYbyX(j,k)*pX(j);
+    end
+    
+    
+    
+end
+display(pXY);
+ 
+%reciever probability
+for k=1:n
+    pY(k)=sum(pXY(:,k));
+end
+display(pY);
+ 
+%calculation of entropies
+ 
+%marginal entropy of source
+HX=0;
+for j=1:m
+    hx=-pX(j)*log2(pX(j));
+    HX=HX+hx;
+end
+display(HX);
+ 
+%marginal entropy of reciever
+HY=0;
+for k=1:n
+    hy=-pX(k)*log2(pY(k));
+    HY=HY+hy;
+end
+display(HY);
+ 
+%joint entropy of source and reciever
+HXY=0;
+for j=1:m
+    for k=1:n
+hxy=-pXY(j,k)*log2(pXY(j,k));
+HXY=HXY+hxy;
+    end
+end
+display(HXY);
+ 
+%conditional entropy of source
+HYbyX=HXY-HX
+ 
+%conditional probability of reciever
+HXbyY=HXY-HY
+ 
+%mutual information
+IXY=HY-HYbyX
+case 'NC'
+    pYbyX=input('enter the conditional probability matrix: ');
+display(pYbyX);
+ 
+%source probability
+pX=input('enter the source probabilities: ');
+m=length(pX);
+n=m;
+display(pX);
+ 
+%joint probability
+for j=1:m
+    for k=1:n
+    pXY(j,k)=pYbyX(j,k)*pX(j);
+    end
+end
+display(pXY);
+ 
+%reciever probability
+for j=1:m
+    pY(j)=sum(pXY(:,j));
+end
+display(pY);
+ 
+%calculation of entropies
+ 
+%marginal entropy of source
+HX=0;
+for j=1:m
+    hx=-pX(j)*log2(pX(j));
+    HX=HX+hx;
+end
+display(HX);
+ 
+%marginal entropy of reciever
+HY=0;
+for k=1:n
+    hy=-pX(k)*log2(pY(k));
+    HY=HY+hy;
+end
+display(HY);
+ 
+%joint entropy of source and reciever
+HXY=0;
+for j=1:m
+    for k=1:n
+hxy=-pXY(j,k)*log2(pXY(j,k));
+HXY=HXY+hxy;
+    end
+end
+display(HXY);
+ 
+%conditional entropy of source
+HYbyX=HXY-HX
+ 
+%conditional probability of reciever
+HXbyY=HXY-HY
+ 
+%mutual information
+IXY=HX-HXbyY
+    case'NFC'
+        pYbyX=input('enter the conditional probability matrix: ');
+display(pYbyX);
+pX=input('enter the source probabilities: ');
+%m=length(pX);
+[m n]=size(pYbyX);
+display(pX);
+%joint probability
+for j=1:m
+    for k=1:n
+    pXY(j,k)=pYbyX(j,k)*pX(j);
+    end
+end
+display(pXY);
+%reciever probability
+for j=1:m
+    pY(j)=sum(pXY(:,j));
+end
+display(pY);
+%marginal entropy of reciever
+HX=0;
+for j=1:m
+    hx=-pX(j)*log2(pX(j));
+    HX=HX+hx;
+end
+display(HX);
+HY=HX;
+HXY=HY;
+HXbyY=0;
+HYbyX=0;
+HY
+HXY
+HXbyY
+HYbyX
+IXY=HX
+    case'EFC'
+        PXY=input('enter the joint probability matrix')
+        [m n]=size(PXY)
+        for j=1:m
+            PX(j)=sum(PXY(j,:));
+        end
+        PX
+            for k=1:n
+                PY(k)=sum(PXY(:,k));
+            end
+            PY
+            %marginal entropy of source
+HX=0;
+for j=1:m
+    hx=-PX(j)*log2(PX(j));
+    HX=HX+hx;
+end
+display(HX);
+%marginal entropy of reciever
+HY=0;
+for k=1:n
+    hy=-PY(k)*log2(PY(k));
+    HY=HY+hy;
+end
+display(HY);
+HXY=HY
+HXbyY=HXY-HY
+HYbyX=HXY-HX
+IXY=HX+HY-HXY
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+output
+
+1)	 BSC
+
+enter the type of channel'BSC'
+enter the conditional probability matrix: [0.8 0.2;0.2 0.8]
+
+pYbyX =
+
+    0.8000    0.2000
+    0.2000    0.8000
+
+enter the source probabilities: [0.6 0.4]
+
+pX =
+
+    0.6000    0.4000
+
+
+pXY =
+
+    0.4800    0.1200
+    0.0800    0.3200
+
+
+pY =
+
+    0.5600    0.4400
+
+
+HX =
+
+    0.9710
+
+
+HY =
+
+    0.9757
+
+
+HXY =
+
+    1.6929
+
+
+HYbyX =
+
+    0.7219
+
+
+HXbyY =
+
+    0.7172
+
+
+IXY =
+
+    0.2537
+
+2)	 NC
+
+enter the type of channel'NC'
+enter the conditional probability matrix: [0.8 0.2;0.2 0.8]
+
+pYbyX =
+
+    0.8000    0.2000
+    0.2000    0.8000
+
+enter the source probabilities: [0.6 0.4]
+
+pX =
+
+    0.6000    0.4000
+
+
+pXY =
+
+    0.4800    0.1200
+    0.0800    0.3200
+
+
+pY =
+
+    0.5600    0.4400
+
+
+HX =
+
+    0.9710
+
+
+HY =
+
+    0.9757
+
+
+HXY =
+
+    1.6929
+
+
+HYbyX =
+
+    0.7219
+
+
+HXbyY =
+
+    0.7172
+
+
+IXY =
+
+    0.2537
+ 
+3)	 NFC
+
+enter the type of channel'NFC'
+enter the conditional probability matrix: [0.8 0.2;0.2 0.8]
+
+pYbyX =
+
+    0.8000    0.2000
+    0.2000    0.8000
+
+enter the source probabilities: [0.6 0.4]
+
+pX =
+
+    0.6000    0.4000
+
+
+pXY =
+
+    0.4800    0.1200
+    0.0800    0.3200
+
+
+pY =
+
+    0.5600    0.4400
+
+
+HX =
+
+    0.9710
+
+
+HY =
+
+    0.9710
+
+
+HXY =
+
+    0.9710
+
+
+HXbyY =
+
+     0
+
+
+HYbyX =
+
+     0
+
+
+IXY =
+
+    0.9710
+
+4)	 EFC
+
+enter the type of channel'EFC'
+enter the joint probability matrix[0.8 0.2;0.2 0.8]
+
+PXY =
+
+    0.8000    0.2000
+    0.2000    0.8000
+
+
+m =
+
+     2
+
+
+n =
+
+     2
+
+
+PX =
+
+     1     1
+
+
+PY =
+
+     1     1
+
+
+HX =
+
+     0
+
+
+HY =
+
+     0
+
+
+HXY =
+
+     0
+
+
+HXbyY =
+
+     0
+
+
+HYbyX =
+
+     0
+
+
+IXY =
+
+     0
+

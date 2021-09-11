@@ -1,0 +1,542 @@
+
+
+====================================================================================================
+
+use db //create database
+show dbs //show database
+db.collection.find()//fetch all collection data
+db.student.find({});
+db.drapDatabase();//drop data base
+db.createCollection('Collection_name')//create collection
+db.collection_name.drop();//drop collection
+db.student.insert({
+	       "id":"1",
+	       'fanme':"rahul",
+	       "lname":"Khose",
+	       "city":"pune",
+	       "salary":"250000"
+})
+db.student.insert(
+  [
+      {
+	       "id":"1",
+	       'fanme':"rahul",
+	       "lname":"Khose",
+	       "city":"pune",
+	       "salary":"250000"
+},
+ {
+	       "id":"1",
+	       'fanme':"rahul",
+	       "lname":"Khose",
+	       "city":"pune",
+	       "salary":"250000"
+},
+ {
+	       "id":"1",
+	       'fanme':"rahul",
+	       "lname":"Khose",
+	       "city":"pune",
+	       "salary":"250000"
+}
+  ]
+)
+
+db.student.find({"Age":{$lt:'17'}});
+db.student.find({"Age":{$lte:"18"}});
+db.student.find({"Age":{$gt:"27"}});
+db.student.find({"Age":{$gte:"28"}});
+
+db.student.remove({"_id":ObjectId('a54df26e7tg1fde5t')})
+db.student.findOne().pretty();
+db.student.find().pretty();
+db.student.find({"_id":ObjectId('a54df26e7tg1fde5t'))
+==========================================================================================================
+use api
+db.dropDatabase()
+db.createCollection("collection_name")
+db.collection_name.drop()
+db.users.find()
+db.users.findOne()
+db.users.find({"_id" : ObjectId("5a7e8a88ca1e7f33e7e807c6")})
+db.users.find({"fname":"New"})
+db.users.insert({ 
+    "fname" : "New", 
+    "lname" : "New", 
+    "age" : "New", 
+    "city" : "New", 
+})
+db.users.insert([
+     { 
+      "fname" : "New", 
+      "lname" : "New", 
+      "age" : "New", 
+      "city" : "New", 
+     },
+          { 
+      "fname" : "New1", 
+      "lname" : "New1", 
+      "age" : "New1", 
+      "city" : "New1", 
+     }
+])
+db.users.remove()
+db.users.remove(
+{"_id" : ObjectId("5a7e890cca1e7f33e7e807c5")}
+)
+db.users.remove({"gender":"female"})//all remove gender female
+db.users.remove({"gender":"female"},1)//only 1 record remove
+db.users.find({
+   $or:[
+       {"fname":"New"},{"age":"New"}
+   ]
+})
+
+db.users.find({
+   $and:[
+       {"fname":"New"},{"age":"New"}
+   ]
+})
+db.users.find({},{"fname":1,"_id":0})
+db.users.find({"_id" : ObjectId("5a7e8a88ca1e7f33e7e807c6")},{"fname":1,"lname":1,"_id":0})
+db.users.find({"age":{$lt:"32"}})
+db.users.find({"age":{$gt:"30"}})
+db.users.find({"age":{$lte:"32"}})
+db.users.find({"age":{$gte:"30"}})
+
+db.users.find({}).limit(3)
+db.users.find({}).limit(3).skip(2)
+db.users.find({}).sort({"age":1})
+db.users.find({}).sort({"age":-1})
+===========================================================================================================
+Mongodb//NoSql
+
+database ->  collection -> document
+
+RDBMS //Sql
+
+database -> table ->row/coloumn
+
+db.student.find()//show all record
+
+db.student.findOne() //display one record
+//find given record
+db.studnet.find(
+  { 
+      "fname":"sachin"
+   }
+)
+//OR
+db.student.find({ $or:[
+  {
+    "Age":{"$lt":"17"}
+  },
+  {
+     "fname":"atul"
+  }
+]})
+//AND
+db.student.find({$and:[
+ {
+"Age":{"$lt":"17"}
+ },
+ {
+   "fname":"atul"
+ }
+]})
+
+db.student.update(
+{
+	"_id":ObjectId("4582az86derg658")
+},
+{
+	$set:{
+	    "fname":"santosh",
+	    "lname":'shinde'
+	    }
+},
+{
+	multi:true
+}
+)
+
+db.student.remove({
+	"_id":ObjectId("4582az86derg658")
+})
+
+db.student.remove(
+{
+	"city":"pune"
+},1
+)
+
+
+=================================================================================================
+
+=============== REST api  ============================================================================
+var express = require('express');
+
+var app = express();
+
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/my_database');
+
+var Schema = mongoose.Schema;
+
+var UserSchema = new Schema({
+	//name : String
+	name:{type:String }
+});
+
+var User = mongoose.model('User',UserSchema);
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());    //to support JOSN-encoded bodies
+app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
+	 extended:true
+}));
+
+app.get('/user',function(req,res){
+    User.find({}),function(err,users){
+       if(err){
+          res.send('something went really wrong!!!');
+          next();
+       }
+       res.json(users);
+    }	  
+});
+/*
+app.get('/user,function(req,res){
+	
+	  User.find()
+          .exec()
+	  .then(doc => {
+	     if(!doc) { return res.status(404).end();}
+	     return res.status(200).json(doc);
+	  })
+	  .catch(err => next(err));
+});
+*/
+app.get('/user/:id',function(req,res){
+	
+	  User.findById(req.params.id)
+          .exec()
+	  .then(doc => {
+	     if(!doc) { return res.status(404).end();}
+	     return res.status(200).json(doc);
+	  })
+	  .catch(err => next(err));
+});
+
+app.post('/user',function(req,res){
+	 var user = new User(req.body);
+	 user.save(function(err,user){
+	   res.json(user);
+	 });
+});
+/*
+ app.post('/user',function(req,res){
+          var user = new User(req.body);
+          user.save()
+          .exec()
+          .then(doc => {
+           if(!doc){return res.status(404).end();}  
+            return res.status(200).json(doc);                 
+       })
+       .catch(err => next(err));
+*/
+
+app.put('/user/:id',function(req,res){
+	 var condition = {_id:req.params.id};
+
+	  User.update(condition, req.body)
+	  .then(doc => {
+	     if(!doc) { return res.status(404).end();}
+	     return res.status(200).json(doc);
+	  })
+	  .catch(err => next(err));
+});
+
+app.delete('/user/:id',function(req,res){
+	User
+	.findByIdAndRemove(req.params.id)
+	.exec()
+	.then(doc => {
+	  if(!doc){return res.status(404).end();}
+	  return res.status(204).end();
+	})
+	.catch(err => next(err));
+});
+===============================================================================================
+
+===================== Fasad.js ========= execute limi,skip.{} ================================
+const mongoose = require('mongoose');
+
+class Facade {
+  constructor(name, schema) {
+    this.model = mongoose.model(name, schema);
+  }
+
+  create(body) {
+    const model = new this.model(body);
+    return model.save();
+  }
+
+  find(...args) {
+    var searchObj = {};
+    for(let prop in args[0]){
+      if(prop == 'fname'){
+         searchObj.fname = args[0].fname;
+      }
+      if(prop == 'limit'){
+      var limit_no = parseInt(args[0].limit);
+    }else{
+      var limit_no = 25;
+      }
+      if(prop == 'skip'){
+         var skip_no = parseInt(args[0].skip);
+      }else{
+        var skip_no = 0;
+      }
+    }
+    return this.model
+      .find(searchObj)
+      .limit(limit_no)//new added function
+      .skip(skip_no)//new added function
+      .exec();
+  }
+  // find(...args) {
+  //   return this.model
+  //     .find(...args)
+  //     .exec();
+  // }
+
+  findOne(...args) {
+    return this.model
+      .findOne(...args)
+      .exec();
+  }
+
+  findById(...args) {
+    return this.model
+      .findById(...args)
+      .exec();
+  }
+
+  update(...args) {
+    return this.model
+      .update(...args)
+      .exec();
+  }
+
+  remove(...args) {
+    return this.model
+      .remove(...args)
+      .exec();
+  }
+}
+
+module.exports = Facade;
+===============================================================================================
+
+======================Pagination =====================================================================
+const mongoose = require('mongoose');
+
+class Facade {
+  constructor(name, schema) {
+    this.model = mongoose.model(name, schema);
+  }
+
+  create(body) {
+    const model = new this.model(body);
+    return model.save();
+  }
+
+  find(...args) {
+    var searchObj = {};
+      if(args[0].q){
+         searchObj.fname = args[0].q;
+      }
+      if(args[0].count){
+      var count = parseInt(args[0].count);
+    }else{
+      var count = 25;
+      }
+      if(args[0].page){
+         var skip = parseInt((args[0].page-1) * count);
+      }else{
+        var skip = 0;
+      }
+    return this.model
+      .find(searchObj)
+      .limit(count)//new added function
+      .skip(skip)//new added function
+      .exec();
+  }
+  // find(...args) {
+  //   return this.model
+  //     .find(...args)
+  //     .exec();
+  // }
+
+  findOne(...args) {
+    return this.model
+      .findOne(...args)
+      .exec();
+  }
+
+  findById(...args) {
+    return this.model
+      .findById(...args)
+      .exec();
+  }
+
+  update(...args) {
+    return this.model
+      .update(...args)
+      .exec();
+  }
+
+  remove(...args) {
+    return this.model
+      .remove(...args)
+      .exec();
+  }
+}
+
+module.exports = Facade;
+
+======================================================================================================
+
+===============================Rest Api =================================================================
+
+  /* server.js */
+
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const api = require('./server/router/route');
+const port = 3000;
+const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+app.use('/api',api);
+app.get('/',(req,res)=>{
+   res.send('Welcome Books_api..');
+});
+app.listen(port,()=>{
+  console.log('server running on port http://localhost:3000');
+})
+
+/* model/scheam.js */
+
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
+
+const BookSchema = new Schema({
+    b_name:{type:String},
+    b_author:{type:String},
+    b_price:{type:String}
+});
+const Book = mongoose.model('Book',BookSchema,'books');
+module.exports = Book;
+
+  /* router.js */
+
+const express = require('express');
+const mongoose = require('mongoose');
+const Book = require('../model/schema');
+const router = express.Router();
+mongoose.connect('mongodb://localhost/book_store');
+mongoose.Promise = global.Promise;
+router.get('/books',(req,res,next)=>{
+     console.log('Fetch All Books');
+     Book.find({})
+     .exec()
+     .then(doc => {
+         if(!doc){ return res.status(404).end();}
+         return res.status(200).json(doc);
+     })
+     .catch(err => next(err));
+});
+router.get('/book/:id',(req,res,next)=>{
+     console.log('Fetch Single Book');
+     Book.findById(req.params.id)
+     .exec()
+     .then(doc => {
+         if(!doc){ return res.status(404).end();}
+         return res.status(200).json(doc);
+     })
+      .catch(err => next(err));
+});
+router.post('/book',(req,res,next)=>{
+       console.log('Insert Record');
+       var book = new Book(req.body);
+       book.save()
+       .then(doc => {
+           if(!doc){ return res.status(404).end();}
+           return res.status(200).json(doc);
+       })
+       .catch(err => next(err));
+});
+router.put('/book/:id',(req,res,next)=>{
+        console.log('Update Record');
+        var condition = {"_id":req.params.id};
+       Book.findByIdAndUpdate(condition,req.body)
+       .exec()
+       .then(doc => {
+           if(!doc){ return res.status(404).end();}
+           return res.status(200).json(doc);
+       })
+       .catch(err => next(err));
+});
+router.delete('/book/:id',(req,res,next)=>{
+       console.log('Delete Record');
+       Book.findByIdAndRemove(req.params.id)
+       .exec()
+       .then(doc => {
+           if(!doc){return res.status(404).end();}
+           return res.status(200).json(doc);
+       })
+       .catch(err => next(err));
+})
+module.exports = router;
+
+===================================================================================================
+var express = require('express');
+
+var router = express.Router();
+
+router.get('/read',(req,res,next)=>{
+     res.status(200).json({
+        msg:'Get Reqest is working'
+     });
+});
+router.get('/read/:id',(req,res,next)=>{
+     res.status(200).json({
+        msg:'Get Reqest is working',
+        id: req.params.id
+     });
+});
+router.post('/create',(req,res,next)=>{
+     res.status(200).json({
+        msg:'Post Reqest is working'
+     });
+});
+router.put('/update/:id',(req,res,next)=>{
+     res.status(200).json({
+        msg:'Post Reqest is working',
+        id:req.params.id
+     });
+});
+router.delete('/delete/:id',(req,res,next)=>{
+     res.status(200).json({
+        msg:'Delete Reqest is working',
+        id:req.params.id
+     });
+});
+
+module.exports = router;
+==============================================================================================

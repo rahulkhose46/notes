@@ -1,0 +1,56 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { Product } from './product';
+@Injectable({
+  providedIn: 'root'
+})
+export class ShoppingCartService {
+
+  private apiEndPoint = "http://localhost:3000/api";
+  
+  constructor(private http:HttpClient,_router:Router) { }
+  public cartObj:any = {};
+
+  private create(curDateTime){
+    return this.http.post(this.apiEndPoint + "/shopping-cart",curDateTime)  
+  }
+  private getCart(cartId:string){
+   return  this.http.post(this.apiEndPoint + "/shopping-cart",cartId)
+  }
+  private getOrCreateCartId(product:Product){
+    let cartId = localStorage.getItem('cartId');
+    if(cartId) return cartId;
+       let initalCartItem:any = {
+         'dateCreated':new Date().getTime(),
+         items:[
+             {
+                product,
+               "quantity":1
+             }
+         ]
+        }
+       this.create(initalCartItem)
+       .subscribe(res =>{ 
+         this.cartObj = res;
+         //console.log(this.cartObj);
+         localStorage.setItem('cartId',this.cartObj._id);
+          return this.cartObj._id
+       });
+      
+  }
+
+  addToCart(product:Product){
+     let cartId = this.getOrCreateCartId(product);
+     console.log(this.cartObj);
+     let cartItemId = this.cartObj.items[0]._id;
+     console.log('cartId:' + cartId + "cartItemId:" + cartItemId);
+     return this.http.put(this.apiEndPoint + "/shopping-cart/" + cartId + "/items/" +cartItemId,product); 
+  }
+
+}
+
+
+
+
+  //  this.http.put(this.apiEndPoint + "/shopping-cart/" + this.cartObj._id,product)

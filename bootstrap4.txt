@@ -1,0 +1,81 @@
+
+http://www.c-sharpcorner.com/article/top-50-html-5-interview-questions-and-answers/
+=================================
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" >
+	<link rel="stylesheet" href="css/custom.css" >
+    <title>Hello, world!</title>
+  </head>
+  <body>
+      <div class="container">
+	    <div class="row">
+		      <div class="col-md-6 offset-md-4">
+			     <form>
+				     <div class="form-group"> 
+					    <label for="firstname">FirstName:</label>
+						<input type="text" class="form-control" id="firstname" placeholder="John" required>
+					 </div>
+					 <div class="form-group"> 
+					    <label for="lastname">LastName:</label>
+						<input type="text" class="form-control" id="lastname" placeholder="Doe" required>
+					 </div>
+					 <div class="form-group"> 
+					    <label for="email">Email:</label>
+						<input type="email" class="form-control" id="email" placeholder="me@example.com" required>
+					 </div>
+					 <div class="form-group"> 
+					    <label for="password">Password:</label>
+						<input type="password" class="form-control" id="password" placeholder="*******" required>
+					 </div>
+					 <div class="form-group">
+					    <label for="exampleFormControlSelect">Example Select</label>
+						<select class="form-control" id="exampleFormControlSelect">
+						  <option selected>Choose..</option>
+						  <option value="1">One</option>
+						  <option value="2">Two</option>
+						  <option value="3">Three</option>
+						  <option value="4">Four</option>
+						</select>
+					 </div>
+					 <div class="form-group">
+					    <label for="exampleFormControlSelect">Example Select</label>
+						<select multiple class="custom-select" id="exampleFormControlSelect">
+						  <option selected>Choose..</option>
+						  <option value="1">One</option>
+						  <option value="2">Two</option>
+						  <option value="3">Three</option>
+						  <option value="4">Four</option>
+						</select>
+					 </div>
+					 <div class="form-group">
+					   <label for="input-file-Example">Choose File...</label>
+					   <input type="file" class="form-control-file">
+					 </div>
+					 <div class="form-group">
+					   <label for="textareaExample">Message</label>
+					   <textarea type="textarea" class="form-control" rows="3" placeholder="Message"></textarea>
+					 </div>
+					 <div class="form-check">
+					    <input type="checkbox" class="form-check-input" id="form-check-id">
+						<label class="form-check-label" for="form-check-id">Check me out</label>
+					 </div>
+					 
+					 <div class="form-group">
+					   <button type="submit" class="btn btn-outline-success btn-block">submit</button>
+					 </div>
+				 </form>
+			  </div>
+		   </div>
+	  </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery-3.2.1.slim.min.js" ></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</html>

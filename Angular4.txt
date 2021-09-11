@@ -1,0 +1,2944 @@
+https://www.youtube.com/playlist?list=PL7hgvWUGJtUshDRlZR14Ycpj_wc-h4IX1
+https://codewithmosh.teachable.com/p/angular-master-class
+=============
+ C:\Users\Rahul\AppData\Roaming\npm\node_modules
+https://www.youtube.com/watch?v=HmWuBP3Xtjg&list=PLFztdCgsIdQIJZzYnTWsrh0-7EfX6YHlE
+https://www.code-sample.com/2017/08/angular-5-interview-questions-and.html
+https://www.youtube.com/playlist?list=PLUcSYK_mU4eAfVRbJyHXRJKAzR666LTrc//Sidharth Ajmera
+===================================================
+https://codecraft.tv/courses/angular/routing/router-guards/
+============================================================================
+ =====Angular4 installation & setup using nodejs====
+ step1:- install setup nodejs 
+ step2:- goto https://cli.angular.io/ open command prompt and type command
+ step3:- >npm install -g @angular/cli
+ step4:- create new floder
+ step5:- goto inside folder change the directory using cd folder_name
+ step6:- >ng new myapp
+ step7:- change the directory using cd myapp go inside 
+ step8:- >ng serve / ng serve --open
+ step9:- Navigate to http://localhost:4200/.
+ step10:- webPack successfully
+===================================================================================
+https://v2.angular.io/docs/ts/latest/
+============================================================
+======Installing Bootstrap4 in the Angualr5
+
+npm install bootstrap@4.0.0-alpha.6
+"styles": [
+
+         "styles.css",
+       
+         "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+
+         ],
+ 
+   "scripts": [
+
+        "../node_modules/jquery/dist/jquery.min.js",
+                                             "../node_modules/bootstrap/dist/js/bootstrap.min.js"
+   ]
+<script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+===========================================================
+======Installing Bootstrap4 in the Angualr5
+npm install --save @angular-devkit/core
+//npm install  bootstrap@4.0.0-beta.3 --save
+npm install bootstrap@4.0.0-beta.2 --save
+npm install bootstrap@4.0.0-beta --save
+npm install jquery --save
+npm install popper.js --save
+npm install --save font-awesome
+===============================Inject Library angualr-cli.json ==
+"styles": [
+        "styles.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "../node_modules/font-awesome/css/font-awesome.min.css"
+      ], 
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/popper.js/dist/popper.min.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js"
+
+      ],
+===============New Version Updated ========
+"styles": [
+              "src/styles.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.slim.min.js",
+              "./node_modules/popper.js/dist/umd/popper.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
+====================== cdn Link =======
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
+=============================================================
+  npm install materialize-css --save
+  npm install jquery --save
+=================================
+ "styles": [
+        "styles.css",
+        "../node_modules/materialize-css/dist/css/materialize.min.css"
+      ],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/materialize-css/dist/js/materialize.min.js"
+      ],
+============================================================================
+<div class="well">
+  
+    <div class="lead">
+ 
+       {{customer?.firstName}}
+ //Optional Parameter (?) is Very Important Keep it mind
+       {{customer.lastName}}//This Line Occour Error Cannot read property 'lastName' of undefined
+  
+    </div>
+
+</div>
+ =========================================================
+(1)Component == >ng g component my-new-component // ng g c component_name
+(2)Directive == >ng g directive my-new-directive // ng g d directive_name
+(3)Pipe      == >ng g pipe my-new-pipe           // ng g p pipe_name
+(4)Service   == >ng g service my-new-service     // ng g s service_name
+(5)Class     == >ng g class my-new-class         // ng g class class_name
+(6)Guard     == >ng g guard my-new-guard         // ng g g guard_name
+(7)Class     == >ng g class my-new-class          
+(8)Interface == >ng g interface my-new-interface // ng g i interface_name
+(9)Enum      == >ng g enum my-new-enum           // ng g e enum_name
+(10)Module    == >ng g module my-module          // ng g m module_name
+===========================================================
+  "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+ ==Data Binding -Tutorial ================
+ 1.Property Binding [Component => View]
+    <img src="{{angularLogo}}">//Expression binding
+	<img [src]="angularLogo"> // bracket binding/property binding
+	<img bind-src="angularLogo"> //attribute binding
+
+ 2.Event Binding (View => Component)
+ 
+    (focus)="myMethod()"
+    (blur)="myMethod()"
+    (submit)="myMethod()"
+    (scroll)="myMethod()"
+    (cut)="myMethod()"
+    (copy)="myMethod()"
+    (paste)="myMethod()"
+    (keydown)="myMethod()"
+    (input)="myMethod()"
+	
+ 3.Two Way Binding
+    ngModel=""
+   [(ngModel)]="" // must be import FormsModule from @angular/forms
+=====app.module.ts===================================
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+ 
+===========================================================
+var headers = new Headers({'Content-Type':'application/json'});
+var options = new RequestOptions({ headers:headers});
+return this._http.post('url', JSON.stringify(data),options)
+.map((response:Response)=>response.json());
+
+==============app.component.ts=============================
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent{ 
+  title = 'app';
+  author='Rahul Khose';
+}
+ 
+============================================================
+=============app.component.html=============================
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to AngularJs {{title}}!<br/>
+    Welcome to Author {{author}}
+  </h1>
+  </div>
+ 
+============================================================
+===========index.html=======================================
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Myapp</title>
+  <base href="/">
+ // <base href="/angular/">for routing angularjs
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <app-root></app-root> 
+</body>
+</html>
+=============================================================
+============app.component.html two-way data binding==========
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to AngularJs {{title}}!<br/>
+    Welcome to Author {{author}}
+  </h1>
+
+  <input type="text" [(ngModel)]="name" />//ng-model="name"
+
+    <p>{{name}}</p>
+  </div>
+=============================================================
+======app.module.ts=====two-way data-binding===========
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+ 
+ ===================================================
+ ========Registration component=====================
+ 
+ ========Registration.component.ts=====
+ import { Component } from '@angular/core'
+@Component({
+  selector:'app-registration',
+  templateUrl:'./registration.component.html',
+  styleUrls:['./registration.component.css']
+})
+export class RegistrationComponent{
+
+}
+==================================================
+============app.module.ts=========================
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+import { AppComponent } from './app.component';
+import { RegistrationComponent } from './registration/registration.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,RegistrationComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+ 
+====================================================
+=======Registration.component.html======
+<div id="registration">
+    <form>
+        <table>
+            <tr>
+                <td><strong>Username</strong></td>
+                <td><input type="text" name="username" placeholder="username"> </td>
+            </tr>
+            <tr>
+                <td><strong>Email</strong></td>
+                <td><input type="email" name="email" placeholder="email"> </td>
+            </tr>
+            <tr>
+                <td><strong>Password</strong></td>
+                <td><input type="password" name="password" placeholder="password"> </td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center"><input type="submit" name="submit" value="submit"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+====================================================
+=======Registration.component.css======
+ 
+
+	table,tr,td{
+		border:1px solid black;
+	}
+
+	tr,td,input{
+		padding:5px;
+	}
+
+	#registration{
+	   margin:0px 40%;
+	}
+======================================================
+========app.component.html============================
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to AngularJs {{title}}!<br/>
+    Welcome to Author {{author}}
+  </h1>
+
+  <app-registration></app-registration>
+  <app-mylogin></app-mylogin>
+  </div>
+
+  ==========================================================
+  ============Custom Directive==============================
+   /* app.module.ts */ 
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+import { AppComponent } from './app.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { MyloginComponent } from './mylogin/mylogin.component';
+import { DatabindComponent } from './databind/databind.component';
+import { BlueColorDirective } from './databind/blue-color.directive'
+
+@NgModule({
+  declarations: [
+    AppComponent,RegistrationComponent, MyloginComponent, DatabindComponent, BlueColorDirective
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent] 
+})
+export class AppModule { }
+ 
+  /* blue-color.directive.ts */ 
+  
+import { Directive,  ElementRef } from '@angular/core'
+
+@Directive({
+  selector:'[blueColored]'
+})
+
+export class BlueColorDirective{
+      
+    constructor(element:ElementRef){
+         // console.log(element.nativeElement);
+        element.nativeElement.style.color = "blue";
+    }
+
+}
+================================================================
+===============@HostListener====================================
+
+import { Directive,  ElementRef ,HostListener } from '@angular/core'
+
+@Directive({
+  selector:'[blueColored]'
+})
+
+export class blueColorDirective{
+      
+    constructor(element:ElementRef){
+         // console.log(element.nativeElement);
+        element.nativeElement.style.color = "blue";
+    }
+   
+    @HostListener('click') doSomething(){
+        alert('it works!');
+    }
+}
+===========================================================================
+
+import { Directive,  ElementRef ,HostListener } from '@angular/core'
+
+@Directive({
+  selector:'[blueColored]'
+})
+
+export class blueColorDirective{
+      
+    constructor(element:ElementRef){
+         // console.log(element.nativeElement);
+        element.nativeElement.style.color = "blue";
+    }
+   
+   // @HostListener('click') doSomething(){
+      //  alert('it works!');
+    //}
+
+  //  @HostListener('target:EVENT',[args]);
+     @HostListener('document:click',['$event'])
+
+     elemClicked(elem){
+         console.log('Element is clicked:' ,elem);
+         //console.log('Element is clicked:', elem.target.innerText);
+     }
+}
+=============================================================================
+==========*ngIf=====================
+/* app.component.html */
+ <h1 *ngIf="isVisible">
+    Welcome to AngularJs {{title}}!<br/>
+    Welcome to Author {{author}}
+  </h1>
+  /* app.component.ts */
+  public isVisible:boolean=false;
+==============================================
+================ng-template custom directive===
+/* app.component.ts */
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+}) 
+export class AppComponent { 
+  title = 'app Tutorial';
+  author='Rahul Khose';
+  name='Rahul Khose'; 
+  public isVisible:boolean=true;
+
+  ToggleButton(){
+    this.isVisible = !this.isVisible;
+  }
+}
+  /* app.component.html */
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1 *ngIf="isVisible;then evenClicked else oddClicked">
+    Welcome to AngularJs {{title}}!<br/>
+    Welcome to Author {{author}}
+  </h1>
+ <button (click)="ToggleButton()">Toggle</button>
+ <ng-template #evenClicked>Event is clicked</ng-template>
+ <ng-template #oddClicked>Odd is clicked</ng-template>
+ <!-- <app-registration></app-registration>
+  <app-databind></app-databind>-->
+  </div>
+
+  =================================================
+  ======Routing =====================================
+  /* app.module.ts */
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterModule , Routes } from '@angular/router';
+import { AppComponent } from './app.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HomeComponent } from './home/home.component'
+ const appRoutes:Routes = [
+    {
+      path:'dashboard',
+      component:DashboardComponent
+    },
+    {
+      path:'',
+      redirectTo:'/home',
+      pathMatch:'full',
+      component:HomeComponent
+    }
+ ]
+@NgModule({
+  declarations: [
+    AppComponent, DashboardComponent, HomeComponent
+  ],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(appRoutes),
+    FormsModule
+  
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+ /* app.component.ts */
+ 
+ import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+}) 
+export class AppComponent { 
+ 
+}
+
+ /* app.component.html */
+ 
+  <!--The content below is only a placeholder and can be replaced.-->
+     <h1>Router View:</h1>
+     <router-outlet></router-outlet>
+  ===================================================================
+  
+  =======routerLink ,routerLinkActive ,routerLinkActiveOptions====
+  <div style="text-align:center">
+  Home Wors!
+  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+  <a routerLink="/login"  routerLinkActive="active">Login</a>
+  <a routerLink="/dashboard"  routerLinkActive="active">Dashboard</a>
+</div>
+==========================================================================
+     <ul class="nav nav-tabs">
+ 
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><a routerLink="/">Home</a></li>
+
+            <li routerLinkActive="active"><a routerLink="/about">About</a></li>
+ 
+            <li routerLinkActive="active"><a routerLink="/contact">Contact</a></li>
+
+    </ul>
+
+===========Login App======================================================
+
+/* app.module.ts */
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { AppComponent } from './app.component';
+import { UserService } from './user.service';
+import { HeaderComponent } from './header/header.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { FooterComponent } from './footer/footer.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { RouterModule, Routes } from '@angular/router';
+import { AuthguardGuard } from './authguard.guard'
+const appRoutes: Routes = [
+  {
+    path: '',
+    component: LoginFormComponent
+  },
+  {
+    path: 'dashboard',
+    canActivate:[AuthguardGuard],
+    component: DashboardComponent
+  }
+]
+@NgModule({
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    LoginFormComponent,
+    FooterComponent,
+    DashboardComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
+
+  ],
+  providers: [UserService,AuthguardGuard],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+/* app.component.ts */
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+}) 
+export class AppComponent { 
+ 
+}
+  
+/* app.component.html */
+<!--The content below is only a placeholder and can be replaced.-->
+  <div id="fullpage">
+      <app-header></app-header>
+      <router-outlet></router-outlet>
+      <app-footer></app-footer>
+  </div>
+    
+  /* login-form.component.ts */
+  import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserService } from '../user.service';
+@Component({
+  selector: 'app-login-form',
+  templateUrl: './login-form.component.html',
+  styleUrls: ['./login-form.component.css']
+})
+export class LoginFormComponent implements OnInit {
+
+  constructor(private router:Router, private user:UserService) { }
+
+  ngOnInit() {
+  }
+
+  loginUser(event) {
+    event.preventDefault();
+    var username = event.target.elements[0].value;
+    var password = event.target.elements[1].value;
+ 
+        if(username == 'admin' && password == 'admin'){
+          this.user.setUserLoggedIn();
+          this.router.navigate(['dashboard']);
+        }
+  }
+}
+
+/* login-form.component.html */
+
+<form (submit)="loginUser($event)">
+  <div class="input">
+    <label>Username</label>
+    <input type="text">
+  </div>
+  <div class="input">
+    <label>Password</label>
+    <input type="password">
+  </div>
+  <div class="input">
+   <input type="submit" value="Login">
+  </div>
+</form>
+
+/* dashboard.component.ts */
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../user.service';
+@Component({
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
+})
+export class DashboardComponent implements OnInit {
+
+  constructor(private user:UserService) { }
+
+  ngOnInit() {
+  }
+
+}
+
+/* dashboard.component.html */
+
+
+<h1 align="center">Welcome to Dashboard</h1>
+
+<a routerLink="/">Logout</a>
+
+/* user.service.ts */
+import { Injectable } from '@angular/core';
+
+@Injectable()
+export class UserService {
+  private isUserLoggedIn;
+  private username;
+  constructor() {
+    this.isUserLoggedIn = false;
+
+  }
+  setUserLoggedIn(){
+     this.isUserLoggedIn=true;
+  }
+  getUserLoggedIn(){
+    return this.isUserLoggedIn;
+  }
+}
+
+/* authguard.guard.ts */
+import { Injectable } from '@angular/core';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { UserService } from './user.service'
+@Injectable()
+export class AuthguardGuard implements CanActivate {
+  constructor( private user:UserService){
+
+  }
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+    return this.user.getUserLoggedIn();
+  }
+}
+
+===============================================================================
+=========AuthguardGuard Service =========================
+import { Injectable } from '@angular/core';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { UserService } from './user.service';
+import { Router } from '@angular/router';
+@Injectable()
+export class AuthguardGuard implements CanActivate {
+  constructor( private user:UserService,private router:Router){
+     
+  }    
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
+       this.router.navigate(['/']);
+      return this.user.getUserLoggedIn();
+  }
+}
+
+==========================================================================
+=========@ViewChild Decorator=============
+import { Component , ViewChild } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+}) 
+export class AppComponent { 
+  @ViewChild('myInputText') inputText;
+  
+  constructor(){
+      setInterval(()=>{this.send2Server()},2000);
+  }
+    send2Server(){
+      let data = this.inputText.nativeElement;
+      console.log(data.value);
+    }
+   
+}
+    console.log(this.inputText.nativeElement.innerText);
+  ========================================================
+  
+ =================  Todo App  =====================
+ /* app.component.ts */
+ import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+  public todos: any[];
+  newItem = " ";
+  constructor() {
+    this.todos = [
+      {
+        item: 'Book',
+        flag: true
+      },
+      {
+        item: 'Headphone',
+        flag: true
+      },
+      {
+        item: 'Mobile',
+        flag: true
+      },
+      {
+        item: 'Laptop',
+        flag: true
+      }
+    ];
+  }
+
+
+  ngOnInit() {
+  }
+  addItem() {
+    if (this.newItem != "") {
+      this.todos.push({ 'item': this.newItem, 'flag': true });
+       this.newItem ="";
+    }
+
+  }
+  removeItem(index) {
+    this.todos.splice(index, 1);
+  }
+
+}
+====================================================
+/* app.component.html */
+<div class="lead">
+  <h1 align="center">Single Page App</h1>
+</div>
+
+<div class="main">
+  <div class="row">
+    <div class="well col-sm-4">
+       <div align="center" class="addItem">
+          <div class="form-inline">
+              <div class="form-group">
+                  <input type="text" [(ngModel)]="newItem" class="form-control" placeholder="Item"/>
+                  <input type="button" (click)="addItem()" class="btn btn-default" value="ADD">
+              </div>
+            </div>
+       </div>
+    </div>
+  </div>
+  <div class="row">
+       <div class="display-list col-sm-4">
+
+           <pre *ngFor="let todo of todos let i = index">
+                <span class="lead">{{todo.item}} <button type="button" (click)="removeItem(i)" class="btn btn-danger pull-right">X</button></span>
+           </pre>
+           
+       </div>
+  </div>
+</div>
+===========
+.well{
+    position: absolute;
+    left: 450px;
+}
+
+.display-list{
+    margin-top:150px;
+    position: absolute;
+    left: 450px;
+}
+===============================================================================
+========form get value and pass it component using Template Driven form =====
+  <form class="form-inline" #userForm = "ngForm" (ngSubmit)="addItem(userForm.value)" >
+         <div class="form-group">
+             <input type="text" name="item" class="form-control" placeholder="Item" ngModel/>
+                  <input type="submit"  class="btn btn-default" value="ADD">
+        </div>
+  </form>
+			
+=========================================================================
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="firstname" class="col-sm-2 control-label">Firstname:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="firstname" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastname" class="col-sm-2 control-label">Lastname:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" placeholder="lastname" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="col-sm-2 control-label">Email:</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" placeholder="email" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-2 control-label">Password:</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" placeholder="password" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="language" class="col-sm-2 control-label">Select Language:</label>
+                <div class="col-sm-10">
+                    <select class="form-contorl" name="language" id="">
+            <option value="angular4">Angular4</option>
+            <option value="javascript">Javascript</option>
+            <option value="c#">C#</option>
+            <option value="php">Php</option>
+            <option value="c">C</option>
+        </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gender" class="col-sm-2 control-label">Gender:</label>
+                <div class="col-sm-10">
+                    <div class="radio">
+                        <label>
+                   <input type="radio" name="gender" id="gender" value="male">Option1
+              </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                 <input type="radio" name="gender" id="gender" value="female">Option2
+            </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="checkbox" class="col-sm-2 control-label">Checkbox:</label>
+                <div class="col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                  <input type="checkbox" name="checkbox" id="checkbox">Check me out
+              </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="message" class="col-sm-2 control-label">Message:</label>
+                <div class="col-sm-10">
+                    <textarea name="message" id="message" cols="60" class="form-contrl" placeholder="message" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary col-sm-offset-2">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+======================================================================================
+=========Success Form Working Using ngModel & #userForm = ngForm  notation =======
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <form class="form-horizontal" role="form"
+         #userForm = ngForm
+          (ngSubmit)="FormSubmit(userForm.value)" >
+            <div class="form-group">
+                <label for="firstname" class="col-sm-2 control-label">Firstname:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="firstname" placeholder="firstname" ngModel/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastname" class="col-sm-2 control-label">Lastname:</label>
+                <div class="col-sm-10">
+                    <input type="text" name="lastname" class="form-control" placeholder="lastname" ngModel />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="col-sm-2 control-label">Email:</label>
+                <div class="col-sm-10">
+                    <input type="email" name="email" class="form-control" placeholder="email" ngModel />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-2 control-label">Password:</label>
+                <div class="col-sm-10">
+                    <input type="password" name="password" class="form-control" placeholder="password" ngModel/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="language" class="col-sm-2 control-label">Select Language:</label>
+                <div class="col-sm-10">
+                    <select class="form-contorl" name="language" id="" ngModel>
+            <option value="angular4">Angular4</option>
+            <option value="javascript">Javascript</option>
+            <option value="c#">C#</option>
+            <option value="php">Php</option>
+            <option value="c">C</option>
+        </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gender" class="col-sm-2 control-label">Gender:</label>
+                <div class="col-sm-10">
+                    <div class="radio">
+                        <label>
+                   <input type="radio" name="gender" id="gender" value="male" ngModel>Option1
+              </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                 <input type="radio" name="gender" id="gender" value="female" ngModel>Option2
+            </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="checkbox" class="col-sm-2 control-label">Checkbox:</label>
+                <div class="col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                  <input type="checkbox" name="checkbox" id="checkbox" ngModel>Check me out
+              </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="message" class="col-sm-2 control-label">Message:</label>
+                <div class="col-sm-10">
+                    <textarea name="message" id="message" cols="60" class="form-contrl" placeholder="message" rows="5" ngModel></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" name="submit" class="btn btn-primary col-sm-offset-2">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+=============Success Form Working Using Two-Way data binding & (.) notation ===============================================
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <form class="form-horizontal" role="form"
+          (ngSubmit)="FormSubmit()" >
+            <div class="form-group">
+                <label for="firstname" class="col-sm-2 control-label">Firstname:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="firstname" placeholder="firstname" [(ngModel)]="data.firstname"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="lastname" class="col-sm-2 control-label">Lastname:</label>
+                <div class="col-sm-10">
+                    <input type="text" name="lastname" class="form-control" placeholder="lastname" [(ngModel)]="data.lastname" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="col-sm-2 control-label">Email:</label>
+                <div class="col-sm-10">
+                    <input type="email" name="email" class="form-control" placeholder="email" [(ngModel)]="data.email" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-2 control-label">Password:</label>
+                <div class="col-sm-10">
+                    <input type="password" name="password" class="form-control" placeholder="password" [(ngModel)]="data.password" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="language" class="col-sm-2 control-label">Select Language:</label>
+                <div class="col-sm-10">
+                    <select class="form-contorl" name="language" id="" [(ngModel)]="data.selectValue">
+            <option value="angular4">Angular4</option>
+            <option value="javascript">Javascript</option>
+            <option value="c#">C#</option>
+            <option value="php">Php</option>
+            <option value="c">C</option>
+        </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gender" class="col-sm-2 control-label">Gender:</label>
+                <div class="col-sm-10">
+                    <div class="radio">
+                        <label>
+                   <input type="radio" name="gender" id="gender" value="male" [(ngModel)]="data.Option1">Option1
+              </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                 <input type="radio" name="gender" id="gender" value="female" [(ngModel)]="data.Option2">Option2
+            </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="checkbox" class="col-sm-2 control-label">Checkbox:</label>
+                <div class="col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                  <input type="checkbox" name="checkbox" id="checkbox" [(ngModel)]="data.checkItem">Check me out
+              </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="message" class="col-sm-2 control-label">Message:</label>
+                <div class="col-sm-10">
+                    <textarea name="message" id="message" cols="60" class="form-contrl" placeholder="message" rows="5" [(ngModel)]="data.message"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" name="submit" class="btn btn-primary col-sm-offset-2">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+================================================================================
+    /* employee.component.ts */
+import { Component ,OnInit} from '@angular/core';
+
+@Component({
+    selector: 'app-emp',
+    templateUrl:'./employee.component.html',
+    styleUrls:['./employee.component.css']           
+})
+export class EmployeeComponent implements OnInit {
+
+  ngOnInit(){
+    
+  }
+
+  FormSubmit(formDetails:Object){
+       console.log(formDetails);
+  }
+}
+=================================================================================
+  /*course.component.ts */
+  import { Component, OnInit } from '@angular/core';
+import { CourseService } from '../courses.service'
+@Component({
+  selector: 'app-course',
+  templateUrl: './course.component.html',
+  styleUrls: ['./course.component.css']
+})
+export class CourseComponent implements OnInit {
+
+   public courses:string[];
+  constructor(private _courses:CourseService) {
+           this.courses = _courses.getData();
+  }
+
+        
+  ngOnInit() {
+  }
+
+}
+
+  /*courses.service.ts */
+import {  } from '@angular/core'
+
+@Injectable()
+
+export class CourseService{
+      public courses:string[];
+    constructor(){
+          this.courses = ['JAVA','HTML','C#','C++','.NET','PAYTHON','PHP','Angular4'];
+    }
+    getData(){
+        return this.courses;
+    }
+}
+ /*course.component.html */
+ 
+
+<h1>hello Angular2</h1>
+
+<ul>
+   <li *ngFor="let course of courses">
+        {{course}}
+   </li>
+</ul>
+============================================================================
+
+================Switch Case ==============
+ <input type="text" [(ngModel)]="color">
+<div [ngSwitch]="color">
+    <p *ngSwitchCase="'red'" style="color:red">This is Red Color</p>
+    <p *ngSwitchCase="'blue'" style="color:blue">This is Blue Color</p>
+    <p *ngSwitchCase="'green'" style="color:green">This is Green Color</p>
+</div>
+=============================================================================
+============Event Bubling=============================
+
+/* app.component.ts */
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+}) 
+export class AppComponent { 
+  
+
+  OnClick(){
+    console.log('Div Button Was Clicked');
+  }
+   
+  BtnClick(event){
+    event.stopPropagation();
+    console.log('Button Was Clicked');
+  }
+}
+  
+  
+/* app.component.html */
+<!--The content below is only a placeholder and can be replaced.-->
+  
+<h1>Hello Angular4 Successful</h1>
+
+<div (click)="OnClick()">
+     <button class="btn" (click)="BtnClick($event)">Click me!</button>
+</div>
+==============================================================================
+============Event Filtering===================
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+}) 
+export class AppComponent { 
+   
+  OnKeyUp(event){
+       if(event.keyCode == 13){
+         console.log('Button Was Clicked');
+      } 
+  }
+
+}
+==========
+<input type="text" (keyup)="OnKeyUp($event)">
+================================================================================
+=========Without $event Passing set Enter button ==================
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+}) 
+export class AppComponent { 
+   
+  OnKeyUp(val:string){
+         console.log(val);
+    
+  }
+
+}
+=========
+<input type="text" #inputText (keyup.enter)="OnKeyUp(inputText.value)">
+==============================================================================
+=============Input binding Parent component to child component & child component to Parent component
+ /* app.component.ts */
+import { Component, OnInit } from '@angular/core';
+@Component({
+    selector: 'my-app',
+    template: `
+           <div class="container">
+           
+              <p class="lead">
+                    Enter Parent Component Value:<input type="text" #finput (keyup)=0>
+                    <br/>
+                    Show Child Component Value: {{childData}}
+               </p>
+                    <app-tutorial  //*ngFor="let name of namesList" [name]="name"
+                    (childEvent)="getVal($event)"
+                    [fname]="finput.value"
+                    ></app-tutorial>
+            </div>
+        ` 
+     
+
+})
+export class AppComponent implements OnInit {
+    public fname:string;
+   public childData:string;
+    public isTrue:boolean = true;
+    public color = 'red';
+    ngOnInit() {
+
+    }
+   
+     getVal(val:string){
+          
+      this.childData = val;
+}
+
+  
+}
+
+ /* tutorial.component.ts */
+import { Component ,Input,Output } from '@angular/core'
+import { EventEmitter } from '@angular/core'
+@Component({
+   selector:'app-tutorial',
+   templateUrl:'./tutorial.component.html',
+   styleUrls:['./tutorial.component.css'] ,
+   inputs:[`fname`],
+   outputs:['childEvent']
+})
+export class TutorialComponent{
+   
+public fname:string;
+
+ childEvent = new EventEmitter<string>();
+
+ OnChange(value:string){
+       this.childEvent.emit(value);
+ }
+} 
+
+ /* app.component.html */
+ 
+
+<h1>Works!</h1>
+
+<p class="lead">
+    Enter Child Component Value:<input type="text" #childText (keyup)="OnChange(childText.value)">
+    <br/>
+    Show Parent Component Value: {{fname}}
+</p>
+===================================================================================================
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+}) 
+export class AppComponent { 
+   
+  OnKeyUp(event){
+         console.log(event.target.value);
+    
+  }
+
+}
+  
+==========
+<input type="text" #inputText (keyup.enter)="OnKeyUp($event)"> 
+=====================================================================
+==============Custom Pipe Using Parameter ====================================
+
+  /* app.module.ts */
+  import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { AppComponent } from './app.component';
+import { CourseService } from './courses.service'
+import { CourseComponent } from './course/course.component';
+import { SummaryPipe } from './summary.pipe'
+@NgModule({
+  declarations: [AppComponent, CourseComponent,SummaryPipe],
+  imports: [ BrowserModule,  FormsModule],
+  providers: [CourseService],
+  bootstrap: [AppComponent]
+}) 
+export class AppModule { }  
+
+ /* app.component.ts */
+ import { Component } from '@angular/core';
+import { SummaryPipe} from './summary.pipe'
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+}) 
+export class AppComponent { 
+   
+ public text:string = "Lorem ipsum dolor sit amet consectetur adipisicing elit.
+ Aut illum minus cum, architecto error deserunt dolorem aspernatur similique rem,
+ reprehenderit numquam delectus ab commodi. Soluta minus quos cupiditate eaque quas!"
+
+}
+  
+ /* summary.pipe.ts */
+ 
+import {Pipe , PipeTransform } from '@angular/core'
+
+@Pipe({
+    name:'summary'
+})
+
+export class SummaryPipe implements PipeTransform{
+     
+    transform(value:any,limit?:any){
+         if(!value)
+            return null;
+          let atualLimit = (limit) ? limit : 50;
+          return value.substr(0,atualLimit) + "....";
+    }
+}
+
+ /*app.component.html */
+  <!--The content below is only a placeholder and can be replaced.-->
+  
+
+	<div class="container">
+		<div class="lead">
+			  {{text|summary:10}}
+		</div>
+	</div>
+===============================================================================
+===========@Input and Alising==================================================
+
+  /*app.component.ts */
+  import { Component } from '@angular/core';
+import { SummaryPipe} from './summary.pipe'
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+}) 
+export class AppComponent { 
+ 
+  post = {
+        title:"Title",
+        isFavorite:false
+  }
+}
+  
+   /*app.component.html */
+   <favorite [is-favorite]="post.isFavorite"></favorite>
+    /*favorite.component.ts*/ 
+	//import { Component,OnInit } from '@angular/core';
+ import { Component,Input,OnInit } from '@angular/core';
+
+@Component({
+  selector: 'favorite',
+  templateUrl: './favorite.component.html',
+  styleUrls: ['./favorite.component.css']
+  //inputs:['isFavorite']
+})
+export class FavoriteComponent implements OnInit {
+    @Input('is-favorite') isFavorite:boolean; 
+   // isFavorite:boolean;
+  constructor() { }
+
+  ngOnInit() {
+
+  }
+
+    onClick(){
+       this.isFavorite = ! this.isFavorite;
+    }
+}
+
+	/*favorite.component.html*/ 
+	
+<span style="font-size:100px;position: absolute;left: 40%;"
+ class="glyphicon"
+[class.glyphicon-star]="isFavorite"
+[class.glyphicon-star-empty]="!isFavorite"
+(click)="onClick()">
+</span>
+=========OR========
+<span style="font-size:50px;position: absolute;left: 40%;"
+ class="btn"
+[class.btn-primary]="isFavorite"
+[class.btn-danger]="!isFavorite"
+(click)="onClick()">
+  BUTTON
+</span>
+
+=========================================================================
+
+====================Directive============================================
+
+import { Directive,ElementRef,OnInit } from '@angular/core'
+
+@Directive({
+    selector:'[backgroundDirective]'
+})
+
+export class BackgroundDirective implements OnInit{
+  constructor(el:ElementRef){
+        el.nativeElement.style.backgroundColor="green";
+  }
+  ngOnInit(){
+
+  }      
+}
+=========================================================================
+import { Directive, ElementRef,OnInit, Renderer2 } from "@angular/core";
+@Directive({
+    selector:'[colorDirective]'
+})
+export class ColorDirective implements OnInit{
+  
+     constructor(private element:ElementRef,private renderer:Renderer2){
+         
+     }
+     ngOnInit(){
+         //this.element.nativeElement.style.color="blue";
+         this.renderer.setStyle(this.element.nativeElement,'background-color','blue');
+     }
+}
+========================================AddClass Using Directive====
+import { Directive, ElementRef,OnInit, Renderer2 } from "@angular/core";
+@Directive({
+    selector:'[colorDirective]'
+})
+export class ColorDirective implements OnInit{
+  
+     constructor(private element:ElementRef,private renderer:Renderer2){
+         
+     }
+     ngOnInit(){
+         //this.element.nativeElement.style.color="blue";
+         this.renderer.addClass(this.element.nativeElement,'colorClass');
+     }
+}
+=============================================================================================
+import { Directive, ElementRef, HostListener, HostBinding, Renderer2, OnInit } from '@angular/core';
+@Directive({
+   selector:'[color]'    
+})
+
+export class ColoDirective implements OnInit{
+      public isTrue = false;
+      @HostBinding('style.color') color:string = 'red';
+      @HostListener('click') toggleBtn(){
+           this.isTrue = !this.isTrue;
+           this.color =  this.isTrue ? 'green':'red' 
+      }
+    constructor(private el:ElementRef,private renderer:Renderer2){
+         
+    }
+    ngOnInit(){
+       // this.renderer.setStyle(this.el.nativeElement,'background-color','yellow');
+       this.renderer.addClass(this.el.nativeElement,'styleClass');
+    }
+}
+==============================Style Binding==============================================
+import { Directive, ElementRef,OnInit, Renderer2, HostListener, HostBinding } from "@angular/core";
+@Directive({
+    selector:'[colorDirective]'
+})
+export class ColorDirective implements OnInit{
+
+     constructor(private element:ElementRef,private renderer:Renderer2){
+         
+     }
+     ngOnInit(){
+         //this.element.nativeElement.style.color="blue";
+        // this.renderer.addClass(this.element.nativeElement,'colorClass');
+     }
+     @HostBinding('style.color') color:string="red";
+     @HostListener('click') click(){
+          this.color = 'blue';
+     } ;
+     
+} 
+=================================AddClass Using HostListener & HostBinding ==
+import { Directive, ElementRef,OnInit, Renderer2, HostListener, HostBinding } from "@angular/core";
+@Directive({
+    selector:'[colorDirective]'
+})
+export class ColorDirective implements OnInit{
+
+     constructor(private element:ElementRef,private renderer:Renderer2){
+         
+     }
+     ngOnInit(){
+         //this.element.nativeElement.style.color="blue";
+        // this.renderer.addClass(this.element.nativeElement,'colorClass');
+     }
+     @HostBinding('class.colorClass') isTrue = false;
+     @HostListener('click') toggleButton(){
+         this.isTrue = ! this.isTrue;
+     }
+}
+=================Custom Structural Directive ==========================
+import { Directive, TemplateRef, ViewContainerRef, Input } from '@angular/core';
+
+@Directive({
+  selector: '[appUnless]'//use *appUnless
+})
+export class UnlessDirective {
+@Input() set appUnless(condition:boolean){
+   if(!condition){
+      this.vcRef.createEmbeddedView(this.templateRef);
+   }else{
+     this.vcRef.clear();
+   }
+}
+  constructor(private templateRef:TemplateRef<any>,private vcRef:ViewContainerRef) { }
+
+}
+
+=======================================Style Binding=================================
+import { Directive, ElementRef,OnInit, Renderer2, HostListener, HostBinding } from "@angular/core";
+@Directive({
+    selector:'[colorDirective]'
+})
+export class ColorDirective implements OnInit{
+
+     constructor(private element:ElementRef,private renderer:Renderer2){
+         
+     }
+     ngOnInit(){
+         //this.element.nativeElement.style.color="blue";
+        // this.renderer.addClass(this.element.nativeElement,'colorClass');
+     }
+     @HostBinding('style.color') color:string;
+     @HostListener('mouseover') mouseover(){
+          this.color = 'blue';
+     } ;
+     @HostListener('mouseleave') mouseleave(){
+        this.color = 'red';
+   } ;
+}
+=============Bind Title Attribute Using HostListener & HostBinding====
+import { Directive, ElementRef,OnInit, Renderer2, HostListener, HostBinding } from "@angular/core";
+@Directive({
+    selector:'[colorDirective]'
+})
+export class ColorDirective implements OnInit{
+
+     constructor(private element:ElementRef,private renderer:Renderer2){
+         
+     }
+     ngOnInit(){
+         //this.element.nativeElement.style.color="blue";
+        // this.renderer.addClass(this.element.nativeElement,'colorClass');
+     }
+     @HostBinding('attr.title') title:string="This is default value";//set default value
+     @HostListener('click') click(){
+          this.title = 'This is New Title';
+     } ;
+     
+}
+====================Service================================================
+
+import { Injectable } from '@angular/core'
+
+@Injectable()
+
+export class CourseService{
+      public courses:string[];
+    constructor(){
+          this.courses = ['JAVA','HTML','C#','C++','.NET','PAYTHON','PHP','Angular4'];
+    }
+    getData(){
+        return this.courses;
+    }
+}
+=====================Pipe==================================================
+
+import {Pipe , PipeTransform } from '@angular/core'
+
+@Pipe({
+    name:'summary'
+})
+
+export class SummaryPipe implements PipeTransform{
+     
+    transform(value:any,limit?:any){
+         if(!value)
+            return null;
+          let atualLimit = (limit) ? limit : 50;
+          return value.substr(0,atualLimit) + "....";
+    }
+}
+============================================================================
+  
+===============@Output Decorator ===================
+
+  /* app.component.ts */
+  import { Component } from '@angular/core';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+}) 
+export class AppComponent { 
+ 
+   OutputChangeEvent(event){
+     console.log(event);
+   }
+} 
+  
+  /*app.component.html */
+  
+  <!--The content below is only a placeholder and can be replaced.-->
+  
+
+
+  <h1 backgroundDirective>Hello World</h1>
+
+<app-favorite
+  (change)="OutputChangeEvent($event)"
+></app-favorite>
+
+ /* favorite.component.ts */
+ import { Component, OnInit,Output,EventEmitter } from '@angular/core';
+
+@Component({
+  selector: 'app-favorite',
+  templateUrl: './favorite.component.html',
+  styleUrls: ['./favorite.component.css']
+})
+export class FavoriteComponent implements OnInit {
+  
+  @Output() change = new EventEmitter<string>();
+  constructor() { }
+  ngOnInit() {
+  }
+  OnClick(){
+     this.change.emit("Hello @Output Event");
+    }
+}
+
+  /*favorite.component.html */
+  
+  <p>
+  favorite works!
+
+</p>
+<button (click)="OnClick()">Click me!</button>
+=================================================================================
+
+============ng-content================================================
+  /*favorite.component.html */
+<h1>
+  <ng-content select=".text"></ng-content>
+</h1>
+ 
+  /* app.component.html */
+<app-favorite>
+  <div class="text">This is Dynamic text</div>
+</app-favorite>
+========================================================================
+<div [ngSwitch]="value">
+    <p class="lead" *ngSwitchCase="5">Your No is 5</p>
+    <p class="lead" *ngSwitchCase="15">Your No is 15</p>
+    <p class="lead" *ngSwitchCase="25">Your No is 25</p>
+    <p class="lead" *ngSwitchCase="35">Your No is 35</p>
+    <p class="lead" *ngSwitchDefault>This is Default Value</p>
+  </div>
+======ng-container===================================================
+ <app-favorite>
+  <ng-container class="text">This is Dynamic text</ng-container>
+</app-favorite>
+============================================================================
+============*ngIf =========
+ <div *ngIf= "courses.length > 0;then trueCourses else falseCourses"></div>
+ <ng-template #trueCourses>List of courses</ng-template>
+ <ng-template #falseCourses>No courses Yet</ng-template>
+ =======================================================================
+ ===================[hidden]=============
+ <div [hidden]="courses.length == 0">List of courses</div>
+<div [hidden]="courses.length > 0 ">No courses Yet</div>
+============================================================================
+====================ngSwitchCase==================================
+public viewMode:string="map";
+=================================
+<div class="container">
+  <ul class="nav nav-pills">
+    <li [class.active]="viewMode == 'map'"><a (click)="viewMode = 'map'">Map View Content</a></li>
+    <li [class.active]="viewMode == 'list'"><a (click)="viewMode = 'list'">List View Content</a></li>
+  </ul>
+
+    <div [ngSwitch]="viewMode">
+       <div *ngSwitchCase="'map'">Map View Content</div>
+       <div *ngSwitchCase="'list'">List View Content</div>
+       <div *ngSwitchDefault>Otherwise/div>
+    </div>
+</div>
+==============================================================================
+============Routing Configration TypeScript conversion to Javascript======
+ import { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule }   from '@angular/forms';
+import { HttpModule }    from '@angular/http';
+import { AppComponent }  from './app.component';
+import { RouterModule,Routes } from '@angular/router'
+import { EmployeeComponent} from './employee/employee.component';
+import { EmployeeService } from './employee/employee.service';
+import { HeaderComponent } from './header/header.component';
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './notfound/notfound.component';
+/* var core_1 = require('@angular/core');
+var platform_browser_1 = require('@angular/platform-browser');
+var form_1 = require('@angular/forms');
+var employee_component_1 = require('./employee/employee.component');*/
+
+  const appRoutes:Routes=[
+             {
+               path:'',
+               component:HomeComponent
+             },
+             {
+               path:'employee',
+               component:EmployeeComponent
+             },
+             {
+               path:'**',
+               component:NotFoundComponent
+             } 
+  ]
+ /*  var appRoutes = [
+
+      {
+        path:'employee',
+        component:employee_component_1.EmployeeComponent
+      }
+  ] */
+@NgModule({
+  imports:      [ BrowserModule,FormsModule,HttpModule,RouterModule.forRoot(appRoutes) ],
+  declarations: [ AppComponent,EmployeeComponent,HeaderComponent,NotFoundComponent,HomeComponent],
+  providers:    [EmployeeService],
+  bootstrap:    [ AppComponent ]
+})
+export class AppModule { }     
+
+
+/* var AppModule = (function(){      
+    function AppModule(){
+    }
+    return AppModule;
+}())
+
+AppModule = __decorate([
+  core_1.NgModule({
+    imports:      [platform_browser_1.BrowserModule],
+    declarations: [app_component_1.AppComponent],
+    providers:    [employee_service_1.EmployeeService],
+    bootstrap:    [app_component_1AppComponent ]
+  })
+],AppModule)
+
+exports AppModule = AppModule; */
+
+
+   
+========================================================================
+============Router Params====================================================
+  import { Component , OnInit } from '@angular/core';
+  import { ActivatedRoute,Router,Params } from '@angular/router';
+  @Component({
+     template:`
+	          <a (click)="goPrevious()">Previous</a>
+			  <a (click)="goNext()">Next</a>
+	       `
+  })
+ export class DepartmentDetailComponent implements OnInit{
+     public departmentId;
+	 
+	 constructor(private route:ActivatedRoute,private router:Router){}
+	   /* ngOnInit(){
+	         let id = parseInt(this.route.snapshot.params['id']);
+			 this.departmentId = id;
+	    }*/
+		
+		ngOnInit(){
+		  this.route.params.subscribe((params:Params)=>{
+		     let id = parseInt(params['id']);
+			 this.departmentId = id;
+		  })
+		}
+		
+		goPrevious(){
+		  let previousId = this.departmentId - 1;
+		  this.router.navigate(['/departments',previousId]);
+		}
+		goNext(){
+		  let nextId = this.departmentId + 1;
+		  this.router.navigate(['/departments',nextId]);
+		}
+ }
+============================================================================
+================Input form validation ======================
+
+==================Template Driven Form ======================================
+ <form>
+    <div class="form-group"> 
+       <label for="firstName">Firstname</label>
+       <input type="text"  required minlength="3" maxlength="10" pattern="banana" ngModel name="firstname" #firstname="ngModel" (change)="log(firstname)" class="form-control" id="firstName" placeholder="firstname">
+       <div *ngIf="firstname.touched && !firstname.valid" class="alert alert-danger">
+            <div *ngIf="firstname.errors.required">firstname must be required</div>
+            <div *ngIf="firstname.errors.minlength">Firstname should be minimun length {{firstname.errors.minlength.requiredLength}} character </div>
+            <div *ngIf="firstname.errors.pattern">Firstname dose't match the pattern </div>
+       </div>
+    </div>
+    <div class="form-group">
+        <label for="comment">Comment</label>
+        <textarea id="comment" class="form-control" cols="30" rows="10" placeholder="comment"></textarea>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">submit</button>
+        </div>
+ </form>
+ ===============================================================================
+ 
+
+==================Model Driven Form ======================================
+
+  /* contact-form.component.html */
+  
+ <form [formGroup]="form">
+    <div class="form-group"> 
+       <label for="username">Username</label>
+       <input type="text" class="form-control" formControlName="username" placeholder="username">
+       <div *ngIf="form.get('username').touched && form.get('username').invalid" class="alert alert-danger">Username name must be required</div>
+    </div>
+    <div class="form-group"> 
+        <label for="password">Password</label>
+        <input  type="password" class="form-control" formControlName="password" placeholder="password">
+        <div *ngIf="form.get('password').touched && form.get('password').invalid" class="alert alert-danger">Password name must be required</div>
+       
+     </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">submit</button>
+        </div>
+ </form>
+ 
+  /* contact-form.component.ts */
+  
+  import { Component, OnInit } from '@angular/core';
+import  { FormGroup , FormControl,Validators } from '@angular/forms';
+@Component({
+  selector: 'app-contact-form',
+  templateUrl: './contact-form.component.html',
+  styleUrls: ['./contact-form.component.css']
+})
+export class ContactFormComponent {
+
+   form = new FormGroup({
+      username: new FormControl('',Validators.required),
+      password: new FormControl('',Validators.required)
+   })
+   
+}
+=================OR====================================================
+
+
+ <form [formGroup]="form">
+    <div class="form-group"> 
+       <label for="username">Username</label>
+       <input type="text" class="form-control" formControlName="username" placeholder="username">
+       <div *ngIf="username.invalid && username.touched" class="alert alert-danger">
+          <div *ngIf="username.errors.required">Username name must be required</div>
+          <div *ngIf="username.errors.minlength">Username Should be minimum 3 character</div>
+       </div>
+    </div>
+    <!--form.get('username').touched && form.get('username').invalid-->
+    <div class="form-group"> 
+        <label for="password">Password</label>
+        <input  type="password" class="form-control" formControlName="password" placeholder="password">
+        <div *ngIf="password.invalid && password.touched" class="alert alert-danger">Password name must be required</div>
+           <!--form.get('username').touched && form.get('username').invalid-->
+     </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">submit</button>
+        </div>
+ </form>
+ ====================
+ import { Component, OnInit } from '@angular/core';
+import  { FormGroup , FormControl,Validators } from '@angular/forms';
+@Component({
+  selector: 'app-contact-form',
+  templateUrl: './contact-form.component.html',
+  styleUrls: ['./contact-form.component.css']
+})
+export class ContactFormComponent {
+
+   form = new FormGroup({
+      username: new FormControl('',[
+        Validators.required,
+        Validators.minLength(3)
+      ]),
+      password: new FormControl('',Validators.required)
+   });
+
+   get username(){
+      return this.form.get('username');
+   }
+   get password(){
+    return this.form.get('password');
+  }
+  
+}
+
+=======================================================================
+=========Nested_Child_Routes ============================================
+  /* app.route.ts */
+  
+import { Routes} from '@angular/router';
+import { HomeComponent} from './views/home.component';
+import { JavaComponent} from './views/java.component';
+import { JavaSwingComponent} from './views/java.swing.component';
+import { JavaSpringComponent} from './views/java.spring.component';
+ 
+ export const routes:Routes = [
+     {
+        path:'',
+        component:HomeComponent
+     },
+     {
+        path:'java',
+        component:JavaComponent,
+        children:[
+                    {
+                       path:'swing',
+                       component:JavaSwingComponent,
+                     },
+                     {
+                       path:'spring',
+                       component:JavaSpringComponent,
+                     }
+                 ]
+     }
+ ]
+
+ /*java.component.ts */
+ 
+import { Component } from '@angular/core';
+
+@Component({
+       //no define selector here
+       template:` <div>
+                    <h1>This is Java Page</h1>
+                    <a [routerLink]="['swing']">Swing</a>  
+                    <a [routerLink]="['spring']">Spring</a>
+                      <div>
+                        <router-outlet></router-outlet>
+                      </div>
+                  </div>
+              `
+})
+export class JavaComponent{}
+==============================================================================================
+
+   router.get('/videos',function(req,res){
+
+          Video.find({})
+          .exec(function(err,videos){
+               if(err){
+                 console.log('Retriveing Video Error');
+               }else{
+                 res.json(videos);
+               }
+          });
+   });
+
+   router.get('/videos/:id',function(req,res){
+         
+         Video.findById(req.params.id)
+         .exec(function(err,video){
+             if(err){
+                 console.log('Single Video Retriveing Error');
+             }else{
+                 res.json(video)
+             }
+         });
+   });
+
+   router.post('/video',function(req,res){
+       console.log('Post a Video');
+        newVideo = new Video();
+
+        newVideo.title = req.body.title;
+        newVideo.url = req.body.url;
+        newVideo.description = req.body.description;
+
+        newVideo.save(function(err,insertedVideo){
+              if(err){
+                   console.log('Video Has Not Been Inserted');
+              }else{
+                 res.json(insetedVideo);
+              }
+        });
+   });
+
+    router.put('/video/:id',function(req,res){
+	  
+       Video.findByIdAndUpdate(req.params.id,
+       {
+          $set:{title:req.body.title,url:req.body.url,description:req.body.description}
+       },
+       {
+         new:true
+       },
+       function(err,updatedVideo){
+           if(err){
+               res.send("Error Updated video");
+           }else{
+             res.json(updatedVideo);
+           }
+       }
+       );
+    }); 
+==================================================================================
+
+==================  CURD OPERATIONS  ==========================================
+
+   /*  app.module.ts */
+   
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import {ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { AppRoutingModule } from './app-routing.module'
+import { AppComponent } from './app.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { HomeComponent } from './home/home.component';
+import { AddComponent } from './add/add.component';
+import { EditComponent } from './edit/edit.component';
+import { ShowComponent } from './show/show.component';
+import { EmpService } from './emp.service';
+import { FooterComponent } from './footer/footer.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+@NgModule({
+  declarations: [
+    AppComponent,
+    NavbarComponent,
+    HomeComponent,
+    AddComponent,
+    EditComponent,
+    ShowComponent,
+    FooterComponent,
+    PageNotFoundComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    AppRoutingModule,
+    ReactiveFormsModule
+  ],
+  providers: [EmpService],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+ /* app.routing.module.ts */
+ 
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { RouterModule, Routes } from '@angular/router';
+
+import { HomeComponent } from './home/home.component';
+import { AddComponent } from './add/add.component';
+import { EditComponent } from './edit/edit.component';
+import { ShowComponent } from './show/show.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+const routes: Routes = [
+  {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
+  },
+  {
+    path: 'home',
+    component: HomeComponent
+  },
+  {
+    path: 'add',
+    component: AddComponent
+  },
+  {
+    path: 'edit/:id',
+    component: EditComponent
+  },
+  {
+    path: 'show/:id',
+    component: ShowComponent
+  },
+  {
+    path:'**',
+    component:PageNotFoundComponent
+  }
+]
+@NgModule({
+  imports: [
+    CommonModule,
+    RouterModule.forRoot(routes)
+  ],
+  exports:[RouterModule],
+  declarations: []
+})
+export class AppRoutingModule { }
+
+  /* app.component.ts */
+  import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'app Angular4';
+}
+ 
+ /* app.component.html * /
+ 
+ 
+<app-navbar></app-navbar>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+<app-footer></app-footer>
+
+
+  /* add.component.ts */
+  import { Component, OnInit } from '@angular/core';
+import { EmpService } from '../emp.service';
+import { Employee } from '../employee';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+@Component({
+  selector: 'app-add',
+  templateUrl: './add.component.html',
+  styleUrls: ['./add.component.css']
+})
+export class AddComponent implements OnInit {
+
+  constructor(
+    private empService: EmpService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
+
+  ngOnInit() { 
+  }
+  addEmployee(info){
+      console.log(info);
+      this.empService.addEmployee(info)
+      .subscribe(() => this.goBack());
+  }
+  goBack(){
+    this.router.navigate(['/home'])
+  }
+}
+
+  /* add.component.html */
+  
+  <div class="panel panel-default">
+  <div class="panel-heading">
+    Employee Entry Form:You can Add an employee's detail information into this EMS Apps.
+  </div>
+  <div class="panel-body">
+    <form #userForm = ngForm (ngSubmit)="addEmployee(userForm.value)" class="form-horizontal" role="form">
+      <div class="form-group">
+        <label for="name" class="col-md-3 control-label">Empployee's Full Name:</label>
+        <div class="col-md-8">
+          <input type="text" name="name"  class="form-control" id="name" placeholder="Name" ngModel />
+
+        </div> 
+      </div>
+      <div class="form-group">
+        <label for="position" class="col-md-3 control-label">Job Position:</label>
+        <div class="col-md-8">
+          <input type="text" name="position" class="form-control" id="position" placeholder="Position" ngModel />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="department" class="col-md-3 control-label">Department Name:</label>
+        <div class="col-md-8">
+          <input type="text" name="department" class="form-control" id="department" placeholder="Department Name" ngModel />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="salary" class="col-md-3 control-label">Employee's Salary:</label>
+        <div class="col-md-8">
+          <input type="text" name="salary" class="form-control" id="salary" placeholder="Salary" ngModel />
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-8 col-md-offset-3">
+          <button type="submit" class="btn btn-success">Save</button>
+          <button (click)="goBack()" type="button" class="btn btn-info">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+  /* edit.component.ts */
+  
+import { Component, OnInit } from '@angular/core';
+import { EmpService } from '../emp.service';
+import { Employee } from '../employee';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+@Component({
+  selector: 'app-edit',
+  templateUrl: './edit.component.html', 
+  styleUrls: ['./edit.component.css']
+})
+export class EditComponent implements OnInit {
+   model = new Employee();
+  constructor(
+    private empService: EmpService,
+    private route: ActivatedRoute,
+    private router: Router 
+  ) { }
+
+  ngOnInit() {
+    this.getEmployee();
+  }
+  getEmployee() {
+    var id = parseInt(this.route.snapshot.params['id']);
+   // console.log(id);
+    this.empService.getEmployee(id)
+      .subscribe(employee => {
+        this.model = employee[0];
+      // console.log(this.employee[0]);
+      })
+     
+  }
+  updateEmployee(){
+   console.log(this.model);
+    this.empService.updateEmployee(this.model)
+    .subscribe(()=>this.goBack());
+  }
+
+  goBack(){
+    this.router.navigate(['/home']);
+  }
+}
+
+  /* edit.component.html */
+  <div class="panel panel-default" *ngIf="!employee">
+  <div class="panel-heading">
+    Employee Entry Form:You can Edit an employee's detail information into this EMS Apps.
+  </div>
+  <div class="panel-body">
+    <form  class="form-horizontal" role="form">
+      <div class="form-group">
+        <label for="name" class="col-md-3 control-label">Empployee's Full Name:</label>
+        <div class="col-md-8">
+          <input type="text" class="form-control" name="name" [(ngModel)]="model.name" id="name"  placeholder="Name" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="position" class="col-md-3 control-label">Job Position:</label>
+        <div class="col-md-8">
+          <input type="text" class="form-control" name="position" [(ngModel)]="model.position"  id="position"  placeholder="Position" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="department" class="col-md-3 control-label">Department Name:</label>
+        <div class="col-md-8">
+          <input type="text" class="form-control" name="department" [(ngModel)]="model.department" id="department"  placeholder="Department Name" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="salary" class="col-md-3 control-label">Employee's Salary:</label>
+        <div class="col-md-8">
+          <input type="text" class="form-control" name="salary" [(ngModel)]="model.salary" id="salary"  placeholder="Salary" />
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-8 col-md-offset-3">
+          <button (click)="updateEmployee()" type="submit" class="btn btn-success">Update</button>
+          <button (click)="goBack()" type="button" class="btn btn-info">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+  /* home.component.ts */
+  
+import { Component, OnInit } from '@angular/core';
+import { EmpService } from '../emp.service';
+import { Employee } from '../employee';
+@Component({
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
+})
+export class HomeComponent implements OnInit {
+  public employees: Employee;
+  constructor(private empService: EmpService) { }
+
+  ngOnInit() {
+     this.getEmployees();
+  }
+
+  getEmployees() {
+    this.empService.getEmployees()
+    .subscribe(employees =>{
+        this.employees = employees;
+    })
+  
+  }
+  deleteEmployee(id){
+       this.empService.deleteEmployee(id)
+       .subscribe(()=>{
+           this.getEmployees();
+       })
+  }
+}
+
+  /* home.component.html */
+  
+  
+
+
+  <div class="table table-responsive">
+    <table class="table table-striped">
+        <thead>
+             <tr>
+                 <th>Employee ID</th>
+                 <th>Employee Name</th>
+                 <th>Employee Position</th>
+                 <th>Employee Department</th>
+                 <th align="center">Action</th>
+             </tr>
+        </thead>
+        <tbody>
+           <tr *ngFor="let employee of employees">
+               <td>{{employee.id}}</td>
+               <td>{{employee.name}}</td>
+               <td>{{employee.position}}</td>
+               <td>{{employee.department}}</td>
+               <td>
+                   <a routerLink="/show/{{employee.id}}" class="btn btn-info">Details</a>
+                   <a routerLink="/edit/{{employee.id}}" class="btn btn-success">Edit</a>
+                   <a (click)="deleteEmployee(employee.id)" class="btn btn-danger">Delete</a>
+               </td>
+           </tr>
+           
+        </tbody>
+    </table>
+</div>
+
+  /* show.component.ts */
+  import { Component, OnInit } from '@angular/core';
+import { EmpService } from '../emp.service';
+import { Employee } from '../employee';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+@Component({
+  selector: 'app-show',
+  templateUrl: './show.component.html',
+  styleUrls: ['./show.component.css']
+})
+export class ShowComponent implements OnInit {
+  public employee: Employee;
+  constructor(
+    private empService: EmpService,
+    private route: ActivatedRoute,
+    private router: Router 
+  ) { }
+  ngOnInit() {
+    this.getEmployee()
+  }
+  getEmployee() {
+    var id = parseInt(this.route.snapshot.params['id']);
+    this.empService.getEmployee(id)
+      .subscribe(employee => {
+        this.employee = employee[0];
+        //console.log(this.employee[0]);
+      })
+     
+  }
+  goBack(){
+      this.router.navigate(['/home'])
+  }
+}
+
+ /* home.component.html */
+ <div class="panel panel-default" *ngIf=employee>
+  <div class="panel-heading">
+    Employee Details Form:You can See an employee's detail information into this EMS Apps.
+  </div>
+  <div class="panel-body">
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label for="name" class="col-md-3 control-label">Empployee's Full Name:</label>
+        <div class="col-md-8">
+          <span class="form-control" id="name" placeholder="Name">{{employee.name}}</span>
+
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="position" class="col-md-3 control-label">Job Position:</label>
+        <div class="col-md-8">
+          <span class="form-control" id="position" placeholder="Position">{{employee.position}}</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="department" class="col-md-3 control-label">Department Name:</label>
+        <div class="col-md-8">
+          <span class="form-control" id="department" placeholder="Department Name">{{employee.department}}</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="salary" class="col-md-3 control-label">Employee's Salary:</label>
+        <div class="col-md-8">
+          <span class="form-control" id="salary" placeholder="Salary">{{employee.salary}}</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="employee_id" class="col-md-3 control-label">Employee's Id:</label>
+        <div class="col-md-8">
+          <span class="form-control" id="employee_id" placeholder="Employee Id">{{employee.id}}</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-8 col-md-offset-3">
+          <button type="button" (click)="goBack()" class="btn btn-info">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+   /* employee.ts */
+   
+export class Employee {
+      name:string;
+      position:string;
+      department:string;
+      salary:string;
+}
+
+  /* employee.service.ts  */
+  
+  import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+@Injectable()
+export class EmpService {
+ 
+  constructor(private http: Http) { }
+
+  getEmployees() {
+    return this.http.get("http://127.0.0.1/api/select.php") 
+      .map(res => res.json())
+  }
+  addEmployee(info) {
+    return this.http.post("http://127.0.0.1/api/insert.php", info)
+      .map(()=>"");
+  }
+  getEmployee(id) {
+    return this.http.post("http://127.0.0.1/api/selectone.php/",{'id':id})
+      .map(res => res.json())
+  }
+  deleteEmployee(id) {
+    return this.http.post("http://127.0.0.1/api/delete.php/",{'id':id})
+      .map(()=> this.getEmployees())
+  }
+  updateEmployee(info) {
+    return this.http.post("http://127.0.0.1/api/update.php", info)
+    .map(()=>"");
+  }
+}
+
+================================================================================
+================Validator Form ==================================================
+<hr/>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        SignUp Form {{name.fname}}
+    </div>
+    <div class="panel-body">
+        <form novalidate (ngSubmit)="Save()" #singupForm="ngForm" class="form-horizontal">
+            <fieldset>
+                <div [ngClass]="{'has-error':(firstNameVar.touched || firstNameVar.dirty) && !firstNameVar.valid,'has-success':(firstNameVar.touched || firstNameVar.dirty) && firstNameVar.valid}" class="form-group has-feedback ">
+                    <label for="firstname" class="col-sm-2 control-label">Firstname:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="firstname" [(ngModel)]="customer.firstname" class="form-control" pattern="[a-z]{6}" required minlength="3" 
+                            #firstNameVar="ngModel" placeholder="Firstname">
+                        <span class="help-block" *ngIf="(firstNameVar.touched ||firstNameVar.dirty) && firstNameVar.errors"> 
+                                       <span *ngIf="firstNameVar.errors.required">
+                                             <i class="glyphicon glyphicon-remove form-control-feedback"></i>
+                                             Please enter your firstname
+                                       </span>
+
+                                        <span *ngIf="firstNameVar.errors.minlength">
+                                            <i class="glyphicon glyphicon-remove form-control-feedback"></i>
+                                            The first name must be longer than 3 character
+                                        </span>
+                                        <span *ngIf="firstNameVar.errors.pattern">
+                                               <i class="glyphicon glyphicon-remove form-control-feedback"></i>
+                                               please enter firstname lowercase only 6 character
+                                       </span>
+                                        
+                        </span>
+                        <span *ngIf="firstNameVar.valid">     
+                                <i class="glyphicon glyphicon-ok form-control-feedback"></i>
+                        </span>
+
+                    </div>
+                </div>
+
+                <div [ngClass]="{'has-error':(lastNameVar.touched || lastNameVar.dirty) && !lastNameVar.valid,'has-success':(lastNameVar.touched || lastNameVar.dirty) && lastNameVar.valid}" class="form-group has-feedback ">
+                        <label for="lastname" class="col-sm-2 control-label">Lastname:</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="lastname" [(ngModel)]="customer.lastname" class="form-control" pattern="[a-z]{6}" required minlength="3" 
+                                #lastNameVar="ngModel" placeholder="Lastname">
+                            <span class="help-block" *ngIf="(lastNameVar.touched ||lastNameVar.dirty) && lastNameVar.errors"> 
+                                           <span *ngIf="lastNameVar.errors.required">
+                                                 <i class="glyphicon glyphicon-remove form-control-feedback"></i>
+                                                 Please enter your lastname
+                                           </span>
+    
+                                            <span *ngIf="lastNameVar.errors.minlength">
+                                                <i class="glyphicon glyphicon-remove form-control-feedback"></i>
+                                                The first name must be longer than 3 character
+                                            </span>
+                                            <span *ngIf="lastNameVar.errors.pattern">
+                                                   <i class="glyphicon glyphicon-remove form-control-feedback"></i>
+                                                   please enter lastname lowercase only 6 character
+                                           </span>
+                                            
+                            </span>
+                            <span *ngIf="lastNameVar.valid">     
+                                    <i class="glyphicon glyphicon-ok form-control-feedback"></i>
+                            </span>
+    
+                        </div>
+                    </div>
+                  
+                <div class="form-group">
+                    <div class="col-sm-10 col-sm-offset-2">
+                        <input type="submit" [disabled]="singupForm.invalid" class="btn btn-primary" value="Submit">
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+    <div class="panel-footer">
+        Created by Rahul &copy; 2017
+    </div>
+</div>
+========================================================================================================
+<form>
+    <div class="form-group">
+        <label>Name:</label>
+        <input type="text" #nameRef name="name" class="form-control" placeholder="name" required ngModel>
+          {{nameRef.className}}
+    </div>
+</form>
+===========================================================================================================
+
+const express = require('express');
+ const router = express.Router();
+ const mongoose = require('mongoose');
+ var Customer = require('../model/customer')
+ //mongoose.Promise = require('bluebird');
+ confing = "mongodb://127.0.0.1:27017/shop";
+ mongoose.connect(confing,{
+    useMongoClient: true
+ });
+mongoose.Promise = global.Promise;
+router.get('/customers',function(req,res){
+    console.log('Fetch All Customer Record');
+    Customer.find({})
+    .exec(function(err,customers){
+         if(err){
+              res.send('Data Fetching Error');
+         }else{
+              res.json(customers);
+         }
+    });
+});
+router.get('/customers/:id',function(req,res){
+    console.log('Fetch Single Customers Record');
+    Customer.findById(req.params.id)
+    .exec(function(err,customer){
+         if(err){
+              res.send('Single Data Fetching Error');
+         }else{
+              res.json(customer);
+         }
+    });
+});
+
+router.post('/customer',function(req,res){
+       console.log('Save Record');
+      var newCustomer = new Customer();
+      newCustomer.firstName = req.body.firstName;
+      newCustomer.lastName =  req.body.lastName;
+      newCustomer.save(function(err,insertedRecord){
+           if(err){
+                res.send('Save Record Error');
+           }else{
+                res.json(insertedRecord);
+           }
+      });
+});
+router.put('/customer/:id',function(req,res){
+         console.log('Update Record');
+         Customer.findByIdAndUpdate(req.params.id,
+            {
+                $set:{
+                     firstName:req.body.firstName,
+                     lastName: req.body.lastName
+                }
+            },
+            {
+                new:true
+            },
+            function(err,updatedRecord){
+                 if(err){
+                      res.send('Update Record Error');
+                 }else{
+                     res.json(updatedRecord);
+                 }
+            }
+
+        )
+});
+router.delete('/customer/:id',function(req,res){
+      console.log('Deleted Record');
+      Customer.findByIdAndRemove(req.params.id,function(err,deletedRecord){
+           if(err){
+               res.send('Delete Record Error');
+           }else{
+               res.json(deletedRecord);
+           }
+      });
+});
+module.exports = router;
+==================================================================================================
+
+  ====================== ng-content & ng-container =============================================
+
+<div class="row">
+   <div class="col-md-12">
+       <div class="card">
+           <div class="card-header bg-primary">
+             <h3 class="card-title">
+                <ng-content select=".heading"></ng-content>
+             </h3>
+           </div>
+           <div class="card-body">
+               <span class="card-text">
+                <ng-content select=".body"></ng-content>
+               </span>
+           </div>
+       </div>
+   </div>
+</div>
+===============
+ <app-panel>
+     <ng-container class="heading">
+          Customer Details
+     </ng-container>
+</app-panel>
+======================================================================================================
+======*ngIf  =================
+ <div *ngIf="cource.length > 0">
+    
+     List of Cources
+
+  </div>
+  
+<div *ngIf="cource.length == 0">
+    
+    No Cources Yet
+ 
+</div>
+======[hidden] =================
+ <div [hidden]="cource.length > 0">
+    
+     List of Cources
+
+  </div>
+  
+<div [hidden]="cource.length == 0">
+    
+    No Cources Yet
+ 
+</div>
+========*ngIf using ng-template directive ===
+<div *ngIf="cource.length > 0;then listCource else noCource">
+  </div>
+  <ng-template #listCource>
+      List of Cources
+ </ng-template>
+  <ng-template #noCource>
+       No Cources Yet
+  </ng-template>
+========[hidden] Property using ng-template directive ===
+<div [hidden]="cource.length > 0;then listCource else noCource">
+  </div>
+  <ng-template #listCource>
+      List of Cources
+ </ng-template>
+  <ng-template #noCource>
+       No Cources Yet
+  </ng-template>
+===============================
+===== [ngSwitch] directive ===========
+<ul class="nav nav-pills">
+     <li class="nav-item">
+        <a class="nav-link" [class.active]="viewMode == 'map'" (click)="viewMode = 'map'">MapView</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" [class.active]="viewMode == 'list'" (click)="viewMode = 'list'">ListView</a>
+    </li>
+  </ul>
+  <div [ngSwitch]="viewMode">
+      <div *ngSwitchCase="'map'">Map View</div>
+      <div *ngSwitchCase="'list'">List View</div>
+      <div *ngSwitchDefault>Otherwise</div>
+  </div>
+==========================================================================
+======= *ngFor With trackBy ============================================
+Add(){
+      this.students.push({
+           id:4,name:"New Name",city:"New city"
+      });
+  }
+  onRemove(student){
+    let index = this.students.indexOf(student);
+     this.students.splice(index,1);
+  }
+  onChange(student){
+     student.name = "UPDATE";
+  }
+trackStudent(index,student){
+ 
+    return student ? student.id : 'undefined'
+
+  }
+<div class="col-md-12">
+     <button type="button" class="btn btn-outline-success"  (click)="Add()">+</button>
+        <ul>
+          <li *ngFor="let student of students; trackBy:trackStudent">
+              {{student.id}} - {{student.name }} - {{student.city}} &nbsp;
+               <button type="button" (click)="onRemove(student)" class="btn btn-outline-danger">X</button>
+               <button type="button" (click)="onChange(student)" class="btn btn-outline-warning">U</button>
+          </li>
+        </ul>
+   </div>
+==========================================================
+import { Directive,HostListener, ElementRef } from '@angular/core';
+
+@Directive({
+  selector: '[appInputFormat]'
+})
+export class InputFormatDirective {
+  constructor(private el:ElementRef) {
+  
+  }
+   @HostListener('blur') onBlur(){
+      let value = this.el.nativeElement.value;
+      console.log(value);
+   }
+
+}
+=====================================================================
+import { Directive,HostListener, ElementRef } from '@angular/core';
+
+@Directive({
+  selector: '[appInputFormat]'
+})
+export class InputFormatDirective {
+  constructor(private el:ElementRef) {
+  
+  }
+   @HostListener('blur') onBlur(){
+      let value:string = this.el.nativeElement.value;
+      this.el.nativeElement.value = value.toUpperCase();
+   }
+
+}
+===============================================================================
+import { Directive,HostListener, ElementRef, HostBinding } from '@angular/core';
+
+@Directive({
+  selector: '[appInputFormat]'
+})
+export class InputFormatDirective {
+  constructor(private el:ElementRef) {
+  
+  }
+  @HostBinding('style.background') background:string;
+  @HostBinding('style.color') color:string;
+
+   @HostListener('blur') onBlur(){
+      let value:string = this.el.nativeElement.value;
+      this.el.nativeElement.value = value.toLowerCase();
+      this.background = "green";
+      this.color = 'white';
+   }
+
+}
+=====================================================================================
+<input type="text" value="" [appInputFormat]="'lowercase'" class="form-control" >
+=============
+import { Directive,HostListener, ElementRef, HostBinding, Input } from '@angular/core';
+
+@Directive({
+  selector: '[appInputFormat]'
+})
+export class InputFormatDirective {
+  @Input('appInputFormat') format;
+  @HostBinding('style.background') background:string;
+  @HostBinding('style.color') color:string;
+  constructor(private el:ElementRef) {
+  
+  }
+   @HostListener('blur') onBlur(){
+      let value:string = this.el.nativeElement.value;
+      if(this.format == 'lowercase'){
+        this.el.nativeElement.value = value.toLowerCase();
+      }else{
+        this.el.nativeElement.value = value.toUpperCase();
+      }
+      
+      this.background = "green";
+      this.color = 'white';
+   }
+
+}
+==============================================================================================
+===========Model Driven Form using FormBuilder=========================================
+import { Component, OnInit } from '@angular/core';
+import { FormGroup,Validators, FormBuilder } from '@angular/forms';
+
+@Component({
+  selector: 'contact-form',
+  templateUrl: './contact-form.component.html',
+  styleUrls: ['./contact-form.component.css']
+})
+export class ContactFormComponent implements OnInit {
+  userForm:FormGroup;
+  constructor(private fb:FormBuilder) {
+      
+   }
+
+  ngOnInit() {
+     this.userForm = this.fb.group({
+       firstname:['',[Validators.required,Validators.minLength(3)]],
+       comment:['',[Validators.required,Validators.minLength(3)]]
+     })
+  }
+  get firstname(){
+     return this.userForm.get('firstname');
+  }
+  get comment(){
+    return this.userForm.get('comment');
+ }
+
+}
+
+============
+<h2 class="h3 pt-5 text-center">Contact Form</h2>
+
+ <form [formGroup]="userForm" novalidate>
+     <div class="form-group">
+         <label for="firstName">Firstname</label>
+         <input type="text"  class="form-control" formControlName="firstname">
+         <div *ngIf="(firstname.touched || firstname.dirty) && firstname.invalid">
+              <span *ngIf="firstname.errors.required" style="color:red">Please Required Field!</span>
+              <span *ngIf="firstname.errors.minlength" style="color:red">Must be less than 3 character!</span>
+          </div>
+     </div>
+     <div class="form-group">
+       <label for="comment">Comment</label>
+       <textarea  required id="comment" name="comment" class="form-control" formControlName="comment" cols="30" rows="10" placeholder="Comment" class="form-control"></textarea>
+       <div *ngIf="(comment.touched || comment.dirty) && comment.invalid">
+        <span  *ngIf="comment.errors.required" style="color:red">Please Required Field!</span>
+        <span *ngIf="comment.errors.minlength" style="color:red">Must be less than 3 character!</span>
+    </div>
+    </div>
+    <button type="submit" class="btn btn-outline-primary">Submit</button>
+ 
+ </form>
+ =======================================================================================================

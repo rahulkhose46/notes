@@ -1,0 +1,3780 @@
+https://www.youtube.com/playlist?list=PLYxzS__5yYQkwEnBXU6e_gYXLo_rscFQm
+==================================================================
+https://www.sitesbay.com/interview/jquery-interview-question
+https://www.javatpoint.com/jquery-empty
+https://www.youtube.com/playlist?list=PL8jcXf-CLpxpVgGzlbFkNibX4o_-QJwPG
+https://github.com/bradtraversy/bs4starter
+=====================================================================
+<div class="container">
+    <nav class="navbar navbar-default" role="navigation">
+          <div class="navbar-header">
+	       <a class="navbar-brand" href="#">TutorialsPoint</a>
+	 </div>
+    </nav>
+</div> 
+===================================================================
+angular.element() === jQuery() === $()                          
+===================================================================
+$http({
+  .url
+  .method
+  .cache
+  .data/param
+  }).then(
+            function(response){
+             .
+             .
+            },
+            function(response){
+            .
+            .
+            }
+
+          )
+===========create the module,controller in different ways======================
+//create a module
+ 
+ var myApp=angular.module("myModule",[]);
+ 
+ //create a controllers
+ var controller=function($scope){
+	 $scope.name="AngularJs Tutorial";
+ }
+ 
+ //Register the controller with the module
+ 
+   myApp.controller("myController",controller);
+   
+  // ===========OR===============
+  
+  myApp.controller("myController",function($scope){
+	   $scope.name="AngularJs Tutorial";
+  });
+==================================================================================
+app.filter("reverseFilter",function(){
+   return function(text){
+       return text.split("").reverse().join("");//all render javascript logic
+   }
+});
+==========OR==========
+app.filter("uppercaseFilter",function(){
+   return function(text){
+       return angular.uppercase(text);
+   }
+})
+============= practice example=================================================
+var myApp=angular.module('myApp',[]);
+
+ myApp.controller('thecontroller',["$scope",function($scope){
+   $scope.handle="";
+   $scope.$watch("handle",function(newValue,oldValue){
+	  console.log("value change successfully!!!");
+      console.log("new value:" + newValue);
+      console.log("old value:" + oldValue);	  
+   });
+   
+   setTimeout(function(){
+	 $scope.$apply(function(){
+		 $scope.handle="new value set";
+		 console.log("Handle value has been chang successfully !!!");
+	 });
+   },3000);
+ }]
+ );
+==============OR===========================================
+var app=angular.module("myApp",[])
+               .controller("myController",["$scope",function($scope,$timeout){
+                $scope.fund="This is fund value";
+             $scope.$watch('fund',function(newVal,oldVal){
+               console.log("new value: " + newVal);
+               console.log("oldValue: " + oldVal);
+             })
+                setTimeout(function(){
+                 $scope.$apply(function(){
+                   $scope.fund="Change the value fund in 3000 milisecond";
+                 });
+                },3000)
+                setTimeout(function(){
+                 $scope.$apply(function(){
+                   $scope.fund="Change the value fund in 5000 milisecond";
+                 });
+                },5000)
+               }])
+ =================================================================================
+
+
+=========increment like and dislijke project=============================
+ var myApp=angular.module("myModule",[]); 
+  myApp.controller("myController",function($scope){
+	   var technologies=[
+	   {name:"C#",like:0,dislike:0},
+	   {name:"ASP.NET",like:0,dislike:0},
+	   {name:"SQL",like:0,dislike:0},
+	   {name:"AngularJs",like:0,dislike:0}
+	   ];
+	   $scope.technologies=technologies;
+	   $scope.incrementLike=function(technology){
+		   technology.like++;
+	   };
+	   $scope.incrementDislike=function(technology){
+		   technology.dislike++;
+	   };
+  });
+===============HTML============================================
+<body> 
+<div ng-controller="myController">
+  <table>
+  <thead>
+  <tr>
+  <th>Name</th>
+  <th>Like</th>
+  <th>Dislikes</th>
+  <th>Like/Dislike</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="technology in technologies">
+  <td>{{technology.name}}</td>
+  <td>{{technology.like}}</td>
+  <td>{{technology.dislike}}</td>
+  <td>
+   <input type="button" value="Like" ng-click="incrementLike(technology)">
+   <input type="button" value="Dislike" ng-click="incrementDislike(technology)">
+   </td>
+ </tr>
+  </tbody>
+  </table>
+</div>
+==============================================================================
+
+=============Dynamic filter in gender coloumn=============================
+
+ var myApp=angular
+                  .module("myModule",[])
+				  .filter("gender",function(){
+					 return function(gender){
+						 switch(gender){
+							 case 1:
+							 return "Male";
+							 case 2:
+							 return "Female";
+							 case 3:
+							 return "Not disclosed";
+							 }
+					 } 
+				  })
+				  .controller("myController",["$scope",function($scope){
+			 var Employees=[
+							{name:"rahul",gender:1,salary:20000},
+							{name:"shankar",gender:1,salary:21000},
+							{name:"puja",gender:2,salary:24000},
+							{name:"vijay",gender:1,salary:25000},
+							{name:"xyz",gender:3,salary:20000},
+	                        ];
+          $scope.Employees=Employees;	
+			}]);
+===============================================================================================
+
+====================create a won services============================================
+ var myApp=angular
+                  .module("myModule",[])
+				  .service("myServices",function(){
+					  self=this;
+					 self.name="rahul";
+          			 this.getName=function(){
+						 return self.name;
+					 }		 
+				  })
+		 .controller("myController",["$scope","$log","myServices",function($scope,$log,myServices){
+			     $log.log(myServices.getName());
+			     
+			}]);
+=====================================================================
+
+
+==============Angularjs create a new services custom=================
+==========module part================================================
+var myApp=angular.module("myModule",[]);
+     myApp.controller("myController",["$scope","$log","stringServices",function($scope,$log,stringServices){
+		      $scope.transferString=function(input){
+			$scope.output=stringServices.processString(input);
+			  }
+			       
+			}]); 
+======================================================================
+
+(function(){
+   "use strict";
+          angular
+          .module('app.controller',[])
+          .run(["$templateCache",function($templateCache){
+               $templateCache.put("demo.html","Rahul khose");
+               console.log($templateCache.get('demo.html'));
+        }])
+           .value('input',function($templateCache){
+               return $templateCache.get('demo.html');
+          })
+         
+          .service('get',function(input){
+             //this.fname="rahul";
+             //this.lname="khose";
+              this.fullname=function(){
+                 return input;
+              }
+          })
+          .factory('data',function(get){
+                return {
+                         details:get
+                }
+          })
+          .controller("theController",theController);
+
+          theController.$injector=["$log","$scope","data"];
+          function theController($log,$scope,get,data){
+               $log.info(data.details.fullname());
+          }
+                 
+ })(); 
+===========================Services part==============================
+
+//<script src="js/app.js"></script>
+
+myApp.factory("stringServices",function(){
+	return {
+		processString:function(input){
+			if(!input){
+				return input;
+			}
+				var output="";
+				for(var i=0;i<input.length;i++){
+					if(i > 0 && input[i]==input[i].toUpperCase()){
+						output=output + " ";
+					}
+						output=output + input[i];	
+			}
+			return output;
+		}
+	};
+});
+====================================================================================================
+
+========================Configration routeing concept=====================================
+
+ var myApp=angular.module("myModule",["ngRoute"])
+                  .config(function($routeProvider){
+					  $routeProvider
+					  .when("/html1",{
+						  templateUrl:"Template/html1.html",
+						  controller:"htmlController"
+					  })
+					  .when("/php",{
+						  templateUrl:"Template/php.html",
+						  controller:"phpController"
+					  })
+					  .when("/css",{
+						  templateUrl:"Template/css.html",
+						  controller:"cssController"
+					  })
+					  .when("/angular",{
+						  templateUrl:"Template/angular.html",
+						  controller:"angularController"
+					  })
+					   .when("/javascript",{
+						  templateUrl:"Template/javascript.html",
+						  controller:"javascriptController"
+					  })
+				  })
+             .controller("htmlController",function($scope){
+				 $scope.message="HTML PAGE";
+			 })
+			 .controller("phpController",function($scope){
+				 $scope.message="PHP PAGE";
+			 })
+			 .controller("cssController",function($scope){
+				 $scope.message="CSS PAGE";
+			 })
+			 .controller("angularController",function($scope){
+				 $scope.message="ANGULAR PAGE";
+			 })
+			 .controller("javascriptController",function($scope){
+				 $scope.message="JAVASCRIPT PAGE";
+			 })
+
+===================Correc code====================
+var app=angular.module("myApp",['ngRoute'])
+      
+ .config(function($routeProvider){
+            $routeProvider
+            .when("/",{ 
+                   resolve{
+                       "checks":function($scope,$rootScope,$location){
+                                   if(true){
+                                            $location.path('xyz.html');      
+                                             }
+                                       }
+                          }
+              template:"<h1>This is html template</h1>",
+              controller:"htmlController"
+            })
+            .when("/php",{
+              template:"<h2>This is php template</h2>",
+              controller:"phpController"
+            })
+            .otherwise({
+              template:"<h1>Page not found</h1>"
+            })
+          })
+             .controller("htmlController",function($scope){
+       })
+       .controller("phpController",function($scope){
+       })
+ ==================run==========
+http://localhost/angularjs/
+http://localhost/angularjs/first
+===================================================================================
+(function(){
+   "use strict";
+     angular
+            .module("app_module",['app.controller','ngRoute'])
+            .config(['$routeProvider','$locationProvider',function($routeProvider,$locationProvider){
+           	   $routeProvider
+           	  .when('/',{
+                   template:'<h1>Home {{message}} page</h1>',
+                   controller:'theController'
+           	  })
+           	  .when('/first',{
+           	  	  template:'<h1>First page</h1>',
+           	  	  controller:'theController'
+           	  })
+           	  .when('/second',{
+           	  	  template:'<h1>Second page</h1>',
+           	  	  controller:'theController'
+           	  })
+           	  .otherwise({
+           	  	 template:'<h1>Page Not Found!!</h1>'
+           	  })
+           	  $locationProvider.html5Mode(true);
+           	  
+           }])
+           
+
+})();  
+===============.htaccess==
+RewriteEngine on
+RewriteCond $1 !^(index\.php|resources|robots\.txt)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L,QSA] 
+ 
+===========================================================================================================
+
+==============Nested controller using this keyword======================================================
+============view part
+<div ng-controller="countryCtrl as coCt">
+      {{coCt.name}}
+     <div ng-controller="stateCtrl as stCt">
+	         {{$parent.coCt.name}}-{{stCt.name}}
+         <div ng-controller="cityCtrl as ciCt">
+	{{$parent.$parent.coCt.name}}-{{$parent.stCt.name}}-{{ciCt.name}}
+	    </div> 
+     </div>
+</div>
+===========================model part
+var app = angular.module("myApp",[])
+                 .controller("countryCtrl", function() {
+                  this.name="India";      
+	             })
+				 .controller("stateCtrl", function() {
+                  this.name="Maharastra";      
+	             })
+				 .controller("cityCtrl", function() {
+                  this.name="Mumbai";      
+	             })
+========================================================================================================
+===========reload data function============================
+
+$scope.reloadData=function(){
+  $route.reload();
+}
+=================================================
+
+=============on method function==================
+$scope.$on("routeChangeStart",function(event,next,current){if(confirm())})
+==========================================================
+
+=======================routing demo==============================================
+
+ var myApp=angular
+                 .module("myModule",["ngRoute"])
+				 .config(function($routeProvider){
+					 $routeProvider
+					 .when("/student",{  
+						 templateUrl:"Template1/student.html",
+						 controller:"studentController"
+					 })
+					  .when("/course",{
+						 templateUrl:"Template1/course.html",
+						 controller:"courseController"
+					 })
+					  .when("/city",{
+						 templateUrl:"Template1/city.html",
+						 controller:"cityController"
+					 })
+					  .when("/angular",{
+						 templateUrl:"Template1/angular.html",
+						 controller:"angularController"
+					 })
+					  .when("/javascript",{
+						 templateUrl:"Template1/javascript.html",
+						 controller:"javascriptController"
+					 })
+				 })
+				 .controller("studentController",function($scope){
+					 var students=[
+					  {name:"Rahul",rollNo:22,classs:"SY"},
+					  {name:"Shankar",rollNo:30,classs:"FY"},
+					  {name:"Vijay",rollNo:55,classs:"TY"},
+					  {name:"Rajendra",rollNo:21,classs:"FY"}
+					   ]
+					 $scope.students=students;
+					 $scope.message="STUDENT PAGE";
+				 })
+				  .controller("courseController",function($scope){
+					  var courses=[
+					  {name:"C#",fess:2200,branch:"IT"},
+					  {name:"C++",fess:3000,branch:"COM"},
+					  {name:"SQL",fess:5500,branch:"IT"},
+					  {name:"JAVA",fess:2100,branch:"COM"}
+					   ]
+					 $scope.courses=courses;
+					 $scope.message="COURSE PAGE";
+				 })
+				  .controller("cityController",function($scope){
+					  var cities=[
+					  {name:"Pune",company:"IBM",branch:"IT"},
+					  {name:"Mumbai",company:"Microsoft",branch:"COM"},
+					  {name:"Latur",company:"Intel",branch:"IT"},
+					  {name:"Nashik",company:"Syntel",branch:"COM"}
+					   ]
+					 $scope.cities=cities;
+					 $scope.message="CITY PAGE";
+				 })
+				  .controller("angularController",function($scope){
+					 $scope.message="ANGULAR JS PAGE";
+				 })
+				  .controller("javascriptController",function($scope){
+					 $scope.message="JAVASCRIPT PAGE";
+				 })
+============================================================================================================
+
+
+==============Angularjs create factory service ================================================
+ 
+ var app=angular.module("myModule",[]);
+     app.factory("mathFactory",function(){
+        
+        var factory={};
+        factory.multiply=function(a,b){
+        	return a * b;
+        }
+        return factory;
+     });
+     app.service("calServices",function(mathFactory){
+           this.square=function(a){
+           	return mathFactory.multiply(a,a);
+           }
+     });
+
+
+app.controller("myController",['$scope',"calServices","mathFactory",function($scope,calServices,mathFactory){
+         
+          $scope.Input=0;
+          $scope.square=function(){
+          $scope.result=calServices.square($scope.Input);
+        }
+	}])
+
+===================================================================================================
+
+
+=================factory service and provider=============================================================
+
+var app=angular.module("myApp",[]);
+    app.factory("name",function(){
+          var  factoryObject={};
+          factoryObject.fullname="Rahul suresh khose";
+          factoryObject.getFullname=function(){
+          	return  this.fullname;
+          }
+          return factoryObject;
+    });
+    app.service("address",function(){
+       this.location="pune";
+       this.getLocation=function(){
+       	  return this.location;
+       }
+    });
+    app.provider("date",function(){
+       return{
+       	$get:function(){
+       		return{
+       			 showDate:function(){
+       				var date=new Date();
+       				return date.getHours();
+       			}
+       		}
+       	}
+       }
+    });  
+  app.controller("myController",function($scope,date,address,name){
+   	$scope.showDate=date.showDate();
+   	 $scope.showAddress=address.getLocation();
+   	 $scope.showName=name.getFullname();
+   })
+                            
+              
+=====================================================================================================
+========create custom directive=============================
+var app=angular.module("myApp",[]);
+app.directive("myFirstScript",function(){
+	return{
+		template:"Hello world"
+	}
+})
+ app.controller("myController",function($scope){
+ 	
+ });
+ =============OR=====================
+
+var app=angular.module("myApp",[])
+
+               .directive("myFirstDirct",function(){
+               	return{
+               		restrict:"EA",
+               		template:"This is template text",
+               		link:function(scope,element,attrs){
+                           element.bind("click",function(){
+                           	element[0].innerText="This is bind text";
+                           });
+                           element.bind("mouseover",function(){
+                           	element[0].style.color="red";
+                           })
+               		}
+               	}
+               })
+               .controller("myController",function($scope){
+
+               })
+=============================================================
+
+================create dateProvider system=================================================
+
+var app=angular.module("myApp",[]);
+    app.factory("name",function(){
+          var  factoryObject={};
+          factoryObject.fullname="Rahul suresh khose";
+          factoryObject.getFullname=function(){
+          	return  this.fullname;
+          }
+          return factoryObject;
+    });
+    app.service("address",function(){
+       this.location="pune";
+       this.getLocation=function(){
+       	  return this.location;
+       }
+    });
+    app.provider("date",function(){
+    	var year;
+       return{
+       	setYear:function(Y){
+            year=Y 
+       	},
+       	$get:function(){
+       		return{
+       			 showDate:function(){
+       				var date=new Date();
+       				return "Hours:"+ date.getHours() + " , Year:" + year;
+       			}
+       		}
+       	}
+       }
+    });  
+    app.config(function(dateProvider){
+    	console.log(dateProvider);
+    	dateProvider.setYear(new Date().getYear());
+    })
+  app.controller("myController",function($scope,date,address,name){
+   	$scope.showResult=[date.showDate(),address.getLocation(),name.getFullname()];
+   	 
+   })
+                            
+  ====================OR===============================
+
+var app=angular.module("myApp",[])
+.provider("box",function(){
+	var hex;
+	return{
+		setColor:function(color){
+			hex=color;
+		    },
+		$get:function(){
+			return{
+				color:hex
+			}
+		}
+	}
+})
+.config(function(boxProvider){
+	boxProvider.setColor("#0000ff");
+})
+.controller("theController",function($scope,box){
+$scope.color=box.color;
+})
+ ==============$injector.invoke services==========
+.controller("theController",function($scope,$injector){
+	  $injector.invoke(function(box){
+       $scope.color=box.color;
+	  });
+})              
+                     
+================================================================================================
+==================create custom filter====================================
+
+var app=angular.module("myModule",[])
+               .filter("gender",function(){
+               	return function(gender){
+               		switch(gender){
+               			case 1:
+               			return 'Male';
+               			case 2:
+               			return 'Female';
+               			 case 3:
+               			return 'Disclosed'
+               		}
+               	}
+               })
+               .controller("myController",function($scope){
+                var employees=[
+                 {name:"sara",gender:2,salary:22000},
+                 {name:"atul",gender:1,salary:22200},
+                 {name:"shital",gender:2,salary:11000},
+                 {name:"c++",gender:3,salary:22050},
+                 {name:"raju",gender:1,salary:25000},
+                 
+                 ]
+                 $scope.employees=employees;
+               });
+====================================================================================
+
+==========To Do App============================================
+
+var app=angular.module("myApp",[]);
+ app.controller("myController",function($scope){
+ 	$scope.tasks=[];
+     $scope.addTask=function(){
+     	//var result=event.which || event.keyCode;
+     	//console.log(result);
+     	if(event.which==13 && $scope.task!=""){ 
+     		$scope.addItem();
+     }
+   };
+  $scope.addItem=function(){
+  	$scope.tasks.push($scope.task);
+  	//console.log($scope.tasks);
+  	$scope.task="";
+  };
+ });
+===========OR====================
+
+var app=angular.module("myApp",[]);
+ app.controller("myController",function($scope){
+ 	$scope.tasks=[];
+     $scope.addTask=function(){
+     	//var result=event.which || event.keyCode;
+     	//console.log(result);
+     	if(event.which==13 && $scope.task!=""){ 
+     		$scope.addItem();
+     }
+   };
+  $scope.addItem=function(){
+  	$scope.tasks.push({'taskMsg':$scope.task,"status":false});
+  	console.log($scope.tasks);
+  	$scope.task="";
+  };
+  $scope.contentEdit=function(){
+  	console.log(event.target.contentEditable);
+  	event.target.contentEditable=event.target.contentEditable=='false' ? 'true':'false';
+  }
+ });
+===========================================================================
+
+===========complate todto app==================================================
+
+var app=angular.module("myApp",[]);
+ app.controller("myController",function($scope){
+ 	$scope.tasks=[];
+ 	 var taskData=localStorage['listItem'];
+ 	 console.log(localStorage);
+ 	 if(taskData!==undefined){
+      $scope.tasks=JSON.parse(taskData);
+ 	}
+     $scope.addTask=function(){
+     	//var result=event.which || event.keyCode;
+     	//console.log(result);
+     	if(event.which==13 && $scope.task!=""){ 
+     		$scope.addItem();
+     }
+   };
+  $scope.addItem=function(){
+  	$scope.tasks.push({'taskMsg':$scope.task,"status":false});
+  	console.log($scope.tasks);
+  	$scope.task="";
+  	localStorage['listItem']=JSON.stringify($scope.tasks);
+   //   console.log(localStorage);
+  };
+  $scope.contentEdit=function(message){
+  	//console.log(event.target.contentEditable);
+     for(i=0;i<$scope.tasks.length;i++){
+     	if($scope.tasks[i].taskMsg==message){
+     		$scope.tasks[i].taskMsg = event.target.innerText;
+     	}
+     }
+      localStorage['listItem']=JSON.stringify($scope.tasks);
+  	event.target.contentEditable=event.target.contentEditable=='false' ? 'true':'false';
+  };
+  $scope.enterAgain=function(msg){
+  	if(event.which==13 && msg!=""){ 
+     		$scope.contentEdit(msg);
+     }
+  }
+ });
+ //store the local storage value
+ /*[{"taskMsg":"rahul shinde\n\n","status":false},
+ {"taskMsg":"Rahul khose","status":false},
+ {"taskMsg":"vijay kharade\n\n","status":false},
+ {"taskMsg":"shakar Nalawade\n\n","status":false},
+ {"taskMsg":"Nilesh budruk\n\n","status":false}] */
+
+==============view part=========================
+<body  ng-controller="myController">
+ <h1 style="text-align:center;">Add Task Application</h1>
+ <br />
+ <input type="text" style="margin-left:250px;px;padding:10px;font-size:20px;width:200px;" ng-model="task" ng-keyup="addTask()"/>
+
+<br /><br/>
+<ul style="margin-left:250px;">
+<li ng-repeat="tk in tasks track by $index">
+<input type="checkbox" ng-model="tk.status"/>
+<span contenteditable=false ng-keyup="enterAgain(tk.taskMsg)" ng-dblclick="contentEdit(tk.taskMsg)" class="done-{{tk.status}}">
+   {{tk.taskMsg}}
+   </span>
+</ul>
+=========================================================================================================
+
+==================create a custom directive====================================
+
+var app=angular.module("myApp",[]);
+app.directive("myFirstDirective",function(){
+	function linkFunciton($scope,ele,attrs){
+		$scope.name="Hello world";
+		$scope.changeName=function(name){
+           $scope.name=$scope.controllerProperty;
+		}
+	}
+	return{
+		template:'<span ng-click="changeName(/*\'hey\'*/)">current text:{{name}}</span>',
+		restrict:"EA",
+		link:linkFunciton,
+		scope:true
+	}
+})
+  app.controller("myController",function($scope){
+ 	 $scope.controllerProperty="This is controller property";
+ });
+ 
+=======================================================================================
+
+==============Using $http services json data load =====================================
+
+var app=angular.module("myModule",[])
+               .filter("gender",function(){
+               	return function(gender){
+               		switch(Number(gender)){
+               			case 1:
+               			return 'Male';
+               			case 2:
+               			return 'Female';
+               			 case 3:
+               			return 'Disclosed'
+               		}
+               	}
+               })
+               .controller("myController",function($scope,$http){
+                $http.get('http://localhost/angular_js/database.json').then(function(response){
+                 $scope.employees=response.data;
+                });
+               });
+====================webservices using json object ========================================
+var  app=angular.module("myApp",[]);
+               app.controller("myController",function($scope,$http){
+              $http({
+               	url:"http://localhost/angular_js/database.json",
+               	method:"post",
+               	params:{age:"22"}
+               }).then(function(response){
+               	$scope.age=response.config.params.age;
+               });
+   /*$http.get('http://localhost/angular_js/database.json').then(function(response){
+                 $scope.age=response.data[0].age;
+                });*/
+               })
+
+================OR=====using params property========================================================
+var  app=angular.module("myApp",[]);
+               app.controller("myController",function($scope,$http){
+             $scope.start=function(){
+              $http({
+               	url:"http://localhost/angular_js/database.json",
+               	method:"get",
+               	params:{age:$scope.input}
+               }).then(function(response){
+               	$scope.age=response.config.params.age;
+               });
+           }
+   /*$http.get('http://localhost/angular_js/database.json').then(function(response){
+                 $scope.age=response.data[0].age;
+                });*/
+               })
+===============using data property==================================================
+var  app=angular.module("myApp",[]);
+               app.controller("myController",function($scope,$http){
+             $scope.start=function(){
+              $http({
+               	url:"http://localhost/angular_js/database.json",
+               	method:"get",
+               	data:{age:$scope.input}
+               }).then(function(response){
+               	$scope.age=response.config.data.age;
+               });
+           }
+   /*$http.get('http://localhost/angular_js/database.json').then(function(response){
+                 $scope.age=response.data[0].age;
+                });*/
+               })
+======================passing id to webservices and fatch data given id================
+var  app=angular.module("myApp",[]);
+               app.controller("myController",function($scope,$http){
+             $scope.start=function(){
+              $http({
+               	url:"http://localhost/angular_js/database.json",
+               	method:"get",
+               	data:{id:$scope.input}
+               }).then(function(response){
+               	if(response.config.data.id==response.data[response.config.data.id-1].id)
+               	{
+                       $scope.student=response.data[response.config.data.id-1];
+               	}else{
+               		alert("fail");
+               	}
+               });
+           }
+   /*$http.get('http://localhost/angular_js/database.json').then(function(response){
+                 $scope.age=response.data[0].age;
+                });*/
+               })
+=================Small webservices appliction===============================================================
+var  app=angular.module("myApp",[]);
+               app.controller("myController",function($scope,$http){
+             $scope.start=function(){
+              $http({
+               	url:"http://localhost/angular_js/database.json",
+               	method:"get",
+               	data:{id:$scope.input}
+               }).then(function(response){
+               	var len=response.data.length;
+                 if(response.config.data.id <= len){
+               	if(response.config.data.id==response.data[response.config.data.id-1].id)
+               	    {
+                       $scope.student=response.data[response.config.data.id-1];
+                	}
+ 
+               }else{
+                      alert("Record not found");
+                    }
+
+               });
+           }
+   /*$http.get('http://localhost/angular_js/database.json').then(function(response){
+                 $scope.age=response.data[0].age;
+                });*/
+               })
+===============view part===========================
+<body ng-controller="myController">
+Type Your record no:<input type="text" ng-model="input"/><br /><br />
+<button ng-click="start()">Send request</button><br /><br /><br />
+  <table ng-hide="!student.id">
+<tr>
+    <td>Id</td>
+    <td>{{student.id}}</td>
+ </tr>
+ <tr>
+    <td>Name</td>
+    <td>{{student.name}}</td>
+ </tr>
+ <tr>
+    <td>Gender</td>
+    <td>{{student.gender}}</td>
+ </tr>
+ <tr>
+    <td>City</td>
+    <td>{{student.city}}</td>
+ </tr>
+ </table>
+
+
+===========OR==========$http services==============
+
+var app=angular.module("myApp",[]);
+               app.service("revenServices",["$q","$http",function($q,$http){
+                    var deferred=$q.defer();
+                    $http.get("http://localhost/angularjs/database.json").then(function(data){
+                      deferred.resolve(data);
+                    });
+                    this.getPlayers=function(){
+                      return deferred.promise;
+                    }
+               }])
+               .controller("myController",["$scope","revenServices",function($scope,revenServices){
+                   var promise=revenServices.getPlayers();
+                   promise.then(function(data){
+                    $scope.team=data;
+                    console.log($scope.team);
+                   })
+               }])
+=============================================================
+
+===================$http factory===========================
+
+
+var app=angular.module('myModule',[]);
+
+
+app.factory("appfactory",["$http","$q",function($http,$q){
+     var fact={};
+	  var deffered=$q.defer();
+
+	  $http.get("http://localhost/angularjs/data/post.json").then(
+                          function(data)
+                         {
+                                deffered.resolve(data);
+	                 },
+                           function(data)
+                         {
+       	                       deffered.reject(data);
+                          });
+                    fact.sendData=function(){
+     	            return deffered.promise;
+	 }
+	return fact;
+ 
+}]);
+
+app.controller("appCtrl",["$scope","$http","appfactory",function($scope,$http,appfactory){
+
+	  var promise=appfactory.sendData();
+
+	  promise.then(function(data){
+          console.log(data);
+	  })
+}]);
+
+================================server request using $resource=================
+
+var app=angular.module('myModule',['ngResource']);
+
+
+app.factory("appfactory",["$resource","$q","$promise",function($resource,$q,$promise){
+     var fact={};
+	  var deffered=$q.defer();
+
+	  $resource("http://localhost/angularjs/data/post.json").query().$promise
+       .then(
+       	function(data){
+       	  deffered.resolve(data);
+       },
+          function(data){
+       	  deffered.reject(data);
+         }
+       );
+     fact.sendData=function(){
+	  return deffered.promise;
+	}
+	return fact;
+ 
+}]);
+
+app.controller("appCtrl",["$scope","$http","appfactory",function($scope,$http,appfactory){
+
+	  var promise=appfactory.sendData();
+
+	  promise.then(function(data){
+          console.log(data);
+	  })
+}]);
+
+
+===================================================================================
+
+==============json data===================
+
+
+[
+       
+       {    "id" :1,
+	       "name":"rahul",
+	       "gender":"male",
+		   "city":"pune",
+		   "age":"20"
+       },
+       {
+	        "id" :2,
+	       "name":"shankar",
+	       "gender":"male",
+		   "city":"pune"
+       },
+       {
+	        "id" :3,
+	       "name":"sara",
+	       "gender":"female",
+		   "city":"mumbai"
+       },
+       {
+	       "id" :4,
+	       "name":"vijay",
+	       "gender":"male",
+		   "city":"latur"
+       }
+       
+   ]
+
+========================================================================================
+
+=====================json data===================
+
+
+[
+       
+       {
+	       "name":"rahul",
+	       "gender":"1",
+		   "salary":"220000"
+       },
+       {
+	       "name":"sara",
+	       "gender":"2",
+		   "salary":"26000"
+       },
+       {
+	       "name":"vijay",
+	       "gender":"1",
+		   "salary":"220660"
+       },
+       {
+	      "name":"c++",
+	       "gender":"3",
+		   "salary":"45000"
+       }
+       
+   ]
+==============using scope variable==============
+var  app=angular.module("myApp",[]);
+               app.controller("myController",function($scope,$http){
+             $scope.start=function(){
+              $http.get("http://localhost/angular_js/database.json").then(function(response){
+               	var len=response.data.length;
+                 if($scope.input<= len){
+               	if($scope.input==response.data[$scope.input-1].id)
+               	    {
+                       $scope.student=response.data[$scope.input-1];
+                	}
+
+               }else{
+                      alert("Record not found");
+                    }
+
+               });
+           }
+               })
+
+===============================================================================================
+===========create directive to directive====================================
+
+
+var app=angular.module("myApp",[])
+  
+
+ .controller("studCtrl",function($scope){
+    
+     $scope.studentDetails=[];
+
+     this.addName=function(){
+       $scope.studentDetails.push("name:Rahul");
+     };
+      this.addAge=function(){
+       $scope.studentDetails.push("age:23");
+     };
+      this.addCity=function(){
+       $scope.studentDetails.push("city:pune");
+     };
+ })            
+ .directive("studDetails",function(){
+
+   return {
+         restrict:"E",
+         controller:"studCtrl",
+         link:function(scope,element,attrs){
+          element.bind("click",function(){
+              console.log(scope.studentDetails);
+          })
+         
+         }
+   }
+ })
+ .directive("name",function(){
+       return{
+           require:"studDetails",
+           link:function(scope,element,attrs,studCtrl){
+                studCtrl.addName();
+           }
+       }
+ })
+ .directive("age",function(){
+       return{
+           require:"studDetails",
+           link:function(scope,element,attrs,studCtrl){
+                studCtrl.addAge();
+           }
+       }
+ })
+ .directive("city",function(){
+       return{
+           require:"studDetails",
+           link:function(scope,element,attrs,studCtrl){
+                studCtrl.addCity();
+           }
+       }
+ })
+ ==============view part================================
+<stud-details name age city class="btn btn-default">studentDetails</stud-details>              
+               
+               
+========================================================================================
+
+==================success code directive=========================================
+
+var app=angular.module("myApp",[]);
+               app.controller("theController",function($scope){
+                 $scope.multiArray="rahul khose";
+                 
+               });
+              app.directive("myFirstDirct",function(){
+               	return{
+               		restrict:"EA",
+               		controller:'theController',
+               		//template:"<input type='button' value='click me!'>",
+               		link:function(scope,element,attrs){
+                           element.bind("click",function(){
+                           	console.log(scope.multiArray);
+                           });
+                          
+               		}
+               	}
+               })
+              
+               
+==================================================================================
+
+============factory=======================
+app.factory("operationServices",function(){
+	return {
+		processString:function(input){
+			if(!input){
+				return input;
+			}
+				var output="";
+				for(var i=0;i<input.length;i++){
+					if(i > 0 && input[i]==input[i].toUpperCase()){
+						output=output + " ";
+					}
+						output=output + input[i];	
+					
+			}
+			return output;
+		}
+	};
+})==================================================
+
+===================factory provider services===========================================
+var app=angular.module("myApp",[])
+
+               .provider("myProvider",function(){     //Provider
+                  this.$get=function(){               // Factory
+                     return new function(){           //service
+                        this.getValue=function(){
+                          return "myValue";
+                        }
+                     }
+                  }
+               })
+               .controller("myController",["$scope","myProvider",function($scope,myProvider){
+                  console.log(myProvider);
+               }]);
+===========================================================================================
+var app=angular.module("myApp",[])
+
+               .provider("name",function(){ 
+                   var str;
+                   return {
+                           setValue:function(stri){
+                               str=stri;
+                            },
+                           $get:function(){
+                              return {
+                                getValue:function(){
+                                   return "My name is " + str;
+                                 }
+                              }
+                           }
+                   }
+               })
+               .config(function(nameProvider){
+                   nameProvider.setValue("rahul");
+               })
+               .controller("myController",["$scope","name",function($scope,name){
+                  console.log(name.getValue());
+               }]);
+=================================================================================================
+
+
+===================application ================================================
+ var app=angular.module("myApp",[])
+                .controller("myController",["$scope",function($scope){
+                 var model ={ 
+                 	            user: "Adam",
+								items: [{ product: "Buy Flowers", bool: false },
+										{ product: "Get Shoes", bool: false },
+										{ product: "Collect Tickets", bool: true },
+				                     	{ product: "Call Joe", bool: false }]
+										};
+					$scope.todo = model;
+					$scope.incompleteCount=function(){
+						var count=0;
+						angular.forEach($scope.todo.items,function(item){
+							if(!item.bool){
+								count++;
+							}
+						});
+						return count;
+					}
+					$scope.warningClass=function(){
+						return $scope.incompleteCount() < 3 ? "label-success":"label-warning";
+					}
+					$scope.addItem=function(actionText){
+						$scope.todo.items.push({product:actionText,bool:false});
+					}
+                }]);
+==================================================================================================
+=====OR======================================
+angular.module("sportsStoreAdmin")
+.constant("authUrl", "http://localhost/angular_js/admin.html#/login")
+.controller("authCtrl", function($scope, $http, $location, authUrl) {
+$scope.authenticate = function (user, pass) {
+$http.post(authUrl, {
+						username: user,
+						password: pass
+
+                     }, 
+                     {
+						//withCredentials: true
+						}).success(function (data) {
+							$http.get("http://localhost/angular_js/database.json").then(function(response){
+							 $scope.obj=response.data;
+							var username=$scope.obj.username;
+							var password=$scope.obj.password;
+							 if(username==user && password==pass){
+							 	$location.path("/main");
+							 }	else{
+							 	alert("password wrong");
+							 }
+							})
+							
+						}).error(function (error) {
+						   $scope.authenticationError = error;
+                        });
+}
+});
+==============================================================================================
+===================Date display using day=======================
+var app=angular.module("myApp",[])
+               .controller("myController",["$scope",function($scope){
+               	var dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday","Thursday", "Friday", "Saturday"];
+               $scope.day = dayNames[new Date().getDay()];
+               }]);
+=================================================================
+
+========directive using css=======================================
+.directive("highlight", function () {
+				return function (scope, element, attrs) {
+				if (scope.day == attrs["highlight"]) {
+				element.css("color", "red");
+				}
+				}
+				});
+
+<ng-controller="myController" highlight="Sunday">
+===================================================================
+====================================================================
+<script>
+var myApp = angular.module("exampleApp", []);
+// ...statements omitted for brevity...
+var now = new Date();
+myApp.value("nowValue", now);
+myApp.service("days", function (nowValue) {
+this.today = nowValue.getDay();
+this.tomorrow = this.today + 1;
+});
+</script>
+======================================================================
+===========================config,constant,&run=======================
+app.constant("startTime", new Date().toLocaleTimeString());
+app.config(function (startTime) {
+console.log("Main module config: " + startTime);
+});
+app.run(function (startTime) {
+console.log("Main module run: " + startTime);
+});
+=======================================================================
+<tr ng-repeat="item in todos" ng-class="$odd ? 'odd' : 'even'">
+                  <td>{{$index + 1}}</td>
+                  <td ng-repeat="prop in item">{{prop}}</td>
+              </tr>
+====================================================================
+<style>
+form .ng-invalid.ng-dirty { background-color: lightpink; }
+form .ng-valid.ng-dirty { background-color: lightgreen; }
+span.summary.ng-invalid { color: red; font-weight: bold; }
+span.summary.ng-valid { color: green; }
+</style>
+==============================================================
+<div class="error"
+ng-show="myForm.userEmail.$invalid && myForm.userEmail.$dirty">
+<span ng-show="myForm.userEmail.$error.email">
+Please enter a valid email address
+</span>
+<span ng-show="myForm.userEmail.$error.required">
+Please enter a value
+</span>
+</div>
+================================================================
+
+=============Filter============================================
+
+      app.filter("unique", function () {
+             return function (products, propertyName) {
+                  if (angular.isArray(products) && angular.isString(propertyName)) {
+                     var results = [];
+                     var keys = {};
+                     for (var i = 0; i < products.length; i++) {
+                     var val = products[i][propertyName];
+                      if (angular.isUndefined(keys[val])) {
+                       keys[val] = true;
+                       results.push(val);
+						}
+						}
+							return results;
+							} else {
+							return products; 
+						}
+				}
+});
+
+      app.filter("range", function ($filter) {
+                 return function (products, page, size) {
+                      if (angular.isArray(products) && angular.isNumber(page) && angular.isNumber(size)) {
+                           var start_index = (page - 1) * size;
+                             if (products.length < start_index) {
+                                       return [];
+                                } else {
+                              return $filter("limitTo")(products.splice(start_index), size);
+                             }
+                    } else {
+                              return products;
+                           }
+                       }
+                  });
+					app.filter("pageCount", function () {
+					          return function (products, size) {
+					               if (angular.isArray(products)) {
+					                     var result = [];
+					                      for (var i = 0; i < Math.ceil(products.length / size) ; i++) {
+					                             result.push(i);
+					                       }
+					                             return result;
+					                } else {
+					                          return products;
+					           }
+					      }
+					});
+===========================================================================================================
+
+==================paramiter routing concept=====================
+var app=angular.module("myApp",['ngRoute'])
+      
+       .config(function($routeProvider){
+            $routeProvider
+            .when("/",{
+              template:"This is main template",
+              controller:"mainCtrl"
+            })
+            .when("/php",{
+              template:"This is php template",
+              controller:"phpCtrl"
+            })
+            .when("/calender/:month/:day/:year",{
+              templateUrl:"partial/calender.html",
+              controller:"calenderCtrl"
+            })
+            .when("/css",{
+              template:"This is css template",
+              controller:"cssCtrl"
+            })
+             .otherwise({
+           template:"Page not fount"
+            })
+        })
+    app.controller("mainCtrl",function($scope){
+
+    })
+     .controller("phpCtrl",function($scope){
+
+  })
+     .controller("cssCtrl",function($scope){
+
+  })
+     .controller("calenderCtrl",function($scope,$routeParams){
+
+         $scope.result={
+                  'date':"Date: " + $routeParams.month + "/" + $routeParams.day + "/" + $routeParams.year
+
+         }
+     })
+=============================================================================================
+
+<ul>
+       <li ng-repeat="name in names">
+           {{$index}}-{{$first}}-{{$middle}}-{{$last}}-{{$even}}-{{$odd}}-{{name}}
+       </li>
+</ul>
+=========answer======================
+0-true-false-false-true-false-rahul
+1-false-true-false-false-true-Atul
+2-false-true-false-true-false-Shankar
+3-false-true-false-false-true-Mahesh
+4-false-false-true-true-false-santosh
+=====================================================================================
+
+==========REST SERVICES CALL===================================
+app.factory("Data", ['$http',
+    function ($http) { // This service connects to our REST API
+
+        var serviceBase = 'http://localhost/angular_js/partial/';
+        var ext=".php";
+        var obj = {};
+        obj.get = function (q) {
+            return $http.get(serviceBase + q + ext).then(function (results) {
+                return results.data;
+            });
+        };
+        obj.post = function (q, object) {
+            return $http.post(serviceBase + q + ext , object).then(function (results) {
+                return results.data;
+            });
+        };
+        obj.put = function (q, object) {
+            return $http.put(serviceBase + q, object).then(function (results) {
+                return results.data;
+            });
+        };
+        obj.delete = function (q) {
+            return $http.delete(serviceBase + q).then(function (results) {
+                return results.data;
+            });
+        };
+
+        return obj;
+}]);
+
+======Ctrl=====
+$scope.insertData=function() {
+        Data.post('insert', {
+                             'id':$scope.EmpId,
+                              'name':$scope.EmpName,
+                              'designation':$scope.EmpDesig,
+                              'salary':$scope.EmpSalary
+        }).then(function (results) {
+             $scope.msg="Data Inserted";
+             $scope.displayStud(); 
+            
+        });
+    }
+================================================================================================
+
+===========angular code using $parse method========
+
+ var app=angular.module("myApp",[]);
+
+  app.directive("n",["$parse",function($parse){
+   
+      return {
+
+                 restrict:"E",
+                 link:function(scope,element,attrs){
+                     var getter=$parse('name');
+                     // var getter=function(name){return name.name};
+                     var setter=getter.assign;
+                     var context={name:"Angular Text using $parse directive",
+                                  age:22,
+                                  salary:2256200,
+                                  location:"pune"
+                                };
+                     scope.name=getter(context);
+                      //setter(context.name="angular");
+                 },
+                 template:'{{name}}'
+      }
+
+  }])
+  app.controller("myCtrl",["$scope",function($scope){
+
+  }]);
+
+       
+=================================================================
+======callback function to callback =============================
+
+ var countryApp=angular.module('countyryApp',['ngRoute']);
+
+  countryApp.config(["$routeProvider",function($routeProvider){
+       
+          $routeProvider
+          .when('/',{
+              templateUrl:"partial_1/country_list.html",
+              controller:'countryListCtrl'
+          })
+          .when('/:countryName',{
+              templateUrl:"partial_1/country_details.html",
+              controller:'countyDetailCtrl'
+          })
+          .otherwise({
+              redirectTo:'/'
+          })
+
+  }]);
+  countryApp.factory("countries",function($http){
+
+    var catchData;
+    function getData(callback){
+        if(catchData){
+          callback(catchData);
+        }else{
+           $http.get('http://localhost/angularjs/countries.json').then(function(response){
+            catchData=response;
+            callback(response);
+           })
+        }
+    }
+    return{
+       list:getData,
+       find:function(name,callback){
+          getData(function(response){
+          var country=response.data.filter(function(entry){
+              return entry.name===name;
+          })[0];
+          callback(country);
+          //function(country){$scope.country=country; })
+       })
+     }
+   };
+  })
+
+  countryApp.controller("countryListCtrl",["$scope","$http","countries",function($scope,$http,countries){
+   countries.list(function(response){
+          $scope.countries=response.data;
+     })
+  }]);
+   countryApp.controller("countyDetailCtrl",["$scope","$routeParams","$http","countries",function($scope,$routeParams,$http,countries){
+      countries.find($routeParams.countryName,function(country){
+         $scope.country=country;
+      })
+       // $scope.country=country;  
+  }]);
+   
+=======================================================================================
+===========Factory.js====================================
+angular.module("app.factories",[])
+
+
+
+.factory("dataFactories",function($http){
+  //var catchData;
+ function getData(callback,type){
+ 	if(type=='post'){
+     var urlType="http://localhost/angularjs/data/post.json";
+ 	}else{
+ 	  var urlType="http://localhost/angularjs/data/pages.json";	
+ 	}
+
+     /*if(catchData){
+          callback(catchData);
+        }else{
+           $http.get('http://localhost/angularjs/countries.json').then(function(response){
+            catchData=response;
+            callback(response);
+           })
+        }*/
+ 	$http({
+
+ 		 method:"GET",
+ 		 url:urlType,
+ 		 cache:true
+
+ 	}).then(callback);   
+           console.log(callback);
+    }
+
+	return{
+      
+        get:getData
+	}
+})
+=================================================================
+======controller.js======================================
+
+  angular.module('app.controllers',
+  	[
+  	'app.directives',
+  	'app.factories'
+  	])
+
+   .controller("postController",function($scope,dataFactories){
+         
+       dataFactories.get(function(response){
+         	$scope.posts=response.data;
+         },'post');
+       
+   })
+ .controller("singlepostController",["$scope","$routeParams","dataFactories",function($scope,$routeParams,dataFactories){
+          dataFactories.get(function(response){
+          $scope.post=response.data[$routeParams.id];
+         },'post');
+
+   }])
+   .controller("pageController",["$scope","$routeParams","dataFactories",function($scope,$routeParams,dataFactories){
+     
+             dataFactories.get(function(response){
+         	$scope.page=response.data[$routeParams.id];
+         },'pages');
+   }])
+==========================================================================
+
+return{
+       list:getData,
+       find:function(name,callback){
+          getData(function(response){
+          var country=response.data.filter(function(entry){
+              return entry.name===name;
+          })[0];
+          callback(country);
+          //function(country){$scope.country=country; })
+       })
+     }
+   };
+=======================================================================
+
+===========isolate scope=============================================
+var app=angular.module('myModule',[]);
+
+
+ app.directive("demo",function(){
+
+   return {
+       restrict:"E",
+       scope:{
+                 name:"@",
+                 title:"@"
+
+               },
+       template:"<h1>Hello {{name}} and {{title}} </h1>",
+       
+   }
+ })
+====================================================================
+==============login routing using resolve method======
+
+ angular.module("myModule",
+ 	[
+ 	'ngRoute',
+ 	'app.Controllers'
+
+ 	])
+ .config(["$routeProvider",function($routeProvider){
+ 	  $routeProvider
+
+ 	  .when('/',{
+ 	  	  templateUrl:"partial/login.html",
+ 	  	  controller:"loginCtrl"
+ 	  })
+ 	  .when('/dashboard',{
+ 	  	 resolve:{
+ 	  	 	  "check":function($location,$rootScope){
+ 	  	 	  	  if(!$rootScope.flag){
+ 	  	 	  	  	  $location.path('/');
+ 	  	 	  	  }
+ 	  	 	  }
+ 	  	   },
+         templateUrl:"partial/dashboard.html",
+         controller:"dashboardCtrl"
+ 	  	
+ 	  })
+ 	  .otherwise({
+ 	  	 redirect:'/'
+ 	  })
+ }])
+==================================================
+========One way binding======================
+
+var app=angular.module('myModule',[]);
+
+ app.controller("demoCtrl",function($scope){
+  
+   $scope.sayHello=function(){
+         alert("sya hellow....");
+         console.log("function is called");
+   }
+
+ })
+
+ app.directive("demo",function(){
+
+   return {
+       restrict:"E",
+
+       scope:{
+                 done:"&"
+
+               },
+       template:'<div class="btn btn-primary" ng-click="done()">click me!</div>'
+       
+   }
+ })
+
+
+==============================================================
+
+===========two way binding==============================
+
+var app=angular.module('myModule',[]);
+
+ app.controller("demoCtrl",function($scope){
+  $scope.done="rahul";
+ })
+
+ app.directive("demo",function(){
+
+   return {
+       scope:{
+                 done:"="
+
+               },
+       template:'<input type="text" ng-model="done"/>'
+       
+   }
+ })
+
+
+==========================================================================
+controllerName.$inject=["$scope","$http","factory"];
+function controllerName($scope,$http,factory){}
+=======================================================================
+<script type="text/ng-template" id="demo.html">
+
+             <div class="well">
+                <form>
+                   <div class="form-group">
+                      <label for="fname">Firstname:</label>
+                      <input type="text" id="fname" class="form-control" placeholder="fname"/><br />
+                      <label for="fname">Lastname:</label>
+                      <input type="text" id="lname" class="form-control" placeholder="lname"/><br />
+                      <input type="button" class="btn btn-default" value="button"/>
+                   </div>
+                </form>
+              </div>
+           </script>
+============$templateCache================================
+var app=angular.module('myModule',[]);
+app.run(["$templateCache",function($templateCache){
+       $templateCache.put("demo.html","<div><h1>Hiii I am templateCache div and h1 tag!!!</h1></div>");
+       console.log($templateCache.get('demo.html'));
+}]);
+ app.directive("demo",function($templateCache){
+  console.log($templateCache.get("demo.html"));
+   return {
+      restrict:"EA",
+     templateUrl:"demo.html"
+   }
+ })
+
+========================================================================
+
+===============nested $q and defer services=======================
+
+var app=angular.module('myModule',[]);
+
+
+app.factory("appfactory",["$http","$q",function($http,$q){
+   return{
+
+   	  getFirst:function(){
+	  var deffered=$q.defer();
+
+	  $http.get("http://localhost/angularjs/data/post.json").then(
+       	function(data){
+       	  deffered.resolve(data);
+       },
+          function(data){
+       	  deffered.reject(data);
+         }
+       );
+	  return deffered.promise;
+	  },
+	   getSecond:function(){
+	  var deffered=$q.defer();
+
+	  $http.get("http://localhost/angularjs/data/pages.json").then(
+       	function(data){
+       	  deffered.resolve(data);
+       },
+          function(data){
+       	  deffered.reject(data);
+         }
+       );
+	  return deffered.promise;
+	  }
+    }
+ 
+}]);
+
+app.controller("appCtrl",["$scope","$http","appfactory",function($scope,$http,appfactory){
+
+	  var promise=appfactory.getFirst();
+
+	  promise.then(function(data){
+          console.log(data);
+	  })
+}]);
+
+
+===============================================================================
+ angular.module('app.directives',[])
+
+  .directive('navigationbar',function(){
+  	 return { 
+  	        	 restrict:"E",
+  	        	 templateUrl:"partial/navigationbar.html",
+  	        	 controller:["$scope","$http","dataFactories",function($scope,$http,dataFactories){
+  	        	 	 $scope.brand="My App";
+	             /* $http.get('http://localhost/angularjs/data/pages.json').then(function(response){
+	         			$scope.pages=response.data;
+	         			
+	       			  })*/
+               dataFactories.get(function(response){
+                    $scope.pages=response.data;
+                   },'pages');
+  	        	 }],
+  	        	 link:function(scope,element,attrs){
+
+  	        	 }
+                  
+  	     }
+  })
+=======================================================================================
+======app.js==========
+
+(function(){
+  
+     angular
+            .module("myModule",['nameModule']);
+})();
+=========================================================
+==========directive.js========
+(function(){
+
+    angular
+           .module("nameModule",[])
+           .directive("name",customDirective);
+
+           function myFun(scope,element,attr){
+                               scope.fullname=attr.first +" " + attr.last;
+                              };
+                              
+           function customDirective(){
+
+                return{
+
+                      restrict:"E",
+                      scope:{},
+                      replace:true,
+                      link:myFun,
+                      template:"<h1>{{fullname}}</h1>"
+                }
+           }
+})();
+
+============================================================================================
+
+(function(){
+
+    angular
+           .module("nameModule",[])
+           .directive("name",customDirective);
+            function myCtrl($scope){
+              
+              $scope.first="{{first}}";
+              $scope.last="{{last}}";
+            }
+           function myFun(scope,element,attr){
+                              
+                              };
+
+           function customDirective(){
+
+                return{
+
+                      restrict:"E",
+                      scope:{
+                               first:"@",
+                               last:"@"
+
+                                },
+                      replace:true,
+                      controller:myCtrl,
+                      link:myFun,
+                      template:"<h1>{{ first }}  {{last}}</h1>"
+                }
+           }
+})();
+
+================================================================================
+.filter('initials',function(){
+
+	 return function (text){
+	 	 var names=text.split(' ');
+	 	 var holder=[];
+	 	 angular.forEach(names,function(item){
+	 	 	holder.push(item.substring(0,1) + '.');
+	 	 });
+	 	 return holder.join('');
+	 }
+});
+=====================================================================================
+
+(function(){
+   
+     angular
+            .module("app.controller",[])
+            .controller("myController",CtrlFun)
+            .controller("appController",appCtrl);
+             
+             CtrlFun.$inject=["$scope","$http"];
+             function CtrlFun($scope,$http){
+		                 $scope.$emit("LOAD");
+		                  $http.get("http://localhost/angularjs/data/student.json?").success(function(data){
+		                  	  $scope.data=data;
+		                  	  $scope.$emit("UNLOAD");
+		                  	  
+		                  })
+            }
+             appCtrl.$inject=["$scope","$http"];
+            function appCtrl($scope,$http){
+              
+                $scope.$on("LOAD",function(){$scope.loading=true});
+                 $scope.$on("UNLOAD",function(){$scope.loading=false});
+            }
+
+})();
+
+
+
+=======================================================================================================
+======factory,provider,services===========================
+function Service(){}
+         Service.prototype.log=function(){return "Service"}
+         var s=new Service;
+         console.log(s.log());
+  angualr.module('APP',[]).
+			    provider('theProvider',{$get:function(){return "Provider"} }).
+			    factory('theFactory',function(){return "Factory"}).
+			    service('theService',Service).
+			     controller('theController',["$scope","theProvider","theFactory","theService",
+				 function($scope,theProvider,theFactory,theService){
+				 	$scope.providerValue=theProvider
+				 	$scope.factoryValue=theFactory
+				 	$scope.serviceValue=theService.log()
+		 }])
+==============================================================================================
+<ng-pluralize
+           count="playerCout"
+           when="{
+                   '0':'Nobody is playing',
+                   'one':'One person is playing',
+                   'other':'{} people is playing'
+              }"
+             >
+           </ng-pluralize>
+=====================================================================================================
+
+(function(){
+   
+     angular
+            .module("myModule",[])
+            .directive('m',["$parse",function($parse){
+
+            	return{
+
+            		  restrict:'EA',
+            		  link:function(s,e,a){
+
+            		  	    s.inner=$parse(a.eq);
+            		  },
+            		  template:"{{inner()}}"
+            	}
+            }])
+})();
+==================================================================================
+========Directive to Directive using require 
+
+(function(){
+   
+     angular
+            .module("myModule",[])
+            .directive('car',function(){
+
+            	return {
+
+            		  restrict:'E',
+                          scope:true,
+            		  link:function(s,e,a){
+                            s.model=a.model;
+            		  },
+                          controller:function($scope){
+                              $scope.features=['is a car'];
+                              this.addFeatures=function(f){$scope.features.push(f)}
+                          },
+            		  template:
+                          'Model:{{model}} <ul><li ng-repeat="feature in features">{{feature}}</li></ul>'
+            	}
+            })
+            .directive('wheels',function(){
+
+                    return {
+
+                         restrict:'A',
+                         require:'car',
+                         link:function(s,e,a,c){
+                            c.addFeatures('has wheels');
+                         }
+                    }
+            })
+            .directive('sound',function(){
+
+                    return {
+
+                         restrict:'A',
+                         require:'car',
+                         link:function(s,e,a,c){
+                            c.addFeatures('has sound');
+                         }
+                    }
+            })
+            .directive('break',function(){
+
+                    return {
+
+                         restrict:'A',
+                         require:'car',
+                         link:function(s,e,a,c){
+                            c.addFeatures('has break');
+                         }
+                    }
+            })
+})();
+============================================================================================
+
+==============filltext dependency=============================================
+angular.module("APP",['ng-filltext']).
+controller('theController',['$scope','filltext',function($scope,filltext){
+      var request={
+            "rows":10,
+            "fname":"{firstName}",//"fname":"{firstName}~{firstName}"
+            "lname":"{lastName}"
+      }
+      filltext.create(request,function(data,status){
+            $scope.people=data;
+      })
+}])
+=======================================================================================
+$scope.todos=JSON.parse(localStorage.getItem('todos')) || [];
+============================================================
+$scope.clearCompleted=function(){
+$scope.todos=$scope.todos.filter(function(item){
+return !item.done
+ })
+}
+===========================================
+$scope.$watch('todos',function(newValue,oldValue){
+      if(newValue!=oldValue){
+            localStorage.setItem('todos',JSON.stringfy(newValue));
+      }
+},true)
+==============================================================================
+button[id='clear'] {
+              position: relative;
+              top: 24px;
+           }
+      .done{
+
+         text-decoration:line-through;
+         color:#ccc;
+      }
+    </style>
+=============================
+<body ng-controller="todoController" style="padding-top:20px">   
+        <div class="container">
+            <div class="row">
+            <button id="clear" type="button" ng-click="clearCompleted()" class="btn btn-primary">Clear</button> 
+                 <div class="col-sm-4 col-sm-offset-4">
+                    <form name="frm1" ng-submit="addToDo()">
+                        <div class="form-group">
+                            <label for="item">Item</label>
+                               <div class="input-group">  
+                                  <input type="text" ng-model="newTodo" class="form-control" placeholder="Enter item" required />
+                                  <span class="input-group-btn"><button ng-disabled="frm1.$invalid" class="btn btn-primary">Go</button></span>
+                               </div>
+                        </div>
+                    </form>
+                    <ul>
+                        <li ng-repeat="todo in todos track by $index">
+                            <input type="checkbox" ng-model="todo.done"/>
+                          <span ng-class="{done:todo.done}"> {{todo.title}}</span>
+                        </li>
+                    </ul>
+                 </div>
+            </div>
+        </div>
+=======todo app=============================
+
+(function(){
+   
+     angular
+            .module("myModule",[])
+            .controller('todoController',['$scope',function($scope){
+              $scope.todos=JSON.parse(localStorage.getItem('todos')) || [];
+             $scope.addToDo=function(){
+                $scope.todos.push({'title':$scope.newTodo,'done':false});
+                $scope.newTodo="";
+               // console.log($scope.todos);
+             }
+           
+
+
+         $scope.$watch('todos',function(newValue,oldValue){
+                      //console.log('New value:' + newValue);
+                      //console.log('Old value:' + oldValue);
+                        if(newValue!=oldValue){
+                              localStorage.setItem('todos',JSON.stringify(newValue));
+                         }
+                   },true)
+
+          $scope.clearCompleted=function(){
+                  $scope.todos=$scope.todos.filter(function(item){
+                        //console.log(item);
+                          // console.log(item.done);
+                  return !item.done 
+                   })
+                  }
+
+            }]);
+})();
+
+
+=====================================================================================
+=========================ngAnimation==========================
+        .ng-enter{
+           transition:0.75s;
+           opacity:0;
+       }
+       .ng-enter-active{
+         opacity:1;
+       }
+       .ng-enter-stagger{
+         transition-delay:0.1s;
+       }
+       .ng-leave-stagger{
+         transition-delay:0.1s;
+       }
+       .ng-leave-active{
+         opacity:1;
+       }
+        .ng-leave{
+        transition:0.75s;
+         opacity:1;
+       }
+=================================================================================================
+
+===============$timeout & $interval=============================
+angular.module('APP',[]).
+            controller('theController',['$scope','$interval','$timeout',function($scope,$interval,$timeout){
+                  $scope.item=[];
+                  var i=0;
+          
+                  var promise=$interval(function(){
+                        $scope.items.push(i++);
+                  },500)
+                /*  var promise=setInterval(function(){
+                        $scope.items.push(i++);
+                        $scope.$apply();
+                  },500)*/
+                  $scope.stop=function(){
+                        $interval.cancel(promise);
+                  }
+            }])
+========================================================================================
+.directive('formView',['$templateCache',function($templateCache){
+
+                  return {
+
+                     restrict:'E',
+                     controller:['theController',function($templateCache){
+                        console.log($templateCache.get('demo.html'));  
+                     }],
+                     template:$templateCache.get('demo.html')
+                  }
+                 
+            }])
+           
+==================================================================================================
+(function(){
+   'use strict'
+     angular
+            .module("myModule",[])
+            
+            .controller('theController',function(){
+                  
+                   this.myFun=function($event){
+                     console.log($event.target.innerHTML);
+                   }
+            })
+})();
+
+=================================================================================================
+====================$eval and $evalAsync supported only $scope does'not support controllr as syntax 
+(function(){
+   'use strict'
+     angular
+            .module("myModule",[])
+            
+            .controller('theController',function($scope){
+                  
+                   $scope.myFun=function($event){
+                     console.log($event.target.innerHTML);
+                  
+                   $scope.$eval(function(){
+                       console.log('Eval:' + $event.target.innerHTML);
+                    })
+                     $scope.$evalAsync(function(){
+                       console.log('evalAsync:' + $event.target.innerHTML);
+                    })
+                    $event.target.innerHTML='I was change!!';
+                 };
+            })
+})();
+===============================================================================
+=======================$apply & $applyAsync============
+
+(function(){
+   'use strict'
+     angular
+            .module("myModule",[])
+            
+            .controller('theController',function($scope){
+                  
+                  window.myFun=function(){
+
+                     $scope.$watch(function(){
+                      console.log('$digest loop is running');
+                     });
+                     $scope.$apply(function(){
+                       console.log('running apply');
+                     });
+                      $scope.$apply(function(){
+                       console.log('running apply');
+                     });
+                       $scope.$apply(function(){
+                       console.log('running apply');
+                     });
+                  } 
+            })
+})();
+
+=======================
+
+(function(){
+   'use strict'
+     angular
+            .module("myModule",[])
+            
+            .controller('theController',function($scope){
+                  
+                  window.myFun=function(){
+
+                     $scope.$watch(function(){
+                      console.log('$digest loop is running');
+                     });
+                     $scope.$applyAsync(function(){
+                       console.log('running apply');
+                     });
+                      $scope.$applyAsync(function(){
+                       console.log('running apply');
+                     });
+                       $scope.$applyAsync(function(){
+                       console.log('running apply');
+                     });
+                  } 
+            })
+})();
+
+
+==================================================================================
+================$digest & $$postDigest=================================
+
+(function(){
+   'use strict'
+     angular
+            .module("myModule",[])
+            
+            .controller('theController',function($scope){
+                  $scope.$$postDigest(function(){
+                    console.log('$digest loop run');
+                  })
+
+                  window.myFun=function(){
+                  
+                   $scope.$$postDigest(function(){
+                    console.log('click me:' + '$digest loop run');
+                    console.log($scope.$$phase);
+                    })  
+                  $scope.$apply();
+                  } 
+            })
+})();
+
+
+=======================================================================================
+=============$parsers & $watch========================================================
+
+(function(){
+   'use strict'
+    function logNewMessage(newMessage){
+        console.log(newMessage);
+        return newMessage;
+    }
+     angular
+            .module("myModule",[])
+            
+            .controller('theController',function($scope){
+                
+                 $scope.message="Initial message";
+               /*  $scope.$watch('message',function(newVal,oldVal){
+                    console.log('New:' + newVal);
+                    console.log('Old:' + oldVal);
+                 })*/   
+              })
+            .directive('myDir',function(){
+             
+              return {
+
+                  require:'ngModel',
+                  link:function(scope,element,attr,ctrl){
+                     ctrl.$parsers.push(logNewMessage);
+                  }
+              };
+            })
+
+
+})();
+
+
+===================================================================================================
+===============$watch function calling twice============================================
+
+(function(){
+   'use strict';
+     angular
+            .module("myModule",[])
+            
+            .controller('theController',function($scope){
+                
+                 $scope.message="Initial message";
+                $scope.$watch(function(){
+                    document.write('$digest loop run' + '<br />');
+                 })
+              })
+})();
+
+o/p =>
+$digest loop run
+$digest loop run
+=================================================================================================
+
+==================$watch,$watchGroup & $watchCollection===========================================
+    angular
+            .module("myModule",[])
+            
+            .controller('theController',function($scope){
+                
+                 $scope.message="Initial message";
+                 $scope.$watch('message',function(newVal,oldVal){
+                    console.log('New:' + newVal);
+                    console.log('Old:' + oldVal);
+                 })   
+              })
+
+============
+
+(function(){
+   'use strict';
+     angular
+            .module("myModule",[])
+            
+            .controller('theController',function($scope,$timeout){
+                
+                 $scope.message="Initial message First";
+                 $scope.message1="Initial message Second";
+
+                $scope.$watchGroup(['message','message1'],function(newValues,oldValues){
+                   console.log('new values:'+newValues);
+                   console.log('old values:'+oldValues);
+                 })
+
+                $timeout(function(){
+                 $scope.message="New Message First";
+                },2000);
+                $timeout(function(){
+                 $scope.message1="New Message Second";
+                },4000)
+
+
+              })
+})();
+
+==================
+(function(){
+   'use strict';
+     angular
+            .module("myModule",[])
+            
+            .controller('theController',function($scope,$timeout){
+                
+                $scope.colors=['red','green','blue'];
+
+                $scope.$watchCollection('colors',function(newlist,oldlist){
+                   console.log('new list:'+newlist);
+                   console.log('old list:'+oldlist);
+                 })
+
+                $timeout(function(){
+                 $scope.colors.push('black');
+                },4000)
+
+
+              })
+})();
+
+================================================================================================
+(function(){
+   'use strict';
+     angular
+            .module("myModule",[])
+            
+            .controller('theController',function($scope,$interval){
+                
+                $scope.colors=['red','green','blue'];
+
+                $scope.$watchCollection('colors',function(newlist,oldlist){
+                   console.log('new list:'+newlist);
+                   console.log('old list:'+oldlist);
+                 })
+                $interval(function(){
+                      console.log($scope.colors);
+                },1000)
+            
+                $timeout(function(){
+                 $scope.colors.push('black');
+                },4000)
+
+
+              })
+})();
+
+=====================================================================================================
+(function(){
+   'use strict';
+     angular
+            .module("myModule",[])
+            .run(function($rootScope){
+              
+            console.log($rootScope);
+        })
+
+})();
+=============
+(function(){
+   'use strict';
+     angular
+            .module("myModule",[])
+            .filter('myUpperCase',function(){
+                return function(value){
+                    return String(value).toUpperCase();
+                }
+             })
+            .run(function($rootScope){
+
+                $rootScope.message="Hello World!";  
+            })
+})();
+
+========================================================================================================
+======
+<div class="container"> 
+          {{(message | condition)? 'Yes':'No'}}
+        </div>
+================
+(function(){
+   'use strict';
+     angular
+            .module("myModule",[])
+            .filter('condition',function(){
+                return function(value){
+                    return String(value).startsWith('Hello');
+                }
+             })
+            .run(function($rootScope){
+
+                $rootScope.message="Hello World!";
+            })
+})();
+.filter('color',function(){
+                return function(value){
+                    return value.split("");
+                }
+             })
+==================================================================================================
+(function(){
+   'use strict';
+     angular
+            .module("myModule",[])
+            .filter('split',function(){
+                return function(value){
+                    return String(value).split("");
+                }
+             })
+            .run(function($rootScope,$filter){
+
+                $rootScope.message=$filter('split')('Hello world');
+            })
+})();
+===================================================================================================
+==========parameter custom filter=========================================
+<div class="container"> 
+          {{message | conCat:'!!!':'????'}}
+        </div>
+===================
+(function(){
+   'use strict';
+     angular
+            .module("myModule",[])
+            .filter('conCat',function(){
+                return function(value,textToAppend,textToAppend1){
+                    return String(value) + String(textToAppend) + String(textToAppend1);
+                }
+             })
+            .run(function($rootScope){
+
+                //$rootScope.message=$filter('conCat')('Hello world','!!!','????');//dont't use this line using filter parameter
+                $rootScope.message="Hello world";
+            })
+})();
+
+=======================================================================================
+==============filter example===================================================================
+        <input type="number" ng-model="n_item" min="1" max="10"/>
+          <ul>
+            <li ng-repeat="item in items |grateThan:n_item">{{item | word}}</li>
+          </ul>
+============================
+(function(){
+   "use strict";
+     angular
+            .module("myModule",[])
+            .filter('word',function(){
+                return function(value){
+                    switch(Number(value)){
+                        case 1:return "One";
+                                 break;
+                        case 2:return "Two";
+                                 break;
+                        case 3:return "Three";
+                                 break;
+                        case 4:return "Four";
+                                 break;
+                        case 5:return "Five";
+                                 break;
+                        case 6:return "Six";
+                                 break;
+                        case 7:return "Seven";
+                                 break;
+                        case 8:return "Eight";
+                                 break;
+                        case 9:return "Nine";
+                                 break;
+                        case 10:return "Ten";
+                                 break;
+                        default:return "Not a Number";
+                                 break;
+                    }
+                }
+            })
+            .filter('grateThan',function(){
+                return function(listArray,param){
+                    var item=[];
+                    for(var x=0;x<listArray.length;x++){  
+                         
+                       if(listArray[x] > param){
+                         item.push(listArray[x]);
+                      }
+                    }
+                    return item;
+                }
+            })
+            .run(function($rootScope){
+               $rootScope.items=[1,2,3,4,5,6,7,8,9,10];
+               $rootScope.n_item=5;
+            })
+})();
+
+========================================================================================
+text.split("").reverse().join("");
+========================================================================================
+(function(){
+   "use strict";
+     angular
+            .module("myModule",[])
+            .controller("appCtrl",function($scope){
+                $scope.loadMethod=function(){
+                    alert("Hiii I am loading method");
+                }
+            })
+            .directive("enter",function(){
+                 return function(scope,element,attrs){
+                         element.bind('mouseover',function(){
+                             scope.loadMethod();
+                         })
+                 }
+            })
+
+})();
+=============
+(function(){
+   "use strict";
+     angular
+            .module("myModule",[])
+            .controller("appCtrl",function($scope){
+                $scope.loadMethod=function(){
+                    alert("Hiii I am loading method");
+                }
+            })
+            .directive("enter",function(){
+                  return{
+                         link:function(scope,element,attr){
+                            element.bind('mouseover',function(){
+                                scope.loadMethod();
+                            })
+                     },
+                     template:"<h3>I am a roll over!!</h3>"
+
+                }
+            })
+
+})();
+
+=========================================================================================
+<kid done="logChore(message)"></kid>
+============================
+(function(){
+   "use strict";
+     angular
+            .module("myModule",[])
+            .controller('choreCtrl',function($scope){
+                $scope.logChore=function(message){
+                     alert(message + " is done!");
+                }
+            })
+            .directive("kid",function(){
+                  return{
+                          restrict:"E",
+                          scope:{
+                            done:"&"
+                          },
+
+                          template:"<input type='text' ng-model='chore'> "
+                          + "<button type='button' class='btn btn-default' ng-click='done({message:chore})'>I\'am done</button>"
+                         
+                     }
+                
+            })
+
+})();
+
+
+=================================================================================================
+ <ng-pluralize
+          count='data.case'
+          when='{
+             "0":"Zero",
+             "1":"One",
+             "2":"Two",
+             "3":"Three",
+             "4":"Four",
+             "other":"{}  This is no"
+          }'
+
+         >
+         </ng-pluralize>
+======================================
+<div ng-switch on="data.case">
+<div ng-switch-when="1">Shown when case is 1</div>
+<div ng-switch-when="2">Shown when case is 2</div>
+<div ng-switch-default>Shown when case is anything else than 1 and 2</div>
+</div>
+================================================================================================
+=============compile & angular.element()======================
+(function(){
+   "use strict";
+     angular
+            .module("myModule",[])
+            .directive('kdk',function(){
+            	var validElement=angular.element('<div>{{data.message}}</div>');
+            	 return{
+            	 	 restrict:"E",
+            	 	 template:'<input type=\'text\' ng-model=\'data.message\'>',
+            	 	 compile:function(tElement){
+            	 	 	 tElement.append(validElement);
+            	 	 }
+
+            	 }
+            })
+
+})();
+
+==========================================================================================
+(function(){
+   "use strict";
+     angular
+            .module("myModule",[])
+            .controller("myCtrl",function($scope,$http){
+            	console.dir($http);
+            })
+            .run(function($templateCache){
+            	 $templateCache.put("demo.html","<h1>This is templateCache template</h1>");
+            })
+            .directive('myDirective',function(){	
+            	 return{
+            	 	 restrict:"E",
+            	 	 scope:{},
+                     link:function(scope,element,attrs){
+                            //console.log(scope);
+                        },
+                        templateUrl:"demo.html"
+            	 	 }
+            })
+
+})();
+
+=====================================================================================================
+(function(){
+   "use strict";
+     angular
+            .module("myModule",[])
+            .controller("myCtrl",function($scope,$http,$q){
+            	var defer=$q.defer();
+            	defer.promise.then(function(){
+            		alert("promise is ready");
+            	})
+               defer.resolve();
+            })
+            .run(function($templateCache){
+            	 $templateCache.put("demo.html","<h1>This is templateCache template</h1>");
+            })
+
+
+})
+====================================================================================================
+=========================$injector.invoke()================
+(function(){
+   "use strict";
+     angular
+            .module("myModule",[])
+            .factory('game',function(){
+                return {
+                     title:'StarCraft'
+                }
+            })
+            .controller("myCtrl",function($scope,$injector){
+                  $injector.invoke(function(game){
+                    $scope.title=game.title;
+                  })
+            })
+})(); 
+=================================================================================================
+<div ng-repeat="item in 'someword'.split('') track by $index">
+                 {{item}}
+         </div>
+ .run(function($rootScope,$log){
+                $rootScope.$log=$log;
+            })
+<div style="margin-left:10px" class="btn btn-primary" ng-repeat="item in 'someword'.split('') track by $index"
+         ng-click="ev=$event" >
+                {{$index}}-{{item}} <br>
+                {{ev.currentTarget}}
+         </div>
+  <div style="margin-left:10px" class="btn btn-primary" ng-repeat="item in 'someword'.split('') track by $index"
+         ng-click="$log.log($event)" >
+                {{$index}}-{{item}} <br>
+              
+         </div>
+============================================================================================
+
+
+angular.module("app.factories",[])
+
+
+
+.factory("dataFactories",function($http){
+
+ function getData(callback,type){
+ 	if(type=='post'){
+     var urlType="http://localhost/angularjs/data/post.json";
+ 	}else{
+ 	  var urlType="http://localhost/angularjs/data/pages.json";	
+ 	}
+ 	$http({
+
+ 		 method:"GET",
+ 		 url:urlType,
+ 		 cache:true
+
+ 	}).then(callback);   
+           console.log(callback);
+    }
+
+	return{
+      
+        get:getData
+	}
+})
+====================================================================================
+ angular.module('app.directives',[])
+
+  .directive('navigationbar',function(){
+  	 return { 
+  	        	 restrict:"E",
+  	        	 templateUrl:"partial/navigationbar.html",
+  	        	 controller:["$scope","$http","dataFactories",function($scope,$http,dataFactories){
+  	        	 	 $scope.brand="My App";
+	             /* $http.get('http://localhost/angularjs/data/pages.json').then(function(response){
+	         			$scope.pages=response.data;
+	         			
+	       			  })*/
+               dataFactories.get(function(response){
+                    $scope.pages=response.data;
+                   },'pages');
+  	        	 }],
+  	        	 link:function(scope,element,attrs){
+
+  	        	 }
+                  
+  	     }
+  })
+==============================================================================================
+
+  angular.module('app.controllers',
+  	[
+  	'app.directives',
+  	'app.factories'
+  	])
+
+   .controller("postController",function($scope,dataFactories){
+         
+       dataFactories.get(function(response){
+         	$scope.posts=response.data;
+         },'post');
+       
+   })
+ .controller("singlepostController",["$scope","$routeParams","dataFactories",function($scope,$routeParams,dataFactories){
+          dataFactories.get(function(response){
+          $scope.post=response.data[$routeParams.id];
+         },'post');
+
+   }])
+   .controller("pageController",["$scope","$routeParams","dataFactories",function($scope,$routeParams,dataFactories){
+     
+             dataFactories.get(function(response){
+         	$scope.page=response.data[$routeParams.id];
+         },'pages');
+   }])
+===================================================================================================
+var app=angular.module("myModule",[])
+               .controller("myController",["$scope","$http",function($scope,$http)
+                {
+                 	$scope.insertData=function() 
+                 	{
+                       $http.post("http://localhost/angular_js/insert.php",{
+			                       	'id':$scope.EmpId,
+			                       	'name':$scope.EmpName,
+			                       	'designation':$scope.EmpDesig,
+			                       	'salary':$scope.EmpSalary
+                                }).success(function(response){
+                                            $scope.msg="Data Inserted";
+                                            $scope.displayStud(); 
+                                            },function(response){
+                                             $scope.msg=response.data;
+                                            }) 
+               	    }
+               	    $scope.displayStud=function(){
+               	    	$http.get("http://localhost/angular_js/select.php")
+               	    	.success(function(data){
+               	    		$scope.Employees=data;
+               	    	})
+               	    }
+               	    $scope.removeStud=function(EmpId){
+               	    	$http.post("http://localhost/angular_js/remove.php",{'id':EmpId})
+               	    	.success(function(){
+               	    		$scope.msg="Data Remove successful";
+               	    		$scope.displayStud();
+               	    	})
+               	    }
+               }])
+ 
+===========================================================================================
+
+(function(){
+   
+     angular
+            .module("myModule",[])
+            .controller('todoController',['$scope',function($scope){
+              $scope.todos=JSON.parse(localStorage.getItem('todos')) || [];
+             $scope.addToDo=function(){
+                $scope.todos.push({'title':$scope.newTodo,'done':false});
+                $scope.newTodo="";
+               // console.log($scope.todos);
+             }
+           
+
+
+         $scope.$watch('todos',function(newValue,oldValue){
+                     
+                        if(newValue!=oldValue){
+                              localStorage.setItem('todos',JSON.stringify(newValue));
+                         }
+                   },true)
+
+          $scope.clearCompleted=function(){
+                  $scope.todos=$scope.todos.filter(function(item){
+                        //console.log(item);
+                          // console.log(item.done);
+                  return !item.done 
+                   })
+                  }
+                  var commands={
+                    'new item *val':function(val){
+                      $scope.newTodo=val;
+                      $scope.addToDo();
+                      $scope.$apply();
+                    },
+                    'check number *val':function(val){
+                       $scope.todos[parseInt(val)-1].done=true;
+                       $scope.$apply();
+                    },
+                    'remove number *val':function(val){
+                      $scope.todos.splice(parseInt(val)-1,1)
+                      $scope.$apply();
+                    },
+                    'clear completed':function(){
+                      $scope.clearCompleted();
+                      $scope.$apply();
+                    }
+                  }   
+                  annyang.addCommands(commands);
+                  annyang.debug();
+                  annyang.start(); 
+            }]);
+})();
+
+
+=================================================================================================
+
+
+angular.module("app.factories",[])
+
+
+
+.factory("dataFactories",function($http){
+
+ function getData(callback,type){
+ 	if(type=='post'){
+     var urlType="http://localhost/angularjs/data/post.json";
+ 	}else{
+ 	  var urlType="http://localhost/angularjs/data/pages.json";	
+ 	}
+ 	$http({
+
+ 		 method:"GET",
+ 		 url:urlType,
+ 		 cache:true
+
+ 	}).then(callback);   
+           console.log(callback);
+    }
+
+	return{
+      
+        get:getData
+	}
+})
+==========================================================================================
+=============.htaccess===========================================================
+RewriteEngine on
+RewriteCond $1 !^(index\.php|resources|robots\.txt)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L,QSA] 
+==================app.js===========================================
+(function(){
+   "use strict";
+     angular
+            .module("app_module",
+              [
+              'ngRoute',
+              'app.controller' 
+              ])
+
+            .config(routeProvider);
+             routeProvider.$inject=['$routeProvider','$locationProvider'];
+            function routeProvider($routeProvider,$locationProvider){
+                
+                $routeProvider
+                .when('/',{
+                    templateUrl:"template/posts.html",
+                    controller:"post_controller"
+                })
+                  .when('/create_post',{
+                    templateUrl:"template/create.html",
+                    controller:"create_controller"
+                })
+                   .when('/view_post/:id',{
+                    templateUrl:"template/view.html",
+                    controller:"view_controller"
+                })
+                    .when('/delete_post/:id',{
+                    templateUrl:"template/delete.html",
+                    controller:"delete_controller"
+                })
+                .otherwise({
+                    redirectTo:'/'
+                })
+
+               $locationProvider.html5Mode(true);
+            }
+
+
+})(); 
+
+==============controllers.js=====================================================
+
+(function(){
+   "use strict";
+          angular
+          .module('app.controller',[])
+
+               .controller('post_controller',post_controller)
+               .controller('create_controller',create_controller)
+               .controller('view_controller',view_controller)
+               .controller('delete_controller',delete_controller);
+                    post_controller.$inject=['$scope','$http','$log'];
+                    function post_controller($scope,$http,$log){
+                        
+                        $http.get("http://127.0.0.1/angularjs/api/fetch.php").success(function(response){
+                        	$scope.posts=response;
+                        })
+                     }
+                     create_controller.$inject=['$scope','$http'];
+                     function create_controller($scope,$http){
+                      
+                        $scope.add_post=function(data){  
+                        	if((!data.title=="") && (!data.description=="")){
+			                    $http.post("http://127.0.0.1/angularjs/api/insert.php",
+			                     {
+			                         	'title':data.title,
+			                         	'description':data.description
+			                      }).success(function(response){
+			                      	    $scope.data={};
+			                         	$scope.msg=response;
+			                       })
+                        	   }else{
+                        	   	alert("Please fill all details");
+                        	   }
+                            }
+                     }
+
+                     view_controller.$inject=['$scope','$http','$routeParams'];
+                    function view_controller($scope,$http,$routeParams){
+                           $http.post("http://127.0.0.1/angularjs/api/single_post.php",{'id':$routeParams.id}).success(function(response){
+                          $scope.single_posts=response;
+                         })
+                     }
+
+                     delete_controller.$inject=['$scope','$http','$routeParams'];
+                    function delete_controller($scope,$http,$routeParams){
+                           $http.post("http://127.0.0.1/angularjs/api/delete.php",{'id':$routeParams.id}).success(function(response){
+                          $scope.delete_post=response;
+                         })
+                     }
+
+
+ })(); 
+==========================================================================================================
+
+
+(function(){
+   "use strict";
+          angular
+          .module('app.controller',[])
+          .controller('app_controller',app_controller)
+          app_controller.$inject=['$log','$http','$scope'];
+          function app_controller($log,$http,$scope){
+               this.msg="Hello AngularJs";
+               $log.log($scope);//normal scope
+               $log.log($scope.__proto__);//rootScope
+               $log.log($scope.__proto__.__proto__);//rootScope.prototype
+               $log.log($scope.__proto__.__proto__.__proto__);//master Object
+          }
+
+ })(); 
+============================================================================================================
+
+(function(){
+   "use strict";
+          angular
+          .module('app.controller',[])
+          .controller('app_controller',app_controller)
+          app_controller.$inject=['$log','$http','$scope'];
+          function app_controller($log,$http,$scope){
+               this.msg="Hello AngularJs";
+               $log.log(this);//normal constructor function
+               $log.log(this.__proto__); //constructor prototype
+               $log.log(this.__proto__.__proto__);//master Object
+               
+          }
+ 
+ })(); 
+====================================================================================================
+
+(function(){
+   "use strict";
+          angular
+          .module('app.controller',[])
+          .run(function($rootScope){
+          	  console.log($rootScope.$id);//1
+          })
+          .controller('app_controller',app_controller)
+          .controller('app_controller1',app_controller1)
+          app_controller.$inject=['$log','$http','$scope'];
+          function app_controller($log,$http,$scope){
+               this.msg="Hello scope1";
+               $log.log($scope.$id);//2
+              
+               
+          }
+          app_controller1.$inject=['$log','$http','$scope'];
+          function app_controller1($log,$http,$scope){
+                $log.log($scope.$id);
+                this.msg="Hello scope2";//3
+          }
+ 
+ })(); 
+=======================================================================================================
+===========Exception Handling============================
+
+(function(){
+   "use strict";
+          angular
+          .module('app.controller',[])
+          .controller('easyController',easyController);
+
+            easyController.$injector=['$log'];
+            function easyController ($log){
+             this.throwEx=function(){
+                throw new Error("Exception Triggered");
+             }
+          }
+ 
+ })(); 
+========OR=========
+
+(function(){
+   "use strict";
+          angular
+          .module('app.controller',[])
+          .controller('easyController',easyController);
+
+            easyController.$injector=['$log','$exceptionHandler'];
+            function easyController ($log,$exceptionHandler){
+             this.throwEx=function(){
+                try{
+                  throw new Error("Exception Triggered");
+                }catch(ex){
+                   $exceptionHandler(ex.message,"at button click");
+                }
+             }
+          }
+ 
+ })(); 
+============custom exception handling==
+
+(function(){
+   "use strict";
+          angular
+          .module('app.controller',[])
+          .factory('$exceptionHandler',function($log){
+              return function(exception,cause){
+                 $log.error('message:' + exception.message ,'(cause:' + cause + ')');
+              }
+          })
+          .controller('exceptionController',exceptionController);
+
+            exceptionController.$injector=['$log','$exceptionHandler'];
+            function exceptionController ($log,$exceptionHandler){
+             this.throwEx=function(){
+                try{
+                  throw new Error("Exception Triggered");
+                }catch(ex){
+                   $exceptionHandler(ex,"at button click");
+                }
+             }
+          }
+ 
+ })(); 
+=========================================================================================
+========$document & $window services==============
+
+(function(){
+   "use strict";
+          angular
+          .module('app.controller',[])
+    
+          .controller('theController',theController);
+
+            theController.$injector=['$document','$window'];
+            function theController ($document,$window){
+                  $document.find('button').on('click',function(event){
+                    $window.alert(event.target.innerHTML);
+                  })
+          }
+ 
+ })(); 
+=======================================================
+=============================Contact App==================================
+             
+(function(){
+   "use strict";
+      var app=angular.module('contact.controller',[]);
+          app.controller('ContactCtrl',ContactCtrl);
+          app.controller('HeaderCtrl',HeaderCtrl);
+          app.controller('FooterCtrl',FooterCtrl);
+
+         // app.value('AppNameSvc','New Contact App');
+
+          app.value('AppDataSvc',{
+                  
+                  'name':'Contact App',
+                  'author':'Rahul',
+                  'company':'Java Brains',
+                  'version':1
+             });
+
+          function AppConfig(AppDataSvc){
+          //this={};
+                  this.name=AppDataSvc.name;
+                  this.author=AppDataSvc.author;
+                  this.company='Java Brains';
+                  this.details=
+                  "Name:" + AppDataSvc.name + " " +
+                  "Author:" + AppDataSvc.author + " " +
+                  "Company:" + AppDataSvc.company;
+
+          //return this;
+      }
+
+           /*function PrepareAppConfig(AppNameSvc){
+               
+            var value={};
+                       value.name=AppNameSvc;
+                       value.author='Rahul';
+                       value.company='Java Brains';
+                       value.version=1;
+             return value;
+          }*/
+          /*function PrepareAppConfig(){
+               return {
+
+                       'name':'Contact App',
+                       'author':'Rahul',
+                       'company':'Java Brains',
+                       'version':1
+               }
+          }*/
+         
+          /*app.value('AppDataSvc',{
+                  
+                  'name':'Contact App',
+                  'author':'Rahul',
+                  'company':'Java Brains',
+                  'version':1
+             });*/
+
+          /*app.value('loggingSvc',function(){
+               console.log("Hello");
+          })*/
+
+         /*  app.constant('AppDataSvc',{
+                  
+                  'name':'Contact App',
+                  'author':'Rahul',
+                  'company':'Java Brains',
+                  'version':1
+             });*/
+
+         /* app.factory('AppDataFactorySvc',function(){
+               return {
+
+                       'name':'Contact App',
+                       'author':'Rahul',
+                       'company':'Java Brains',
+                       'version':1
+               }
+          })*/
+          // app.factory('AppDataFactorySvc',PrepareAppConfig);//PrepareAppConfig()
+      
+             app.service('AppDataServiceSvc',AppConfig);//new AppConfig();
+
+
+
+
+         ContactCtrl.$inject=['$log'];
+          function ContactCtrl($log){
+              this.contacts=[
+                         {
+                             "gender":"female",
+                             "name":{
+                                 "title":"miss",
+                                 "first":"judith",
+                                 "last":"newman"
+                                },
+                             "location":{
+                                 "street":"7057 manor road",
+                                 "city":"ardee",
+                                 "state":"wexford",
+                                 "postcode":68208
+                                },
+                             "email":"judith.newman@example.com",
+                             "login":{
+                                 "username":"lazygorilla180",
+                                 "password":"camille",
+                                 "salt":"eenI5bpK",
+                                 "md5":"151ca5534ce8230619d943ca78a60883",
+                                 "sha1":"088544cc4a3a0d9a61227cca6fb0c91cbcde3dd9",  
+                                 "sha256":"29fff2b4a639e4c8c5a94ef7dcc53fa5e67730cc15b940a891c46268af0ef59f"
+                               },
+                             "dob":"1959-04-19 07:30:29",
+                             "registered":"2007-10-05 00:47:54",
+                             "phone":"031-088-4956",
+                             "cell":"081-375-7692",
+                             "id":1,
+                             "picture":"image/unknownf.png",
+                             "nat":"IE"
+                         },
+                         {
+                             "gender":"male",
+                             "name":{
+                                 "title":"Mr.",
+                                 "first":"John",
+                                 "last":"Doe"
+                                },
+                             "location":{
+                                 "street":"7897 paner road",
+                                 "city":"US",
+                                 "state":"wexford",
+                                 "postcode":66308
+                                },
+                             "email":"john.doe@example.com",
+                             "login":{
+                                 "username":"jongorilla180",
+                                 "password":"John123",
+                                 "salt":"eenI5bpK",
+                                 "md5":"151ca5534ce8230619d943ca78a60883",
+                                 "sha1":"088544cc4a3a0d9a61227cca6fb0c91cbcde3dd9",  
+                                 "sha256":"29fff2b4a639e4c8c5a94ef7dcc53fa5e67730cc15b940a891c46268af0ef59f"
+                               },
+                             "dob":"1998-02-25 03:30:29",
+                             "registered":"2007-10-05 00:47:54",
+                             "phone":"031-000-3556",
+                             "cell":"037-375-7832",
+                             "id":2,
+                             "picture":"image/unknownm.png",
+                             "nat":"IE"
+                         },
+                         {
+                             "gender":"female",
+                             "name":{
+                                 "title":"miss",
+                                 "first":"sara",
+                                 "last":"toni"
+                                },
+                             "location":{
+                                 "street":"6895 solanki road",
+                                 "city":"ardeeing",
+                                 "state":"oxford",
+                                 "postcode":9854
+                                },
+                             "email":"sara.toni@example.com",
+                             "login":{
+                                 "username":"saratoni@48555",
+                                 "password":"saratoni123",
+                                 "salt":"eenI5bpK",
+                                 "md5":"151ca5534ce8230619d943ca78a60883",
+                                 "sha1":"088544cc4a3a0d9a61227cca6fb0c91cbcde3dd9",  
+                                 "sha256":"29fff2b4a639e4c8c5a94ef7dcc53fa5e67730cc15b940a891c46268af0ef59f"
+                               },
+                             "dob":"1869-03-12 07:30:29",
+                             "registered":"2007-10-05 00:47:54",
+                             "phone":"001-080-4950",
+                             "cell":"080-375-7602",
+                             "id":3,
+                             "picture":"image/female.png",
+                             "nat":"IE"
+                         },
+                         {
+                             "gender":"male",
+                             "name":{
+                                 "title":"Mr.",
+                                 "first":"Shown",
+                                 "last":"Marsharl"
+                                },
+                             "location":{
+                                 "street":"89744 east road",
+                                 "city":"ooweood",
+                                 "state":"toodiya",
+                                 "postcode":524552
+                                },
+                             "email":"shown.marsharl@example.com",
+                             "login":{
+                                 "username":"shownmarshal@85441",
+                                 "password":"shown123",
+                                 "salt":"eenI5bpK",
+                                 "md5":"151ca5534ce8230619d943ca78a60883",
+                                 "sha1":"088544cc4a3a0d9a61227cca6fb0c91cbcde3dd9",  
+                                 "sha256":"29fff2b4a639e4c8c5a94ef7dcc53fa5e67730cc15b940a891c46268af0ef59f"
+                               },
+                             "dob":"1839-04-11 07:30:29",
+                             "registered":"2008-10-05 00:47:54",
+                             "phone":"031-000-4956",
+                             "cell":"081-375-7002",
+                             "id":4,
+                             "picture":"image/male.png",
+                             "nat":"IE"
+                         }
+                    ]
+                 this.selectedContact=this.contacts[0];
+               this.selectContact=function(index){
+               this.selectedContact=this.contacts[index];
+               }
+              
+          }
+
+         HeaderCtrl.$inject=['AppDataServiceSvc'];
+          function HeaderCtrl(AppDataServiceSvc){
+             this.title=AppDataServiceSvc.name;
+             console.log(AppDataServiceSvc.details);
+          }
+
+          FooterCtrl.$inject=['AppDataServiceSvc'];
+          function FooterCtrl(AppDataServiceSvc){
+             this.title=AppDataServiceSvc.name;
+          }
+ })(); 
+=====================================================================================
+========contact.dataSev.js=======================================================
+
+     (function(){
+        
+         "use strict";
+        var app=angular.module("ContactApp");
+    
+            app.service('contactDataSvc',ContactDataSvc);
+
+            ContactDataSvc.$inject=['$http','$q'];
+
+            function ContactDataSvc($http,$q){
+                  var deffered=$q.defer();
+                
+                  
+                 $http({
+
+                 	   url:'http://127.0.0.1/contact_app/data/db.json',
+                 	   method:'GET',
+                 	   cache:true,
+
+                 }).then(
+		                  function(response){
+                                deffered.resolve(response);
+		                  },
+		                  function(response){
+                               deffered.reject(response);
+		                   }  
+		                );
+                 this.getContacts=function(){
+     	            return deffered.promise;
+	               }
+	            return this;
+            }
+  })();
+=============================================================================
+==========app.nameSev.js=====================================================
+
+     (function(){
+        
+         "use strict";
+        var app=angular.module("ContactApp");
+
+        app.value('AppNameSvc','New Contact App');
+
+         app.value('AppDataSvc',{
+                  
+                  'name':'Contact App',
+                  'author':'Rahul',
+                  'company':'Java Brains',
+                  'version':1
+             });
+
+  })();
+========contact.configFactory.js=============================================
+  
+     (function(){
+        
+         "use strict";
+        var app=angular.module("ContactApp");
+
+            function PrepareAppConfig(AppNameSvc){
+               
+				            var value={};
+				                       value.name=AppNameSvc;
+				                       value.author='Rahul';
+				                       value.company='Java Brains';
+				                       value.version=1;
+				             return value;
+			          }
+
+       app.factory('AppDataFactorySvc',PrepareAppConfig);//PrepareAppConfig()
+
+  })();
+========contact.configSev.js======================================================
+
+
+     (function(){
+        
+         "use strict";
+           var app=angular.module("ContactApp");
+
+			    function AppConfig(AppDataSvc){
+			          //this={};
+			                  this.name=AppDataSvc.name;
+			                  this.author=AppDataSvc.author;
+			                  this.company='Java Brains';
+			                  this.details=
+			                  "Name:" + AppDataSvc.name + " " +
+			                  "Author:" + AppDataSvc.author + " " +
+			                  "Company:" + AppDataSvc.company;
+
+			          //return this;
+	              }
+
+
+	            app.service('AppDataServiceSvc',AppConfig);//new AppConfig();
+  })();
+
+=======contact.contrller.js======================================================
+
+(function(){
+   "use strict";
+      var app=angular.module('ContactApp');
+          app.controller('ContactCtrl',ContactCtrl);
+          app.controller('HeaderCtrl',HeaderCtrl);
+          app.controller('FooterCtrl',FooterCtrl);
+
+         
+         ContactCtrl.$inject=['$log','contactDataSvc'];
+          function ContactCtrl($log,contactDataSvc){
+               var self=this;
+                self.editMode=false;
+               var promise=contactDataSvc.getContacts();
+               promise.then(function(response){
+                  self.contacts=response.data;
+               });
+               this.selectContact=function(index){
+               this.selectedContact=this.contacts[index];
+               }
+
+               this.toggleEditMode=function(){
+                    console.log(self.editMode);
+                    self.editMode=!self.editMode;
+               }
+               
+          }
+
+               HeaderCtrl.$inject=['AppDataServiceSvc'];
+               function HeaderCtrl(AppDataServiceSvc){
+                  this.title=AppDataServiceSvc.name;
+                  console.log(AppDataServiceSvc.details);
+               }
+
+               FooterCtrl.$inject=['AppDataServiceSvc'];
+               function FooterCtrl(AppDataServiceSvc){
+                  this.title=AppDataServiceSvc.name;
+               }  
+
+         
+ })(); 
+====================================================================================================
+
+(function(){
+   "use strict";
+         var app=angular.module('app_module');
+
+         app.controller('theController',["$scope",function($scope){
+            $scope.input="";
+
+               $scope.$watch('input',function(newVal,oldVal){
+                    if(newVal!=oldVal){
+                          console.log(newVal);
+                    }
+               })
+         }]);
+                 
+ })(); 
+=====================================================================================================
+
+(function(){
+   "use strict";
+         var app=angular.module('app_module');
+
+         app.controller('theController',["$scope",function($scope){
+             $scope.flag=false;
+           $scope.toggle=function(){
+                console.log($scope.flag);
+                $scope.flag=!$scope.flag;
+           } 
+
+         }]);
+                 
+ })(); 
+=====================================================================================================
+<div class="container" ng-controller="theController">      
+            <div ng-include="'partial/partial.html'"></div>
+    </div>
+===============================================================================================
+=======$parse==================================================================================
+
+(function(){
+   "use strict";
+         var app=angular.module('app_module');
+
+         app.controller('theController',["$scope","$parse",function($scope,$parse){
+             
+             $scope.a=10;
+             $scope.b=20;
+
+             $scope.demoParse=function(){
+                 var r=$parse("a * b");//return a function
+                 alert(r($scope));
+             }
+             
+         }]);
+                 
+ })(); 
+=================OR===========================================
+
+(function(){
+   "use strict";
+         var app=angular.module('app_module');
+
+         app.controller('theController',["$scope","$parse",function($scope,$parse){
+             $scope.demoParse=function(){
+                alert($parse("a * b")({a:8,b:20}));
+
+             }
+             
+         }]);
+                 
+ })(); 
+==============================================================================================
+======$interpolate============================================================================
+
+(function(){
+   "use strict";
+         var app=angular.module('app_module');
+
+         app.controller('theController',["$scope","$interpolate",function($scope,$interpolate){
+             
+             $scope.a=10;
+             $scope.b=20;
+
+             $scope.demoInterpolate=function(){
+                 var r=$interpolate("{{a * b"}});//return a function
+                 alert(r($scope));
+             }
+             
+         }]);
+                 
+ })(); 
+==========================================================================================

@@ -1,0 +1,221 @@
+===================================================
+$(function(){
+      $('body').css({
+	         fontSize:'16px',
+			 marginTop:'40px'
+	     }).append('<h3>This is heading</h3>');
+     $('input').on('change',function(){
+	    var color=$("input[type='color']").val();
+		$('h3').css('color',color);
+	 });
+ })
+====================================================================
+
+(function($){
+  $('p').filter('.intro').prevUntil($('p').eq(1)).css('color','red');
+})(jQuery)
+=====================================================================
+(function($){
+    function Add(){
+	  return arguments.length;
+	}
+	var value=Add(4,5,6,1,2,3,8,5,2,5);
+	console.log(value);
+})(jQuery)
+=========================================================================
+$(document).ready(function(){
+    $("p:nth-child(4)").on('click',function()
+{
+      alert(this);
+ });
+});
+=======================================================================
+(function($){
+    $('input:last-child').click(function(){
+	    var length=$(':checked').length;
+		if(length > 0){
+		   $(':checked').each(function(index,element){
+		         console.log($(element).val());
+		   });
+		}else{
+		  console.log("No checkbox checked");
+		}
+	})
+})(jQuery)
+=============================================================================
+(function($){
+  $('h3').addClass('styleClass').click(function(){
+    $(this).removeClass('styleClass');
+	 //this.classList.value;
+	 //this.classList[0];
+    //console.dir(this);
+   //console.dir($(this));
+  });
+})(jQuery)
+================================================================================
+(function($){
+  $('h3').click(function(){
+	 var c=document.createElement('p');
+	 var x=document.createTextNode('Hello');
+	 c.appendChild(x);
+	  console.log(this.parentNode.appendChild(c));
+  });
+})(jQuery)
+=====================================================================================
+$(document).ready(function(){
+    $("p").click(function(){
+        if ($("p").parent().is("div")) {
+            alert("Parent of p is div");
+        }
+    });
+});
+========================================================================================
+(function($){
+    $("button").click(function(){
+        var x = $("form").serializeArray();
+        $.each(x, function(i, field){
+            $("#results").append(field.name + ":" + field.value + " ");
+        });
+    });
+})(jQuery)
+===============================================================================================
+(function($){
+    $("button").click(function(){
+      var x=$('#results').text($('form').serialize());
+    });
+})(jQuery)
+================================================================================================
+<script type="text/javascript">
+$(document).ready(function() {
+$(".answer").hide();
+$("#<%=chkShowAll.ClientID%>").click(function() {
+if ($("#<%=chkShowAll.ClientID%>").is(":checked")) {
+$(".answer").show();
+$(".image").attr("src", "images/minus.png");
+} else {
+$(".answer").hide();
+$(".image").attr("src", "images/plus.png");
+}
+});
+$(".image").click(function(evt) {
+$(this).next(".answer").toggle();
+var src = ($(this).attr("src") === "images/plus.png") ?
+"images/minus.png" : "images/plus.png";
+$(this).("src", src);
+evt.preventDefault();
+});
+});
+</script>
+=======================================================================================================
+(function(){
+   $(":checkbox").click(function(){ 
+	if($('#checkId').is(':checked')){
+	    $("#result").html("Checkbox is Checked");
+	}else{
+	  $("#result").html("checkbox is Not checked");
+	 }
+	});
+})()
+=================================================================
+if ($(this).is(":checked"))//all input element put
+===========================================================================================
+var src = ($(this).attr("src") === "images/plus.png") ?
+"images/minus.png" : "images/plus.png";
+$(this).attr("src", src);
+==========================================================================================
+<script type="text/javascript">
+$(document).ready(function () {
+$("table[id=GridView1]").on("dblclick", "tr", function () {
+$(this).find(".edit").trigger("click");
+});
+$(".edit").click(function () {
+eval($(this).attr('href'));
+});
+});
+</script>
+==========================================================================================
+$("#highlite").on("click", function () {
+  if ($(this).is(":checked")) {
+      $("input:text").on("focus", function () {
+         $(this).addClass("active");
+      });
+     $("input:text").on("blur", function () {
+         $(this).removeClass("active");
+      });
+ } else {
+  $("input:text").off();
+  }
+});
+=====================================================================
+<script type="text/javascript">
+		   $(document).ready(function(){
+		         $("#btnId").click(function(){
+
+		            var value=$("input[type='text']").val();
+		            if(value!=""){
+		               $.ajax({
+		               	   method:"GET",
+		               	   url:"process.php",
+		               	   data:{"name":value},
+		               	   cache:true,
+		               	   success:function(data,status_text){
+                              $('h3').html(data.data);
+		               	   },
+                           error:function(xhr){
+                              $('h3').html(xhr.responseJSON.status_message);
+		               	   },
+		               })
+		            }
+		         })
+		    })
+ 		</script>
+============================================================================
+$(window).scroll(function(){
+		   var windowHeight=$(window).height();
+		   var windowScrollPosTop=$(window).scrollTop();
+		   var windowScrollPosBottom=windowScrollPosTop + windowHeight;
+		   
+		   var objectOffset=$(".men-dress").offset();
+		   var objectOffsetTop=objectOffset.top;
+		   if(!$(".men-dress").hasClass("animaton-complete")){
+		   if(windowScrollPosBottom > objectOffsetTop){
+		   
+		      $(".men-dress").animate({'opacity':'1'},3000).addClass('animaton-complete');
+		     }
+		   }
+		   
+		})
+==========================================================================================
+
+$(function(){
+   $("input[type='checkbox']").on('click',function(){
+       if($(this).is(":checked")){
+           $("#password").attr('type','text');
+       }else{
+           $("#password").attr('type','password'); 
+       }
+   })
+});
+==================================================================================================
+
+$("#postId").on('click',function(){
+     
+        var username=$("#username").val();
+        var email=$("#email").val();
+        var password=$("#password").val();
+     
+      $.ajax({
+           url:'data/process.php',
+           method:"POST",
+           data:{'u_name':username,'u_email':email,'u_pass':password},
+           cache:true,
+           success:function(data,status,status_text){
+               $(".result").html(data);
+           },
+          error:function(xhr,error){
+                $(".result").html(error);
+          }
+           
+      })
+})
+===============================================================================================

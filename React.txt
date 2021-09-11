@@ -1,0 +1,744 @@
+==== Create React App =====================
+
+1) create project 
+
+ npx create-react-app app_name
+
+=================================
+2) goto directory 
+
+  cd app_name
+
+=================================
+
+3) run project
+ 
+   npm start
+=================================
+
+
+====== index.html ================
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
+
+======== index.js ===========
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
+==========index.css ============
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+=========== App.js =====================
+import logo from './logo.svg';
+import './App.css';
+import Home from './home';
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        {/* <a
+          className="App-link"
+          href="https://reactjs.org" 
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>  */}
+        <Home data={{a:300,b:400}}/>
+      </header>
+    </div>
+  );
+}
+
+export default App;
+============= App.css ===================
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+================== Home.js / component =========
+import React from 'react'
+
+class Home extends React.Component{
+    constructor(){
+        super()
+
+        this.state = {
+             show:true
+        }
+    }
+    updateState(){
+         this.setState({
+             show:!this.state.show
+         })
+    }
+    render(){
+        return (
+            <div>
+                {
+                    this.state.show ?
+                    <h1>Hello world</h1>
+                    : <h1>Hello gig</h1>
+                }
+                
+                 <button onClick={()=>{this.updateState()}}>Update Count</button>
+            </div>
+            
+        )
+    }
+}
+
+export default Home;
+=============================
+
+==================== bind function event with class component =====
+
+import React from 'react';
+
+class Home extends React.Component{
+    clickme(){
+         alert("Clicked!");
+    }
+    render(){
+        return(
+             <div className="container">
+                  <h1>{this.props.cmptxt}</h1>
+                  <p onClick={this.clickme}>click me !</p>
+             </div>
+        )
+    }
+}
+export default Home;
+
+======================bind function event with function component
+
+import React from 'react';
+
+function Home(prps){
+    const clickme = ()=>{
+         alert("Clicked!");
+    }
+    return (
+         <div class="container">
+             <h1>{prps.cmptxt}</h1>
+              <p onClick={clickme}>click me!</p>
+        </div>
+    )
+}
+
+export default Home;
+
+==================state udpate call ==
+import React from 'react';
+
+class Home extends React.Component{
+    constructor(){
+        super();
+        this.state = {
+            name:'chrome'
+        }
+    }
+    clickme(){
+         this.setState({
+            name:"Browse"
+         })
+    }
+    render(){
+        return(
+             <div className="container">
+                  <h1>{this.props.cmptxt}</h1>
+                  <p>Name:{this.state.name}</p>
+                  <p onClick={()=>{this.setState({name:"Browse"})}}>click me !</p>
+             </div>
+        )
+    }
+}
+export default Home;
+
+
+===================Toggle button show hide text ===
+import React from 'react';
+
+class Home extends React.Component{
+    constructor(){
+        super();
+        this.state = {
+            show:true
+        }
+    }
+    
+    render(){
+        return(
+             <div class="container">
+                 {
+                     this.state.show? 
+                     <h1>{this.props.cmptxt}</h1>
+                     : null
+                 }                 
+                  <button onClick={()=>{this.setState({show :!this.state.show})}}>toggleBtn</button>
+             </div>
+        )
+    }
+}
+export default Home;
+
+=====================hooks====useState ============
+import React, {useState} from 'react';
+
+
+function Home(){
+    const [count,setCount] = useState(0)        
+    return(
+          <div>
+              <h1>Hello world {count}</h1>
+             <button onClick={()=>{setCount(count + 1)}}>Increment</button>
+         </div>         
+         )
+}
+
+export default Home;
+============================useEffect ==
+import React, {useState,useEffect} from 'react';
+
+
+function Home(){
+    const [count,setCount] = useState(0)  
+    useEffect(()=>{
+        console.warn(count);
+    },[count == 5])
+          
+    return(
+          <div>
+              <h1>Hello world {count}</h1>
+             <button onClick={()=>{setCount(count + 1)}}>Increment</button>
+         </div>         
+         )
+}
+
+export default Home;
+
+===============================FORM USING state ===========
+import React from 'react'
+
+
+class Profile extends React.Component{
+
+    constructor(){
+        super()
+        this.state = {
+              username:null,
+              password:null
+        }
+    }
+    submitForm(){
+        console.warn(this.state);
+    }
+    render(){
+        return(
+             <div class="container">
+                  <h2>Profile Form</h2>
+                  <p>
+                      Username:<input type="text" name="username"
+                      onChange={(e)=>{this.setState({'username':e.target.value})}}
+                      />
+                  </p>
+                  <p>
+                      Password:<input type="password" name="password"
+                       onChange={(e)=>{this.setState({'password':e.target.value})}}
+                      />
+                  </p>
+                  <button onClick={()=>{this.submitForm()}}>Submit Form</button>
+             </div>
+        )
+    }
+}
+
+export default Profile;
+==================================validation form==
+import React from 'react'
+
+
+class Profile extends React.Component{
+
+    constructor(){
+        super()
+        this.state = {
+              username:null,
+              password:null,
+              usernameErr:'',
+              passwordErr:''
+        }
+    }
+    isValid(){
+        if(!this.state.username.includes("@") && this.state.password.length < 5){
+            this.setState({
+                 usernameErr:'Invalid Username Please Enter Valid Email',
+                 passwordErr:'Password length must be greather than 5'
+            });
+        }else if(!this.state.username.includes("@")){
+            this.setState({
+                usernameErr:'Invalid Username Please Enter Valid Email'
+           });
+        }else if(this.state.password.length < 5){
+            this.setState({
+                passwordErr:'Password length must be greather than 5'
+            });
+        }else if(typeof this.state.username != 'string'){
+            this.setState({
+                usernameErr:'username is null',
+                passwordErr:'password is null'
+           });
+        }else{
+            return true;
+        }      
+    }
+    submitForm(){       
+        if(this.isValid()){
+              this.ResetForm();
+              alert("Form Has Been Submited!!");
+        }
+    }
+    ResetForm(){
+         this.setState({
+              username:'',
+              password:'',
+              usernameErr:'',
+              passwordErr:''
+         });
+    }
+    render(){
+        return(
+             <div class="container">
+                  <h2>Profile Form</h2>
+                  <p>
+                      Username:<input type="text" name="username"
+                      onChange={(e)=>{this.setState({'username':e.target.value})}}
+                      />
+                      <br/>
+                      <span style={{'color':'red','font-size':'14px'}}>{this.state.usernameErr}</span>
+                  </p>
+                  <p>
+                      Password:<input type="password" name="password"
+                       onChange={(e)=>{this.setState({'password':e.target.value})}}
+                      />
+                      <br/>
+                     <span style={{'color':'red','font-size':'14px'}}>{this.state.passwordErr}</span>
+                  </p>
+                  <button onClick={()=>{this.submitForm()}}>Submit Form</button>
+                  <button onClick={()=>{this.ResetForm()}}>Reset Form</button>
+             </div>
+        )
+    }
+}
+
+export default Profile;
+
+===================render table using map method ==
+
+import React from 'react';
+import './App.css'
+
+class Profile extends React.Component{
+
+    constructor(){
+
+        super();
+
+        this.state = {
+              list:[
+                  {id:1,name:'Jhon Doe',email:'jhondoe@test.com'},
+                  {id:2,name:'Mark Hood',email:'markhood@test.com'},
+                  {id:3,name:'Sara Waksya',email:'sarawaksya@test.com'}
+              ]
+        }
+    }
+
+    render(){
+
+        return(
+
+             <div className="container">
+                 <table border="1">
+                     <thead>
+                         <th>#</th>
+                         <th>Name</th>
+                         <th>Email</th>
+                     </thead>
+                     <tbody>
+                 {
+                      this.state.list.map((user)=>
+                            <tr key={user.id}> - key binding
+                                <td>{user.id}</td>
+                                <td>{user.name}</td>
+                                <td>{user.email}</td>
+                            </tr>
+                      )
+                 }
+                    </tbody>
+                </table>
+             </div>
+        )
+    }
+}
+
+export default Profile;
+
+
+=-======= different style applied ================
+
+import { BUILDER_KEYS } from '@babel/types';
+import React from 'react';
+import './App.css'
+
+class Profile extends React.Component{
+
+    constructor(){
+
+        super();
+
+        this.state = {
+              list:[
+                  {id:1,name:'Jhon Doe',email:'jhondoe@test.com'},
+                  {id:2,name:'Mark Hood',email:'markhood@test.com'},
+                  {id:3,name:'Sara Waksya',email:'sarawaksya@test.com'}
+              ]
+        }
+    }
+
+    render(){
+        const th = {
+              color:'blue'
+        }
+        const cyan = {
+            color:"cyan"
+        }
+        return(
+
+             <div className="container new" style={cyan}>
+                 <table border="1">
+                     <thead className={true ? 'sold' : 'new'}>
+                         <th>#</th>
+                         <th>Name</th>
+                         <th>Email</th>
+                     </thead>
+                     <tbody>
+                 {
+                      this.state.list.map((user)=>
+                            <tr style={false ? th : cyan}>
+                                <td>{user.id}</td>
+                                <td>{user.name}</td>
+                                <td>{user.email}</td>
+                            </tr>
+                      )
+                 }
+                    </tbody>
+                </table>
+             </div>
+        )
+    }
+}
+
+export default Profile;
+
+=-==================Basic Routing ===========
+import logo from './logo.svg';
+import './App.css';
+import React from 'react';
+import Home from './Home'
+import { render } from '@testing-library/react';
+import Profile from './Profile'
+import {BrowserRouter as Router,Route,Link } from 'react-router-dom'
+function App(props) {
+  return (
+    <div className="App">
+      <header className="App-header">       
+        <Router>
+        <Link to="">Home </Link>
+        <Link to="/profile"> Profile</Link>
+          <Route exact path="/" component={Home}></Route>
+          <Route path="/profile" component={Profile}></Route>
+           {/* <Home></Home>
+           <Profile></Profile> */}
+        </Router>
+      </header>      
+    </div>
+  );
+}
+
+export default App;
+
+====================Portol Dom=====
+import React from 'react';
+import ReactDOM from 'react-dom';
+class Portal extends React.Component{
+    constructor(){
+        super();
+    }
+
+    render(){         
+        return ReactDOM.createPortal(
+                  <h1>Portal Dom</h1>,
+                  document.getElementById('rk-root')
+             )
+        
+    }
+}
+
+export default Portal;
+========================React Refs =====
+
+import React from 'react';
+class UserRef extends React.Component{
+    constructor(){
+        super();
+        this.userRef = React.createRef();
+    }
+
+    checkUserRef(){
+         //console.warn(this.userRef)
+        // this.userRef.current.focus();
+        this.userRef.current.value="123435"
+    }
+
+    render(){         
+       return(
+          <div>
+                <h1>React Ref</h1>
+                <input ref={this.userRef} type="text"/>
+                <button onClick={()=>this.checkUserRef()}>click me!</button>
+          </div>
+       )
+    }
+}
+
+export default UserRef;
+============================ bootstrap in React === npm install react-bootstrap bootstrap
+import React, { useState, useEffect } from 'react';
+import { Button,Container,Row,Col } from 'react-bootstrap';
+
+function Home() {
+    const [count, setCount] = useState(0);
+    useEffect(() => {
+        console.warn(count);
+    }, [count == 5])
+
+    return (
+        <div>
+            <h1>Hello world {count}</h1>
+            <Button onClick={() => { setCount(count + 1) }}>Increment</Button>
+            <Container>
+                <Row className="justify-content-md-center">
+                    <Col xs lg="2">
+                        1 of 3
+                    </Col>
+                    <Col md="auto">Variable width content</Col>
+                    <Col xs lg="2">
+                        3 of 3
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>1 of 3</Col>
+                    <Col md="auto">Variable width content</Col>
+                    <Col xs lg="2">
+                        3 of 3
+                    </Col>
+                </Row>
+            </Container>
+        </div>
+    )
+}
+
+export default Home;
+
+===================================useState ==
+import logo from './logo.svg';
+import './App.css';
+import React,{ useState } from 'react';
+import Home from './Home'
+
+function App() {
+  const [count,setCount] = useState(0);
+  const [data,setData] = useState(0);
+  return (
+    <div className="App">
+          <h2>count:{count}</h2>
+          <Home data={data}/>
+          <button onClick={()=>setCount(count + 1)}>Increment</button>   
+          <button onClick={()=>setData(data + 1)}>Increment</button>       
+    </div>
+  );
+}r
+
+export default App;
+
+
+====== memo ==
+import React,{ memo } from 'react';
+
+function Home(props) {
+    console.warn("inner component",props.data)
+    return (
+        <div>
+            <h3>Home Component {props.data}</h3>
+        </div>
+    )
+}
+
+export default memo(Home);
+
+
+
+============== defaultProps and propTypes
+import logo from './logo.svg';
+import './App.css';
+import React,{ useState } from 'react';
+import Home from './Home'
+import { PropTypes } from 'react-bootstrap/esm/Image';
+
+function App(props) {
+  const [count,setCount] = useState(0);
+  const [data,setData] = useState(0);
+  return (
+    <div className="App">
+          <h2>{props.title} count:{count}</h2>
+          <Home name="cyx" data={data}/>
+          <button onClick={()=>setCount(count + 1)}>Increment</button>   
+          <button onClick={()=>setData(data + 1)}>Increment</button>       
+    </div>
+  );
+}
+
+export default App;
+
+
+App.defaultProps = {
+   title:"Hello world"
+}
+
+App.propTypes = {
+    title:PropTypes.string
+}
+=================================== destructure props syntax =====
+import React,{ memo } from 'react';
+
+function Home({data,name}) {
+    console.warn("inner component",data)
+    return (
+        <div>
+            <h3>Home Component{name} {data}</h3>
+            <h1></h1>
+        </div>
+    )
+}
+
+export default memo(Home);
+
+
+=============

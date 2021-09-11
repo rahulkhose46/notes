@@ -1,0 +1,4184 @@
+$('body').delegate('.result .btn-danger','click',function(){}
+$('body').on('click','.result .btn-danger',function(){}
+$('body').bind('click','.result .btn-danger',function(){}
+=============================================================
+1.Create cookie
+$.dough("cookie_name","cookie_value");
+2.Read Cookie
+$.dough("cookie_name");
+3.Delete cookie
+$.dough("cookie_name","remove");
+=============================================================
+(function(){
+"use strict";
+  
+})();
+=============================================
+$(function(){
+  $("#checkId").click(function(){
+      alert($("#checkId")[0]);
+      alert(document.getElementById('checkId'));
+      //[object object]//jquery object
+     // [object HTMLInputElement]//Row DOM javascript object
+  });
+});
+
+==============================================
+isNaN(5);//
+false
+ isNaN("rahul");//
+true
+==============================
+text.split("").reverse().join("");
+=================================================
+var x=14;
+
+eval('x + 10');//24
+eval('myvar="rahul"');//rahul
+===========================
+names.splice(names.indexOf("rahul"),1);
+===========================================
+var x1 = new Object();   // A new Object object
+var x2 = new String();   // A new String object
+var x3 = new Number();   // A new Number object
+var x4 = new Boolean();  // A new Boolean object
+var x5 = new Array();    // A new Array object
+var x6 = new RegExp();   // A new RegExp object
+var x7 = new Function(); // A new Function object
+var x8 = new Date();     // A new Date object
+==========================encodeURI & decodeURI AND escape &unescape======
+encodeURIComponent("http:// google.com ? name=rahul& salary=25555");
+
+=>"http%3A%2F%2F%20google.com%20%3F%20name%3Drahul%26%20salary%3D25555"
+encodeURI("http://google.com ?name='rahul khose'");
+
+==>"http://google.com%20?name='rahul%20khose'"
+
+decodeURI("http://google.com%20?name='rahul%20khose'");
+
+==>"http://google.com ?name='rahul khose'"
+
+escape("http://google.com ?name='rahul khose'");
+
+==>"http%3A//google.com%20%3Fname%3D%27rahul%20khose%27"
+
+unescape("http://google.com%20?name='rahul%20khose'");
+
+==>"http://google.com ?name='rahul khose'"
+====================================
+encodeURI("http://google.com ?name='rahul khose'");
+"http://google.com%20?name='rahul%20khose'"
+decodeURI("http://google.com%20?name='rahul%20khose'");
+"http://google.com ?name='rahul khose'"
+escape("http://google.com ?name='rahul khose'");
+"http%3A//google.com%20%3Fname%3D%27rahul%20khose%27"
+unescape("http%3A//google.com%20%3Fname%3D%27rahul%20khose%27");
+"http://google.com ?name='rahul khose'"
+encodeURIComponent("http://google.com ?name='rahul khose'"");
+encodeURIComponent("http://google.com ?name='rahul khose'");
+"http%3A%2F%2Fgoogle.com%20%3Fname%3D'rahul%20khose'"
+decodeURIComponent("http%3A%2F%2Fgoogle.com%20%3Fname%3D'rahul%20khose'");
+"http://google.com ?name='rahul khose'
+================================================================================
+
+(function(){ 
+    "use strict";
+     $("#skiptomain").click(function() {
+         $('html, body').animate({
+         scrollTop: $("#topnavigation").offset().top
+        }, 500);
+    });
+            
+})();
+===================
+   (function($){
+      console.log($());//m.fn.init {}
+   })(jQuery)
+=====================
+  $(function(){
+      console.log($("#p1").offset());//{top: 16, left: 8}
+   })
+======================
+=====================
+  $(function(){
+      console.log($("#p1").position());//{top: 16, left: 8}
+   })
+======================
+$(function(){
+      console.dir('jQuery ' + jQuery.fn.jquery);// jQuery 1.11.3
+   })
+=====================
+$(function(){
+
+	 $("#cbShowPassword").click(function(){
+	 	 $("#textPassword").attr('type',$(this).is(':checked')? 'text' :'password');
+	 });
+})
+======================
+$(function(){
+
+	document.getElementById("button1").onclick=(function(){
+		alert("Hello jquery");
+	})
+})
+======OR=========
+$(function(){
+	  document.getElementsById("btn").onclick=function(){
+	  	alert("Hello javascript");
+	  }
+	})
+======OR=========
+$(function(){
+	  document.getElementsByTagName("input")[0].onclick=function(){
+	  	alert("Hello javascript");
+	  }
+	})
+======OR=========
+$(function(){
+	  document.getElementsByClassName("input")[0].onclick=function(){
+	  	alert("Hello javascript");
+	  }
+	})
+======OR=========
+$(function(){
+	  document.querySelector("input").onclick=function(){
+	  	alert("Hello javascript");
+	  }
+	})
+
+======OR=========
+$(function(){
+	  document.querySelectorAll("input")[0].onclick=function(){
+	  	alert("Hello javascript");
+	  }
+	});
+================
+var $j = jQuery.noConflict();
+// Use jQuery via jQuery(...)
+$j(document).ready(function(){
+$j("div").hide();
+});
+================================
+$();//
+m.fn.init {}
+var $j=jQuery.noConflict();
+jQuery();//
+m.fn.init {}
+$j();//
+m.fn.init {}
+console.log($j);// ƒ(a,b){return new m.fn.init(a,b)}
+jQuery;
+//ƒ (a,b){return new m.fn.init(a,b)}
+$j;
+//ƒ (a,b){return new m.fn.init(a,b)}
+console.dir(jQuery);
+ ƒ m(a,b)
+console.dir($(););
+ ƒ m(a,b)
+console.dir($j);
+//ƒ m(a,b)
+====================================================================
+=========================================
+Object.getOwnPropertyDescriptor();
+Object.defineProperty(Object,property name);
+person.prototype.hasOwnProperty("salary")//true
+var keys = Object.keys(Person.prototype);//["name", "age", "salary", "getName"]
+var keys=Object.getOwnPropertyNames(person.prototype);//["constructor", "name", "age", "salary", "getName"]
+===============================================
+alert(Person.prototype.isPrototypeOf(person1));//true
+alert(Object.getPrototypeOf(person1) == Person.prototype);//true
+============================================
+$scope.randomNum=Math.floor(Math.random()*10 + 1);
+=========================== =================
+function myFun(){
+
+var keys=Object.getOwnPropertyNames(Object.prototype);
+
+ for(i=0;i<=keys.length ; i++){
+ 	document.write(keys[i] + "<br />");
+ }
+}
+$(document).ready(myFun); 
+============================================
+function myFun(){
+
+var keys=$("#document");
+ 	$.each(keys.context,function(key){
+ 		document.write(key + "<br />")
+ 	})
+
+}
+$(document).ready(myFun); 
+
+============================================
+// Quick get an attribute
+document.getElementsByTagName("input")[0].value
+// Quick set an attribute
+document.getElementsByTagName("div")[0].id = "main";
+=============
+document.getElementsByTagName("div")[0].id="main";
+================================
+http://javascript.crockford.com/
+inheritance.html.
+==================
+var myArray = new Array('foo', 'bar');
+console.log(myArray.join()); // logs 'foo, bar'
+==================
+var myArray = [[[['4th dimension']]]];
+console.log(myArray[0][0][0][0]); // logs '4th dimension'
+=====================
+function SuperType(name){
+this.name = name;
+}
+function SubType(name,age){
+//inherit from SuperType passing in an argument
+SuperType.call(this, name);
+//instance property
+this.age = age;
+}
+var instance = new SubType("rahul",23);
+alert(instance.name); //”Nicholas”;
+alert(instance.age);
+==================
+$(document).ready(function(){
+ var textBoxes= $('input[type="text"]');
+        textBoxes.focus(function(){
+      var helpDiv=$(this).attr('id')+ 'HelpDiv';
+	   $('#' + helpDiv).load("help.html #" + helpDiv);
+    });
+	textBoxes.blur(function(){
+      var helpDiv=$(this).attr('id')+ 'HelpDiv';
+	   $('#' + helpDiv).html("091309943220");
+    });
+});
+=====curring example====
+function addGenerator( num ) {
+return function( toAdd ) {
+return num + toAdd
+};
+}
+var addFive = addGenerator( 5 );
+alert( addFive( 4 ) == 9 );
+===============
+setTimeout(function(){
+// Which will hide the object
+obj.style.display = 'none';
+}, 1000);
+===========setInterval====
+var i=0;
+setInterval(function(){
+
+	document.write(i + " = " + "Hello javascript!" + "<br />") ;
+	i++;
+},1000);
+=====================
+window.onload=function(){
+	alert("success");
+	document.body.style.backgroundColor="red";
+}
+========OR===
+window.onload=function(){
+	document.body.bgColor/fgColor="red";
+}
+================================two way data-binding=======
+document.getElementById("textId").addEventListener('keyup',function(){
+     var textVal=document.getElementById("textId").value;
+    document.getElementById("spanId").innerHTML=textVal;
+  },false)
+=========OR=TWO DATA BINDING=USING JAVASCRIPT==============
+document.getElementById("textId").addEventListener('keyup',function(){
+     var textVal=document.getElementById("textId").value;
+    document.getElementById("spanId").innerHTML=textVal;
+    document.getElementById("textId1").value=textVal;
+  },false);
+    document.getElementById("textId1").addEventListener('keyup',function(){
+     var textVal=document.getElementById("textId1").value;
+    document.getElementById("spanId").innerHTML=textVal;
+      document.getElementById("textId").value=textVal;
+  },false)
+=================using jQuery=========
+(function(){
+      $('#textId').bind('keyup keydown',function(){
+         $('#spanId').text($('#textId').val());
+          $('#textId1').val($('#textId').val());
+      });
+      $('#textId1').bind('keyup keydown',function(){
+         $('#spanId').text($('#textId').val());
+          $('#textId').val($('#textId1').val());
+      });
+    })();
+==============================================
+============================================================================
+======clourse============
+
+
+$(function(){
+	function create(){
+		 var counter=0;
+		 return{
+		 	increment:function(){
+		 		 counter++;
+		 	},
+		 	decrement:function(){
+		 		counter--;
+		 	},
+		 	print:function(){
+		 		document.write(counter);
+		 	}
+		 }
+	}
+	var c=new create();
+	c.increment();
+	c.print();
+})
+
+==========JAVASCRIPT USING CLASS===================
+function myFunction(){
+class Human{
+ constructor(name){
+ this.name=name;
+ }
+ toString(){
+  return "hello,my name is "+ this.name +".";
+ }
+}
+var obj=new Human("vijay");
+var result=obj.toString();
+console.log(result);
+==========================================================
+
+==============JAVASCRIPT USING INVERITANCE================
+function myFunction(){
+class Human{
+	constructor(name){
+		this.name=name;
+	}
+	toString(){
+		return "my name is "+ this.name +".";
+	}
+}
+class Person extends Human{
+	constructor(name,age){
+		super.constructor(name);
+		this.age=age;
+	}
+	toString(){
+		return super.toString() + "i am a person and my age is "+ this.age +".";
+	}
+}
+var obj=new Person("rahul",22);
+var result=obj.toString();
+console.log(result);
+} 
+==============OR=============================
+ function Inheritance(){
+	class Human{ //create class
+		constructor(name,age,salary){ //create constructor
+			this.name=name;
+			this.age=age;
+			this.salary=salary;
+		}	
+	}
+	class Student extends Human{ //extends super class
+		returnValue(){ //display value
+			return "The name is " + this.name + "<br/>" + "The age is " + this.age + "<br/>"  + "The salary is "+ this.salary;
+		}
+	}
+	var name=prompt("Enter the name"," ");
+    var age=Number(prompt("Enter the age"," "));
+    var salary=Number(prompt("Enter the salary"," "));
+	var obj=new Student(name,age,salary);//create sub class object
+	var result=obj.returnValue(); //display fucntion call
+	document.getElementById("resultDiv").innerHTML=result;
+	
+ }
+===============================================================
+
+=============ARRAY FIND EVEN NO USING JAVASCRIPT=============
+function AddNum(){
+	var myArray=[1,2,3,4,5,6,7,8,9,10];
+	
+	var result=myArray.filter(function(value,index,array){
+		if(value % 2 ==0){
+			return true;
+		}else{
+			return false;
+		}
+	});
+	document.write(result);
+	
+	}
+==================================================
+(function(){
+     'use strict';
+       var numArray = [4,5,8,7,9,10,11,6,3,245,78,69,54];
+     
+       var answer = numArray.filter(function(value,index,array){
+                
+                    return (value % 2 == 0) ? true : false;
+       })
+       
+       console.log('Array inside the Even Number:' + answer);
+ })()
+=============================================================
+ (function(){
+     'use strict';
+       var numArray = [4,5,8,7,9,10,11,6,3,245,78,69,54];
+     
+       var answer = numArray.filter(function(value,index,array){
+                
+                    return (value % 2 == 0) ? false : true;
+       })
+       
+       console.log('Array inside the Odd Number:' + answer);
+ })()
+=================OR============================================
+function AddNum(){
+	var myArray=[1,2,3,4,5,6,7,8,9,10];
+	
+	var result=myArray.filter(function(value,index,array){
+	  return (value % 2 ==0);
+		
+	});
+	document.write(result);
+	
+	}
+===============================================================
+
+
+=======================CREATE A NEW OBJECT AND EXECUTE THE ALL FUNCTION======
+$(document).ready(function(){
+ $("button").click(function(){
+	 function create(){
+		 var x,x,z;
+		 return{
+			 addition:function(x,y){
+				 z = x + y;
+				 console.log(z);
+			 },
+			 subtraction:function(x,y){
+				 z = x - y;
+				  console.log(z);
+			 },
+			 multiplication:function(x,y){
+				 z = x * y;
+				  console.log(z);
+			 },
+			 division:function(x,y){
+				 z = x / y;
+				  console.log(z);
+			 }
+		 }
+	 }
+	 var obj=new create();
+	 obj.addition(5,5);
+	 obj.subtraction(12,2);
+	 obj.multiplication(5,2);
+	 obj.division(200,20);
+	 
+ });
+});
+============================================================================
+
+/*============find index function=important====================*/
+
+
+function myFunction(){
+	var names=["rahul","shankar","vijay","nilesh","rajendra"];
+	var result=names.findIndex(function(element){
+		return (element=="nilesh");
+	});
+	console.log(result);
+}
+  
+     
+/*============find index function=important====================*/
+
+
+
+/*===========replace Element function important=================*/
+function myFunction(){
+	var num=["ab","bb","cc","bb","kk","bb","dd","ss"];
+	console.log(num);
+	function replaceElement(element,index,array){
+	if(element=="bb") array[index]="**";
+	}
+	num.forEach(replaceElement);
+	console.log(num);
+}
+==============OR===================================================
+var myArray=["rahul","atul","rahul","shankar","rahul","vijay"];
+document.write(myArray + "<br/>");
+ var result=myArray.filter(function(item,index,array){
+	if(item=="rahul") {
+		array[index]="**";
+	}else{
+		
+	}
+ });
+document.write(myArray);
+==================================================================
+/*===========duplicate Element function important=================*/
+var myArray=["rahul","atul","rahul","shankar","rahul","vijay"];
+ var result=myArray.filter(function(item,index,array){
+	 return array.indexOf(item)==index;
+ });
+ console.log(result);
+/*===========duplicate Element function important=================*/
+
+/*===========replace Element function important=================*/
+
+/*==========filter Element function=============================*/
+var result=num.filter(function(element){
+		return element!==22;
+	});
+/*==========filter Element function=============================*/
+
+/*==========find Element function=============================*/
+
+  var result=num.find(function(element){
+		return element==22;
+	});
+/*==========find Element function=============================*/
+
+/*==========find Index Element function=============================*/
+
+ var result=num.findIndex(function(element){
+		return element==22;
+	});
+/*==========find Index Element function=============================*/
+
+
+/*==========map  Element function=============================*/
+
+var result=num.map(function(element){
+		return element.toString(16);
+	});
+
+/*==========map  Element function=============================*/
+
+/*==========return function=============================*/
+function myFunction(){
+var sayHello = function(name, age) {
+    return "Hello, I'm " + name + " and I'm " + age + "years old.";
+}
+var result=sayHello("rahul",22);
+console.log(result);
+}
+
+/*==========return function=============================*/
+
+
+=================2D ARRARY USING JAVASCRIPT===============
+function AddNum(){
+	var myArray1=new Array(3);
+	for(i=0;i<3;i++){
+		myArray1[i]=new Array(3);
+	}
+	var start=1;
+	for(i=0;i<3;i++){
+		for(j=0;j<3;j++){
+		myArray1[i][j]=start;
+		start=start+1;
+			} 
+	}
+	for(i=0;i<3;i++){
+		for(j=0;j<3;j++){
+			document.write(myArray1[i][j] +"&emsp;");
+			
+		} 
+		document.write("</br>");
+	}
+	}
+========================OR====ADDITION OF 2D ARRAY========
+
+	function AddNum(){
+	var myArray1=new Array(3);
+	for(var i=0;i<3;i++){
+		myArray1[i]=new Array(3);
+	}
+	var start=1;
+	 for(var i=0;i<3;i++){
+		 for( var j=0;j<3;j++){
+			myArray1[i][j]=start;	
+             start= start+1;			
+		   }
+           
+		 }
+		 
+		 for(var i=0;i<3;i++){
+			 for( var j=0;j<3;j++){
+				 document.write(myArray1[i][j] +"&emsp;"); 
+			 }
+			 document.write("</br>");
+		 }
+		 	 document.write("</br>");
+		 	 document.write("&emsp; +");
+			 document.write("</br>");
+			 document.write("</br>");
+			 
+			 
+			 var myArray2=new Array(3);
+	for(var i=0;i<3;i++){
+		myArray2[i]=new Array(3);
+	}
+	 for(var i=0;i<3;i++){
+		 for( var j=0;j<3;j++){
+			  start= start-1;
+			myArray2[i][j]=start;	
+            			
+		   }
+           
+		 }
+		 
+		 for(var i=0;i<3;i++){
+			 for( var j=0;j<3;j++){
+				 document.write(myArray2[i][j] +"&emsp;"); 
+			 }
+			 document.write("</br>");
+		 }
+		 document.write("</br>");
+		 	 document.write("&emsp; =");
+			 document.write("</br>");
+			 document.write("</br>");
+			 
+			 
+			 var myArray3=new Array(3);
+	for(var i=0;i<3;i++){
+		myArray3[i]=new Array(3);
+	}
+	 for(var i=0;i<3;i++){
+		 for( var j=0;j<3;j++){
+			myArray3[i][j]=myArray1[i][j] + myArray2[i][j];	
+            			
+		   }
+           
+		 }
+		 
+		 for(var i=0;i<3;i++){
+			 for( var j=0;j<3;j++){
+				 document.write(myArray3[i][j] +"&emsp;"); 
+			 }
+			 document.write("</br>");
+		 }
+	}
+====================================================================
+
+===========FACTORIAL PROGRAM USING JAVASCRIPT=========================
+function AddNum(){
+	var factorial=function(number){
+		   var fact=1;
+		   var i=1;
+		   while(i<=number ){
+			   
+			  fact=fact*i;
+              i=i+1;		  
+		   }
+		   return fact;	   
+	}
+	var target=Number(prompt("Enter the value",""));
+	var result=factorial(target);
+	document.write(result);
+	}
+========================================================
+(function(){
+     'use strict';
+    function fact(number){
+         var fact = 1;
+         for(var i=1;i<=number;i++){
+            fact *= i;
+         }
+        return fact;
+    }
+     console.log(fact(5));
+ })()
+=============================OR==============================================
+function AddNum(){
+		function factorial(n){
+			if(n==0 || n==1){
+				return 1;
+			}
+			var result=n;
+			while(n>1){
+				result=result * (n-1);
+				n=n-1;
+			}
+			return result;
+		}
+		var result=factorial(6);
+		document.write(result);
+	}
+
+=============================================================================
+
+
+===================Clourse using javascript===================
+function AddNum(){
+	var addNumber=function(firsNumber,secondNumber){
+		var returnValue="Total Addition is:";
+		 function add(){
+			return returnValue +(firsNumber + secondNumber);
+		}
+		return add();
+	}
+	var result=addNumber(200,300);
+	document.write(result);
+	}
+=======================================================================
+
+
+=================GET Argument list===================================
+function AddNum(){
+	function printArgument(){
+		document.write("Argument count:"+arguments.length +"</br>");
+		for(i=0;i<arguments.length;i++){
+			document.write("Argument "+ i + " = " +arguments[i] +"</br>");
+		}
+	}
+	printArgument();
+	printArgument("A","B");
+	printArgument(10,20,30);
+	}
+=======================================================================
+
+=================Prototype using array sort============================
+function AddNum(){
+		function printNumber(){
+	var argsArray=Array.prototype.slice.call(arguments);
+	 argsArray.sort();
+	document.write(argsArray);
+	}
+	printNumber(65,85,45,12,31,66,88);
+	}
+============================================================================
+
+======================onload event & addEventListener using javascript======
+window.onload=function(){
+    document.getElementById("button1").addEventListener("click",EventHandler,false)
+	};
+	function EventHandler(){
+	   addition();
+	}
+	function addition(){
+		var traget1=Number(prompt("Enter first Number",""));
+		var traget2=Number(prompt("Enter Second Number",""));
+		
+		var c= traget1 + traget2;
+		document.write("Total is:"+c );
+		
+	}
+==================================================================================
+
+========================try catch & finally using javascript ====================
+function AddNum(){
+		 
+		 try{
+			 function sayHello(x,y){
+				 var z= x + y;
+				 return z;
+			 }
+			 document.write(sayHello(10,20) + "</br>");
+			 document.write("Program successfully run !" + "</br>");
+		 }
+		 catch(e){
+			 document.write("Message:" + e.message +"</br>");
+			 document.write("Descreption:" + e.description +"</br>");
+			 document.write("Stack Trace:" + e.stack +"</br>");
+		 }
+		 finally{
+			 document.write("This statment anywhere to be executed");
+		 }
+	}
+======================================================================
+ (function(){
+     'use strict';
+     try{
+          if(true){
+            throw new Error('Conditon is false');
+          }
+          console.log('Try function successful');
+     }
+     catch(e){
+            console.log('Message:'+ e.message);
+            console.log('Description:'+ e.description);
+            console.log('Stack Trace:'+ e.stack);
+     }
+     finally{
+         console.log('Finally block always display');
+     }
+ })()
+============================OR=======================================
+function AddNum(){
+        function Divide(){
+			var numerator=Number(prompt("Please enter numerator"));
+			var denumerator=Number(prompt("Please enter denumerator"));
+		
+		 try{
+			 if(denumerator ==0){
+				 throw {
+					 error:"Divide by zero error",
+					 message:"denumerator can not be zero"
+				 }
+			 }else{
+				 document.write("Result division:" + (numerator/denumerator)+"</br>");
+			 }
+		 }
+		 catch(e){
+			document.write("Error:" + e.error + "</br>");
+			document.write("Message:" + e.message + "</br>");
+		 }
+		 finally{
+			 document.write("This statment anywhere to be executed");
+		 }
+		}
+		Divide();
+	}
+=========================================================================================
+if(n =="!"|| n == "@" || n == "#" ||n == "$" || n == "%" || n=="^" || n == "&" || n == "*" 
+|| n == "(" || n== ")" || n == "-" || n == "+" || n == "|" || n == "~"){
+=========================================================================================
+
+================factorial no using try catch exception in javascript==================
+
+	function AddNum(){
+        function getFactorial(){
+			var n=prompt("Enter the number"," ");
+			try{
+				if(n =="!"|| n == "@" || n == "#" ||n == "$" || n == "%" || n=="^" || n == "&" || n == "*" || n == "(" || n== ")" || n == "-" || n == "+" || n == "|" || n == "~"){
+					throw {
+						error:"Unexcepted symbol !",
+						message:"Symbol charactor not enter"
+					}
+				}else{
+					if(n==1 || n==0){
+						return 1;
+					}
+					var result=n;
+					while(n>1){
+						result=result*(n-1);
+						n=n-1;
+					}
+					return result;
+				}
+			}
+			catch(e){
+				document.write("Error:" + e.error +"</br>");
+				document.write("Message:" + e.message + "</br>");
+			}
+		}
+		var result=getFactorial();
+		document.write(result);
+	}
+	=====================================================================================
+
+=======================================setInterval & clearInterval using javascript==========
+var intervalId;
+		var sum=0;
+	function getCurrentDateTime(){
+		  sum=sum+1;
+		document.getElementById("timeDiv").innerHTML=sum;
+	}
+	function StartClock(){
+		intervalId=setInterval(getCurrentDateTime,100);
+	}
+	function StopClock(){
+		clearInterval(intervalId);
+	}
+	
+=================================================================================================
+
+ ============================Image slider using javascript=========================================
+var intervalId;
+	 function ChangeImage()
+	 {
+		 var imageSrc=document.getElementById("Image").getAttribute("src");
+		 var currenImageNumber=imageSrc.substring(imageSrc.lastIndexOf("/")+1,imageSrc.lastIndexOf("/")+2);
+		 if(currenImageNumber == 8){
+			 currenImageNumber=0;
+		 }
+		 var newImage="Image/" + (Number(currenImageNumber) + 1)+".jpg";
+		 document.getElementById("imageTestDemo").innerHTML=newImage;
+		 document.getElementById("Image").setAttribute("src",newImage);
+	
+	 }
+	 
+	 function StartImageSlide()
+	 {
+		 intervalId=setInterval(ChangeImage,1000);
+	 }
+	 function StopImageSlide()
+	 {
+		 clearInterval(intervalId);
+	 }
+=============================================================================================================
+
+=========Store value on localStroage using javascript======================================================
+function StoreValue(){  
+var firstname;
+if (typeof(Storage) !== "undefined") {
+    // Store
+    localStorage.setItem("firstname", "Smith");
+    // Retrieve
+    document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+} else {
+    document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+}
+
+} 
+=============================================
+ /*(function(){*/
+     'use strict';
+    function SetItem(){
+         
+        if(typeof(Storage)!=='undefind'){
+              localStorage.setItem('name','John');
+             
+        }else{
+            document.getElementById('timeDiv').innerHTML = "Your browser localstorage not support";
+        }
+    }
+   function GetItem(){
+         if(typeof(Storage)!=='undefind'){
+              var value = localStorage.getItem("name");
+              document.getElementById('result').innerHTML = value;
+             }else{
+            document.getElementById('timeDiv').innerHTML = "Your browser localstorage not support";
+        }
+   }
+ //})()
+===========================================================================================================
+
+====================clickcount localStroage using javascript ========================================
+function StoreValue(){  
+    if(typeof(Storage)!=="undefined"){
+		if(localStorage.clickcount){
+			localStorage.clickcount=Number(localStorage.clickcount)+1;
+			
+		}else{
+			localStorage.clickcount=1;
+		}
+		document.getElementById("result").innerHTML="You have click the button:"+localStorage.clickcount +"times";
+		
+	}else{
+		document.getElementById("result").innerHTML="Sorry....You have browser not supported in localStroge";
+	}
+
+
+}
+================================================================================================================
+
+==================================clickcount sessionStorage using javascript=====================================
+function StoreValue(){  
+    if(typeof(Storage)!=="undefined"){
+		if(sessionStorage.clickcount){
+			sessionStorage.clickcount=Number(sessionStorage.clickcount)+1;
+			
+		}else{
+			sessionStorage.clickcount=1;
+		}
+		document.getElementById("result").innerHTML="You have click the button:"+sessionStorage.clickcount +"times";
+		
+	}else{
+		document.getElementById("result").innerHTML="Sorry....You have browser not supported in localStroge";
+	}
+
+
+}
+===================================================================================================================
+==============string store convert to array===================
+var demo=document.getElementById("p1").innerHTML;
+	 var store=[24];
+	  for(i=0;i< demo.length;i++){
+		store[i]=demo[i].charAt();
+		  //store=demo.split("");
+	  }
+	  
+ document.getElementById("div1").innerHTML=store[20];
+=================================================================
+(function(){
+     'use strict';
+    document.getElementById('danger').onclick = function(){
+          alert('success');
+    }
+ })()
+=============
+ (function(){
+     'use strict';
+    document.getElementsByTagName('button')[1].onclick = function(){
+          alert('success');
+    }
+ })()
+===========
+ (function(){
+     'use strict';
+    document.getElementsByClassName('btn')[1].onclick = function(){
+          alert('success');
+    }
+ })()
+=============== window event using another ==================================================
+window.onmouseover=function(){
+	var x=Number(prompt("Please Enter the first number"));
+	var y=Number(prompt("Please Enter the second number"));
+document.getElementById("btn").onmouseover=Addition(x,y);
+document.getElementById("btn").onmouseover=Multiplication(x,y);
+}
+function Addition(num1,num2){
+    var total1=num1 + num2;
+	 //console.log("addition:" + total1);
+	 document.write("Addition:"+ total1 + "<br/>");
+}
+function Multiplication(num1,num2){
+	 var total=num1 * num2;
+	 //console.log("multiplication:" + total);
+	 document.write("Multiplication:" + total + "<br/>");
+}
+===================================================================================================
+//(function(){
+     'use strict';
+    function StartClock(event){
+        console.dir(event);
+    }
+ //})()
+==================window event information display using addEventListener=========================
+window.onload=function(){
+document.getElementById("btn").addEventListener("click",getOnlickEventInformation,false)
+document.getElementById("btn").addEventListener("mouseover",getOnmouseoverEventInformation,false)
+document.getElementById("btn").addEventListener("mouseout",getOnmouseoutEventInformation,false)
+};
+function getOnlickEventInformation(event){
+	var EventInformation1="Name:" +event.type +"<br/>" + "position x:" + event.clientX +"<br/>" + "position y:" + event.clientY +"<br/>" + "target type:" + event.target.type + "<br/>" + "target Name:" + event.target.tagName + "<br/>";
+	document.getElementById("resultDiv1").innerHTML=EventInformation1;
+}
+function getOnmouseoverEventInformation(event){
+	var EventInformation2="Name:" +event.type +"<br/>" + "position x:" + event.clientX +"<br/>" + "position y:" + event.clientY +"<br/>" + "target type:" + event.target.type + "<br/>" + "target Name:" + event.target.tagName + "<br/>";
+		document.getElementById("resultDiv2").innerHTML=EventInformation2;
+}
+function getOnmouseoutEventInformation(event){
+	var EventInformation3="Name:" +event.type +"<br/>" + "position x:" + event.clientX +"<br/>" + "position y:" + event.clientY +"<br/>" + "target type:" + event.target.type + "<br/>" + "target Name:" + event.target.tagName + "<br/>";
+		document.getElementById("resultDiv3").innerHTML=EventInformation3;
+}
+===============================================================================================================
+
+
+===================================create thumbnail image using javascript===========================
+function changeImage(event){
+	//create [object HTMLCollection]
+	var images=document.getElementById("myDiv").getElementsByTagName("img");
+	for(i=0;i<images.length;i++){
+		//create Event and anynonimus function
+		images[i].onmouseover=function(){
+			this.style.cursor='hand';
+			this.style.borderColor='red';
+		}
+		images[i].onmouseout=function(){
+			this.style.cursor='pointer';
+			this.style.borderColor='gray';
+		}
+	}
+	//document.getElementById("resultDiv").innerHTML=image;
+	// create [object mouseEvent]
+	event=event || window.event;
+	// document.getElementById("resultDiv").innerHTML=event;
+	 // create [object HTMLImageElement]
+	var targetElement=event.target || event.srcElement;
+	//document.getElementById("resultDiv").innerHTML=targetElement;
+	 if(targetElement.tagName == "IMG"){
+		 //create this format [Image/1.jpg]
+	var result=document.getElementById("mainImage").src=targetElement.getAttribute("src");
+	 }
+	  //document.getElementById("resultDiv").innerHTML=result;
+}
+///convert object ==get(0);
+============================HTML PART==============
+<img  height="450px" width="540px" id="mainImage" style="border:3px solid gray" src="Image/1.jpg">
+<br/>
+<div id="myDiv" onclick="changeImage(event)">
+<img class="imgStyle" src="Image/1.jpg">
+<img class="imgStyle" src="Image/2.jpg">
+<img class="imgStyle" src="Image/3.jpg">
+<img class="imgStyle" src="Image/4.jpg">
+<img class="imgStyle" src="Image/5.jpg">
+</div>
+<div id="resultDiv"></div>
+==================================================
+==========================================================================================================
+
+==================Event bubbling and capturing using addEventlistener==============================
+function eventCapture(){
+	var divs=document.getElementsByTagName("div");
+	for(i=0;i<divs.length;i++){
+		divs[i].addEventListener("click",eventHandler,true);
+		var result=divs[i].addEventListener("click",eventHandler,false);
+	}
+	function eventHandler(event){
+		alert(this.getAttribute("id") +"click event handled");
+	}
+}
+event.stopPropagation();
+============================================================================================================ 
+
+===========detect which mouse button clicked=======================
+function textareaClear(){
+	document.getElementById("textareaId").value="";
+}
+function getMouseClickCode(event){
+	if(event.which){
+	document.getElementById("textareaId").value += "Event.which:" + event.which + "\r\n"; 
+	}else{
+	document.getElementById("textareaId").value += "Event.button" + event.button + "\r\n";
+	}
+=======================================================================================
+
+
+======================get type of Event occour====================
+function textareaClear(){
+	document.getElementById("textareaId").value="";
+}
+function getMouseClickCode(event){
+	event = event || window.event;//object MouseEvent
+	
+	document.getElementById("textareaId").value += event.type + "\r\n";
+}
+======================================================================================
+
+==============regular expression using match string==================================
+function processString(){
+   document.getElementById("textarea").value="";
+	var inputString=document.getElementById("textBox").value;
+   	
+	 var result=inputString.match(/\d+/g);
+	 if(result!=null){
+		 for(i=0;i<result.length;i++){
+		document.getElementById("textarea").value +=result[i] +"\r\n";
+		 }
+	 }else{
+		 document.getElementById("textarea").value += result;
+	 }
+
+ }
+==========================================================================================
+================Interstring part of prototype concepts=================
+var Employee=function(name){
+	this.name=name;
+}
+Employee.prototype.__proto__.getName=function(name){return this.name=name};
+var emp=new Employee("rahul");
+var result=emp.__proto__.__proto__.getName("shankar");
+
+document.write(result);
+================================OR=============================
+
+var Employee=function(name){
+	this.name=name;
+}
+Employee.prototype.__proto__.getName=function(name){return this.name=name};
+var Worker=function(salary){
+	this.salary=salary;
+}
+var emp=new Employee("rahul");
+//var result=emp.__proto__.__proto__.getName("shankar");
+var w=new Worker(20000);
+var result=w.__proto__.__proto__.getName("shankar");
+document.write(result);
+===============================OR============================
+
+var Employee=function(name){
+	this.name=name;
+}
+Employee.prototype.getSalary=function(){
+	return this.salary;
+}
+Employee.prototype.__proto__.getName=function(name){return this.name=name};
+var Worker=function(salary){
+	this.salary=salary;
+}
+Worker.prototype=Object.create(Employee.prototype);
+var emp=new Employee("rahul");
+//var result=emp.__proto__.__proto__.getName("shankar");
+var w=new Worker(20000);
+var result1=w.getSalary();
+var result=w.__proto__.__proto__.getName("shankar");
+document.write(result);
+document.write(result1);
+=====================Another method inheritance  javascript============================
+function practiceDemo(){
+	var Employee=function(name){
+		this.name=name;
+	}
+	
+	Employee.prototype.getName=function(){
+		return this.name;
+	}
+	var permanantEmployee=function(annualSalary){
+		this.annualSalary=annualSalary;
+	}
+	var e1=new Employee("Rahul");
+	permanantEmployee.prototype=e1;
+	  var annual=new permanantEmployee(1000);
+	  var result=annual.getName();
+	document.getElementById("resultDiv").innerHTML=result;
+}
+===========OR==========================================
+function practiceDemo(){
+	 var Compare=function(x,y){
+		this.x=x;
+		this.y=x;
+	}
+	Compare.prototype.Calulate=function(){
+		var x=this.x;
+		var y=this.y;
+		if(x > y){
+			return x + " = x is grather than y";
+		}else{
+			return y + " = y is grather than x";
+		}
+		
+	}
+	 var CreateObjct=function(x,y){
+		 this.x=x;
+		 this.y=y;
+	 }
+	 var num1=Number(prompt("Enter the x value"," "));
+	var num2=Number(prompt("Enter the y value"," "));
+	 var com=new Compare(num1,num2);//this is value passing optional
+	//CreateObjct.prototype=Object.create(Compare.prototype);//create and bind object
+	CreateObjct.prototype=com;
+	var obj=new CreateObjct(num1,num2);
+	var result=obj.Calulate();
+  document.getElementById("resultDiv").innerHTML=result;	
+} 
+===========================================================================================
+
+=================Abstarct class using javascript==========================================
+function practiceDemo(){
+	
+	var Shape=function(){
+		this.shapeName="none";
+		throw new Error("cannot define abstract class object");
+	}
+	Shape.prototype.draw=function(){
+		return "Drawing " + this.shapeName;
+	}
+	var Circle=function(shapeName){
+		this.shapeName=shapeName;
+	}
+	 Circle.prototype=Object.create(Shape.prototype);//create new object
+	var circle=new Circle("square");
+
+	//var shape=new Shape("circle");//Don't create object in abstract class
+	var result=circle.draw();
+	document.getElementById("resultDiv").innerHTML=result;
+} 
+===============================OR==========addition of two number using abstract class=====
+function practiceDemo(){
+	
+	var Addition=function(){
+		this.x="none";
+		this.y="none";
+		throw new Error("cannot create object abscract class");
+	}
+       Addition.prototype.Cal=function(){
+		     var x=Number(this.x); 
+			 var y=Number(this.y);
+			 var z=x + y;
+		return "Total Addition:" + z;
+	}
+	var createProtoObject=function(x,y){
+		this.x=x;
+		this.y=y;
+	}
+	createProtoObject.prototype=Object.create(Addition.prototype);
+	var num1=prompt("Enter the first number","");
+	var num2=prompt("Enter the second number","");
+	var obj=new createProtoObject(num1,num2);
+	var result=obj.Cal();
+	document.getElementById("resultDiv").innerHTML=result;
+} 
+================OR===============================
+function practiceDemo(){
+	 var Compare=function(){
+		this.x="none";
+		this.y="none";
+	  throw new Error ("cannot abstract class object");
+	}
+	Compare.prototype.Calulate=function(){
+		var x=this.x;
+		var y=this.y;
+		if(x > y){
+			return x + " = x is grather than y";
+		}else{
+			return y + " = y is grather than x";
+		}
+		
+	}
+	 var CreateObjct=function(x,y){
+		 this.x=x;
+		 this.y=y;
+	 }
+	 //var com=new Compare();
+	CreateObjct.prototype=Object.create(Compare.prototype);//create and bind object   
+     //  Object.__proto__.__proto__=Employee.prototype
+	var num1=Number(prompt("Enter the x value"," "));
+	var num2=Number(prompt("Enter the y value"," "));
+	var obj=new CreateObjct(num1,num2);
+	var result=obj.Calulate();
+  document.getElementById("resultDiv").innerHTML=result;	
+} 
+=========================================================================================
+
+
+=================================polymorphism using javascript==========================
+function practiceDemo(){
+	var Shape=function(){}
+	Shape.prototype.draw=function(){
+		return "Hi I am a Shape";
+	}
+	var Circle=function(){}
+	Circle.prototype=Object.create(Shape.prototype);
+	Circle.prototype.draw=function(){
+		return "Hi I am a Circle";
+	}
+	var Square=function(){}
+	Square.prototype=Object.create(Shape.prototype);
+	Square.prototype.draw=function(){
+		return "Hi I am a Square";
+	}
+	var Traingle=function(){}
+	Traingle.prototype=Object.create(Shape.prototype);
+	Traingle.prototype.draw=function(){
+		return "Hi I am a Traingle";
+	}
+	var Shape=[new Shape(),new Circle(),new Square(),new Traingle()];
+	Shape.forEach(function(shape){
+		 document.write(shape.draw() + "<br/>");
+//document.getElementById("resultDiv").innerHTML+=result + "<br>";
+	});
+	
+} 
+======================================================================================================
+
+
+======================================Simple Inheritance without Super Calls:=====================
+function addItem(){
+  var BaseClass=function(){}
+  
+  BaseClass.prototype.getName=function(){
+	  return "BaseClass";
+	  
+  }
+  var SubClass=function(){ }
+  SubClass.prototype=Object.create(BaseClass.prototype);//bind
+                //or//
+ //SubClass.prototype=new BaseClass();//inherite the BaseClass
+   SubClass.prototype.getName=function(){
+	  return "SubClass";
+  }
+  var obj=new SubClass();
+  var result=obj.getName();
+  document.getElementById("resultDiv").innerHTML=result;
+  
+	}
+===================OR======================================================================
+function addItem(){
+  var BaseClass=function(){
+	  this.getName=function(){
+		  return "BaseClass";
+	  }
+	  //BaseClass constructor code goes to heare
+  }
+  var SubClass=function(){
+	  this.getName=function(){
+		  return "SubClass";
+	  }
+	  //SubClass constructor code goes to hear
+  }
+  SubClass.prototype=new BaseClass();//inherite the BaseClass
+  var result=new SubClass().getName();
+  document.getElementById("resultDiv").innerHTML=result;
+  
+	}
+==========================OR===========================
+	function addItem(){
+  var BaseClass=function(){
+	  BaseClass.prototype.getName = function() {
+    return "BaseClass(" + this.getId() + ")";
+}
+  }
+  BaseClass.prototype.getId = function() {
+		return 1;
+		}
+	  //BaseClass constructor code goes to here
+  
+  var SubClass=function(){}//consantrate curly brace
+	  SubClass.prototype.getName = function() {
+    return "SubClass(" + this.getId() + ")";
+}
+  
+SubClass.prototype.getId = function() {
+		return 2;
+		}
+	  //SubClass constructor code goes to here
+  SubClass.prototype=new BaseClass();//inherite the BaseClass
+  var result=new SubClass().getName();
+  document.getElementById("resultDiv").innerHTML=result;
+  
+	}
+========================================
+function Demo(){
+function SuperType(name){
+this.name = name;
+this.colors = ['red', 'blue', 'green'];
+}
+SuperType.prototype.sayName = function(){
+alert(this.name);
+};
+function SubType(name, age){
+SuperType.call(this, name);
+this.age = age;
+}
+SubType.prototype=Object.create(SuperType.prototype);
+SubType.prototype.sayAge = function(){
+alert(this.age);
+};
+var s=new SubType("Rahul",23);
+s.sayAge();
+}
+	
+	
+==========================================================================================================
+
+==============================create object new method using javascript==================
+
+function practiceDemo(){
+	var parent={//object
+		get:function fn(){
+			return this.fullname;
+		},
+		val:40,
+		firstname:"rahul ",
+		lastname:" khose",
+		age:22
+		
+	};
+	var child=Object.create(parent);
+	child.fullname="Atul khose";
+	var grandChild=Object.create(child);
+	 grandChild.fullname="ganesh khose";
+	var result=grandChild.get();
+  document.getElementById("resultDiv").innerHTML=result;	
+} 
+================================================================================
+
+============inheritance with abstract class ======================================
+function practiceDemo(){
+	var parent=function(){
+	//this.name=name;
+	}
+	parent.prototype.getName=function(){
+		return this.name;
+	}
+	var createValue=function(name){
+		this.name=name; 
+	}
+	//var obj=new parent();Error
+	createValue.prototype=Object.create(parent.prototype);
+	var boj2=new createValue("rahul");
+	var result=boj2.getName();
+  document.getElementById("resultDiv").innerHTML=result;	
+} 
+=========================================================================================
+===========bind text using new object ====================
+function practiceDemo(){
+	var answerPtototype={
+		get:function fn(){
+			return this.val="This is main text ";
+		}
+	};
+	var obj1=Object.create(answerPtototype);
+	obj1.get=function fn2(){
+		return this.val + " This is bind text";
+	};
+	var result=answerPtototype.get();
+	var result1=obj1.get();
+  document.getElementById("resultDiv").innerHTML=result;	
+  document.getElementById("resultDiv1").innerHTML=result1;	
+} 
+=================================================================
+
+var num = [10,2,65,89,1,3,7,4,25,36,41,95,32,84,52];
+
+  var big = num[0];
+
+ for(var i = 0;i < num.length; i++){
+      
+       if(num[i] > big){
+            big = num[i];
+       }
+ }
+
+console.log("Bigest No:" + big);
+==========find out arry to big no===============
+function practiceDemo(){
+var num=[10,22,33,54,88,75,125,66,2,54,42];
+var beggest=0;
+for(i=0;i<num.length;i++){
+	if(beggest<num[i]){
+		beggest=num[i];
+	}
+}
+document.getElementById("resultDiv").innerHTML= "Beggest no:" + beggest;
+	
+} 
+========================OR SMALLEST N0=========================
+function runFun(){
+	var num=[81,22,33,54,88,1,75,125,66,2,222,42];
+	var smallest=num[0];
+for(i=0;i<num.length;i++){
+	if(smallest>num[i]){
+		smallest=num[i];
+	}else{
+	
+	}
+}
+document.getElementById("resultDiv").innerHTML= "samllest no:" + smallest;
+	}
+=======================================================================
+===========login form dynamicaly using javascript=================
+function LoginFun(){
+var loginInfo=[
+ {
+   username:"rahul",
+   password: "rahul123"   
+ },
+ 
+ {
+   username:"shankar",
+   password: "shankar123"   
+ },
+ {
+   username:"vijay",
+   password: "vijay123"   
+ },
+ {
+   username:"nilesh",
+   password: "nilesh123"   
+ }
+ 
+	];
+	var username=document.getElementById("username").value;
+	var password=document.getElementById("password").value;
+	for(i=0;i<loginInfo.length;i++){
+		if(username==loginInfo[i].username && password==loginInfo[i].password){
+			document.getElementById("resultDiv").innerHTML="Login successfully!!!";
+		    }
+		}
+} 
+================HTML==========================
+<fieldset style="width:120px;">
+<legend>Login Form</legend>
+<table>
+<tr>
+<td>userName:</td>
+<td> <input type="text" placeholder="username"id="username" style="width:120px;">
+ </td>
+</tr>
+
+<tr>
+<td>password:</td>
+<td> <input type="text" placeholder="password"id="password" style="width:120px;">
+</td>
+</tr>
+
+<tr>
+<td></td>
+<td> 
+<input type="button" onclick="LoginFun()" value="Click me!">
+ </td>
+</tr>
+ 
+<table>
+</fieldset>
+
+<div id="resultDiv"></div>
+<div id="resultDiv1"></div>
+=====================================================================================================
+
+==================Add html Element,text,class etc using javascript================================
+	function runFun(){
+		var numElement=document.createElement("h1");//element
+		numElement.className="addClass";
+		var addText=document.createTextNode("This is h1 heading");//item
+		numElement.appendChild(addText);
+		var addDiv=document.getElementById("addhear");//node
+		addDiv.appendChild(numElement);
+	}
+==================================================================================================
+
+===================TO do app using javascript===================================
+function AddFun(){
+	var item=document.getElementById("todoinput").value;
+     var text=document.createTextNode(item);
+	var newItem=document.createElement("li");
+	 newItem.appendChild(text);
+	document.getElementById("toDoList").appendChild(newItem);
+
+	}
+=========================================================================================== 
+=====================getter & setter function using javascript============================
+function addItem(){
+    class Super {
+		constructor(size){
+			this.length=size;
+		}
+	  get Length(){
+		   return this.length + ": value has been get";
+		   
+	   }
+	   set Length(value){
+		   this.length=value;
+		   console.log("the value has been set");
+	   }
+	}
+	var obj=new Super(9);
+		var result=obj.Length;
+	document.getElementById("resultDiv").innerHTML=result;
+	obj.Length="50";
+	var result1=obj.Length;
+	document.getElementById("resultDiv1").innerHTML=result1;
+	
+	}
+
+	
+===========================================================================================
+
+===========conditional operater using javascript=============================================
+function addItem(){
+   var a=200;
+   var b=2000;
+     (a>b) ? console.log("a is grater than b"):console.log("b is grater than a");
+  
+	}
+==========================================================================================
+
+=====================nested funciton using javascript======================
+	function outerFun(param){
+			function innerFun(innerParam){
+			return "Total multiplication is:"+ innerParam * 10;
+			}
+			return innerFun(param);
+		}
+	  document.getElementById("resultDiv").innerHTML=outerFun(10);
+	}
+======================OR=====================================================
+function addItem(){
+		function outerFun(outerparam){
+			function innerFun(innerParam){
+			//return "Total multiplication is:"+ innerParam * 10;
+			 function inner2Fun(inner2Param){
+			 //return "Total multiplication is:"+ innerParam * 10;
+				  function inner3Fun(inner3Param){
+					 return "Total multiplication is:"+ innerParam * 10; 
+				 }
+				  return inner3Fun(inner2Param);
+			 }
+			return inner2Fun(outerparam);
+			}
+			return innerFun(outerparam);
+		}
+	 document.getElementById("resultDiv").innerHTML=outerFun(10);
+	}
+
+==============================================================================
+================self invoking function using javascript===========================
+function addItem(){
+	 document.getElementById("resultDiv").innerHTML=add();
+	 }
+	 var add=(function(){
+		 var counter=0;
+		 return function(){
+			 return counter +=1;
+		 }
+	 })();
+=============================OR================================
+function addItem(){
+	(function(msg){
+		alert(msg);
+	})("rahul");
+}
+	
+====================================================================================
+
+==============================prctice example=passing function to argument(callback function)=================================
+function addItem(){
+	var Addition=function(multiplication){
+		multiplication();
+	}
+	 var substraction=function(){
+		show(addition);
+	}
+	var show=function(x){
+	  this.increment=x;
+	  this.increment();
+	}
+	var addition=function(){
+		var a=600;
+		var b=300;
+		alert(a+b);
+	}
+	Addition(substraction);
+}
+===================================return function to return outeer function============
+function addItem(){
+  var Outer=function(){
+	  var x=function(){
+		  alert("This is x function");
+	  }
+	  var y=function(){
+		  alert("This is y function");
+	  }
+	  x();
+	 return function(){
+		  alert("This is y function");
+	  }
+        
+  }
+  var y=Outer();
+     y();
+}
+====================OR==================================================================
+function addItem(){
+	var Addition=function(multiplication,x,y){
+		this.x=x;
+		this.y=y;
+		multiplication();
+		
+	}
+	 var substraction=function(){
+		show(addition);
+	}
+	var show=function(fun){
+	  this.increment=fun;
+	  this.increment();
+	}
+	var addition=function(){
+		var result=this.x + this.y;
+		alert(result);
+	}
+	Addition(substraction,200,600);
+}
+==========================================================================================
+
+=====================================Function as array Element using ananymas function====
+ function addItem(){
+  var ary=[];
+  ary[0]=function(){
+	  alert("first");
+  }
+  ary[1]=function(){
+	  alert("second");
+  }
+  ary[2]=function(){
+	  alert("third");
+  }
+  ary[3]=function(){
+	  alert("four");
+  }
+  for(i=0;i<ary.length;i++){
+	 // var f=ary[i];
+	  //f();
+      ary[i]();
+  }
+}
+=============================================================================================
+
+
+===========================Attach Event using javascript=====================================
+function AttachEvent(){
+ var dummyBtn=document.getElementById("runFun1");
+     dummyBtn.onclick=function(){
+		 alert("Hello javascript");
+	 }
+	 dummyBtn.value="Hii I am working";
+ 
+}
+===============================================================================================
+
+===============How to get Event and find attributte=====================================
+var changeImage=function(event){
+	var event=event||window.event;
+	//alert(event.type);
+	var targetEvent=event.target || event.srcElement;
+	//alert(targetEvent);
+	var attr=targetEvent.getAttribute("src");
+	alert(attr);
+ }
+=============================OR getAttribute & ssetAttribute===========================
+var getVal=function(event){
+	 var event=event || window.event;
+	 var targetEvent=event.target;
+	targetEvent.setAttribute('title','Atul khose');
+	alert(targetEvent.getAttribute('title'));
+	
+ }
+====================OR========GET ID==============================
+var getId=function(event){
+	 var event=event || window.event;
+	 var targetEvent=event.target;
+	alert(targetEvent);
+ }
+===============================================================
+============================================================================================
+========retrive the value in object anotehr method===========================
+ window.onload=function(){
+	  var Emp={
+		  firstname:"rahul",
+		  lastname:"khose",
+		  age:22,
+		  marks:500,
+		  price:600,
+		  dist:"latur",
+		  tal:"latur",
+		  collage:"sinhgad",
+		  city:"pune",
+		  rent:25000
+	  }
+	  var x=(Object.keys(Emp));
+	 
+	  var string=x.toString();
+	   var k=string.split(",");
+	   var result=" ";
+	   for(i=0;i<k.length;i++){
+		 var result= result + k[i] + ":" + Emp[k[i]] + "<br/>";
+	
+	   }
+      document.getElementById("resultDiv").innerHTML=result;
+ }
+===================OR===========
+var x=(Object.keys(Emp));
+	   for(i=0;i<x.length;i++){
+		 var result= result + x[i] + ":" + Emp[x[i]] + "<br/>";
+	   }
+
+===============================================================================================
+
+===================All type of initilize array using javascript=======================
+ var runFun=function(){
+	 // var emp=[];
+	 // emp[0]="rahul",
+	 // emp[1]="khose",
+	 // emp[2]=22,
+	 // emp[3]=8446751168
+	
+	 // var emp=[];
+	   // emp["firstname"]="rahul",
+	   // emp["lastname"]="khose",
+	   // emp["age"]=22,
+	   // emp["Mobileno"]=8446751168
+	    
+	 // var emp=new Array(4);
+	 // emp[0]="rahul",
+	 // emp[1]="khose",
+	 // emp[2]=22,
+	 // emp[3]=8446751168
+
+              var emp={};
+	  emp.firstname="rahul";
+	  emp.lastname="khose";
+	  emp.gender="male";
+	  emp.desegation="r";
+
+
+	 //var emp=["rahul","khose",22,8446751168];
+
+	 	
+	 var emp= new Array("rahul","khose",22,8446751168);
+	 
+	 // var x=Object.keys(emp);
+	 // for(i=0;i<x.length;i++){
+		   // alert(emp[i]);
+	 // }
+	  for(p in emp){
+		 alert(emp[p]); 
+	  }
+	
+ }
+==================================================================================
+=============collection of array using javascrtipt==============================
+ var runFun=function(){
+	  var emp=[];
+	  emp[0]="rahul",
+	 emp[1]="khose",
+	 emp[2]=22,
+	  emp[3]=8446751168
+	
+	var emp1=[];
+	    emp1["firstname"]="shankar ",
+	    emp1["lastname"]="khose",
+	   emp1["age"]=22,
+	    emp1["Mobileno"]=8446751168
+	    
+	  var emp2=Array(4);
+	  emp2[0]="rajendra",
+	  emp2[1]="khose",
+	  emp2[2]=22,
+	  emp2[3]=8446751168
+
+	 var emp3=["keshav","khose",22,8446751168];	
+	 var emp4=Array("mahadev","khose",22,8446751168);
+	 var empc=[emp,emp1,emp2,emp3,emp4];
+	  for(i=0;i<empc.length;i++){
+		  var x=empc[i];
+		for(p in x){
+		 alert(x[p]); 
+	  }
+	  }
+ }
+========================================================================
+
+==================create new object dynamiclally function using javascript=========
+var createNewObject=function(firstname,lastname,gender,desegation,fullname){
+	  var newObject={};
+	  newObject.firstname=firstname;
+	  newObject.lastname=lastname;
+	  newObject.gender=gender;
+	  newObject.desegation=desegation;
+	  newObject.fullname=function(){
+		 return this.firstname + this.lastname;
+	  }
+	  return newObject;
+  }
+========================================================================================
+================create a dropdown list using javascript==================================
+var button=document.getElementById("btn1");
+button.onclick=function(){
+	var styleVal=document.getElementById("listItem").getAttribute("style");
+	 if("opacity:-1"==styleVal){
+		 document.getElementById("listItem").setAttribute("style","opacity:1");
+	}else{
+	 document.getElementById("listItem").setAttribute("style","opacity:-1");
+	}
+}
+================================================================================================
+
+==============call,apply,& bind using javascript===================================
+====call()================
+
+var obj={num:3};
+var addthisObj=function(n){
+	return this.num + n;
+}
+console.log(addthisObj.call(obj,3));
+
+====apply()================
+
+var obj={num:3}
+var array=[1,2,3];
+var addthisObj=function(a,b,c){
+	return this.num + a + b + c;
+}
+console.log(addthisObj.apply(obj,array));
+====bind()================
+
+var obj={num:3}
+var addthisObj=function(a,b,c){
+	return this.num + a + b + c;
+}
+ var bound=addthisObj.bind(obj);
+ console.log(bound(1,2,3));
+==========================================================================================
+
+===================callback function using javascript======================================
+var add=function(x,y){
+	return x + y;
+}
+ 
+var cal=function(num1,num2,callback){
+	return callback(num1,num2);
+}
+console.log(cal(100,200,add));
+===========================================================================================
+
+
+========================inheritance big example using javascript============================
+
+var Animal=function(){
+	this.name="NoName";
+	this.owner="NoOwner";
+	this.sound="Grr";
+}
+Animal.prototype.setName=function(Aname){
+	
+	if(typeof Aname!=="undefined"){
+		 this.name=Aname;
+		
+	}else{
+	  document.write("Plese set animal Name");
+	}
+}
+Animal.prototype.setOwner=function(Aowner){
+	
+	if(typeof Aowner!=="undefined"){
+		 this.owner=Aowner;
+		
+	}else{
+	  document.write("Plese set animal Name");
+	}
+}
+Animal.prototype.setSound=function(Asound){
+	
+	if(typeof Asound!=="undefined"){
+		 this.sound=Asound;
+		
+	}else{
+	  document.write("Plese set animal Name");
+	}
+}
+//Encapsulation
+Animal.prototype.getName=function(){
+	return this.name;
+}
+Animal.prototype.getOwner=function(){
+	return this.owner;
+}
+Animal.prototype.getSound=function(){
+	return this.sound;
+}
+ var Parot=function(){
+	 this.color="green";
+ }
+ Parot.prototype=Object.create(Animal.prototype);
+ Parot.prototype.setColor=function(cmood){
+	if(typeof cmood !=="undefined"){
+		 this.mode=cmood;
+	 }else{
+		 document.write("Plese set mood in cat");
+	 }
+ }
+ Parot.prototype.getColor=function(){
+		 return this.mode;
+ }
+ 
+ var Rabit=function(){
+	 this.eat="grass";
+ }
+ Rabit.prototype=Object.create(Parot.prototype);
+ Rabit.prototype.setGrass=function(meal){
+	if(typeof meal !=="undefined"){
+		 this.eat=meal;
+	 }else{
+		 document.write("Plese set eat in cat");
+	 }
+ }
+ Rabit.prototype.getGrass=function(){
+		 return this.eat;
+ }
+  var Elephant=function(){
+	  this.weight="400kg";
+  }
+  Elephant.prototype=Object.create(Rabit.prototype);
+  Elephant.prototype.setWeight=function(weight){
+	if(typeof weight !=="undefined"){
+		 this.weight=weight;
+	 }else{
+		 document.write("Plese set weight in cat");
+	 }
+ }
+ Elephant.prototype.getWeight=function(){
+		 return this.weight;
+ }
+  
+ var E=new Elephant();
+ 
+  E.setName("Elephant raja");
+  E.setOwner("Rahul");
+  E.setSound("ghaaaa");
+  E.setColor("black");
+  E.setGrass("wood");
+  E.setWeight("800kg");
+ 
+  document.write(E.getName() + "<br/>");
+  document.write(E.getOwner() + "<br/>");
+  document.write(E.getSound() + "<br/>");
+  document.write(E.getColor() + "<br/>");
+  document.write(E.getGrass() + "<br/>");
+  document.write(E.getWeight() + "<br/>");
+===================================================OR=====================================
+ 
+ function Customer(array){
+	 this.array=array;
+ }
+ Customer.prototype.getName=function(){
+	 return this.array[0];
+ }
+ Customer.prototype.getAge=function(){
+	 return this.array[1];
+ }
+ Customer.prototype.getSalary=function(){
+	 return this.array[2];
+ }
+ Customer.prototype.getFullname=function(){
+	 return this.array[3];
+ }
+ 
+ function Worker(array){
+	 this.array=array;
+ }
+  Worker.prototype=Object.create(Customer.prototype);
+  
+ Worker.prototype.getDegignation=function(){
+	 return this.array[4];
+ }
+
+ function Employee(array){
+	 this.array=array;
+ }
+ Employee.prototype=Object.create(Worker.prototype);
+ Employee.prototype.getAnuualsalary=function(){
+	 return this.array[2]*12;
+ }
+var array=["Rahul",33,20000,"Rahul Khose","IT"];
+var emp=new Customer(array);
+alert(emp.getAge());
+  
+ =========================OR====================================================
+ 
+ function Customer(array){
+	 this.array=array;
+ }
+ Customer.prototype.getName=function(n){
+	 return this.array[n];
+ }
+ Customer.prototype.getAge=function(n){
+	 return this.array[n];
+ }
+ Customer.prototype.getSalary=function(n){
+	 return this.array[n];
+ }
+ Customer.prototype.getFullname=function(n){
+	 return this.array[n];
+ }
+ 
+ function Worker(array){
+	 this.array=array;
+ }
+  Worker.prototype=Object.create(Customer.prototype);
+  
+ Worker.prototype.getDegignation=function(n){
+	 return this.array[n];
+ }
+
+ function Employee(array){
+	 this.array=array;
+ }
+ Employee.prototype=Object.create(Worker.prototype);
+ Employee.prototype.getAnuualsalary=function(n){
+	 return this.array[n]*12;
+ }
+ function Student(array){
+	 this.array=array;
+ }
+  Student.prototype=Object.create(Employee.prototype);
+var array=["Rahul",33,20000,"Rahul Khose","IT"];
+var st=new Student(array);
+alert(st.getDegignation(4));
+================================================================================================
+
+==================creating multiArray using javascript=====================
+var multiArray=[[1,2,3,4],[6,7,8,9]];
+document.write(multiArray[1][2]);
+===========================================================================================
+
+================to do app insert element before using javascript=================
+var button=document.getElementById("buttonId");
+button.addEventListener("click",addItem,false);
+   function addItem(){
+	var text=document.getElementById("inputId").value;
+var li=document.createElement("li");
+  li.innerText=text;
+  var ulId=document.getElementById("todo-ul");
+ulId.insertBefore(li,ulId.childNodes[0]);
+   }
+
+==========================================================================================
+
+=====================Table adding dynamically using javascript============================
+
+var button=document.getElementById("buttonId");
+button.addEventListener("click",addItem,false);
+   function addItem(){
+	
+function createTable(tableData){
+	var table=document.createElement('table');
+	var tableBody=document.createElement("tbody");
+	
+	tableData.forEach(function(rowData){
+		var row=document.createElement('tr');
+		rowData.forEach(function(cellData){
+			var cell=document.createElement('td');
+			cell.appendChild(document.createTextNode(cellData));
+			row.appendChild(cell);
+			
+		});
+		tableBody.appendChild(row);
+	});
+	table.appendChild(tableBody);
+	document.body.appendChild(table);
+}
+createTable([["row 1, cell 1","row 1,cell 2"],["row 2,cell 1","row 2,cell 2"]]);
+   }
+=================================================================================
+
+=================Collection of a all prototype method using this code======================
+Function.prototype.ext = function(Obj){
+    for(var proto in Obj){
+        this.prototype[proto] = Obj[proto];//this point to app object
+    }
+}
+function app(){
+	   this.view();
+}
+app.ext({
+	view : function(){
+		alert("success");
+	},
+	controller : function(){
+	}
+});
+
+=============OR=========================================================================
+=====================This is prototype object===
+__proto__:Object
+=================================================
+
+==========assignn method master prototype object===============
+Function.prototype.ext=function(Obj){
+	 for(var proto in Obj){
+		 this.prototype.__proto__[proto]=Obj[proto];
+	 }
+ }
+==============================================================
+
+Function.prototype.ext = function(Obj){
+    for(var proto in Obj){
+        this.prototype[proto] = Obj[proto];
+    }
+}
+function app(){
+	   this.view();
+	  this.animal=new animal()
+	  this.animal.cat();
+	  this.company=new company();
+	  this.company.IT();
+}
+app.ext({
+	view : function(){
+		alert("success"); 
+	},
+	controller : function(){
+	}
+});
+   function animal(){};
+animal.ext({
+	dog: function(){
+		alert("This is dog function"); 
+	},
+	cat : function(){
+		alert("this is cat function");
+	}
+});
+function company(){};
+company.ext({
+	IT : function(){
+		alert("This is IT function"); 
+	},
+	computer : function(){
+		alert("this is computer function");
+	}
+});
+============================================================================================
+
+=================practice =======================================
+
+Function.prototype.ext=function(Obj){
+	for(proto in Obj){
+		this.prototype[proto]=Obj[proto];
+	}
+}
+var html={
+	mainView:"<form>" +
+	         "<input type='button'value='submit'id='btn'> "+
+	          "</form>"
+}
+function app(){
+	this.view();
+	this.Employee=new Employee("rahul");
+	
+}
+app.ext({
+	view:function(){
+		this.view=$(html.mainView);
+		$("body").append(this.view);
+		alert("view sussfull");
+		this.controller();
+	},
+	controller:function(){
+		var _this=this;
+		_this.view.find("#btn").click(function(){
+			var x=_this.Employee.getName();
+	alert(x);
+	_this.Worker=new Worker("ramesh",10000);
+	var salary=_this.Worker.getSalary();
+	alert(salary);
+		});
+	}
+});
+function Employee(name){
+	this.name=name;
+	
+}
+Employee.ext({
+	getName:function(){
+		return this.name;
+	},
+});
+function Worker(name,salary){
+	this.name=name;
+	this.salary=salary;
+}
+Worker.ext({
+	getName:function(){
+		return this.name;
+	},
+	getSalary:function(){
+		return this.salary;
+	}
+});
+==============OR==============================================================
+
+Function.prototype.ext=function(Obj){
+	for(proto in Obj){
+		this.prototype[proto]=Obj[proto];
+	}
+}
+var html={
+	mainView:"<form>" +
+	         "<input type='button'value='submit'id='btn'> "+
+	          "</form>",
+   employeeView:"<form>" +
+	         "<input type='button'value='employee'id='btn1'> "+
+	          "</form>"
+}
+function app(){
+	this.view();
+}
+app.ext({
+	view:function(){
+		this.view=$(html.mainView);
+		$("body").append(this.view);
+		this.controller();
+	},
+	controller:function(){
+		var _this=this;
+		_this.view.find("#btn").click(function(){
+	_this.Worker=new Worker("ramesh",10000);
+	var salary=_this.Worker.getSalary();
+	alert(salary);
+	this.Employee=new Employee("rahul");
+	this.Employee.view();
+		});
+	}
+});
+function Employee(name){
+	this.name=name;
+}
+Employee.ext({
+	
+	
+	view:function(){
+		this.view=$(html.employeeView);
+		$("body").append(this.view);
+	 this.EmployeeContorller();
+	},
+	EmployeeContorller:function(){
+		_this=this;
+		_this.view.find("#btn1").click(function(){
+		var x=_this.getName();
+		alert(x);
+		_this.Worker=new Worker("shankar",20000);
+	  var r=_this.Worker.getSalary();
+alert(r);	  
+		});
+	},
+	getName:function(){
+		return this.name;
+	}
+	
+});
+
+function Worker(name,salary){
+	this.name=name;
+	this.salary=salary;
+}
+Worker.ext({
+	getName:function(){
+		return this.name;
+	},
+	getSalary:function(){
+		return this.salary;
+	}
+});
+========================================================================================================
+
+===============================convert json string to object============================
+var student='{"s1":{"firstname":"rahul","lastname":"khose","age":22,"salary":220000},"s2":{"firstname":"shakar","lastname":"Nalawade","age":21,"salary":20000},"s3":{"firstname":"nilesh","lastname":"budruk","age":23,"salary":26000}}';
+var convert=JSON.parse(student);
+console.log(convert);
+============================================================================================================
+=============================convert json object to json string============================================
+
+var student={
+	"s1":{
+		"firstname":"rahul",
+		"lastname":"khose",
+		"age":22,
+		"salary":220000
+	},
+	"s2":{
+		"firstname":"shakar",
+		"lastname":"Nalawade",
+		"age":21,
+		"salary":20000
+	},
+	"s3":{
+		"firstname":"nilesh",
+		"lastname":"budruk",
+		"age":23,
+		"salary":26000
+	}
+}
+var convert=JSON.stringify(student);
+console.log(convert);
+==========================================================================
+
+
+====================reverse string using dynamic=================
+String.prototype.revMe=function(){
+	
+	var len=this.length;
+	var userString="";
+	var customStirng="";
+	for(i=0;i<len;i++){
+		userString += this[i];
+	}
+	while(len--){
+		customStirng+=userString[len];
+	}
+	return customStirng;
+}
+
+
+var s="This is mobile";
+console.log(s.revMe());
+console.log(s.split("").reverse().join(""));
+console.log(s.revMe()==s.split("").reverse().join(""));
+===================================================================
+
+
+===============setTimeOut & setInterval=========================
+
+setTimeout(function(){
+	alert("hi this is time out");
+ },1000);
+ 
+ clearTimeout();
+	  
+setInterval(function(){
+	alert("hi this is time out");
+},1000);
+
+clearInterval(); 
+=================================================================
+
+======set the cookie========================================
+var expires=new Date();
+window.onload=function(){
+ if(document.cookie.length !=0){
+	 var nameValArray=document.cookie.split("=");
+	 document.body.style.backgroundColor=nameValArray[1];
+	 document.getElementById("ddlThem").value=nameValArray[1];
+  }
+}
+function setColor(){
+	var selectedColor=document.getElementById("ddlThem").value;
+	expires.setFullYear(expires.getFullYear()+ 1);
+	if(selectedColor != "selectcolor"){
+		document.body.style.backgroundColor=selectedColor;
+		document.cookie="color=" + selectedColor + "; expires = " +expires.toGMTString(); 
+	}
+}
+=======================================================================================================
+
+=========multiple cookie value set or get==================================================
+ 
+ var expires=new Date();
+ function getCookie(){
+	
+if(document.cookie.length!=0){
+var listItemArray=document.cookie.split("=");
+  var listItemObj=JSON.parse(listItemArray[1]);
+var name=document.getElementById("txtName").value=listItemObj.name;
+var email=document.getElementById("txtEmail").value=listItemObj.email;
+var gender=document.getElementById("txtGender").value=listItemObj.gender; 
+	}else{
+		alert("cookie not found");
+	} 
+ }
+ function setCookie(){
+	 var name=document.getElementById("txtName").value;
+	 var email=document.getElementById("txtEmail").value;
+	 var gender=document.getElementById("txtGender").value; 
+	 var stringObj={}
+		 stringObj.name=name;
+		 stringObj.email=email;
+		 stringObj.gender=gender;
+	 
+	expires.setFullYear(expires.getFullYear()+ 1);
+	  var jsonString=JSON.stringify(stringObj);
+	  document.cookie="listItem =" + jsonString + "; expires= " + expires.toGMTString(); 
+ }
+ function Clear(){
+	 document.getElementById("txtName").value="";
+	 document.getElementById("txtEmail").value="";
+	 document.getElementById("txtGender").value="";
+ }
+=========================================================================================
+
+==================get or set value on localStorage ==================================
+
+localStorage.EmpList
+
+
+localStorage.EmpList='{"name":"xyz","age":"20"}';
+"{"name":"xyz","age":"20"}"
+localStorage.length;
+======================
+function setValue(){
+	var name=document.getElementById("txtName").value;
+	var email=document.getElementById("txtEmail").value;
+	var gender=document.getElementById("txtGender").value;
+	
+	var dataObj={};
+	    dataObj.name=name;
+	    dataObj.email=email;
+	    dataObj.gender=gender;
+		
+		var jsonString=JSON.stringify(dataObj);
+		localStorage["listItem1"]=jsonString;
+		}
+		
+		function getValue(){
+			
+			if(typeof(Storage)!="undefine" && localStorage.length!=0){
+				var jsonString=localStorage["listItem1"];
+				var dataObj=JSON.parse(jsonString);
+				 var resultString="";
+				$.each(dataObj,function(key,value){
+					resultString += key + "=" + value + "<br />";
+				})
+				document.write(resultString);
+			}else{
+				alert("local Storage Empty");
+			}
+		}
+
+
+==============================================================================================
+
+============sessionStorage set or get value================================
+
+function setValue(){
+	var name=document.getElementById("txtName").value;
+	var email=document.getElementById("txtEmail").value;
+	var gender=document.getElementById("txtGender").value;
+	
+	var dataObj={};
+	    dataObj.name=name;
+	    dataObj.email=email;
+	    dataObj.gender=gender;
+		
+		var jsonString=JSON.stringify(dataObj);
+		sessionStorage["listItem"]=jsonString;
+		}
+		
+		function getValue(){
+			
+			if(Storage!="undefine"){
+				var jsonString=sessionStorage["listItem"];
+				var dataObj=JSON.parse(jsonString);
+				 var resultString="";
+				$.each(dataObj,function(key,value){
+					resultString += "Key=" + key + " ; value =" + value + "<br />";
+				})
+				document.write(resultString);
+			}else{
+				alert("local Storage Empty");
+			}
+		}
+
+====================================================================================================
+
+var Person = Class.create();
+Object.extend( Person.prototype, {
+initialize: function( name ) {
+this.name = name;
+},
+// A simple function for the Person object
+getName: function() {
+return this.name;
+}
+});
+=========================================================================================
+=========define getters & setters=============
+var book = {
+		_year: 2004,
+		edition: 1
+		};
+ book.__defineGetter__('year', function(){
+		return this._year;
+	});
+book.__defineSetter__('year', function(newValue){
+		if (newValue > 2004) {
+		this._year = newValue;
+		this.edition += newValue - 2004;
+			}
+		});
+	book.year = 2005;
+	alert(book.edition); //2
+===================================================
+
+var person=function(){
+			
+		}
+		person.prototype={
+			name:"rahul",
+			age:22,
+			salary:22000,
+			getName:function()
+			{
+			 return this.name;
+			}		
+		}
+		var keys=Object.getOwnPropertyNames(person.prototype);
+		console.log(keys);
+//["name", "age", "salary", "getName"]
+==========================================================
+
+var person=function(){
+			
+		}
+		person.prototype={
+                        //constructor: person,
+			name:"rahul",
+			age:22,
+			salary:22000,
+			getName:function()
+			{
+			 return this.name;
+			}		
+		}
+		Object.defineProperty(person.prototype, 'constructor', {
+                    enumerable: false,
+                   value: person
+            });
+		var keys=Object.getOwnPropertyNames(person.prototype);
+		console.log(keys);
+//["name", "age", "salary", "getName", "constructor"]
+
+=========================================================
+ person.prototype={
+                        constructor: person,
+			name:"rahul",
+			age:22,
+			salary:22000,
+                        friends : [“Shelby”, “Court”],
+			getName:function()
+			{
+			 return this.name;
+			}		
+		}
+//["constructor", "name", "age", "salary", "getName"]
+===========OR========
+Object.defineProperty(person.prototype, 'constructor', {
+                    enumerable: false,
+                   value: person
+            });
+=================================================================
+
+String.prototype.startsWith = function (text) {
+                return this.indexOf(text) == 0;
+            };
+         var msg = 'Hello world!';
+         alert(msg.startsWith('Hello')); //true
+=========OR==============
+
+Number.prototype.startsWith = function (text) {
+                return this.indexOf(text) == 0;
+            };
+         var msg = 'Hello world!';
+         alert(msg.startsWith('Hello')); //true
+===============================================================
+
+========call method============================
+function SuperType(name){
+this.name = name;
+this.colors = ['red', 'blue', 'green'];
+}
+SuperType.prototype.sayName = function(){
+alert(this.name);
+};
+function SubType(name, age){
+//inherit properties
+SuperType.call(this, name);//second call to SuperType()
+this.age = age;
+}
+//inherit methods
+SubType.prototype = new SuperType();//first call to SuperType()
+SubType.prototype.sayAge = function(){
+alert(this.age);
+};
+var obj=new SubType("rahul",22);
+obj.sayAge();
+====================================================
+====FunctionDeclarationHoisting============
+sayHi();
+var sayHi=function(){
+alert('Hi!');//error:function not declared
+}
+====or==
+var sayHi=function(){
+alert('Hi!');//Hi!
+}
+sayHi();
+========================================
+==============BlockScopeExample=========
+(function(count){
+	for(i=0;i<count;i++){	
+	alert(i);
+	}
+})(5);
+=====================================
+=============PrivilegedMethod=======
+function Person(name){
+this.getName = function(){
+return name;
+};
+this.setName = function (value) {
+name = value;
+};
+}
+var person = new Person('Nicholas');
+alert(person.getName()); //”Nicholas”
+person.setName('Greg');
+alert(person.getName()); //”Greg”
+===========================================
+document.documentElement.clientWidth;
+document.body.clientWidth;
+===============================
+//go back one page
+history.go(-1);
+//go forward one page
+history.go(1);
+//go forward two pages
+history.go(2);
+//go to nearest wrox.com page
+history.go(“wrox.com”);
+//go back one page
+history.back();
+//go forward one page
+history.forward();
+//history length
+history.length
+================================
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+     document.getElementById("result").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "ajax.json", true);
+  xhttp.send();
+}
+============================================
+
+function loadDoc() {
+ if(window.XMLHttpRequest){
+	 var xhr=new XMLHttpRequest;
+	 xhr.onreadystatechange=function(){
+	 if(this.readyState == 4 && this.status == 200){
+		 
+      document.getElementById("result").innerHTML=this.responseText;
+	  console.log(JSON.parse(this.responseText)[0].name);
+	   }
+	 }	 
+	 xhr.open("GET","ajax.json",true);
+	 xhr.send();
+ }else{
+	 
+ }
+}
+====================================================================
+$(function(){
+	 $("#Insert").click(function(event){
+		 event.preventDefault();
+		 $.ajax({
+			 url:"insert.php",
+			 method:"post",
+			 data:$('form').serialize(),
+			 dataType:"text",
+			 success:function(data,status){
+				 $("#message").html(data);
+			 },
+			 error:function(xhr,testStatus,err){
+				 $("#message").html(err);
+			 }
+			 
+		 })
+	 })
+ })
+====================================================================
+
+  function student(){
+	this.firstName="Rahul";
+	this.lastName="khose";
+	this.age=20;
+}
+ var student=new student();
+ //console.log(student);
+ Object.defineProperty(student,'fullName',{
+	 get:function(){
+		 return "Fullname: " + this.firstName +" "+ this.lastName;
+	 },
+	 set:function(fullname){
+		 this.firstName=fullname.split(" ")[0];
+		 this.lastName=fullname.split(" ")[1];
+	 } 
+ })
+ student.fullName="sara stiv";
+ console.log(student.fullName);
+=======================================================================
+function sayMessage(message) {
+console.log(message);
+}
+function sayMessage() {
+console.log("Default message");
+}
+sayMessage("Hello!"); // outputs "Default message"
+========================================================================
+======window.onerror event===========
+$(function(){
+
+   function handlerFun(){
+      document.write("Error :" + arguments[0] + "<br />" + "Location :" + arguments[1]); 
+       return true;
+     }
+
+     window.onerror=handlerFun;
+     function doSomething(){
+     	  gogo();
+     }
+     doSomething();
+})
+=============================================
+ //(function(){
+     'use strict';
+    window.onerror =function(){
+        console.log(arguments[0]);
+        console.log(arguments[1]);
+    }
+  var something =function(){
+       gogo();
+  }
+  something();
+ //})()
+==========================
+$(function(){
+
+     document.getElementById("t").addEventListener("click",modifyText,false);
+
+
+     function modifyText(){
+     	var t=document.getElementById("t");
+     	 var num=parseInt(t.firstChild.nodeValue) + 1;
+     	 t.firstChild.nodeValue=num;
+     }
+})
+==============================================================
+=======change location path==========
+$(function(){
+
+   setTimeout(function(){
+      window.location.replace("http://google.com")
+     window.location.href="http://google.com";
+   },4000);
+})
+================================
+$(function(){
+
+var xhr=new XMLHttpRequest();
+ xhr.onreadystatechange=function(){
+ 	if((this.readyState==4) && (this.status==200)){
+ 		console.log(this.responseText);
+ 	}
+ }
+ xhr.open("GET","data/newData.json",true);
+ xhr.send();
+
+})
+=========================================
+=========web worker example=====
+function startWorker() {
+    if(window.Worker) {
+       var worker = new Worker('http://localhost/jquery_Practice/js/worker.js');
+          worker.postMessage('Hello World');
+      
+        worker.onmessage=function(e){
+        	
+        	document.write(e.data);
+        }
+     }
+}
+function stopWorker() {
+    worker.terminate();
+  }
+========worker.js file======
+self.addEventListener('message', function(e) {
+  // Send the message back.
+  self.postMessage('You said: ' + e.data);
+}, false);
+=============================================
+var worker;
+function startWorker() {
+    if(typeof (worker)=="undefined" && window.Worker) {
+       var worker = new Worker('js/worker.js');
+          worker.postMessage('Hello Javascript!!!!');
+      
+        worker.onmessage=function(e){
+        	
+        	document.getElementById("result").textContent=e.data;
+        }
+     }
+}
+==========================================
+ var worker;
+function startWorker() {
+    if(window.Worker) {
+        worker = new Worker('js/worker.js');
+         worker.postMessage("");
+          worker.onmessage = function(event) {
+            document.getElementById("result").innerHTML = event.data;
+       }
+     }
+}
+function stopWorker(){
+  worker.terminate();
+}
+========worker.js
+var i = 0;
+
+function timedCount() {
+    i = i + 1;
+    self.postMessage(i);
+    setTimeout("timedCount()",500);
+}
+
+timedCount();
+
+=====================calculate Rectangle using with keyword==
+$(function(){
+
+   function Rectangle(wVal,hVal){
+   	  this.width=wVal;
+   	  this.height=hVal;
+   	  this.area=function(){
+   	  	return "Area :" + this.width * this.height;
+   	  }
+   }
+
+    var rect=new Rectangle(2,3);
+     with(rect){
+     	width=5
+     	height=6
+     }
+    alert(rect.area());
+})
+========================================
+
+==============get document Object property==
+
+$(function(){
+
+  function doSomething(){
+  	 for(var prop in window.document){
+  	 	document.write( "<p>" + prop + "</p>");
+  	 }
+  }
+  doSomething();
+})
+==========================================
+
+$(function(){
+
+  function doSomething(){
+  	var count=0;
+  	 for(var prop in $()){
+  	 	document.write( count++ + "=" + prop + "<br />");
+  	 }
+  }
+  doSomething();
+})
+====================================================
+$(function(){
+
+  function doSomething(){
+  	 for(var prop in $()){
+  	 	 if(prop=="append"){
+  	 	 	$("li") + ".prop" + ('<li> new Item </li>');
+
+  	 	 	return true;
+  	 	 } 
+  	 }
+  }
+  doSomething();
+})
+========================================
+===========Passing an anonymous function as an argument===
+$(function(){
+        var myFun=function(fn){
+        	    var result=fn();
+        	   return result;
+        }
+        console.log(myFun(function(){return 'Hello javascript!!!'}));
+});
+====================================
+var myArray=[];
+undefined
+
+Object.prototype.toString.call(myArray)=='object Array';
+
+---> false
+
+Object.prototype.toString.call(myArray)==='[object Array]';
+
+---> true
+=====================================================
+===========Namespace==========
+$(function(){
+        var myNamespace = {
+                 myObject : {
+                           sayHello : function() {
+                                 console.log('Hi! My name is ' + this.myName);
+                                },
+
+                           myName : 'Rebecca'
+                            }
+                       };
+
+    var obj = myNamespace.myObject//OR myNamespace.myObject.sayHello();
+
+  obj.sayHello();
+});
+====OR======
+     var hello=myNamespace.myObject.sayHello;
+   hello();//undefined
+
+==========================================================
+(function() {
+ 
+var baz = 1;
+ 
+var bim = function() { alert(baz); };
+
+ bar = function() { alert(baz); };
+
+ })();
+
+bar() // output 1
+bim() // error bim is not defined
+baz // error bim is not defined
+=====================================
+
+$(function(){
+
+ for(i=0;i<5;i++){
+ 	$("<p>click me!</p>").appendTo('body').click(function(){
+ 		alert(i);
+ 	})
+ }
+ 
+});
+======================================================
+$(function(){
+  function createFun(i){
+  	return function(){
+  		alert(i);
+  	}
+  }
+ for(i=0;i<5;i++){
+ 	$("<p>click me!</p>").appendTo('body').click(createFun(i));
+ }
+ 
+});
+==============================================================
+=========Using a closure to access inner and outer object instances simultaneously
+$(function(){
+  
+
+     var outerObj={
+
+     	   myName:"outer",
+     	   outerFun:function(){
+
+     	   	    var self=this;
+
+     	   	    var innerObj={
+     	   	    	  myName:"Inner",
+     	   	    	  innerFun:function(){
+     	   	    	  	console.log(self.myName ,this.myName);
+     	   	    	  }
+     	   	    }
+     	   	    innerObj.innerFun();
+     	   }
+     }
+     outerObj.outerFun();
+     console.log(outerObj.myName);
+ 
+});
+===================================================================
+======Passing a named function instead of an anonymous function
+function myFun(){
+	alert("Function is ready");
+}
+$(document).ready(myFun);
+===========OR========
+function myFun(){
+
+	$('#content').find('h3').eq(2).html('new text for the third h3!');
+}
+$(document).ready(myFun);
+============OR=============
+function myFun(){
+
+	$('#content')
+	.find('h3')
+	.eq(2)
+	.html('new text for the third h3!')
+	.end() // restores the selection to all h3's in #content
+        .eq(0)
+        .html('new text for the first h3!');
+}
+$(document).ready(myFun);
+===================================================
+======$.inArray()=======================
+function myFun(){
+
+var myArray = [ 1, 2, 3, 5 ];
+ if ($.inArray(3, myArray) !== -1) {
+ console.log('found it!');
+  }else{
+  	console.log("Not found");
+  }
+}
+$(document).ready(myFun);
+==============================================
+ var firstObject = { foo : 'bar', a : 'b' };
+ var secondObject = { foo : 'baz' };
+
+ var newObject = $.extend({}, firstObject, secondObject);
+ console.log(firstObject.foo); // 'bar'
+ console.log(newObject.foo);
+=========================================
+function myFun(){
+
+var myFunction = function() { console.log(this.foo); };
+ var myObject = { foo : 'bar' };
+
+ myFunction(); // logs window object and myObject
+
+ var myProxyFunction = $.proxy(myFunction, myObject);
+ myProxyFunction();
+}
+$(document).ready(myFun); 
+==================================================
+
+=====Dynamically loading external JavaScript and CSS files
+
+function myFun(){
+function loadjscssfile(filename, filetype){
+if (filetype=="js"){ //if filename is a external JavaScript file
+var fileref=document.createElement('script')
+fileref.setAttribute("type","text/javascript")
+fileref.setAttribute("src", filename)
+}
+else if (filetype=="css"){ //if filename is an external CSS file
+var fileref=document.createElement("link")
+fileref.setAttribute("rel", "stylesheet")
+fileref.setAttribute("type", "text/css")
+fileref.setAttribute("href", filename)
+}
+if (typeof fileref!="undefined")
+document.getElementsByTagName("head")[0].appendChild(fileref)
+}
+/*loadjscssfile("myscript.js", "js"); //dynamically load and add this .js file
+loadjscssfile("javascript.php", "js");*/
+loadjscssfile("css/custom.css", "css");
+}
+$(document).ready(myFun); 
+===========================================================================
+
+function myFun(){
+document.body.addEventListener('touchstart', function(e){//touchend,touchmove
+var touchobj = e.changedTouches[0]
+alert("event occour");
+console.log(this.tagName) // returns BODY
+console.log(touchobj.target) // returns element touch point
+e.preventDefault()
+}, false)
+}
+$(document).ready(myFun);
+====================================================================
+var mqls = [ // list of window.matchMedia() queries
+window.matchMedia("(maxwidth:860px)"),
+window.matchMedia("(maxwidth:600px)"),
+window.matchMedia("(maxheight:500px)")
+]
+function mediaqueryresponse(mql){
+document.getElementById("match1").innerHTML = mqls[0].matches // width: 860px media match
+document.getElementById("match3").innerHTML = mqls[2].matches // height: 500px media match?
+}
+for (var i=0; i<mqls.length; i++){ // loop through queries
+mediaqueryresponse(mqls[i]) // call handler function explicitly at run time
+mqls[i].addListener(mediaqueryresponse) // call handler function whenever the media query }
+====================================================
+========Arrow direction change=================
+$(function(){
+      $('.collapse').on('show.bs.collapse',function(){
+	    $(this).parent().find('.glyphicon-menu-down').removeClass('glyphicon-menu-down').addClass("glyphicon-menu-up");
+	   }).on('hide.bs.collapse',function(){
+	    $(this).parent().find('.glyphicon-menu-up').removeClass('glyphicon-menu-up').addClass("glyphicon-menu-down");
+	   })
+   })
+====================================================
+========clone method==================
+$(document).ready(function(){
+   $("#btnClone").bind('click', function(){
+       $('#dvText').clone(true).appendTo('body');
+    });
+});
+===================================================
+
+$(document).ready(function(){
+      $("p").click(function(event){
+        event.stopPropagation();
+        });
+        $("p").click(function(event){
+       // This function won't be executed
+        $(this).css("background-color", "#f00");
+     });
+  });
+=======================================================
+$(document).ready(function(){
+    $("p").click(function(event){
+         event.stopImmediatePropagation();
+    });
+          $("p").click(function(event){
+           // This function won't be executed
+               $(this).css("background-color", "#f00");
+           });
+       });
+======================================================
+$(document).ready(function(){
+       $("p").click(function(event){
+       event.preventDefault();
+      });
+      $("p").click(function(event){
+         // This function won't be executed
+         $(this).css("background-color", "#f00");
+         });
+     });
+======================================================
+var myObject1 = {name1: 'Value1',name2: 'Value2'};
+
+var myObject2 = {name1: 'Value111',name2: 'Value222'};
+
+if(JSON.stringify(myObject1) === JSON.stringify(myObject2))
+{console.log("Both object are same");
+
+}else{
+
+console.log("Both object are different");
+
+}
+
+VM679:5 Both object are different
+undefined
+
+var myObject1 = {name1: 'Value1',name2: 'Value2'};
+
+var myObject2 = myObject1;
+
+if(JSON.stringify(myObject1) === JSON.stringify(myObject2))
+{
+console.log("Both object are same");
+
+}else{
+
+console.log("Both object are different");
+
+};
+
+VM751:3 Both object are same
+=============================================================
+var length=Object.keys(users).length //3 Associative array
+============================================================
+
+===========Factory.js====================================
+angular.module("app.factories",[])
+
+
+
+.factory("dataFactories",function($http){
+  //var catchData;
+ function getData(callback,type){
+ 	if(type=='post'){
+     var urlType="http://localhost/angularjs/data/post.json";
+ 	}else{
+ 	  var urlType="http://localhost/angularjs/data/pages.json";	
+ 	}
+
+     /*if(catchData){
+          callback(catchData);
+        }else{
+           $http.get('http://localhost/angularjs/countries.json').then(function(response){
+            catchData=response;
+            callback(response);
+           })
+        }*/
+ 	$http({
+
+ 		 method:"GET",
+ 		 url:urlType,
+ 		 cache:true
+
+ 	}).then(callback);//function(response){$scope.names=response}   
+           console.log(callback);
+    }
+
+	return{
+      
+        get:getData
+	}
+})
+=================================================================
+======controller.js======================================
+
+  angular.module('app.controllers',
+  	[
+  	'app.directives',
+  	'app.factories'
+  	])
+
+   .controller("postController",function($scope,dataFactories){
+         
+       dataFactories.get(function(response){
+         	$scope.posts=response.data;
+         },'post');
+       
+   })
+ .controller("singlepostController",["$scope","$routeParams","dataFactories",function($scope,$routeParams,dataFactories){
+          dataFactories.get(function(response){
+          $scope.post=response.data[$routeParams.id];
+         },'post');
+
+   }])
+   .controller("pageController",["$scope","$routeParams","dataFactories",function($scope,$routeParams,dataFactories){
+     
+             dataFactories.get(function(response){
+         	$scope.page=response.data[$routeParams.id];
+         },'pages');
+   }])
+==========================================================================
+
+return{
+       list:getData,
+       find:function(name,callback){
+          getData(function(response){
+          var country=response.data.filter(function(entry){
+              return entry.name===name;
+          })[0];
+          callback(country);
+          //function(country){$scope.country=country; })
+       })
+     }
+   };
+=======================================================================
+
+var worker = new Worker('doWork.js');
+worker.addEventListener('message', function(e) {
+console.log('Worker said: ', e.data);
+}, false);
+worker.postMessage('Hello World'); // Send data to our worker.
+//doWork.js (the worker):
+self.addEventListener('message', function(e) {
+self.postMessage(e.data);
+}, false);
+======================================================================
+<button onclick="sayHI()">Say HI</button>
+<button onclick="unknownCmd()">Send unknown command</button>
+<button onclick="stop()">Stop worker</button>
+<output id="result"></output>
+<script>
+function sayHI() {
+worker.postMessage({'cmd': 'start', 'msg': 'Hi'});
+}
+function stop() {
+// worker.terminate() from this script would also stop the worker.
+worker.postMessage({'cmd': 'stop', 'msg': 'Bye'});
+}
+function unknownCmd() {
+worker.postMessage({'cmd': 'foobard', 'msg': '???'});
+}
+var worker = new Worker('doWork2.js');
+worker.addEventListener('message', function(e) {
+document.getElementById('result').textContent = e.data;
+}, false);
+</script>
+doWork2.js:
+self.addEventListener('message', function(e) {
+var data = e.data;
+switch (data.cmd) {
+case 'start':
+self.postMessage('WORKER STARTED: ' + data.msg);
+break;
+case 'stop':
+self.postMessage('WORKER STOPPED: ' + data.msg +
+'. (buttons will no longer work)');
+self.close(); // Terminates the worker.
+break;
+default:
+self.postMessage('Unknown command: ' + data.msg);
+};
+}, false);
+========================================================================
+========Loading External Scripts==============
+importScripts('script1.js');
+importScripts('script2.js');
+Which can also be written as a single import statement:
+importScripts('script1.js', 'script2.js');
+======================================================
+=====difference between window.load and document.ready=====
+  window.onload = function() {
+	  console.log('Page loaded successfully');
+	};
+   $(function(){
+     console.log('Page document load successfully');
+    });
+// Page document load successfully
+// Page loaded successfully
+====================================================================
+
+=========call global function using IIFE=============
+(function(){
+"use strict";
+foo(); 
+})();
+======================================================
+===========forEach loop using 
+(function(){
+"use strict";
+  function foo(ele){
+      console.log(ele +" "+ this.id);
+   } 
+   var obj={
+     id:"awesome"
+   };
+   [1,2,3,4].forEach(foo,obj);
+})();
+==============================================================
+(function(){
+"use strict";
+  function foo(ele){
+     if(ele % 2 ==0){
+	  console.log("No is Even:" + ele);
+	 }else{
+	  console.log("No is Odd:" + ele);
+	 }
+	  
+   }; 
+  [1,2,3,4,6,8,9,7,3].forEach(foo);
+
+})();
+=================================================================
+$("a").attr("target", function() {
+if (this.host == location.host) return "_self"
+else return "_blank";
+});
+======================================
+$("h1").css("font-size", function(i,curval) {
+return Math.round(1.25*parseInt(curval));
+});
+=======================================================
+$(function(){
+ var body = $("body");
+// Four different widths, depending on what's included
+var contentWidth = body.width();
+var paddingWidth = body.innerWidth();
+var borderWidth = body.outerWidth();
+var marginWidth = body.outerWidth(true);
+console.log("Content:" + contentWidth);
+console.log("padding:" + paddingWidth);
+console.log("border:" + borderWidth);
+console.log("margin:" + marginWidth);
+   });
+=========================================================
+function getkeyCode(e){
+  if(e.keyCode=="13"){
+     alert(e.keyCode);
+  }
+}
+====================================================
+(function(){
+  "use strict"
+  $(function(){
+  var tag=document.getElementsByTagName("h1")[0];
+  tag.className='styleClass';
+  })
+})()
+==========================================================
+var worker = new Worker('stufftodo.js');
+worker.postMessage({
+type: 'command',
+message: 'start!'
+});
+===========================================================
+//inside worker code
+self.onmessage = function(event){
+var data = event.data;
+//remember, by default sort() does a string comparison
+data.sort(function(a, b){
+return a – b;
+});
+self.postMessage(data);
+};
+=================================================================
+worker.onerror = function(event){
+console.log('ERROR: ' + event.filename + ' (' + event.lineno + '): ' + event.message);
+};
+===================================================================
+ var ages = [32, 33, 16, 40];
+   function checkAdult(age) {
+     if(age >= 18){
+	   return true;
+	 }else{
+	    console.log("Your age is adult:" + age);
+	   return false;
+	 }
+   }
+   function myFun() {
+      document.getElementById("demo").innerHTML = ages.every(checkAdult);
+    }
+===============================================================================
+var numbers = [65, 44, 12, 4];
+
+function getSum(total, num) {
+    return total + num;
+}
+function myFun(item) {
+    document.getElementById("demo").innerHTML = numbers.reduce/reduceRight(getSum);
+}
+=================================================================================
+var ages = [3, 10, 18, 20];
+
+function checkAdult(age) {
+    return age >= 18;
+}
+
+function myFunction() {
+    document.getElementById("demo").innerHTML = ages.some(checkAdult);
+}
+=====================================================================================
+
+<script>
+function myFunction() {
+    var btn = document.createElement("BUTTON");
+    text=document.createTextNode("button");
+   btn.appendChild(text);
+    document.body.appendChild(btn);
+   btn.onclick=function(){
+   alert("success");
+   }
+}
+</script>
+========================================================================================
+===========AJAX REQUEST USING GET METHOD===================================
+
+(function(){
+    "use strict";
+    var http=null;
+    var input=document.getElementById("searchId");
+    input.onkeyup=function(){
+      if(window.XMLHttpRequest){
+          
+         http=new XMLHttpRequest();          
+      }else{
+           http=new ActiveXObject('Microsoft.XMLHTTP');
+       }
+      http.onreadystatechange=function(){
+           if(http.readyState==4 && http.status==200){
+               document.getElementById("result").innerHTML=http.responseText;
+           }
+      }
+       http.open('GET','data/search.php?v='+input.value,true);
+       http.send(null);
+    }
+})()
+==================================================================================================
+============AJAX REQUEST USING POST METHOD========================
+
+(function(){
+    "use strict";
+    var http=null;
+    var input=document.getElementById("searchId");
+    input.onkeyup=function(){
+      if(window.XMLHttpRequest){
+          
+         http=new XMLHttpRequest();          
+      }else{
+           http=new ActiveXObject('Microsoft.XMLHTTP');
+       }
+      http.onreadystatechange=function(){
+           if(http.readyState==4 && http.status==200){
+               document.getElementById("result").innerHTML=http.responseText;
+           }
+      }
+       http.open('POST','data/search.php',true);
+        http.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+       http.send('v='+input.value);
+    }
+})()
+============================================================================================
+==========apply=========
+
+(function(){
+    "use strict";
+     
+      function dosomething(){
+        for(var i=0;i<arguments.length;i++){
+            this.score += arguments[i];
+        }
+          return this.score;
+     }
+    
+    var game={
+        name:'rahul',
+        score:0
+    }
+    game.result="They are won!";
+    
+    dosomething.apply(game,[1,2,3,4,5,6,7,8,9]);
+    console.log(game.score);
+})()
+===============call==========
+
+(function(){
+    "use strict";
+     
+      function dosomething(){
+        for(var i=0;i<arguments.length;i++){
+            this.score += arguments[i];
+        }
+          return this.score;
+     }
+    
+    var game={
+        name:'rahul',
+        score:0
+    }
+    game.result="They are won!";
+    
+    dosomething.call(game,1,2,3,4,5,6,7,8,9);
+    console.log(game.score);
+})()
+
+==========================================================================
+
+(function(){
+    "use strict";
+     
+     function getImageNumberNonAadhaar(){
+            var a = Math.ceil(Math.random() * 10);
+            var z = a;
+            if(a>=10)
+            {
+            var x = a%10;
+            var y = a/10;
+            z = x+y;
+            }
+            console.log(z);
+     }
+    getImageNumberNonAadhaar();
+})()
+
+
+
+=======================================================================================
+========Draw Captcha===================================================================
+(function(){
+    "use strict";
+     
+     function DrawCaptcha()
+{
+        var string ="abcdefghijklmnopqrstuvwxyz0123456789";
+        var a = string.charAt(Math.ceil(Math.random() * (string.length-1)));
+        var b = string.charAt(Math.ceil(Math.random() * (string.length-1)));
+        var c = string.charAt(Math.ceil(Math.random() * (string.length-1)));
+        var d = string.charAt(Math.ceil(Math.random() * (string.length-1)));
+        var e = string.charAt(Math.ceil(Math.random() * (string.length-1)));
+        var f = string.charAt(Math.ceil(Math.random() * (string.length-1)));
+        var code = a + ' ' + b + ' ' + c + ' ' + d + ' ' + e + ' '+ f ;
+        console.log(code);
+        //document.getElementById("txtCaptcha").value = code;
+}
+    DrawCaptcha();
+})()
+===========================================================================================
+ var string ="012345678945678912300123456789";
+
+ var a = string.charAt(Math.ceil(Math.random() * (string.length-1)));
+ 
+      console.log(a);
+=======================================================================================
+ sayHello(){
+      
+      var string ="012345678945678912300123456789";
+      var a = string.charAt(Math.ceil(Math.random() * (string.length-1)));
+        switch(Number(a)){
+          case 1:
+          this.btnName="primary";
+           return false;
+           case 2:
+           this.btnName="info";
+           return false;
+           case 3:
+           this.btnName="success";
+           return false;
+           case 4:
+           this.btnName="danger";
+           return false;
+           case 5:
+           this.btnName="warning";
+           return false;
+           default:
+           this.btnName="default";
+        }
+    }
+=======================================================================================
+(function(){
+    "use strict";
+     function removeSpaces(string)
+     {
+        return string.split(' ').join('');
+        }
+     function DrawCaptcha()
+{
+        var string ="abcdefghijklmnopqrstuvwxyz0123456789";
+        var a = string.charAt(Math.ceil(Math.random() * (string.length-1)));
+        var b = string.charAt(Math.ceil(Math.random() * (string.length-1)));
+        var c = string.charAt(Math.ceil(Math.random() * (string.length-1)));
+        var d = string.charAt(Math.ceil(Math.random() * (string.length-1)));
+        var e = string.charAt(Math.ceil(Math.random() * (string.length-1)));
+        var f = string.charAt(Math.ceil(Math.random() * (string.length-1)));
+        var code = a + ' ' + b + ' ' + c + ' ' + d + ' ' + e + ' '+ f ;
+        console.log(code);
+        var string1 = removeSpaces(code);
+         console.log(string1);
+}
+    DrawCaptcha();
+})()
+
+
+
+=============================================================================================
+
+
+  function request(order){
+	  console.log("Customer Order:" + order);
+	  response(function(){
+		   console.log("delevered data:" + order);
+	  })
+  }
+  
+  
+  function response(callback){
+	  setTimeout(callback,8000);
+  }
+  
+  request(1);
+  request(2);
+  request(3);
+  request(4);
+  request(5);
+================================================================================================
+
+var count=0;
+var cnt=0;
+function myFunction() {
+ 
+  var res = String.fromCharCode(65 + count++);
+  cnt++
+  if(cnt ==40){
+       document.write(res + "<br />");  
+       cnt=0;
+  }
+  document.write(res);
+}
+setInterval(myFunction,10000);
+=====================================================================================================
+========Event Bubbling ===================================================
+ //(function(){
+     'use strict';
+    
+     var divElement = document.getElementsByTagName('div');
+
+      for(var i=0; i<divElement.length; i++){
+           divElement[i].onclick = function(event)
+           {
+                event = event || window.event;
+                if(event.stopPropagation()){
+                     event.stopPropagation();
+                }
+                this.style.borderColor = 'red';
+                alert(this.getAttribute('id') + ' Color Has Been Changed');
+           }
+      }
+ //})()
+================================================================================================
+
+======================= Remove White Space using Without Predefinde Function =====================
+
+  function RemoveWhiteSpace(){
+	  var text=[];
+	  var blank=[];
+	  var c = 0;
+	  var d = 0;
+	  var text = prompt("Enter the Text");
+      text.split('');
+	  
+	   while (c != text.length)
+   {
+      if (!(text[c] == ' ' && text[c+1] == ' ')) {
+        blank[d] = text[c];
+        d++;
+      }
+      c++;
+   }
+     var string = blank.toString();
+	  var result = removeSpaces(string);
+  console.log("Text after removing blanks", result);
+ 
+   return 0;
+	
+
+  }
+    function removeSpaces(string)
+     {
+        return string.split(',').join('');
+        }
+========================================
+
+  function RemoveWhiteSpace(){
+	  var text=[];
+	  var blank=[];
+	  var c = 0;
+	  var d = 0;
+	  var str = prompt("Enter the Text");
+      //text.split('');
+	    for(i=0;i<str.length;i++){
+		  text[i] = str.charAt(i);
+		}
+	   while (c != text.length)
+   {
+      if (!(text[c] == ' ' && text[c+1] == ' ')) {
+        blank[d] = text[c];
+        d++;
+      }
+      c++;
+   }
+     var string = blank.toString();
+	  var result = removeSpaces(string);
+  console.log("Text after removing blanks", result);
+ 
+   return 0;
+	
+
+  }
+    function removeSpaces(string)
+     {
+        return string.split(',').join('');
+        }
+==================================================================================
+===================================================================================
+
+
+Date.prototype.exit = function(){
+		var hourNow = this.getHours() ;
+		var greeting;
+		if (hourNow > 18) {
+		greeting ='Good evening';
+		}else if(hourNow > 12) {
+		greeting = 'Good afternoon';
+		}else if(hourNow > 0) {
+		greeting ='Good morning';
+		}else {
+		greeting='Welcome';
+		}
+		return greeting ;
+}
+============================================================
+
+
+String.prototype.rev = function(){
+           var newString = "";
+		for(i=this.length-1;i>=0;i--){
+		   newString += this[i];
+		} 
+		return newString;
+  }
+========================================================================
+function reverseString(str){
+  if(str == ""){
+               return "";		     
+		   }else{
+		      return reverseString(str.substr(1)) + str.charAt(0);
+		   }
+}
+======================================================================
+
+===========Jquery Promise ============
+$(function(){
+     function WaitForn(n){
+          var d = $.Deferred();
+         setTimeout(d.resolve,n);
+         return d.promise();
+     } 
+    WaitForn(1000)
+    .then(function(){
+        console.log("Hello world after 1000 second");
+        return WaitForn(2000);
+    })
+    .then(function(){
+         console.log("wait for 2000 second");
+         return WaitForn(3000);
+    })
+    .then(function(){
+        console.log("wait for 3000 second");
+    });
+});
+=====================================================
+$(function(){
+     function getData(d,delay){
+          return new Promise(function(resolve,reject){
+                setTimeout(function(){resolve(d)},delay);
+          });
+     }
+    var x;
+    var total;
+    getData(10,1000)
+    .then(function(num1){
+       x = 1 + num1;   
+        console.log(x);
+        return getData(30,2000);
+    })
+    .then(function(num2){
+        y = 1 + num2;
+         console.log(y);
+        return getData(40,3000);
+    })
+    .then(function(num3){
+        z = 1 + num3;
+        console.log(z);
+        return getData(50,4000);
+    })
+    .then(function(num4){
+          total = 1 + num4;
+          console.log(total);
+         return getData("Your receive" + (x + y + z + total),6000);
+    })
+    .then(function(answer){
+          console.log(answer);
+    });
+});
+
+ 
+
+===================================================================
+=====generators =
+$(function(){
+    function* gen(){
+        console.log('Hello');
+        yield null;
+        console.log('world');
+    }
+    var it = gen();
+    it.next();
+    it.next();
+});
+==============================
+======Callbacks ===
+$(function(){
+  function trysomething(ok,err){
+      setTimeout(function(){
+            var num = Math.random();
+           (num > 0.5)? ok(num):err(num);
+      },1000)
+  }
+    trysomething(
+      function(num){
+            console.log("success: " + num);
+      },
+      function(num){
+          console.log("error: " + num);
+      }
+    );
+});
+
+ 
+
+========================================================
+===========Single Callback ==========
+$(function(){
+  function trysomething(cd){
+      setTimeout(function(){
+            var num = Math.random();
+           (num > 0.5)? cd(null,num):cd("Too low!");
+      },1000)
+  }
+    trysomething(
+      function(err,num){
+          if(err){
+              console.log(err);
+          }else{
+              console.log(num);
+          }
+      }
+    );
+});
+
+=================================================
+=======Nested Callbacks =================================
+$(function(){
+  function trysomething(d,cd){
+      setTimeout(function(){
+            cd(d);
+      },1000)
+  }
+    trysomething(10,function(num1){
+         var x  = 1 + num1;
+         trysomething(20,function(num2){
+               var y = 1 + num2;
+                trysomething("Your score : " + (x + y),function(answer){
+                      console.log(answer);
+                })
+         })
+    });
+});
+
+===================================================
+$(function(){
+   setTimeout(function(){
+         console.log("one");
+          setTimeout(function(){
+               console.log("two");
+                    setTimeout(function(){
+                   console.log("Three");
+              },1000)
+          },1000)
+   },1000)
+});
+
+=============================================
+$(function(){
+   function one(cd){
+       console.log("One");
+        setTimeout(cd,1000);
+   }
+    function two(cd){
+       console.log("Two");
+        setTimeout(cd,1000);
+   }
+    function three(){
+        console.log("Three")
+    }
+    one(function(){
+        two(three);
+    })
+});
+
+==================================================
+$(function(){
+   var Foo = {
+        init:function(who){
+             this.me = who;
+        },
+       identify:function(){
+            return 'I am ' + this.me;
+       }
+   }
+   var Bar = Object.create(Foo);
+    
+    Bar.speek = function(){
+         return "Hello " + this.identify() + ".";
+    }
+    
+    var b = Object.create(Bar);
+    
+    b.init('Rahul');
+    console.log(b.speek());
+});
+===========================================================
+var alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split(""),obj = {};
+for(var i = 0; i <= alpha.length; i++){
+   (function(i){
+        obj[alpha[i]] = function(){ //A Fun
+            console.log(alpha[i]); //A
+        }
+        if(i < (alpha.length)){
+            obj[alpha[i]]();   //A();
+         }
+    })(i);
+}
+================================================================
+==========custom file button ===
+(function(){
+    'use strict'
+    
+    const realFile = document.getElementById('realFile');
+    const customBtn = document.getElementById('customBtn');
+    const customText = document.getElementById('customText');
+    
+    
+    customBtn.addEventListener('click',function(){
+        
+          realFile.click();
+    });
+    realFile.addEventListener('change',function(){
+         
+          if(realFile.value){
+               customText.innerHTML = realFile.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+          }else{
+              customText.innerHTML = "Not yet choose file.";
+          }
+    })
+    
+})();
+===============================================================

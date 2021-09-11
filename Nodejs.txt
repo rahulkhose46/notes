@@ -1,0 +1,2453 @@
+https://www.youtube.com/playlist?list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp
+============================================================================
+Atom installation path
+C:\Users\Rahul\AppData\Local\atom\atom.exe
+==============================================================================
+npm init;
+npm install express -save
+npm install express -g
+npm install express --save
+npm install -save ejs
+npm ls;
+npm ls -g
+npm install nodemon --save-g
+npm install nodemon --g
+npm uninstall -g nodemon
+npm install body-parser
+npm install cookie-parser
+npm install body-parser --save
+npm install cookie-parser --save
+npm install body-parser --save-dev
+npm install --dev
+============================================================================
+const http=require('http');
+const hostname='127.0.0.1';
+const port=5000;
+
+const server=http.createServer((req,res)=>{
+   res.statusCode=200;
+   res.setHeader('Content-Type','text/plain');
+   res.end('This is Node js Application running and program output I am very Happy');
+});
+
+server.listen(port, hostname ,()=>{
+    console.log(`Server is running at http://${hostname}:${port}/`);
+})
+==============================================================================
+const http=require('http');
+const hostname='127.0.0.1';
+const port=5000;
+
+const server=http.createServer(function(req,res){
+   res.statusCode=200;
+   res.setHeader('Content-Type','text/plain');
+   res.-('This is Node js Application running and program output I am very Happy');
+});
+
+server.listen(port, hostname ,(function()){
+    console.log(`Server is running at http://${hostname}:${port}/`);
+})
+
+
+=======================================================================================
+const http=require('http');
+const hostname='127.0.0.1';
+const port=5000;
+
+const server=http.createServer(function(req,res){
+   res.writeHead(200,{'Content-Type':'text/plain'});
+   res.end('This is Node js Application running and program output I am very Happy');
+});
+
+server.listen(port, hostname ,(function()){
+    console.log(`Server is running at http://${hostname}:${port}/`);
+})
+
+
+=======================================================================================
+var http = require("http");
+http.createServer(function (request, response){
+// Send the HTTP header
+// HTTP Status: 200 : OK
+// Content Type: text/plain
+response.writeHead(200, {'Content-Type': 'text/plain'});
+// Send the response body as "Hello World"
+response.end('Hello World\n');
+}).listen(8081);
+// Console will print the message
+console.log('Server running at http://127.0.0.1:8081/');
+======================================================================================
+
+const http = require('http');
+const hostname = '127.0.0.1';
+const port = 3000;
+
+const server = http.createServer(function (req, res) {
+    var body = "This is body of response";
+    var content_length = body.length;
+    //res.statusCode=200; 
+    // res.setHeader('Content-Type','text/plain');
+    res.writeHead(200,
+        {
+            'Content-Type': 'text/plain',
+            'Content-Length': content_length
+        });
+    res.end(body);
+});
+
+server.listen(port, hostname, () => {
+    console.log(`Connection running at http://${hostname}:${port}/`);
+})
+====================================================================================
+
+
+ var http=require('http');
+ var fs=require('fs');
+
+ http.createServer(function(req,res){
+ 	 if(req.url==="/home" || req.url==="/"){
+ 	 	res.writeHead(200,{'Content-Type':'text/html'});
+ 	    fs.createReadStream(__dirname + '/home.html').pipe(res);
+ 	 }else if(req.url==='/about'){
+ 	 	res.writeHead(200,{'Content-Type':'text/html'});
+ 	    fs.createReadStream(__dirname + '/about.html').pipe(res);
+ 	 }else if(req.url==='/contact'){
+ 	    res.writeHead(200,{'Content-Type':'text/html'});
+ 	    fs.createReadStream(__dirname + '/contact.html').pipe(res);
+ 	 }else{
+ 	 	res.writeHead(404,{'Content-Type':'text/html'});
+ 	    fs.createReadStream(__dirname + '/404.html').pipe(res);
+ 	 }
+ 	
+ }).listen(3000,function(){
+ 	 console.log('Server is running at http://127.0.0.1:3000/');
+ })
+
+or====
+var http=require('http');
+var fs=require('fs');
+
+http.createServer(function(req,res){
+     console.log(__dirname)
+     if(req.url==="/home" || req.url==="/"){
+         res.writeHead(200,{'Content-Type':'text/html'});
+        fs.createReadStream(__dirname + '/templates/home.html').pipe(res);
+     }else if(req.url==='/about'){
+         res.writeHead(200,{'Content-Type':'text/html'});
+        fs.createReadStream(__dirname + '/templates/about.html').pipe(res);
+     }else if(req.url==='/contact'){
+        res.writeHead(200,{'Content-Type':'text/html'});
+        fs.createReadStream(__dirname + '/templates/contact.html').pipe(res);
+     }else{
+         res.writeHead(404,{'Content-Type':'text/html'});
+        fs.createReadStream(__dirname + '/templates/404.html').pipe(res);
+     }
+    
+}).listen(3000,function(){
+     console.log('Server is running at http://127.0.0.1:3000/');
+})
+
+===========================================================================================
+setTimeout(function(){
+    console.log("wait a 3s and happy with enjoy you");
+},3000)
+
+=====OR ====
+setTimeout(()=>console.log("hello world after 3 seconds"),3000);
+====================================================================================
+var time=0;
+var intervalId=setInterval(function(){
+    time +=2;
+    console.log(time + "wait a 3s and happy with enjoy you");
+    if(time > 7){
+        clearInterval(intervalId);
+    }
+},3000);
+=======================================================================================
+console.log(__dirname);
+console.log(__filename);
+====================================================================================
+Asynchronous calls readFile and writeFile============
+
+const fs = require('fs');
+fs.readFile('test.txt','utf-8',function(err,data){
+    if(err) throw err;
+    fs.writeFile('test1.text',data,function(err){
+         if(err) throw err;
+    });
+    
+});
+====================================================================
+var fs = require('fs');
+
+fs.mkdirSync('demo');
+fs.rmdirSync('demo');
+=================================================
+fs.mkdir("demo",function(err){
+     if(err) throw err;
+})
+
+fs.rmdir('demo',function(err){
+    if(err) throw err;
+})
+
+=======OR ===================
+const fs = require('fs');
+
+
+fs.mkdir('New Folder', (req, err) => {
+    if (err) {
+        throw new Error("Error" + err);
+    }
+
+    console.log("directory created!")
+})
+
+fs.rmdir('New Folder', (req, res) => {
+    console.log("Directory is Removed!")
+})
+
+fs.mkdirSync('New Folder');
+fs.rmdirSync('New Folder');
+=====================================================================================
+
+var add=function(a,b){
+	this.a=a;
+	this.b=b;
+
+	return this.a + this.b;
+}
+
+var sub=function(a,b){
+	this.a=a;
+	this.b=b;
+
+	return this.a - this.b;
+}
+var multi=function(a,b){
+	this.a=a;
+	this.b=b;
+
+	return this.a * this.b;
+}
+var div=function(a,b){
+	this.a=a;
+	this.b=b;
+
+	return this.a / this.b;
+}
+
+module.exports.add=add;
+module.exports.sub=sub;
+module.exports.multi=multi;
+module.exports.div=div;
+====================================================================================
+
+module.exports.add=function(a,b){
+	this.a=a;
+	this.b=b;
+
+	return this.a + this.b;
+}
+
+module.exports.sub=function(a,b){
+	this.a=a;
+	this.b=b;
+
+	return this.a - this.b;
+}
+module.exports.multi=function(a,b){
+	this.a=a;
+	this.b=b;
+
+	return this.a * this.b;
+}
+module.exports.div=function(a,b){
+	this.a=a;
+	this.b=b;
+
+	return this.a / this.b;
+}
+
+====================================================================================
+
+var add=function(a,b){
+	this.a=a;
+	this.b=b;
+
+	return this.a + this.b;
+}
+
+var sub=function(a,b){
+	this.a=a;
+	this.b=b;
+
+	return this.a - this.b;
+}
+var multi=function(a,b){
+	this.a=a;
+	this.b=b;
+
+	return this.a * this.b;
+}
+var div=function(a,b){
+	this.a=a;
+	this.b=b;
+
+	return this.a / this.b;
+}
+module.exports={
+	add:add,
+	sub:sub,
+	multi:multi,
+	div:div
+}
+
+
+=====================================================================================
+=============custom module
+=======app.js
+var hello=require('./hello.js');
+console.log(hello.sayHelloInEnglish());
+=====hello.js==
+exports.sayHelloInEnglish=function(){
+    return 'Hello';
+}
+====================================================================================
+========multiple method exports module==========
+var hello = {
+    sayHelloInEnglish:function () {
+        return 'Hello';
+    },
+    sayHelloInSpanish:function () {
+        return 'Hola';
+    }
+}
+module.exports=hello;
+=====================================================================
+=====create a fs Module==========================================
+var fs=require('fs');
+
+var read_string=fs.readFileSync('test.txt','utf8');
+
+console.log(read_string);
+=====================================================================
+======remove the file===
+var fs=require('fs');
+
+fs.unlink('test2.txt');
+================================================================== 
+===add and remove folder=========================================
+var fs=require('fs');
+
+//fs.mkdirSync('node');
+fs.rmdirSync('node');
+================================================================
+var fs=require('fs');
+
+fs.mkdirSync('node',function(){
+    fs.writeFile('./node/mynode.txt',"Hello world");
+});
+//fs.rmdirSync('node');
+=============================================================
+var fs = require('fs');
+var text = `This is something text2 
+            This is something text2 
+            This is something text2 
+            This is something text2`;
+var write_string = fs.writeFile('test2.txt',text,function(err,data){
+       
+});
+
+var read_string = fs.readFile('test2.txt','utf8',function(err,data){
+        if(err) throw err;
+        console.log(data);
+});
+===============================================================
+var fs = require('fs');
+
+fs.mkdir('folder',function(err,data){
+         if(err) throw err;
+      console.log('Directive created!!');
+});
+=============================================================
+var fs = require('fs');
+
+fs.rmdir('folder',function(err,data){
+         if(err) throw err;
+      console.log('Directive deleted!!');
+});
+========event looping using nodejs===========================
+var events=require('events');
+
+var eventEmitter = new events.EventEmitter();
+
+eventEmitter.on('clicked',function(button){
+    console.log(button +' is clicked');
+})
+
+eventEmitter.emit('clicked','button1');
+==============================================================
+var fs = require('fs');
+
+fs.mkdir('folder',function(err){
+   if(err) throw err;
+   console.log('Your directory is created!');
+})
+============================================================
+var fs = require('fs');
+
+fs.rmdir('folder',function(err){
+   if(err) throw err;
+   console.log('Your directory is Removeed!');
+})
+
+=====event inherits using until module=================================
+var events = require('events');
+var util = require('util');
+
+var Student=function(name){
+    this.name=name;
+}
+util.inherits(Student,events.EventEmitter);
+
+var max=new Student('max');
+
+max.on('scored',function(marks){
+    console.log(max.name + ' scores ' + marks);
+});
+max.emit('scored',89);
+=====================================================================
+var http=require('http');
+var method=require('./method.js');
+var events=require('events');
+var util=require('util');
+var eventEmitter=new events.EventEmitter();
+var Student=function(name){
+   this.name=name;
+}
+util.inherits(Student,events.EventEmitter);
+
+var mark=new Student('mark');
+mark.on('scored',function(scored){
+     console.log(mark.name + 'Has Scored' + scored);
+})
+mark.emit('scored',88);
+var fs=require('fs');
+ 
+http.createServer(function(request,response){
+    response.writeHead(200,{'Content-Type':'text/plain'});
+    response.write('Connection Established');
+}).listen(8888);
+
+console.log('Server is running at http://127.0.0.1:8888/')
+
+==================================================================
+var events = require('events');
+var util = require('util');
+
+var Student=function(name){
+    this.name=name;
+}
+util.inherits(Student,events.EventEmitter);
+
+var max=new Student('max');
+
+max.on('scored',function(marks){
+    console.log(max.name + ' scores ' + marks + ' marks');
+});
+max.emit('scored',89);
+
+var tom=new Student('tom');
+
+tom.on('scored',function(marks){
+    console.log(tom.name + ' scores ' + marks + ' marks');
+});
+tom.emit('scored',80);
+
+==================================================================================
+=======================response send using html file ========
+const http=require('http');
+const fs =require('fs');
+const server=http.createServer(function(request,response){
+     response.writeHead(200,{'Content-Type':'text/html'});
+     var readStream=fs.createReadStream('index.html','utf8');
+     readStream.pipe(response);
+}).listen(3000);
+
+console.log('Server is running at http://127.0.0.1:3000');
+===================================================================================
+===============response send browser using json  data=============
+
+
+const http=require('http');
+const fs =require('fs');
+
+
+
+const server=http.createServer(function(request,response){
+     response.writeHead(200,{'Content-Type':'application/json'});
+     var jsonObj={
+          firstname:'Rahul',
+          lastname:'Khose',
+          age:23,
+          city:'pune'
+     }
+     response.end(JSON.stringify(jsonObj));
+}).listen(3000);
+
+console.log('Server is running at http://127.0.0.1:3000');
+=======================================================================
+var http=require('http');
+var method=require('./method.js');
+var events=require('events');
+var util=require('util');
+var fs=require('fs');
+http.createServer(function(request,response){
+    response.writeHead(200,{'Content-Type':'application/json'});
+  var student={
+      firstname:'Rahul',
+      lastname:'Khose',
+      age:24,
+      city:'pune'
+  }
+  response.end(JSON.stringify(student));
+  
+   // response.write('Connection Established');
+}).listen(8888);
+
+console.log('Server is running at http://127.0.0.1:8888/')
+====================================================================
+var http=require('http');
+var method=require('./method.js');
+var events=require('events');
+var util=require('util');
+var fs=require('fs');
+http.createServer(function(request,response){
+    response.writeHead(200,{'Content-Type':'text/html'});
+
+  response.end('This is your path:' + decodeURIComponent(request.url));
+  
+   // response.write('Connection Established');
+}).listen(8888);
+
+console.log('Server is running at http://127.0.0.1:8888/')
+============================routing====================================
+var http = require('http');
+var fs = require('fs');
+
+http.createServer(function (req, res) {
+   console.log('requested url: ' + req.url);
+    if (req.url === '/home' || req.url === '/') {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        fs.createReadStream('index.html').pipe(res);
+    } else if (req.url === '/about') {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        fs.createReadStream('about.html').pipe(res);
+    } else if (req.url === '/api') {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        var jsonObj = {
+            firstname: 'Rahul',
+            lastname: 'Khose',
+            age: 23,
+            city: 'pune'
+        }
+        res.end(JSON.stringify(jsonObj));  //Convert into string
+    }
+
+}).listen(4000);
+
+console.log('Server is running at http://127.0.0.1:4000/');
+============================================================================
+
+var http = require('http');
+var fs = require('fs');
+
+http.createServer(function (req, res) {
+   console.log('requested url: ' + req.url);
+    if (req.url === '/home' || req.url === '/') {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        fs.createReadStream('index.html').pipe(res);
+    } else if (req.url === '/about') {
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        fs.createReadStream('about.html').pipe(res);
+    } else if (req.url === '/api') {
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        var jsonObj = {
+            firstname: 'Rahul',
+            lastname: 'Khose',
+            age: 23,
+            city: 'pune'
+        }
+        res.end(JSON.stringify(jsonObj));  
+    }else{
+        res.writeHead(404, { 'Content-Type': 'text/html' });
+        fs.createReadStream('404.html').pipe(res);
+    }
+
+}).listen(4000);
+
+console.log('Server is running at http://127.0.0.1:4000/');
+====================================================================================
+=============package.json===================
+{
+  "name": "first_npm",
+  "version": "1.0.0",
+  "description": "First npm project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "npm"
+  ],
+  "author": "me",
+  "license": "ISC"
+}
+
+======================================================================================
+{
+  "name": "first_npm",
+  "version": "1.0.0",
+  "description": "First npm project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "npm"
+  ],
+  "author": "me",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}
+
+=====================================================================================
+%AppData%\npm\node_modules  
+=============================
+C:\Users\Rahul\AppData\Roaming\npm\node_modules
+==============================================================================
+
+var express = require('express');
+
+var app = express();
+
+app.listen(3000,function(){
+    console.log('our server is live on port 3000');
+})
+==============================================================================
+========express module install using routing============
+
+var express = require('express');
+
+var app = express();
+ app.get('/',function(req ,res){
+     res.send('Welcome Home Page');
+ })
+ app.get('/about',function(req ,res){
+    res.send('Welcome About Page');
+})
+app.get('/contact',function(req ,res){
+    res.send('Welcome Contact Page');
+})
+app.listen(3000,function(){
+    console.log('our server is live on port 3000');
+})
+==================================================================================
+
+var express = require('express');
+
+var app = express();
+ app.get('/',function(req ,res){
+     res.send('Welcome Home Page');
+ })
+ app.get('/about',function(req ,res){
+    res.send('Welcome About Page');
+})
+app.get('/contact',function(req ,res){
+    res.send('Welcome Contact Page');
+})
+app.get('/students/:id',function(req ,res){
+    res.send('You have requested to see the student id:' + req.params.id);
+})
+app.listen(3000,function(){
+    console.log('our server is live on port 3000');
+})
+=======================================================================================
+
+var express = require('express');
+
+var app = express();
+
+ app.get('/', (req,res) => {
+     res.send('Welcome Home Page');
+ })
+ app.get('/about',(req,res) => {
+     res.send('Welcome About Page');
+ })
+ app.get('/contact',(req,res) => {
+     res.send('Welcome Contact Page');
+ })
+ app.listen(3000,() => {
+     console.log('Server is running at http://127.0.0.1:3000');
+ })
+===========================================================================================
+var express = require('express');
+var app = express();
+app.get('/',(req,res)=> res.sendFile(__dirname + '/partial/home.html'))
+app.get('/about',(req,res) => res.sendFile(__dirname + '/partial/about.html'))
+app.get('/contact',(req,res)=>res.sendFile(__dirname + '/partial/contact.html'))
+app.listen(4000,()=> console.log('Server is running at port http://127.0.0.1:4000/'))
+==========================================================================================
+
+var express = require('express');
+
+var app = express();
+app.get('/', function (req, res) {
+    res.send('Welcome Home Page');
+})
+app.get('/about', function (req, res) {
+    res.send('Welcome About Page');
+})
+app.get('/contact', function (req, res) {
+    res.send('Welcome Contact Page');
+})
+var student = {
+    1: 'Mark',
+    2: 'Sara',
+    3: 'John',
+    4: 'Tom'
+}
+app.get('/students/:id', function (req, res) {
+    res.send('You have requested to see the student name:' + student[req.params.id]);
+})
+
+app.listen(3000, function () {
+    console.log('our server is live on port 3000');
+})
+===================================================================================
+
+
+var express = require('express');
+
+ var app = express();
+
+ app.get('/',(req,res)=> res.sendFile(__dirname + '/partial/home.html'));
+ app.get('/about',(req,res)=> res.sendFile(__dirname + '/partial/about.html'));
+ app.get('/contact',(req,res)=> res.sendFile(__dirname + '/partial/contact.html'));
+ //app.get('',(req,res)=> res.sendFile(__dirname,'/partial/404.html'));
+ 
+ app.listen(3000,()=>console.log('server is running'));
+ 
+========send response on server html file ==================================================
+
+var express = require('express');
+var app = express();
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/index.html');
+})
+app.get('/about', function (req, res) {
+    res.sendFile(__dirname + '/about.html');
+})
+app.get('/contact', function (req, res) {
+    res.send('Welcome Contact Page');
+})
+var student = {
+    1: 'Mark',
+    2: 'Sara',
+    3: 'John',
+    4: 'Tom'
+}
+app.get('/students/:id', function (req, res) {
+    res.send('You have requested to see the student name:' + student[req.params.id]);
+})
+
+app.listen(3000, function () {
+    console.log('our server is live on port 3000');
+})
+==============================================================================
+==================packages.json===============================================
+{
+  "name": "express_test",
+  "version": "1.0.0",
+  "description": "",
+
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+ 
+ "author": "",
+  "license": "ISC",
+  "dependencies": {
+"ejs": "^2.5.7",
+"express": "^4.15.4"
+  }
+}
+
+=========routing using ejs module==============================================
+
+var express = require('express');
+
+var app = express();
+app.set('view engine','ejs');
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/index.html');
+})
+app.get('/about', function (req, res) {
+    res.sendFile(__dirname + '/about.html');
+})
+app.get('/contact', function (req, res) {
+    res.send('Welcome Contact Page');
+})
+var students = {
+    1: 'Mark',
+    2: 'Sara',
+    3: 'John',
+    4: 'Tom'
+}
+app.get('/students/:id', function (req, res) {
+    res.render('students',{name:students[req.params.id]});
+})
+
+app.listen(3000, function () {
+    console.log('our server is live on port 3000');
+})
+=================================================================
+var express = require('express');
+
+ var app = express(); 
+ app.set('view engine','ejs');
+ app.get('/',(req,res)=> res.sendFile(__dirname + '/partial/home.html'));
+ app.get('/about',(req,res)=> res.sendFile(__dirname + '/partial/about.html'));
+ app.get('/contact',(req,res)=> res.sendFile(__dirname + '/partial/contact.html'));
+ app.get('/contacts/:no',(req,res)=> res.render('contacts',{'phone':req.params.no}));
+ //app.get('',(req,res)=> res.sendFile(__dirname,'/partial/404.html'));
+ 
+ app.listen(3000,()=>console.log('server is running'));
+=====student.ejs================================================
+<html>
+    <head>
+        <title>Student page</title>
+    </head>
+    <body>
+        <h1><%= name %></h1>
+    </body>
+</html>
+====================================================================
+
+var express = require('express');
+
+var app = express();
+app.set('view engine','ejs');
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/index.html');
+})
+app.get('/about', function (req, res) {
+    res.sendFile(__dirname + '/about.html');
+})
+app.get('/contact', function (req, res) {
+    res.send('Welcome Contact Page');
+})
+var students = {
+    1: 'Mark',
+    2: 'Sara',
+    3: 'John',
+    4: 'Tom'
+}
+var citys=["pune","latur","mumbai","nashik","nagpur","Akola"];
+app.get('/students/:id', function (req, res) {
+    res.render('students',{name:students[req.params.id],id:req.params.id,city:citys});
+})
+
+app.listen(3000, function () {
+    console.log('our server is live on port 3000');
+})
+=========================================================================================
+
+<html>
+    <head>
+        <title>Student page</title>
+    </head>
+    <body>
+        <h1>You have Requested the student name:<%= name %></h1>
+        <p>id:<%= id %></p>
+
+        <ul>
+            <% for(var i=0; i<city.length;i++){ %>
+            <li><%= city[i] %></li>
+            <% } %>
+        </ul>
+    </body>
+</html>
+=========================================================================================
+
+var express = require('express');
+
+var app = express();
+app.set('view engine', 'ejs');
+app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/index.html');
+})
+app.get('/about', function (req, res) {
+    res.sendFile(__dirname + '/about.html');
+})
+app.get('/contact', function (req, res) {
+    res.send('Welcome Contact Page');
+})
+var students = {
+    1: {
+        name: 'Mark',
+        subjects: ['c', 'java', 'paython']
+    },
+    2: {
+        name: 'Sara',
+        subjects: ['c++', 'java2', 'c#']
+    },
+    3: {
+        name: 'John',
+        subjects: ['sql', '.net', 'angularjs']
+    },
+    4: {
+        name: 'Tom',
+        subjects: ['javascript', 'mysql', 'php']
+    }
+}
+app.get('/students/:id', function (req, res) {
+    res.render('students', { name: students[req.params.id].name, id: req.params.id, subject: students[req.params.id].subjects });
+})
+
+app.listen(3000, function () {
+    console.log('our server is live on port 3000');
+})
+==============================================================================================
+
+<html>
+    <head>
+        <title>Student page</title>
+    </head>
+    <body>
+        <h1>You have Requested the student name:<%= name %></h1>
+        <hr />
+        <p>id:<%= id %></p>
+      <br />
+      <hr />
+      <h1>Subject</h1>
+        <ul>
+            <% for(var i=0; i<subject.length;i++){ %>
+            <li><%= subject[i] %></li>
+            <% } %>
+        </ul>
+    </body>
+</html>
+===================================================================================================
+
+<html>
+    <head>
+        <title>Student page</title>
+    </head>
+    <body>
+        <h1>You have Requested the student name:<%= name %></h1>
+        <hr />
+        <p>id:<%= id %></p>
+      <br />
+      <hr />
+      <h1>Subject</h1>
+        <ul>
+            <% subject.forEach(function(item){ %>
+            <li><%= item %></li>
+            <%  }); %>
+        </ul>
+    </body>
+</html>
+=======================================================================================================
+npm init;
+npm install express -save
+npm install express -g
+npm install express --save
+npm install -save ejs
+npm ls;
+npm ls -g
+npm uninstall -g nodemon
+======================================================
+var fs=require('fs');
+var express=require('express');
+
+var app=express();
+app.set('view engine','ejs');
+app.get('/',function(req,res){
+
+    res.sendFile(__dirname + '/index.html');
+});
+app.get('/about',function(req,res){
+    res.sendFile(__dirname + '/about.html');
+});
+app.get('/contact/:mobile_no',function(req,res){
+    res.render('contacts',{no:req.params.mobile_no});
+});
+
+app.listen(8888,function(){
+    console.log('Server is running at http://127.0.0.1:8888/');
+})
+
+==============================================================================================
+========Asyncronous===============
+var fs=require('fs');
+
+console.log("Before the readFile message");
+
+fs.readFile('./file/file.txt','utf8',function(error,data){
+    console.log(data);
+})
+
+console.log("After the readFile message");
+=========output======
+Before the readFile message
+After the readFile message
+bla bla blabla bla blabla bla bla
+bla bla blabla bla blabla bla bla
+
+
+=================================================================================================
+===========Syncronous===============================
+var fs=require('fs');
+
+console.log("Before the readFile message");
+
+var data=fs.readFileSync('./file/file.txt','utf8');
+ console.log(data);
+console.log("After the readFile message");
+==output========
+Before the readFile message
+bla bla blabla bla blabla bla bla
+bla bla blabla bla blabla bla bla
+After the readFile message
+==================================================================================
+
+var events=require('events');
+
+var eventEmitter=new events.EventEmitter();
+
+eventEmitter.on('clicked',function(arg1,arg2){
+    console.log(arg1 + " " +  arg2);
+});
+eventEmitter.on('clicked',function(arg1,arg2,type){
+    console.log(type + ':' + arg1 + " " +  arg2);
+});
+eventEmitter.emit('clicked','Rahul','Khose','Name');
+===================================================================================
+
+
+var express=require('express');
+var path=require('path');
+var app=express();
+
+app.get('/',function(req,res){
+    //res.sendFile(__dirname + '/index.html');
+    res.sendFile('index.html',{root:path.join(__dirname)});
+});
+app.get('/about',function(req,res){
+    //res.sendfile(__dirname + '/about.html');
+    res.sendFile('about.html',{root:path.join(__dirname)});
+});
+app.get('/contact',function(req,res){
+    res.send('Contact page');
+});
+app.get('/student',function(req,res){
+    res.send('Student page');
+});
+
+app.listen(4000,function(){
+      console.log('Server is running at http://127.0.0.1:4000/');
+})
+====================================================================================
+===========Html file in another file path==========================================
+var express=require('express');
+var path=require('path');
+var app=express();
+
+app.get('/',function(req,res){
+    //res.sendFile(__dirname + '/index.html');
+    res.sendFile('index.html',{root:path.join(__dirname,'./files')});
+});
+app.get('/about',function(req,res){
+    //res.sendfile(__dirname + '/about.html');
+    res.sendFile('about.html',{root:path.join(__dirname,'./files')});
+});
+app.get('/contact',function(req,res){
+    res.send('Contact page');
+});
+app.get('/student',function(req,res){
+    res.send('Student page');
+});
+
+app.listen(4000,function(){
+      console.log('Server is running at http://127.0.0.1:4000/');
+})
+=============================================================================================
+
+
+var express=require('express');
+var path=require('path');
+var app=express();
+
+app.get('/contact',function(req,res){
+    res.send('Contact page');
+});
+app.get('/student',function(req,res){
+    res.send('Hello' + req.query.firstname);
+});
+
+app.listen(4000,function(){
+      console.log('Server is running at http://127.0.0.1:4000/');
+})
+========================================================
+
+
+var express = require('express');
+var app = express();
+var path=require('path');
+app.get('/', function (req, res) {
+    res.sendFile('index.html',{root:path.join(__dirname)});
+});
+app.get('/about', function (req, res) {
+    res.sendFile('about.html',{root:path.join(__dirname)});
+});
+app.get('/contact', function (req, res) {
+   res.end(JSON.stringify(req.query));
+});
+
+
+app.listen(4000, function () {
+    console.log('Server is running at http://127.0.0.1:4000/');
+})
+====================================================================
+http://127.0.0.1:4000/contact?firstname=rahul&lastname=khose
+==========output==================
+{"firstname":"rahul","lastname":"khose"}
+====================================================================================
+https://registry.npmjs.org/body-parser failed, reason: getaddrinfo ENOENT registry.npmjs.org //Internet connection must be allowed
+=====================================================================================
+==================bodyPraser========================================================
+
+var express = require('express');
+var bodyParser=require('body-parser');
+var app = express();
+app.use(bodyParser());
+var path=require('path');
+app.get('/', function (req, res) {
+    res.sendFile('index.html',{root:path.join(__dirname)});
+});
+app.post('/', function (req, res) {
+    res.end(JSON.stringify(req.body));
+});
+
+
+app.listen(4000, function () {
+    console.log('Server is running at http://127.0.0.1:4000/');
+})
+=====================================================================================
+
+
+
+var express = require('express');
+var bodyParser = require('body-parser');
+var path = require('path');
+ var app = express();
+ app.use(bodyParser()); 
+ app.use(bodyParser.json()); 
+ app.set('view engine','ejs');
+ app.get('/',(req,res)=> res.sendFile(__dirname + '/partial/home.html'));
+ app.get('/about',(req,res)=> res.sendFile(__dirname + '/partial/about.html'));
+ app.get('/contact',(req,res)=> res.sendFile(__dirname + '/partial/contact.html'));
+ app.get('/contact/:no',(req,res)=> res.render('contacts',{'phone':req.params.no}));
+ app.get('/api',(req,res)=> res.send(req.query.age));
+ app.get('/login',(req,res)=> res.sendFile(__dirname + '/partial/login.html'));
+ app.post('/login',(req,res)=> res.end(JSON.stringify(req.body)));
+ //app.get('/login',(req,res) => res.sendFile('login.html',{root:path.join(__dirname,'./parital')}));
+
+ //?firstname=rahul&&lastname=khose&&age=23&&salary=25000
+ app.listen(3000,()=>console.log('server is running'));
+ 
+=========== Cookie-Parser ===============================
+var express = require('express');
+var cookieParser=require('cookie-parser');
+var app = express();
+app.use(cookieParser());
+var path=require('path');
+app.get('/', function (req, res) {
+   res.sendFile('index.html',{root:path.join(__dirname)});
+   res.cookie('myFirstCookie','Looks good')
+   res.end('Wow');
+});
+//app.post('/', function (req, res) {
+ //   res.end(JSON.stringify(req.cookie));
+//});
+
+
+app.listen(4000, function () {
+    console.log('Server is running at http://127.0.0.1:4000/');
+})
+
+================= SET OR REMOVE COOKIE ===========================
+var express = require('express');
+var cookieParser=require('cookie-parser');
+var app = express();
+app.use(cookieParser());
+var path=require('path');
+app.get('/', function (req, res) {
+   // res.sendFile('index.html',{root:path.join(__dirname)});
+   res.cookie('myFirstCookie','Looks good')
+   res.end('Cookie is set');
+});
+app.get('/removeCookie', function (req, res) {
+    // res.sendFile('index.html',{root:path.join(__dirname)});
+    res.clearCookie('myFirstCookie')
+    res.end('Cookie is deleted');
+ });
+//app.post('/', function (req, res) {
+ //   res.end(JSON.stringify(req.cookie));
+//});
+
+
+app.listen(4000, function () {
+    console.log('Server is running at http://127.0.0.1:4000/');
+})
+==============================================================================================
+=============Custom Routing==============================================================
+
+
+var express=require('express');
+
+var app=express();
+
+var router=express.Router();
+
+app.use('/myFirstRoute',router);
+
+router.get('/heyThereFirstRoute',function(req,res){
+    res.end('Hey I am there now start custom routing');
+});
+router.get('/heyThereFirstRouteAgain',function(req,res){
+    res.end('Hey I am there now start custom routing Again');
+});
+app.listen(4000,function(){
+    console.log('server is running at http://127.0.0.1:4000/');
+})
+===================================================================================================
+
+
+var express=require('express');
+
+var app=express();
+
+var router=express.Router();
+
+app.use('/users',router);
+
+router.get('/:username/:field',function(req,res){
+    res.end(JSON.stringify(req.params));
+});
+
+app.listen(4000,function(){
+    console.log('server is running at http://127.0.0.1:4000/');
+})
+=====================================================================================================
+var express=require('express');
+var bodyParser=require('body-parser');
+var app=express();
+app.use(bodyParser());
+app.get('/login',function(req,res){
+     res.sendFile('./file/login.html',{root: __dirname});
+});
+app.post('/login',function(req,res){
+    res.end(JSON.stringify(req.body));
+});
+app.listen(4000,function(){
+    console.log('server is running at http://127.0.0.1:4000/');
+})
+===============================================
+====Login app============================================
+
+var express = require('express');
+var bodyParser = require('body-parser');
+var session = require('express-session');
+var session;
+var app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({
+    secret: 'jf$%&#hgthgf^)*&3473jdfs',
+    resave: false,
+    saveUninitialized: true
+}))
+
+app.get('/login', function (req, res) {
+    res.sendFile('./file/login.html', { root: __dirname });
+});
+
+app.post('/login', function (req, res) {
+    // res.end(JSON.stringify(req.body));//error=can't set header
+    if (req.body.username === 'admin' && req.body.password === 'admin') {
+        session.uniqId = req.body.username;
+    }
+    res.redirect('/redirects');
+});
+
+app.get('/redirects', function (req, res) {
+    if (session.uniqId) {
+        res.redirect('/admin');
+    } else {
+        res.end('Who are you?');
+    }
+})
+app.listen(4000, function () {
+    console.log('server is running at http://127.0.0.1:4000/');
+})
+
+==========================================
+var express = require('express');
+var bodyParser = require('body-parser');
+var session = require('express-session');
+var session;
+var app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({
+    secret: 'jf$%&#hgthgf^)*&3473jdfs',
+    resave: false,
+    saveUninitialized: true
+}))
+app.get('/login', function (req, res) {
+    res.sendFile('./file/login.html', { root: __dirname });
+});
+app.post('/login', function (req, res) {
+    // res.end(JSON.stringify(req.body));//error=can't set header
+    if (req.body.username === 'admin' && req.body.password === 'admin') {
+        session.uniqId = req.body.username;
+    }
+
+    res.redirect('/redirects');
+});
+
+app.get('/redirects', function (req, res) {
+    if (session.uniqId) {
+        res.redirect('/admin');
+    } else {
+        res.end('Who are you?');
+    }
+});
+app.get('/admin',function(req,res){
+     res.sendFile('./file/admin.html',{root:__dirname});
+})
+app.listen(4000, function () {
+    console.log('server is running at http://127.0.0.1:4000/');
+})
+====================================================================================================
+
+var fs=require('fs');
+
+  fs.mkdir('stuff',function(){
+  	   fs.readFile('readFile.txt','utf8',function(error,data){
+  	   	  fs.writeFile('./stuff/writeFile.txt',data);
+  	   })
+  })
+=====================================================================================================
+
+==============partial example========================================================================
+========app.js=====================================================================
+
+
+var express = require('express');
+var path=require('path');
+var bodyParser=require('body-parser');
+var app=express();
+app.use(bodyParser.json());
+app.set('view engine','ejs');
+app.get('/',function(req,res){
+   res.render('index');
+});
+app.get('/about',function(req,res){
+    res.render('about');
+});
+app.get('/contact',function(req,res){
+    res.render('contacts');
+});
+app.listen(3000,function(){
+    console.log('listing port:3000');
+})
+
+=====================================================
+======index.ejs=======
+
+
+<html>
+<head>
+    <title>Home Page</title>
+    <style>
+            ul li{
+                display:inline;
+            }
+         </style>
+</head>
+<body>
+    <% include partials/nav.ejs %><br /><br /><br />
+    <h1 style="text-align:center">Welcome Home Page</h1>
+</body>
+</html>
+=========contacts.ejs=====
+
+
+<html>
+    <head>
+        <title>Contact Page</title>
+        <style>
+                ul li{
+                    display:inline;
+                }
+             </style>
+    </head>
+    <body>
+            <% include partials/nav.ejs %><br /><br /><br /><br />
+        <h1 style="text-align:center">Welcome Contact Page</h1>
+    </body>
+    </html>
+=========about.ejs=======
+<html>
+
+<head>
+    <title>About Page</title>
+    <style>
+       ul li{
+           display:inline;
+       }
+    </style>
+</head>
+
+<body>
+        <% include partials/nav.ejs %><br /><br /><br /><br />
+    <h1 style="text-align:center">Welcome About Page</h1>
+</body>
+
+</html>
+=========nav.ejs=========
+<nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/about">About</a></li>
+    </ul>
+</nav>
+====================================================================
+==========Todo app=====================
+/* app.js */
+
+
+
+var express = require('express');
+var todoController = require('./controllers/todoController');
+
+var app = express();
+
+//set up template engine
+
+app.set('view engine','ejs');
+
+//static file 
+
+app.use(express.static('./public'));
+
+//fire controller
+
+todoController(app);
+
+//listen to port
+
+app.listen(4000,function(){
+    console.log('You are listening to port 4000');
+})
+
+/* todoController.js */
+
+
+var bodyParser = require('body-parser');
+
+
+var data=[
+    {item:'Keyboard'},
+    {item:'Mouse'},
+    {item:'Headphone'},
+    {item:'Adapter'}
+    
+]
+
+var urlencodedParser = bodyParser.urlencoded({extended:false});
+
+module.exports = function (app) {
+
+    app.get('/todo', function (req, res) {
+      res.render('todo',{todos:data});
+    });
+
+    app.post('/todo', urlencodedParser, function (req, res) {
+         data.push(req.body);
+         res.json(data);
+    });
+
+    app.delete('/todo', function (req, res) {
+
+    });
+};
+
+
+/* todo-list.js */
+
+$(document).ready(function(){
+
+    $('form').on('submit',function(){
+
+         var item = $('form input');
+         var todo = {item:item.val()};
+         $.ajax({
+             type:'POST',
+             url:'/todo',
+             data:todo,
+             success:function(data){
+                 location.reload();
+             }
+         });
+         return false;
+        
+    });
+})
+
+
+/* todo.ejs */
+
+<html>
+    <head>
+        <title>Todo List</title>
+        <script src="/js/jquery.js"></script>
+        <script src="/js/todo-list.js"></script>
+        <link href="/assets/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+         <div id="todo-table">
+             <form>
+                 <input type="text" name="item" placeholder="Add new item..." required/>
+                 <button type="submit">Add Item</button>
+             </form>
+             <ul>
+               <% todos.forEach(function(o){ %>
+                    <li><%= o.item %> </li>
+              <% }) %>
+             </ul>
+         </div>
+    </body>
+</html>
+
+/* style.css */
+body{
+background:#0d1521;
+font-style:tahoma;
+color:#989898;
+}
+
+#todo-table{
+    position: relative;
+    width:95%;
+    background:#090d13;
+    margin:0 auto;
+    padding:20px;
+    box-sizing:border-box;
+}
+
+#todo-table form:after{
+    margin:0;
+    display:'';
+    display:block;
+    clear:both;
+}
+input[type="text"]{
+    width:70%;
+    padding:20px;
+    background:#181c22;
+    border:0;
+    float:left;
+    font-size:20px;
+    color:#989898;
+}
+
+button{
+    padding:20px;
+    width:30%;
+    float:left;
+    background:#23282e;
+    border:0;
+    box-sizing:border-box;
+    color:#fff;
+    cursor:pointer;
+    font-size:20px;
+}
+
+ul{
+    list-style-type:none;
+    padding:0;
+    margin-top: 60px;
+}
+
+li{
+    width:100%;
+    padding:20px;
+    box-sizing:border-box;
+    font-family:arial;
+    font-size:20px;
+    cursor:pointer;
+    letter-spacing:1px;
+}
+
+li:hover{
+    text-decoration:line-through;
+    background:rgb(0,0,0,0.2);
+
+}
+========================================================================
+=================Login app Complete ======================================
+
+var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
+/*var data=[
+    {item:'Keyboard'},
+    {item:'Mouse'},
+    {item:'Headphone'},
+    {item:'Adapter'}
+     
+];*/
+
+//connect to the database
+//https://mlab.com/login/
+mongoose.connect('mongodb://test:test@ds149577.mlab.com:49577/todo',{
+    useMongoClient: true
+})
+
+//create a schema -This is a like blue print
+mongoose.Promise = global.Promise;
+var todoSchema = new mongoose.Schema({
+    item:String
+});
+
+//create a Model
+
+var Todo = mongoose.model('Todo',todoSchema);
+
+/*var itemOne = Todo({item:'Laptop'}).save(function(err){
+    if(err) throw err;
+    console.log('Item Saved from database');
+})*/
+
+var urlencodedParser = bodyParser.urlencoded({extended:false});
+
+module.exports = function (app) {
+     
+    app.get('/todo', function (req, res) {
+        //get data from mongodb databasse and pass it to view
+
+    Todo.find({},function(error,data){
+        if(error) throw error;
+        res.render('todo',{todos:data});
+      });
+     
+    }); 
+
+    app.post('/todo', urlencodedParser, function (req, res) {
+         //data.push(req.body);
+         //get data from the view and add data mongodb database
+         Todo(req.body).save(function(error,data){
+             if(error) throw error;
+             res.json(data);
+         })
+     
+    });
+
+    app.delete('/todo/:item', function (req, res) {
+        //delete the requested item form mongodb database
+        Todo.find({item:req.params.item.replace(/\-/g, " ")}).remove(function(error,data){
+            if(error) throw error;
+            res.json(data);
+
+        });
+        /*  data=data.filter(function(todo){
+              return todo.item.replace(/  /g, '-') !== req.params.item;
+              ///return todo.item !== req.params.item;
+          });
+          res.json(data); */
+    });
+};
+===============================================================================================
+=======================  server.js  ==============================================================
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
+
+const api = require('./server/routes/api');
+
+const port = 3000;
+
+const app = express();
+
+app.use(express.static(path.join(__dirname,'dist')));
+
+app.use(bodyParser.urlencoded({extended:true}));
+
+app.use(bodyParser.json());
+
+app.use('/api',api);
+
+app.get('*',(req,res) => {
+     res.sendFile(path.join(__dirname,'dist/index.html'));
+});
+
+app.listen(port,function(){
+      console.log("Server running on localhost:" + port);
+})
+=================  model.js  ==================================================
+
+
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
+
+const videoSchema = new Schema({
+    title:String,
+    url:String,
+    description:String
+});
+
+module.exports = mongoose.model('video',videoSchema, 'videos');
+
+===========================Node js Restful Api ==================================================
+
+const express = require('express');
+
+ const router = express.Router();
+ const mongoose = require('mongoose');
+ const Video = require('../models/video');
+ //const db = "mongodb://userrahul:pwrahul@ds153719.mlab.com:53719/videoplayer";
+ mongoose.connect("mongodb://userrahul:pwrahul@ds153719.mlab.com:53719/videoplayer",{
+    useMongoClient: true
+ })
+ mongoose.Promise = global.Promise;
+ /* mongoose.connect(db,function(err){
+    useMongoClient: true
+      if(err){
+           console.log("Error ! " + err);
+      }
+ }); */
+ router.get('/videos',function(req,res){
+     console.log('Get Request for all videos');
+     Video.find({})
+     .exec(function(err,videos){
+          if(err){
+              console.log("Error retrieving videos");
+          }else{
+              res.json(videos);
+          }
+     });
+
+ });
+ router.get('/videos/:id',function(req,res){
+    console.log('Get Request for a single videos');
+    Video.findById(req.params.id)
+    .exec(function(err,video){
+         if(err){
+             console.log("Error retrieving video");
+         }else{
+             res.json(video);
+         }
+    });
+
+});
+
+router.post('/video',function(req,res){
+     console.log('Post a video');
+     var newVideo = new Video();
+     newVideo.title = req.body.title;
+     newVideo.url = req.body.url;
+     newVideo.description = req.body.description;
+     newVideo.save(function(err,insertedVideo){
+
+         if(err){
+             console.log("Error saving video");
+         }else{
+             res.json(insertedVideo);
+         }
+     });
+});
+
+router.put('/video/:id',function(req,res){
+      console.log('Video Has Been Updated');
+      Video.findByIdAndUpdate(req.params.id,
+        {
+            $set: {
+                  title:req.body.title,
+                  url:req.body.url,
+                  description:req.body.description  
+                }
+        },
+        {
+            new:true
+        },
+        function(err, updatedVideo){
+             if(err){
+                  res.send("Error Updating Video");
+             }else{
+                 res.json(updatedVideo);
+             }
+        }
+        );
+});
+
+router.delete('/video/:id',function(req,res){
+      console.log('Video Has Been Deleted');
+      Video.findByIdAndRemove(req.params.id, function(err , deletedVideo){
+           
+            if(err){
+                res.send("Error Deleteing Video");
+            }else{
+                res.json(deletedVideo)
+            }
+      });
+});
+ module.exports = router;
+
+
+========================================================================================================
+========= CRUD REST ful Api  =================================
+====server.js===================================================
+
+const express = require('express');
+const bodyParser = require('body-parser');
+
+const api = require('./server/route/api');
+
+const port = 3000;
+
+const app = express();
+
+app.use(bodyParser.urlencoded({extended:true}));
+
+app.use(bodyParser.json());
+
+app.use('/api',api);
+
+app.get('/',function(req,res){
+    res.send('Welcome To Nodejs Application');
+})
+app.listen(port,function(){
+      console.log("Server running on localhost:" + port);
+});
+
+=======model.js==================================================
+
+ const mongoose = require('mongoose');
+
+ const Schema = mongoose.Schema;
+
+ var StudentSchema = new Schema({
+       studentno:String,
+       firstname:String,
+       lastname:String,
+       age:String
+ })
+
+ module.exports = mongoose.model('student',StudentSchema,'students');
+
+ ======api.js===============================================================
+const express = require('express');
+ const router = express.Router();
+ const mongoose = require('mongoose');
+ var Student = require('../model/student')
+ //mongoose.Promise = require('bluebird');
+ confing = "mongodb://127.0.0.1:27017/school";
+ mongoose.connect(confing,function(err){
+    useMongoClient: true
+      if(err){
+           console.log("Error ! " + err);
+      }
+ });
+/* mongoose.connect(confing,{
+    useMongoClient: true
+ }); */
+mongoose.Promise = global.Promise;
+router.get('/students',function(req,res){
+    console.log('Fetch All Student Record');
+    Student.find({})
+    .exec(function(err,students){
+         if(err){
+              res.send('Data Fetching Error');
+         }else{
+              res.json(students);
+         }
+    });
+});
+router.get('/students/:id',function(req,res){
+    console.log('Fetch Single Student Record');
+    Student.findById(req.params.id)
+    .exec(function(err,student){
+         if(err){
+              res.send('Single Data Fetching Error');
+         }else{
+              res.json(student);
+         }
+    });
+});
+
+router.post('/student',function(req,res){
+       console.log('Save Record');
+      var newStudent = new Student();
+      newStudent.studentno = "5";
+      newStudent.firstname = "Rahul";
+      newStudent.lastname = "Khose";
+      newStudent.age = "23";
+      newStudent.save(function(err,insertedRecord){
+           if(err){
+                res.send('Save Record Error');
+           }else{
+                res.json(insertedRecord);
+           }
+      });
+});
+router.get('/update/:id',function(req,res){
+         console.log('Update Record');
+         Student.findByIdAndUpdate(req.params.id,
+            {
+                $set:{
+                     studentno:"5",
+                     firstname:"Jhon",
+                     lastname:"Doe",
+                     age:"30"
+                }
+            },
+            {
+                new:true
+            },
+            function(err,updatedRecord){
+                 if(err){
+                      res.send('Update Record Error');
+                 }else{
+                     res.json(updatedRecord);
+                 }
+            }
+
+        )
+});
+router.get('/delete/:id',function(req,res){
+      console.log('Deleted Record');
+      Student.findByIdAndRemove(req.param.id,function(err,deletedRecord){
+           if(err){
+               res.send('Delete Record Error');
+           }else{
+               res.json(deletedRecord);
+           }
+      });
+});
+module.exports = router;
+================================================================================================
+=========== Server.js ==========================================================================
+
+ const express = require('express');
+ const path = require('path');
+ const bodyParser = require('body-parser');
+ const api = require('./server/route/api');
+ const app = express();
+ const port = 3000;
+
+ app.use(bodyParser.json());
+ app.use(bodyParser.urlencoded({extended:false}));
+ app.use('/api',api);
+ app.get('*',function(req,res){
+     res.send('Welcome Home Page!!');
+ })
+ app.listen(port,function(){
+    console.log('Server is running on port:http://localhost:3000');
+ });
+==================================================================================================
+========= Model===================================================================================
+
+const mongoose = require('mongoose');
+
+const Schema = mongoose.Schema;
+
+const EmployeeSchema = new Schema({
+    id:Number,
+    name:String,
+    username:String,
+    email:String,
+    address:Object,
+    phone:String,
+    website:String,
+    company:Object
+})
+module.exports = mongoose.model('employee',EmployeeSchema,'employees');
+
+===============================================================================================
+npm install -g yo
+npm install -g generator-api
+===============================
+==== creat project =====
+yo api
+=== Yemon run command
+npm run dev
+========= Api=====================================================================================
+
+const express = require('express');
+const mongoose = require('mongoose');
+const Employee = require('../models/model');
+const router = express.Router();
+
+mongoose.connect('mongodb://127.0.0.1:27017/company',{
+  useMongoClient:true
+});
+mongoose.Promise = global.Promise;
+router.get('/employees',function(req,res){
+    console.log('Fetch All Employees');
+    Employee.find({}).exec(function(err,employees){
+       if(err){
+          res.send('Fetching Employees Error!');
+       }else{
+          res.json(employees);
+       }
+    });
+});
+router.get('/employees/:id',function(req,res){
+    console.log('Fetch Single Employee');
+    Employee.findById(req.params.id).exec(function(err,employee){
+       if(err){
+          res.send('Fetching Single Employee Error!');
+       }else{
+          res.json(employee);
+       }
+    });
+});
+router.post('/employee',function(req,res){
+   console.log('Save Data from Database');
+    var emp = new Employee();
+    emp.id = req.body.id;
+    emp.name = req.body.name;
+    emp.username = req.body.username;
+    emp.email = req.body.email;
+    emp.address = req.body.address;
+    emp.phone =  req.body.phome;
+    emp.website = req.body.website;
+    emp.company = req.body.company;
+    emp.save(function(err,insertEmployee){
+       if(err){
+          res.send('Employee Inserting Error!!');
+       }else{
+          res.json(insertEmployee);
+       }
+    });
+});
+
+router.put('/employee/:id',function(req,res){
+          console.log('Update Employee Form Database!')
+      Employee.findByIdAndUpdate(req.params.id,
+         {
+            $set:{
+              id : req.body.id,
+              name : req.body.name,
+              username : req.body.username,
+              email : req.body.email,
+              address : req.body.address,
+              phone :  req.body.phone,
+              website : req.body.website,
+              company : req.body.company
+            }
+         },
+         {
+           new:true
+         },
+         function(err,updateEmployee){
+            if(err){
+               res.send('Update Employee Error!!');
+            }else{
+              res.json(updateEmployee);
+            }
+         }
+      )
+});
+router.delete('/employee/:id',function(req,res){
+       console.log('Delete Employee!!');
+       Employee.findByIdAndRemove(req.params.id,function(err,deleteEmployee){
+               if(err){
+                 res.send('Delete Employee Error!!');
+               }else{
+                 res.json(deleteEmployee);
+               }
+       });
+});
+
+module.exports = router;
+
+==================================================================================================
+
+=============================RESTful Api ========================================================
+
+/* server.js */
+
+
+const http = require('http');
+const port  = process.env.PORT || 3000;
+const app = require('./app');
+const server = http.createServer(app);
+server.listen(port,()=>{
+    console.log('server running at port http://localhost:3000');
+});
+
+/* app.js */
+============================================
+const express = require('express');
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const app = express();
+const productRoutes = require('./api/routes/products');
+app.use('/products',productRoutes);
+app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
+app.use((req,res,next)=>{
+    res.header("Access-Control-Allow-Origin","*");
+    res.header("Access-Control-Allow-Headers","Origin,X-Requested-With,Content-Type,Accept");
+    if(req.method === 'OPTIONS'){
+         res.header("Access-Control-Allow-Methods","GET,POST,DELETE,PATCH,PUT");
+         res.status(200).json({});
+    }
+next();
+})
+app.use((req,res,next)=>{
+   const error = new Error('Not Found');
+   error.status = 404;
+   next(error);
+});
+app.use((error,req,res,next)=>{
+   res.status(error.status || 500);
+   res.json({
+     error:{
+       message:error.message
+     }
+   })
+})
+module.exports = app;
+
+============================================
+const express = require('express');
+const morgan = require('morgan');
+const app = express();
+const productRoutes = require('./api/routes/products');
+app.use('/products',productRoutes);
+app.use(morgan('dev'));
+app.use((req,res,next)=>{
+   const error = new Error('Not Found');
+   error.status = 404;
+   next(error);
+});
+app.use((error,req,res,next)=>{
+   res.status(error.status || 500);
+   res.json({
+     error:{
+       message:error.message
+     }
+   })
+})
+module.exports = app;
+
+=====================================================
+/* products.js */
+const express = require('express');
+
+const router = express.Router();
+
+router.get('/',(req,res,next)=>{
+  console.log('Fetch Products!');
+   res.status(200).json({
+        message:'Handling GET request to /products'
+   });
+});
+router.post('/',(req,res,next)=>{
+   console.log('Save Product!');
+   res.status(200).json({
+        message:'Handling POST request to /products'
+   });
+});
+router.get('/:productId',(req,res,next)=>{
+    console.log('Fetch Single Product!');
+     const id = req.params.productId;
+     if(id === 'special'){
+         res.status(200).json({
+           message:'You discovered the special ID',
+           id:id
+         })
+     }else{
+        res.status(200).json({
+          message:'You passed an ID'
+        })
+     }
+});
+router.patch('/:productId',(req,res,next)=>{
+    console.log('Update Product!');
+    res.status(200).json({
+        message:'Updated Product'
+    });
+});
+router.delete('/:productId',(req,res,next)=>{
+    console.log('Delete Product!');
+    res.status(200).json({
+        message:'Deleted Product'
+    });
+});
+module.exports = router;
+=====================================================================================================
+
+================Testing Postman Rest api ===========================================================
+var express = require('express');
+
+var app = express();
+
+var mongoose = require('mongoose');
+
+mongoose.connect('mongodb://localhost/my_database');
+
+var Schema = mongoose.Schema;
+
+var UserSchema = new Schema({
+	//name : String
+	name:{type:String }
+});
+
+var User = mongoose.model('User',UserSchema);
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.json());    //to support JOSN-encoded bodies
+app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
+	 extended:true
+}));
+
+app.get('/user',function(req,res){
+    User.find({}),function(err,users){
+       if(err){
+          res.send('something went really wrong!!!');
+          next();
+       }
+       res.json(users);
+    }	  
+});
+
+app.get('/user/:id',function(req,res){
+	
+	  User.findById(req.params.id)
+	  .then(doc => {
+	     if(!doc) { return res.status(404).end();}
+	     return res.status(200).json(doc);
+	  })
+	  .catch(err => next(err));
+});
+
+app.post('/user',function(req,res){
+	 var user = new User(req.body);
+	 user.save(function(err,user){
+	   res.json(user);
+	 });
+});
+
+app.put('/user/:id',function(req,res){
+	 var condition = {_id:req.params.id};
+
+	  User.update(condition, req.body)
+	  .then(doc => {
+	     if(!doc) { return res.status(404).end();}
+	     return res.status(200).json(doc);
+	  })
+	  .catch(err => next(err));
+});
+
+app.delete('/user/:id',function(req,res){
+	User
+	.findByIdAndRemove(req.params.id)
+	.exec()
+	.then(doc => {
+	  if(!doc){return res.status(404).end();}
+	  return res.status(204).end();
+	})
+	.catch(err => next(err));
+});
+=========================================================================================================
+==================== New Latest REST api =============================================================
+var express = require('express');
+var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/myuser',{
+  useMongoClient:true
+});
+mongoose.Promise = global.Promise;
+
+var Schema = mongoose.Schema;
+var UserSchema = new Schema({
+    fname:{ type:String},
+    lname:{ type:String },
+    age:{ type:String},
+    city:{ type:String}
+});
+
+var User = mongoose.model('User',UserSchema);
+
+var app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+   extended:true
+}));
+app.get('/user',(req,res,next)=>{
+    // User.find({})
+    // .exec((err,users)=>{
+    //     if(err) throw err;
+    //     res.json(users);
+    // });
+    User.find({})
+     .exec()
+     .then(doc => {
+         if(!doc){ return res.status(404).end();}
+         return res.status(200).json(doc);
+     })
+     .catch(err => {
+          next(err);
+     });
+});
+app.get('/user/:id',(req,res,next)=>{
+    User.findById(req.params.id)
+    .exec()
+     .then(doc => {
+         if(!doc){ return res.status(404).end();}
+         return res.status(200).json(doc);
+     })
+     .catch(err => {
+               next(err);
+     });
+});
+app.post('/user',(req,res,next)=>{
+     var user = new User(req.body);
+     user.save((err,user)=>{
+          if(err) throw err;
+          res.status(200).json(user);
+     });
+});
+
+app.put('/user/:id',(req,res,next)=>{
+    User.findByIdAndUpdate(req.params.id,req.body)
+    .exec()
+     .then(doc => {
+         if(!doc){ return res.status(404).end();}
+         return res.status(200).json(doc);
+     })
+     .catch(err => {
+               next(err);
+     });
+});
+app.delete('/user/:id',(req,res,next)=>{
+    User.findByIdAndRemove(req.params.id)
+     .exec()
+     .then(doc => {
+         if(!doc){ return res.status(404).end();}
+         return res.status(200).json(doc);
+     })
+     .catch(err => {
+               next(err);
+     });
+});
+
+// app.delete('/user/:id',(req,res)=>{
+//     User.findByIdAndRemove(req.params.id,(err,deluser)=>{
+//          if(err) throw err;
+//          res.json(deluser);
+//     });
+// });
+
+
+
+app.listen(3000,()=>{
+    console.log('server running on port http://localhost:3000');
+})
+module.exports = app;
+=====================================================================================================
+
+=============== Pagination Express,Nodejs,MongoDB With Yeoman ======================================
+const mongoose = require('mongoose');
+
+class Facade {
+  constructor(name, schema) {
+    this.model = mongoose.model(name, schema);
+  }
+
+  create(body) {
+    const model = new this.model(body);
+    return model.save();
+  }
+
+  find(...args) {
+    var searchObj = {};
+      if(args[0].q){
+         searchObj.fname = args[0].q;
+      }
+      if(args[0].count){
+      var count = parseInt(args[0].count);
+    }else{
+      var count = 25;
+      }
+      if(args[0].page){
+         var skip = parseInt((args[0].page-1) * count);
+      }else{
+        var skip = 0;
+      }
+    return this.model
+      .find(searchObj)
+      .limit(count)//new added function
+      .skip(skip)//new added function
+      .exec();
+  }
+  // find(...args) {
+  //   return this.model
+  //     .find(...args)
+  //     .exec();
+  // }
+
+  findOne(...args) {
+    return this.model
+      .findOne(...args)
+      .exec();
+  }
+
+  findById(...args) {
+    return this.model
+      .findById(...args)
+      .exec();
+  }
+
+  update(...args) {
+    return this.model
+      .update(...args)
+      .exec();
+  }
+
+  remove(...args) {
+    return this.model
+      .remove(...args)
+      .exec();
+  }
+}
+
+module.exports = Facade;
+=======================================================================================================

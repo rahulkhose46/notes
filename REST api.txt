@@ -1,0 +1,47 @@
+
+var express = require('express');
+var bodyParser = require('body-parser');
+var app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+   extended:true
+}));
+app.get('/',(req,res)=>{
+    res.status(200).json({
+        name:"Rahul Khose"
+    });
+});
+app.get('/:id',(req,res)=>{
+    var id = req.params.id;
+    res.status(200).json({
+        name:"Rahul Khose",
+        id:id
+    });
+});
+app.post('/',(req,res)=>{
+   // var person = {}
+   //    person.fname = "Rahul";
+   //    person.lname = "Khose";
+   //    person.age = 23;
+   //    person.city = "pune";
+    res.status(200).json({
+        person:req.body
+    });
+});
+app.put('/:id',(req,res)=>{
+     var id = req.params.id;
+    res.status(200).json({
+        message:"Your Id Has Been Updated = " + id
+    });
+});
+app.delete('/:id',(req,res)=>{
+     var id = req.params.id;
+    res.status(200).json({
+        message:"Your Id Has Been Delete = " + id
+    });
+});
+
+app.listen(3000,()=>{
+    console.log('server running on port http://localhost:3000');
+})
+module.exports = app;

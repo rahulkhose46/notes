@@ -1,0 +1,274 @@
+import { Component ,OnInit} from '@angular/core';
+import { EmployeeService } from './employee.service';
+@Component({
+    selector: 'app-emp',
+    templateUrl:'./employee.component.html',
+    styleUrls:['./employee.component.css']     
+})
+export class EmployeeComponent implements OnInit {
+  public title:string = "Employee Details";
+   private employee:any[];
+     /* var EmployeeComponent = (function(){
+             function EmployeeComponent(_employeeService){
+               this._employeeService = _employeeService;
+               this.title = "Employee Details";
+             }
+     }()); */
+    constructor(private _employeeService:EmployeeService){
+ 
+    }
+  ngOnInit(){
+    this._employeeService.getEmployee()
+    //this._employeeService.getEmployee()
+    .subscribe(resEmployeeData => this.employee = resEmployeeData);
+    //.subscribe(function(resEmployeeData){return this.employee=resEmployeeData});
+  }
+}
+====================================================================================
+
+import { Injectable } from '@angular/core';
+import { Http,Response } from '@angular/http';
+import 'rxjs/add/operator/map';
+@Injectable()
+
+export class EmployeeService{
+      private _url:string="apidata/employeedata.json";
+      
+      constructor(private _http:Http){
+       
+      }
+      getEmployee(){
+           return this._http.get(this._url)
+           .map((response:Response) => response.json());
+      }
+}
+
+/* var EmployeeService = (function(){
+      function EmployeeService(_http){
+            this._http = _http;
+            this._url ="apidata/employeedata.json";
+      }
+      EmployeeService.prototype.getEmployee=function(){
+            return this._http.get(this._url)
+            .map(function(response){return response.json()})
+      }
+
+      return EmployeeService;
+      
+}()) */
+===============================================================================
+import { Component, OnInit } from '@angular/core';
+@Component({
+    selector: 'my-app',
+    template: `
+           <div class="container">
+                <app-emp></app-emp>
+              </div>
+          
+        ` 
+     
+
+})
+export class AppComponent implements OnInit {
+    ngOnInit() {
+
+    }
+   
+
+  
+}
+
+/* var AppComponent = (function(){ //class
+      
+       function AppComponent(){//constructor
+            
+       }
+       AppComponent.prototype.ngOnInit=function(){
+
+       }
+       return AppComponent;
+}()) */
+==============================================================================
+
+import { Injectable } from '@angular/core';
+import { Http,Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable'
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+@Injectable()
+
+export class EmployeeService{
+      private _url:string="apidata/employeedata.json";
+      
+      constructor(private _http:Http){
+       
+      }
+      getEmployee(){
+           return this._http.get(this._url)
+           .map((response:Response) => response.json())   
+           .catch(this._errorHandler);
+      }
+      _errorHandler(error:Response){
+          console.error(error);
+          return Observable.throw(error || "Server Error");
+      }
+      
+}
+
+/* var EmployeeService = (function(){
+      function EmployeeService(_http){
+            this._http = _http;
+            this._url ="apidata/employeedata.json";
+      }
+      EmployeeService.prototype.getEmployee=function(){
+            return this._http.get(this._url)
+            .map(function(response){return response.json()})
+            .catch(this._errorHandler);
+      }
+
+      EmployeeService.prototype.errorHandler=function(error){
+             console.log(error);
+             return Observable_1.Observable.throw(error || "Server Error");
+      }
+
+
+      return EmployeeService;
+      
+}()) */
+===============================================================================
+import { Component ,OnInit} from '@angular/core';
+import { EmployeeService } from './employee.service';
+@Component({
+    selector: 'app-emp',
+    templateUrl:'./employee.component.html',
+    styleUrls:['./employee.component.css']     
+})
+export class EmployeeComponent implements OnInit {
+  public title:string = "Employee Details";
+  private errorMsg:string;
+   private employee:any[];
+     /* var EmployeeComponent = (function(){
+             function EmployeeComponent(_employeeService){
+               this._employeeService = _employeeService;
+               this.title = "Employee Details";
+             }
+     }()); */
+    constructor(private _employeeService:EmployeeService){
+ 
+    }
+  ngOnInit(){
+    this._employeeService.getEmployee()
+    //this._employeeService.getEmployee()
+    .subscribe(resEmployeeData => this.employee = resEmployeeData,
+                resEmployeeError =>this.errorMsg =resEmployeeError   
+              );
+   /*  .subscribe(
+       function(resEmployeeData){return this.employee = resEmployeeData},
+       function(resEmployeeError){return this.errorMsg = resEmployeeError}
+        ); */
+  }
+}
+===============================================================================
+============Routing Configration TypeScript conversion to Javascript======
+ import { NgModule }      from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule }   from '@angular/forms';
+import { HttpModule }    from '@angular/http';
+import { AppComponent }  from './app.component';
+import { RouterModule,Routes } from '@angular/router'
+import { EmployeeComponent} from './employee/employee.component';
+import { EmployeeService } from './employee/employee.service';
+import { HeaderComponent } from './header/header.component';
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './notfound/notfound.component';
+/* var core_1 = require('@angular/core');
+var platform_browser_1 = require('@angular/platform-browser');
+var form_1 = require('@angular/forms');
+var employee_component_1 = require('./employee/employee.component');*/
+
+  const appRoutes:Routes=[
+             {
+               path:'',
+               component:HomeComponent
+             },
+             {
+               path:'employee',
+               component:EmployeeComponent
+             },
+             {
+               path:'**',
+               component:NotFoundComponent
+             } 
+  ]
+ /*  var appRoutes = [
+
+      {
+        path:'employee',
+        component:employee_component_1.EmployeeComponent
+      }
+  ] */
+@NgModule({
+  imports:      [ BrowserModule,FormsModule,HttpModule,RouterModule.forRoot(appRoutes) ],
+  declarations: [ AppComponent,EmployeeComponent,HeaderComponent,NotFoundComponent,HomeComponent],
+  providers:    [EmployeeService],
+  bootstrap:    [ AppComponent ]
+})
+export class AppModule { }     
+
+
+/* var AppModule = (function(){      
+    function AppModule(){
+    }
+    return AppModule;
+}())
+
+AppModule = __decorate([
+  core_1.NgModule({
+    imports:      [platform_browser_1.BrowserModule],
+    declarations: [app_component_1.AppComponent],
+    providers:    [employee_service_1.EmployeeService],
+    bootstrap:    [app_component_1.AppComponent ]
+  })
+],AppModule)
+
+exports AppModule = AppModule; */
+
+
+   
+========================================================================
+============Router Params====================================================
+  import { Component , OnInit } from '@angular/core';
+  import { ActivatedRoute,Router,Params } from '@angular/router';
+  @Component({
+     template:`
+	          <a (click)="goPrevious()">Previous</a>
+			  <a (click)="goNext()">Next</a>
+	       `
+  })
+ export class DepartmentDetailComponent implements OnInit{
+     public departmentId;
+	 
+	 constructor(private route:ActivatedRoute,private router:Router){}
+	   /* ngOnInit(){
+	         let id = parseInt(this.route.snapshot.params['id']);
+			 this.departmentId = id;
+	    }*/
+		
+		ngOnInit(){
+		  this.route.params.subscribe((params:Params)=>{
+		     let id = parseInt(params['id']);
+			 this.departmentId = id;
+		  })
+		}
+		
+		goPrevious(){
+		  let previousId = this.departmentId - 1;
+		  this.router.navigate(['/departments',previousId]);
+		}
+		goNext(){
+		  let nextId = this.departmentId + 1;
+		  this.router.navigate(['/departments',nextId]);
+		}
+ }
+============================================================================

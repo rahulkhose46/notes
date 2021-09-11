@@ -1,0 +1,548 @@
+﻿C:\Users\Rahul\Music\TypeScript
+λ tsc main.ts && node main.js
+X:50, Y:100
+
+C:\Users\Rahul\Music\TypeScript
+λ
+
+====================================
+typescript variable====
+
+let a:number;
+
+a = 5;
+a = true;//error
+a = "b"//error
+====================================
+let a:any;
+
+a = 5;
+a = true;
+a = "b"
+===================================
+=Typescrpt type variable data-types
+let a:number;
+let b:boolean;
+let c:string;
+let d:any;
+let e:number[]=[1,2,3];
+let f:any[] = [1,true,'a',false];
+==================================
+let strArr1: string[] = ['hello','world'];
+let strArr2: Array<string> = ['Hello','world'];
+let anyArr: any[] = ['Hello',10,true];
+let myTuple: [string,number] = ['Hii',10];
+=========Typescrpt  code =========
+
+let a:number;
+let b:boolean;
+let c:string;
+let d:any;
+let e:number[]=[1,2,3];
+let f:any[] = [1,true,'a',false];
+
+const ColorRed = 0;
+const ColorGreen = 1;
+const ColorBlue = 2;
+
+enum Color {Red , Green , Blue};
+
+let backgroundColor = Color.Blue;
+======Typescrpt compiler convert code into javascript code==
+var a;
+var b;
+var c;
+var d;
+var e = [1, 2, 3];
+var f = [1, true, 'a', false];
+var ColorRed = 0;
+var ColorGreen = 1;
+var ColorBlue = 2;
+var Color;
+(function (Color) {
+    Color[Color["Red"] = 0] = "Red";
+    Color[Color["Green"] = 1] = "Green";
+    Color[Color["Blue"] = 2] = "Blue";
+})(Color || (Color = {}));
+;
+var backgroundColor = Color.Blue;
+====================================================================
+==Typescrpt type Assertions==============
+let message ; //check data-types any
+message= "Rahul";
+
+//let endsWithC = message.endsWith('c');
+//let endsWithC = (<string>message).endsWith('c');
+let alternative = (message as string).endsWith('c');
+
+
+===================================================================
+========ArrayFunction TypeScript ========
+let log = function(message){
+    console.log(message);
+}
+
+let doLog = (message) => {
+    console.log(message);
+}
+let message = "Hello TypeScript!";
+doLog(message);
+==========Convert code Javascrpt======================
+var log = function (message) {
+    console.log(message);
+};
+var doLog = function (message) {
+    console.log(message);
+};
+var message = "Hello TypeScript!";
+doLog(message);
+========================================================
+===========OR =========================================
+=========TypeScript========
+let doLog = (message) => console.log(message);
+
+let message = "Hello TypeScript!";
+doLog(message);
+=====Javascrpt============
+var doLog = function (message) { return console.log(message); };
+var message = "Hello TypeScript!";
+doLog(message);
+
+======================================================
+=============== Interface =============================
+=====TypeScript
+ interface Point{
+      x:number,
+      y:number
+  }
+let drowPoint = (point:Point) =>{
+    //code here..
+}
+
+drowPoint({
+    x:5,
+    y:2
+})
+============================================
+let drowPoint = (point:{x:number,y:number}) =>{
+    //code here..
+}
+
+drowPoint({
+    x:5,
+    y:2
+})
+========javascript
+var drowPoint = function (point) {
+    //code here..
+};
+drowPoint({
+    x: 5,
+    y: 2
+});
+===============================================================
+============TypeScript Class ===================================
+
+=====TypeScript 
+
+
+class Point{
+    x:number=5;
+    y:number;
+
+    draw(){
+        //code here..
+    }
+
+    getDistance(another:Point){
+         //code here ....
+    }
+}
+
+let point:Point;//error undefined point
+console.log(point.x);
+=============================
+
+
+class Point{
+    x:number=5;
+    y:number=6;
+
+    draw(){
+         console.log('X:' + this.x + ", Y:" + this.y);
+    }
+
+    getDistance(another:Point){
+         //code here ....
+    }
+}
+
+let point = new Point();
+ point.draw();
+ 
+=======javascript
+var Point = /** @class */ (function () {
+    function Point() {
+        this.x = 5;
+        this.y = 6;
+    }
+    Point.prototype.draw = function () {
+        console.log('X:' + this.x + ", Y:" + this.y);
+    };
+    Point.prototype.getDistance = function (another) {
+        //code here ....
+    };
+    return Point;
+}());
+var point = new Point();
+point.draw();
+
+==================================================
+=============TypeScript Constructor =========================
+
+======TypeScript
+
+
+class Point{
+    x:number;
+    y:number;
+     
+    constructor(x:number, y:number){
+        this.x = x;
+        this.y = y;
+    }
+    draw(){
+         console.log('X:' + this.x + ", Y:" + this.y);
+    }
+
+}
+
+let point = new Point(50,100);
+ point.draw();
+ 
+ ====javascript
+ 
+ var Point = /** @class */ (function () {
+    function Point(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+    Point.prototype.draw = function () {
+        console.log('X:' + this.x + ", Y:" + this.y);
+    };
+    return Point;
+}());
+var point = new Point(50, 100);
+point.draw();
+==============================================================
+
+================TypeScript Access Modifiers==================
+
+=====TypeScript
+
+
+class Point{
+    private x:number;
+    private y:number;
+     
+    constructor(x:number, y:number){
+        this.x = x;
+        this.y = y;
+    }
+    public draw = function(){
+         console.log('X:' + this.x + ", Y:" + this.y);
+    }
+
+}
+
+let point = new Point(50,100);
+ point.draw();
+ 
+ ========javascript
+ 
+ var Point = /** @class */ (function () {
+    function Point(x, y) {
+        this.draw = function () {
+            console.log('X:' + this.x + ", Y:" + this.y);
+        };
+        this.x = x;
+        this.y = y;
+    }
+    return Point;
+}());
+var point = new Point(50, 100);
+point.draw();
+=======================================================
+======Class Constructor ==============================
+
+class Person{
+   public fname:string;
+   public lname:string;
+   constructor(fname:string,lname:string){
+     this.fname = fname;
+	 this.lname = lname;
+   }
+};
+
+=====OR=====
+ class Person1{
+    constructor(public fname:string , public lname:string){
+	      this.fname = fname;
+		  this.lname = lname;
+	}
+ }
+
+=======================================================================
+==========Interface ==========================
+ interface Person{
+   fname:string;
+   lname:string;
+   age?:number;//This is optional Property using(?)this notation
+ }
+ 
+ let employee1:Person = {
+   fname:'Rahul',
+   lname:'Khose',
+   age:23
+ }
+  let employee2:Person = {
+   fname:'Atul',
+   lname:'Khose',
+ }
+ ===================================================================
+ ===========File Conversion TypeScript To Javascrpt=================
+ /* app.component.ts * /
+  import { Component, OnInit } from '@angular/core';
+@Component({
+    selector: 'my-app',
+    template: `
+            <h1 align="center">{{title}}</h1>
+            <div [style.font-size.px]="isTrue ? '40':'20'">Font Size Binding</div>
+            <div [style.color]="isTrue ? 'green':'red'">Color Binding</div>
+            <button (click)="sayHello(inputValue)">Click me!</button>
+             <input type="text" #inputValue [(ngModel)]="name"/>
+             <h4 [ngStyle]="addStyle()">Multiple Style</h4>
+             <h1>{{name}}</h1>
+            <br/>
+        
+    ` ,
+    styles: [`
+          h1{
+              color:red;
+          }
+          .addClass{
+              color:blue;
+          }
+    `]
+
+})
+export class AppComponent implements OnInit {
+    public isTrue:boolean =true;
+    public title: string = "Regestration Form";
+    
+    sayHello(value:string){
+      console.log(value);
+    }
+    sayHi(){
+        console.log('dumy data');
+    }
+    addStyle(){
+         let style = {
+             'color':'red',
+             'font-size.px':'30',
+             'text-transform':'uppercase'
+         }
+         return style
+    }
+    ngOnInit() {
+
+    }
+
+}
+ /* app.component.js * /
+ 
+ "use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var core_1 = require("@angular/core");
+var AppComponent = (function () {
+     //(function(){
+
+     //}());
+    function AppComponent() {
+        this.isTrue = true;
+        this.title = "Regestration Form";
+    }
+    AppComponent.prototype.sayHello = function (value) {
+        console.log(value);
+    };
+    AppComponent.prototype.sayHi = function () {
+        console.log('dumy data');
+    };
+    AppComponent.prototype.addStyle = function () {
+        var style = {
+            'color': 'red',
+            'font-size.px': '30',
+            'text-transform': 'uppercase'
+        };
+        return style;
+    };
+    AppComponent.prototype.ngOnInit = function () {
+    };
+    return AppComponent;
+}());
+AppComponent = __decorate([
+    core_1.Component({
+        selector: 'my-app',
+        template: "\n            <h1 align=\"center\">{{title}}</h1>\n            <div [style.font-size.px]=\"isTrue ? '40':'20'\">Font Size Binding</div>\n            <div [style.color]=\"isTrue ? 'green':'red'\">Color Binding</div>\n            <button (click)=\"sayHello(inputValue)\">Click me!</button>\n             <input type=\"text\" #inputValue [(ngModel)]=\"name\"/>\n             <h4 [ngStyle]=\"addStyle()\">Multiple Style</h4>\n             <h1>{{name}}</h1>\n            <br/>\n        \n    ",
+        styles: ["\n          h1{\n              color:red;\n          }\n          .addClass{\n              color:blue;\n          }\n    "]
+    })
+], AppComponent);
+exports.AppComponent = AppComponent;
+//# sourceMappingURL=app.component.js.map
+==================================================================
+===================
+
+=============TypeScript Conversion to Javascrpt================================
+import { Component, OnInit } from '@angular/core';
+@Component({
+    selector: 'my-app',
+    template: `
+            <h1 align="center">{{title}}</h1>
+            <div [style.font-size.px]="isTrue ? '40':'20'">Font Size Binding</div>
+            <div [style.color]="isTrue ? 'green':'red'">Color Binding</div>
+            <button (click)="sayHello(inputValue)">Click me!</button>
+             <input type="text" #inputValue [(ngModel)]="name"/>
+             <h4 [ngStyle]="addStyle()">Multiple Style</h4>
+             <h1>{{name}}</h1>
+            <br/>
+        
+    ` ,
+    styles: [`
+          h1{
+              color:red;
+          }
+          .addClass{
+              color:blue;
+          }
+    `]
+
+})
+export class AppComponent implements OnInit {
+    /* var AppComponent=(function(){
+        //inside all comment area
+             }()); */
+    public isTrue:boolean =true;
+    public title: string = "Regestration Form";
+ /*    function AppComponent(){
+        this.isTrue = true;
+        this.title = "Regestration Form"
+    } */
+    sayHello(value:string){
+      console.log(value);
+    }
+   /*  AppComponent.prototype.sayHello=function(value){
+        console.log(value);
+    } */
+    sayHi(){
+        console.log('dumy data');
+    }
+  /*   AppComponent.prototype.sayHi = function(){
+        console.log('dumy data');
+    } */
+    addStyle(){
+         let style = {
+             'color':'red',
+             'font-size.px':'30',
+             'text-transform':'uppercase'
+         }
+         return style
+    }
+   /*  AppComponent.prototype.addStyle = function(){
+
+        var style = {
+            'color':'red',
+            'font-size.px':'30',
+            'text-transform':'uppercase'
+        }
+        return style;
+    } */
+    ngOnInit() {
+
+    }
+   /*  AppComponent.prototype.ngOnInit = function(){
+
+    } */
+  
+}
+//exports.AppComponent = AppComponent;
+=============================================================================
+==========ngSwitch==============================================
+import { Component, OnInit } from '@angular/core';
+@Component({
+    selector: 'my-app',
+    template: `
+             <div [ngSwitch]="color">
+              <p *ngSwitchWhen="'red'">Red Color is Show</p>
+              <p *ngSwitchWhen="'yellow'">Yellow Color is Show</p>
+              <p *ngSwitchWhen="'blue'">Blue Color is Show</p>
+              <p *ngSwitchWhen="'green'">Green Color is Show</p>
+              <p *ngSwitchDefault>Invalid Color</p>
+             </div>
+        ` 
+    
+
+})
+export class AppComponent implements OnInit {
+
+    public color:string = 'red';
+ 
+    ngOnInit() {
+
+    }
+   
+  
+}
+======================================================================
+  ts------
+let student:string[]=["Rahul","Khose","Matephal","Latur"];
+
+  student.filter(function(item){
+  	  alert(item);
+  })
+
+js-----
+var student = ["Rahul", "Khose", "Matephal", "Latur"];
+student.filter(function (item) {
+    alert(item);
+});
+
+====================================================================
+==========Interface =====================
+
+
+export interface Employee {
+	fname:string,
+	lname:string,
+	age:number,
+	salary:number
+}
+
+export class StudentComponent{
+
+	    public Student:Employee;
+           
+           constructor(){
+           	 this.Student={
+                fname:'Rahul',
+                lname:'khose',
+                age:22,
+                salary:254685
+           	 }
+           }
+	}
+=======================================================================================
